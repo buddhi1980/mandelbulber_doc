@@ -60,6 +60,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Modified by Mancoast
+
+# Tested on 64-bit Windows Server machines
+# using pandoc-1.17.2-windows.msi
 
 # go to the top directory of this project, because filenames are
 # referred to that location
