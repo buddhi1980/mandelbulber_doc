@@ -12,3 +12,6 @@ compile the program with:
 
 Tested on Windows 10 using miktex engine.
 
+# To Make edits in DOCX and convert to Latex
+`pandoc mandelbulber2\manual\manual.docx -o mandelbulber2\manual\manual.tex --extract-media=img\manual --latex-engine=pdflatex`
+`pandoc mandelbulber2\sound\sound.docx -o mandelbulber2\sound\sound.tex --extract-media=img\sound --latex-engine=pdflatex`
