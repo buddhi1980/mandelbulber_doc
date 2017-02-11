@@ -1,4 +1,11 @@
 ############# IGNORES #############
+# LATEX
+handbook.aux
+handbook.log
+handbook.pdf
+handbook.synctex.gz
+handbook.toc
+
 # Office
 ~$*.docx
 *.tmp
