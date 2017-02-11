@@ -1,98 +1,10 @@
-\includegraphics[width=1.51457in,height=1.51614in]{img/manual/media/image1.png}
-
-\textbf{Mandelbulber}
-
-\textbf{Tutorial \& User Manual}
-
-\textbf{Version: 0.9.1 (22\textsuperscript{nd}, September 2016)}
-
-\textbf{based on Mandelbulber Version 2.0.9}
-
-\textbf{Download:} \url{https://sourceforge.net/projects/mandelbulber/}
-
-\textbf{Project Website:}
-\href{http://github.com/buddhi1980/mandelbulber2}{https://github.com/buddhi1980/mandelbulber2}
-
-\textbf{Forum:} \url{http://www.fractalforums.com/mandelbulber/}
-
-\textbf{Editors:}
-
-Krzysztof Marczak
-(\href{mailto:buddhi1980@gmail.com}{\nolinkurl{buddhi1980@gmail.com}}),
-Graeme McLarekin
-(\href{mailto:mclarekin@gmail.com}{\nolinkurl{mclarekin@gmail.com}}),
-Sebastian Jennen
-(\href{mailto:sebastian.jennen@gmx.de}{\nolinkurl{sebastian.jennen@gmx.de}})
-
-Table of Contents
-
-\protect\hyperlink{what-are-fractals}{1.What are fractals? 1}
-
-\protect\hyperlink{mandelbrot-set}{1.1.Mandelbrot set 1}
-
-\protect\hyperlink{d-fractals}{1.2.3D fractals 2}
-
-\protect\hyperlink{mandelbulber-program}{1.3.Mandelbulber Program 3}
-
-\protect\hyperlink{distance-estimation}{2.Distance Estimation 3}
-
-\protect\hyperlink{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}{3.Ray-marching
-- Maximum number of iterations vs. distance threshold condition 6}
-
-\protect\hyperlink{navigation}{4.Navigation 8}
-
-\protect\hyperlink{camera-and-target-movement-step}{4.1.Camera and
-Target movement step 8}
-
-\protect\hyperlink{the-camera-and-target-functions}{4.2.The camera and
-target functions 9}
-
-\protect\hyperlink{linear-camera-and-target-movement-modes-using-the-arrow-buttons}{4.3.Linear
-camera and target movement modes using the arrow buttons 10}
-
-\protect\hyperlink{linear-camera-and-target-movement-modes-using-the-mouse-pointer}{4.4.Linear
-camera and target movement modes using the mouse pointer 11}
-
-\protect\hyperlink{camera-rotation-modes-using-the-arrow-buttons}{4.5.Camera
-rotation modes using the arrow buttons 11}
-
-\protect\hyperlink{reset-view}{4.6.Reset View 12}
-
-\protect\hyperlink{calculation-of-rotation-angles-modes}{4.7.Calculation
-of rotation angles modes 12}
-
-\protect\hyperlink{camera-rotation-in-animations}{4.8.Camera rotation in
-animations 13}
-
-\protect\hyperlink{interpolation}{5.Interpolation 15}
-
-\protect\hyperlink{akima-interpolation}{5.1.Akima interpolation 15}
-
-\protect\hyperlink{catmul-rom-akima-interpolation---advices}{5.2.Catmul-Rom
-/ Akima interpolation - Advices 15}
-
-\protect\hyperlink{changing-interpolation-types}{5.3.Changing
-interpolation types 17}
-
-\protect\hyperlink{netrender}{6.NetRender 18}
-
-\protect\hyperlink{starting-netrender}{6.1.Starting NetRender 18}
-
-\protect\hyperlink{qa-examples-and-hints}{7.Q\&A , Examples and Hints
-21}
-
-\protect\hyperlink{qa-.-how-do-you-get-different-materials-on-different-shapes}{7.1.Q\&A
-. How do you get different materials on different shapes? 26}
-
-\hypertarget{what-are-fractals}{\section{What are
-fractals?}\label{what-are-fractals}}
+\section{What are fractals?}\label{what-are-fractals}
 
 Fractals are objects with self-similarity, where the smaller fragments
 are similar to those on a larger scale. A characteristic feature is to
 have subtle details even at very high magnification.
 
-\hypertarget{mandelbrot-set}{\subsection{Mandelbrot
-set}\label{mandelbrot-set}}
+\subsection{Mandelbrot set}\label{mandelbrot-set}
 
 This is a typical example of a two-dimensional fractal generated
 mathematically. This image is created with a very simple formula, which
@@ -147,7 +59,7 @@ black. This results in a ``set'' of points that do not reach bailout
 termination (black) and the rest of the points given lighter colors
 (dependent on a chosen coloring method).
 
-\hypertarget{d-fractals}{\subsection{3D fractals}\label{d-fractals}}
+\subsection{3D fractals}\label{d-fractals}
 
 The three dimensional fractal type, the "Mandelbulb," is calculated from
 a fairly similar pattern to the Mandelbrot set. The difference is that
@@ -166,8 +78,7 @@ Some other types of 3D fractal objects are based on iterative algorithms
 (IFS - Iterated Function Systems). An example would be the famous Menger
 Sponge.
 
-\hypertarget{mandelbulber-program}{\subsection{Mandelbulber
-Program}\label{mandelbulber-program}}
+\subsection{Mandelbulber Program}\label{mandelbulber-program}
 
 Mandelbulber is an easy to use, handy application designed to help you
 render 3D Mandelbrot fractals called Mandelbulb and some other kind of
@@ -175,8 +86,7 @@ render 3D Mandelbrot fractals called Mandelbulb and some other kind of
 The following sections cover the program interface and give useful
 information about how to use it.
 
-\hypertarget{distance-estimation}{\section{Distance
-Estimation}\label{distance-estimation}}
+\section{Distance Estimation}\label{distance-estimation}
 
 Distance Estimation (DE) is the calculation of an estimated distance
 from the given point to the nearest surface of the fractal. As suggested
@@ -246,16 +156,16 @@ specific. The setting of formula parameters can also greatly affect the
 quality produced by the DE. In some cases the choice of fractal image is
 determined by what location and parameters can produce good DE quality.
 
-\includegraphics[width=5.71890in,height=2.32283in]{img/manual/media/image7.png}
+\includegraphics[width=5.71890in,height=2.32283in]{img/manual/media/image6.png}
 
 In the Statistics (enable in View menu) you can see Percentage of Wrong
 Distance Estimations ("Bad DE"). As a general rule less than 0.01 is
 good, but it is case specific and 3.0 sometimes is OK and 0.0001
 sometimes is not.
 
-\hypertarget{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}{\section{Ray-marching
-- Maximum number of iterations vs. distance threshold
-condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}}
+\section{Ray-marching - Maximum number of iterations vs. distance
+threshold
+condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}
 
 The \emph{ray marching distance threshold} is the condition where the
 photon marching along the ray comes within a specified distance from the
@@ -294,9 +204,9 @@ iterations is reached (ray-marching distance threshold is ignored). In
 many cases iteration loop stops on bailout condition (away from fractal
 surface), but on the fractal surface the maximum number of iterations is
 calculated (when bailout is not reached).\tabularnewline
-\includegraphics[width=3.22795in,height=2.40000in]{img/manual/media/image8.png}
+\includegraphics[width=3.22795in,height=2.40000in]{img/manual/media/image7.png}
 &
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image9.png}\tabularnewline
+\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image8.png}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -310,13 +220,13 @@ threshold is reached. & \textbf{Example for 2nd case:}
 
 When maximum number of iterations is reached, then ray-marching is
 stopped even if distance threshold is not reached.\tabularnewline
-\includegraphics[width=3.26929in,height=2.44016in]{img/manual/media/image10.png}
+\includegraphics[width=3.26929in,height=2.44016in]{img/manual/media/image9.png}
 &
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image11.png}\tabularnewline
+\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image10.png}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{navigation}{\section{Navigation}\label{navigation}}
+\section{Navigation}\label{navigation}
 
 To set the current view there are two elements:
 
@@ -334,8 +244,8 @@ To set the current view there are two elements:
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
   \item ~
-    \hypertarget{camera-and-target-movement-step}{\subsection{Camera and
-    Target movement step}\label{camera-and-target-movement-step}}
+    \subsection{Camera and Target movement
+    step}\label{camera-and-target-movement-step}
   \end{enumerate}
 \end{itemize}
 
@@ -379,12 +289,11 @@ strictly controlled) speed.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{the-camera-and-target-functions}{\subsection{The camera
-  and target functions}\label{the-camera-and-target-functions}}
+  \subsection{The camera and target
+  functions}\label{the-camera-and-target-functions}
 \item ~
-  \hypertarget{linear-camera-and-target-movement-modes-using-the-arrow-buttons}{\subsection{Linear
-  camera and target movement modes using the arrow
-  buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}}
+  \subsection{Linear camera and target movement modes using the arrow
+  buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}
 \end{enumerate}
 
 A user can navigate by operating the arrow keys on the Navigation dock,
@@ -412,9 +321,8 @@ Mode, the target is moved by distance related to distance of target to
 fractal surface. If target is inside the fractal (distance = 0), then
 this option will not work with Relative Step Mode.
 
-\hypertarget{linear-camera-and-target-movement-modes-using-the-mouse-pointer}{\subsection{Linear
-camera and target movement modes using the mouse
-pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}}
+\subsection{Linear camera and target movement modes using the mouse
+pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
 A user can navigate in the render window with the user-defined
 \textbf{step} (absolute or relative) and the Mouse Click Function set to
@@ -447,9 +355,8 @@ remains at the same point but rotates following the target.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{camera-rotation-modes-using-the-arrow-buttons}{\subsection{Camera
-  rotation modes using the arrow
-  buttons}\label{camera-rotation-modes-using-the-arrow-buttons}}
+  \subsection{Camera rotation modes using the arrow
+  buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
   \begin{enumerate}
   \def\labelenumii{\alph{enumii}.}
@@ -468,7 +375,7 @@ The camera is moved around the stationary target by the rotation step,
 maintaining a constant distance to the target. The camera is rotated to
 look at the target.
 
-\hypertarget{reset-view}{\subsection{Reset View}\label{reset-view}}
+\subsection{Reset View}\label{reset-view}
 
 Camera Position is reset, by being zoomed out from the fractal but still
 maintaing the camera angles.
@@ -480,8 +387,8 @@ axis.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{calculation-of-rotation-angles-modes}{\subsection{Calculation
-  of rotation angles modes}\label{calculation-of-rotation-angles-modes}}
+  \subsection{Calculation of rotation angles
+  modes}\label{calculation-of-rotation-angles-modes}
 
   \begin{enumerate}
   \def\labelenumii{\alph{enumii}.}
@@ -515,8 +422,8 @@ direction. The rotation angles are automatically converted so they are
 appropriate for the selected direction. This mode changes the gamma
 angle (roll).
 
-\hypertarget{camera-rotation-in-animations}{\subsection{Camera rotation
-in animations}\label{camera-rotation-in-animations}}
+\subsection{Camera rotation in
+animations}\label{camera-rotation-in-animations}
 
 With animation, the camera point and the target point can move
 independently following their own trajectories, with the camera always
@@ -546,13 +453,12 @@ interpolation.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{interpolation}{\section{Interpolation}\label{interpolation}}
+  \section{Interpolation}\label{interpolation}
 
   \begin{enumerate}
   \def\labelenumii{\arabic{enumii}.}
   \item ~
-    \hypertarget{akima-interpolation}{\subsection{Akima
-    interpolation}\label{akima-interpolation}}
+    \subsection{Akima interpolation}\label{akima-interpolation}
   \end{enumerate}
 \end{enumerate}
 
@@ -565,9 +471,8 @@ interpolation forms.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{catmul-rom-akima-interpolation---advices}{\subsection{Catmul-Rom
-  / Akima interpolation -
-  Advices}\label{catmul-rom-akima-interpolation---advices}}
+  \subsection{Catmul-Rom / Akima interpolation -
+  Advices}\label{catmul-rom-akima-interpolation---advices}
 
   \begin{enumerate}
   \def\labelenumii{\alph{enumii}.}
@@ -589,17 +494,17 @@ flies through the gap
 \subsubsection{Proper conduct cameras between
 objects}\label{proper-conduct-cameras-between-objects}
 
-\hypertarget{changing-interpolation-types}{\subsection{Changing
-interpolation types}\label{changing-interpolation-types}}
+\subsection{Changing interpolation
+types}\label{changing-interpolation-types}
 
 To change the interpolation algorithm, right click on the parameter list
 and the options appear. In this example the main\_formula\_weight
 parameters have been changed from Akima to Linear. Interpolation type is
 color coded e.g. Linear parameters are highlighted in grey.
 
-\includegraphics[width=6.69291in,height=2.92087in]{img/manual/media/image28.png}
+\includegraphics[width=6.69291in,height=2.92087in]{img/manual/media/image27.png}
 
-\hypertarget{netrender}{\section{NetRender}\label{netrender}}
+\section{NetRender}\label{netrender}
 
 NetRender is a tool that allows you to render the same image or
 animation on multiple computers simultaneously. If you have multiple
@@ -621,8 +526,7 @@ The total number of CPUs (cores) used is the sum of server's CPUs cores
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item ~
-  \hypertarget{starting-netrender}{\subsection{Starting
-  NetRender}\label{starting-netrender}}
+  \subsection{Starting NetRender}\label{starting-netrender}
 
   \begin{enumerate}
   \def\labelenumii{\alph{enumii}.}
@@ -634,7 +538,7 @@ The total number of CPUs (cores) used is the sum of server's CPUs cores
 On the computer which will be used as the Server, Mode is set to
 \emph{Server.}
 
-\includegraphics[width=4.53071in,height=1.86614in]{img/manual/media/image29.png}
+\includegraphics[width=4.53071in,height=1.86614in]{img/manual/media/image28.png}
 
 \emph{Local server port} should be set to one which is not used by other
 applications, and is passed through routers (if any are used) and
@@ -654,7 +558,7 @@ Alternative way to launch the server is to use command line. Example:
 On the computers which will be used as Clents, Mode is set to
 \emph{Client}
 
-\includegraphics[width=5.02441in,height=1.43071in]{img/manual/media/image30.png}
+\includegraphics[width=5.02441in,height=1.43071in]{img/manual/media/image29.png}
 
 The remote server address must be set to the same as the Server computer
 which is running Mandelbulber in Server mode. The address can be given
@@ -668,7 +572,7 @@ Press \emph{Connect to server} button to connect to the server
 Once the connection is established correctly, the client application
 should show the status READY
 
-\includegraphics[width=5.07283in,height=1.48976in]{img/manual/media/image31.png}
+\includegraphics[width=5.07283in,height=1.48976in]{img/manual/media/image30.png}
 
 Alternative way to establish NetRender client is to use command line:
 
@@ -685,7 +589,7 @@ connected clients and the number of available processors (cores).
 
 i.e magda computer has 4 cores and is READY.
 
-\includegraphics[width=5.07283in,height=1.99843in]{img/manual/media/image32.png}
+\includegraphics[width=5.07283in,height=1.99843in]{img/manual/media/image31.png}
 
 \subsubsection{Rendering}\label{rendering}
 
@@ -701,8 +605,7 @@ when rendering is finished, the Server computer, will display the
 complete image. On the Client computers, only that portion of the image
 which was rendered by that client will be displayed.
 
-\hypertarget{qa-examples-and-hints}{\section{Q\&A , Examples and
-Hints}\label{qa-examples-and-hints}}
+\section{Q\&A , Examples and Hints}\label{qa-examples-and-hints}
 
 \textbf{Example of MandelboxMenger UI}
 
@@ -804,7 +707,7 @@ you can see Percentage of Wrong Distance Estimations ("Bad DE") is 0,
 which is good!!. As a general rule less than 0.01 is good, but it is
 case specific and 3.0 sometimes is OK and .0001 sometimes is not.
 
-\includegraphics[width=4.51024in,height=2.48976in]{img/manual/media/image33.png}\\[2\baselineskip]T
+\includegraphics[width=4.51024in,height=2.48976in]{img/manual/media/image32.png}\\[2\baselineskip]T
 
 The Raymarching step multiplier or "fudge factor" (Rendering Engine tab)
 is set at 0.6, which is good for a hybrid. If I change it to 0.7 the
@@ -966,9 +869,8 @@ is used only twice in the iteration process. If I had entered 11 instead
 of 12 for slot2's stop\_iterations, then the slot would have been used
 only once, if I entered 19 then it would run three times.
 
-\hypertarget{qa-.-how-do-you-get-different-materials-on-different-shapes}{\subsection{Q\&A
-. How do you get different materials on different
-shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}}
+\subsection{Q\&A . How do you get different materials on different
+shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
 
 This is how I have been doing it.\\[2\baselineskip]\emph{Rectangle at
 the bottom marked A.}\\[2\baselineskip]This is where you~ start a new
@@ -984,4 +886,4 @@ Similarly with primitives, click on the material preview image. And with
 Boolean Mode each fractal/transform has it's own material preview image
 when you scroll down.
 
-\includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image34.jpg}
+\includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image33.jpg}
