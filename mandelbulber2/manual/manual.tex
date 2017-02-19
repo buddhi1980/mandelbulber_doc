@@ -6,19 +6,21 @@ have subtle details even at very high magnification.
 
 \subsection{Mandelbrot set}\label{mandelbrot-set}
 
+\includegraphics[width=3.39514in,height=2.94167in]{img/manual/media/image1.png}
+
 This is a typical example of a two-dimensional fractal generated
 mathematically. This image is created with a very simple formula, which
 is calculated in many iterations:
 
 \[z_{n + 1} = z_{n}^{2} + c\]
 
-\textbf{z} is a complex number (\textbf{a} + i\textbf{b}), where i = (imaginary
-number). The number is made of two parts : \textbf{a} the real part
-and \textbf{b} the imaginary part.
+``z'' is a complex number (\emph{a} + i\emph{b}), where i = (imaginary
+number). The number is made of two parts : ``\emph{a}'' the real part
+and ``i\emph{b}'' the imaginary part.
 
-\textbf{c} is the coordinates of the image point to be iterated.
+``c'' is the coordinates of the image point to be iterated.
 
-In 2D, \textbf{z} is a vector containing two complex number coordinates , x
+In 2D, ``z'' is a vector containing two complex number coordinates , x
 and y, ( these points represent the pixel location where x represents
 the real part of the number {[}a{]} and y represents the imaginary part
 of the number {[}b{]}). Because they are complex numbers, they can be
@@ -29,20 +31,10 @@ Each original point (pixel position) is tested in the formula iteration
 loop, to determine if it belongs to the formula specific mathematical
 fractal set.
 
-The initial value of point \textbf{z} is assigned to equal \textbf{c}, (z0 = c),
+The initial value of point ``z'' is assigned to equal ``c'', (z0 = c),
 this parameter is then used repeatedly in the iteration loop.
 
-\(z_{n + 1} = z_{n}^{2} + c\)
-\hspace{10px}
-$\xrightarrow[\text{}]{\text{iteration}}$
-\hspace{10px}
-\(z_{n + 2} = z_{n + 1}^{2} + c\)
-\hspace{10px}
-$\xrightarrow[\text{}]{\text{iteration}}$
-\hspace{10px}
-\(z_{n + 3} = z_{n + 4}^{2} + c\)
-\hspace{10px}
-(etc.)
+\(z_{n + 1} = z_{n}^{2} + c\)-iteration-\textgreater{}\(z_{n + 2} = z_{n + 1}^{2} + c\)-iteration-\textgreater{}\(z_{n + 3} = z_{n + 4}^{2} + c\)etc.
 
 Termination conditions are applied to ensure the formula does not
 iterate to infinity. The most common conditions used are called Bailout
@@ -50,42 +42,46 @@ and Maxiter. Maxiter is simply a condition to stop iterating when a
 maximum numbers of iterations is reached.
 
 The Bailout condition stops the iteration loop if the formula transforms
-(moves) the point further than a set distance away from an \textbf{origin}.
+(moves) the point further than a set distance away from an ``origin''.
 
 In the Mandelbrot formula, after each iteration, the modulus of a
 complex number is calculated; in other words, the length of the vector
-from the origin (x = 0, y = 0) to the current \textbf{z} point. This vector
-length is often called \textbf{r} for it is the radius from the center
-(origin) to the current \textbf{z} point.
+from the origin (x = 0, y = 0) to the current ``z'' point. This vector
+length is often called ``r'' for it is the radius from the center
+(origin) to the current ``z'' point.
 
-In this example, when the length r > 2 (i.e Bailout = 2),
+In this example, when the length r \textgreater{} 2 (i.e Bailout = 2),
 the termination condition has been met, then the iteration process is
 stopped and the resulting image point is marked with a light color.
-When, after many repeated iterations, \textbf{r} is still less than 2, then
+When, after many repeated iterations, ``r'' is still less than 2, then
 it can be considered for simplicity that such a result will continue
 indefinitely. Iterations are therefore interrupted after a certain
 number of iterations (Maxiter). This point is marked on the image with
-black. This results in a \textbf{set} of points that do not reach bailout
+black. This results in a ``set'' of points that do not reach bailout
 termination (black) and the rest of the points given lighter colors
 (dependent on a chosen coloring method).
 
 \subsection{3D fractals}\label{d-fractals}
 
-The three dimensional fractal type, the \textbf{Mandelbulb}, is calculated from
+The three dimensional fractal type, the "Mandelbulb," is calculated from
 a fairly similar pattern to the Mandelbrot set. The difference is that
-the vector \textbf{z} contains three complex numbers ( x, y, z) or four
-dimensions (x, y, z, w). As they are part of the \textbf{z} vector, they are
+the vector ``z'' contains three complex numbers ( x, y, z) or four
+dimensions (x, y, z, w). As they are part of the ``z'' vector, they are
 denoted as (z.x, z.y, z.z). Examples being Hypercomplex numbers and
 quaternions.
 
 They can also be created by modification of quaternions or by a specific
 representation of trigonometric vectors. Generally, common maths
 operators are used, e.g., addition, multiplication, squaring, and
-powers), and also conditional functions ( e.g., if z.x > z.y, then z.x = something).
+powers), and also conditional functions ( e.g., if z.x \textgreater{}
+z.y, then z.x = something).
 
 Some other types of 3D fractal objects are based on iterative algorithms
 (IFS - Iterated Function Systems). An example would be the famous Menger
 Sponge.
+
+\includegraphics[width=3.57768in,height=2.68571in]{img/manual/media/image2.png}
+\includegraphics[width=2.77917in,height=2.69792in]{img/manual/media/image3.png}
 
 \subsection{Mandelbulber Program}\label{mandelbulber-program}
 
@@ -132,6 +128,8 @@ marching ceases when the photon becomes within a set ``distance
 threshold'' from the surface or after a maximum number of iteration if
 the option ``stop at maximum iteration'' is enabled.
 
+\includegraphics[width=5.87222in,height=3.56944in]{img/manual/media/image4.png}
+
 Since the estimation contains some error (sometimes quite large), there
 is a risk that the step of moving the "photon" will be too large, and
 incorrectly it will flow into the surface of the fractal. This may
@@ -144,6 +142,11 @@ surface, but the rendering time increases due to more steps being
 required.
 
 Below is an example for a step multiplier of 0.5:
+
+\includegraphics[width=6.68611in,height=3.67431in]{img/manual/media/image5.png}
+
+Raymarching with step multiplier 0.5 produces high iteration count and
+good DE
 
 Each formula is assigned a DE mode and function (``preferred''). In most
 cases the preferred \emph{mode} is Analytical DE (fastest).
@@ -165,7 +168,9 @@ specific. The setting of formula parameters can also greatly affect the
 quality produced by the DE. In some cases the choice of fractal image is
 determined by what location and parameters can produce good DE quality.
 
-\includegraphics[width=5.71890in,height=2.32283in]{img/manual/media/image6.png}
+\includegraphics[width=5.72083in,height=2.32569in]{img/manual/media/image6.png}
+
+Statistics Tab with histogram data
 
 In the Statistics (enable in View menu) you can see Percentage of Wrong
 Distance Estimations ("Bad DE"). As a general rule less than 0.01 is
@@ -198,65 +203,53 @@ ray-marching at point when a maximum number of iterations is reached
 First important note: ``Stop at maximum iteration'' doesn't control the
 fractal iteration loop. The iteration loop always runs to achieve
 Bailout, (then if bailout is not reached the iteration stops at
-Maxiter.).
-
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\textbf{Example for 1st case:}
+Max-Iter.
 
 Ray-marching stops at distance threshold. In most cases the fractal
 iteration loop stops on bailout condition, (because away from surface it
-is not possible to reach Maxiter). & \textbf{Example for 2nd case:}
+is not possible to reach Maxiter).
+
+\includegraphics[width=3.22795in,height=2.40000in]{img/manual/media/image7.png}
+
+Example for 1st case: Stop ray-marching at bailout
 
 Ray-marching stops at the photon step when the maximum number of
 iterations is reached (ray-marching distance threshold is ignored). In
 many cases iteration loop stops on bailout condition (away from fractal
 surface), but on the fractal surface the maximum number of iterations is
-calculated (when bailout is not reached).\tabularnewline
-\includegraphics[width=3.22795in,height=2.40000in]{img/manual/media/image7.png}
-&
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image8.png}\tabularnewline
-\bottomrule
-\end{longtable}
+calculated (when bailout is not reached).
 
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\textbf{Example for 1st case:}
+\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image8.png}
+
+Example for 2nd case: Stop ray-marching at maxiter.
 
 When maximum number of iterations is set to 4. Even if Maxiter is
 reached the ray-marching is continued until the ray marching distance
-threshold is reached. & \textbf{Example for 2nd case:}
+threshold is reached.
+
+\includegraphics[width=3.26929in,height=2.44016in]{img/manual/media/image9.png}
+
+Example for 1st case: Stop ray-marching at bailout with low bailout
 
 When maximum number of iterations is reached, then ray-marching is
-stopped even if distance threshold is not reached.\tabularnewline
-\includegraphics[width=3.26929in,height=2.44016in]{img/manual/media/image9.png}
-&
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image10.png}\tabularnewline
-\bottomrule
-\end{longtable}
+stopped even if distance threshold is not reached.
+
+\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image10.png}\protect\hypertarget{__RefHeading___Toc1473_2059392462}{}{}
+
+Example for 2nd case: Stop ray-marching at maxiter with low maxiter
 
 \section{Navigation}\label{navigation}
 
 To set the current view there are two elements:
 
-\begin{itemize}
-\item
-  \textbf{Camera} - represents a point where the camera is located
-\end{itemize}
+\textbf{Camera} - represents a point where the camera is located
 
-\begin{itemize}
-\item
-  \textbf{Target} - represents the point to which the camera is
-  orientated with (i.e., the camera is \emph{always} looking at the
-  target.)
+\textbf{Target} - represents the point onto which the camera will focus
 
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \item ~
-    \subsection{Camera and Target movement
-    step}\label{camera-and-target-movement-step}
-  \end{enumerate}
-\end{itemize}
+(i.e., the camera is \emph{always} looking at the target.)
+
+\subsection{Camera and Target movement
+step}\label{camera-and-target-movement-step}
 
 The relationship between the camera point and the target point can be
 altered manually by changing the numbers in the spin boxes, or by
@@ -295,15 +288,8 @@ arrow key or mouse pointer.
 This mode is recommended for animation camera flying with a fixed (or
 strictly controlled) speed.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \subsection{The camera and target
-  functions}\label{the-camera-and-target-functions}
-\item ~
-  \subsection{Linear camera and target movement modes using the arrow
-  buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}
-\end{enumerate}
+\subsection{Linear camera and target movement modes using the arrow
+buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}
 
 A user can navigate by operating the arrow keys on the Navigation dock,
 with the user defined steps.
@@ -314,15 +300,27 @@ target.
 \subsubsection{Move camera and target
 mode}\label{move-camera-and-target-mode}
 
+\includegraphics[width=3.95347in,height=1.75556in]{img/manual/media/image11.png}
+
+Movement mode - camera and target
+
 Moves both the camera and the target by the same distance in the same
 direction. The angle of camera rotation does not change.
 
 \subsubsection{Move camera mode}\label{move-camera-mode}
 
+\includegraphics[width=3.95347in,height=1.48819in]{img/manual/media/image12.png}
+
+Movement mode - camera
+
 Moves only the camera and rotates it in respect to the motionless
 target.
 
 \subsubsection{Move target mode}\label{move-target-mode}
+
+\includegraphics[width=3.98819in,height=1.80208in]{img/manual/media/image13.png}
+
+Movement mode - target
 
 Moves only the target while maintaining a fixed camera position. The
 camera rotates following the target. \textbf{Note:} In Relative Step
@@ -361,24 +359,24 @@ target remains stationary.
 The target is moved to the point selected by the mouse. The camera
 remains at the same point but rotates following the target.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \subsection{Camera rotation modes using the arrow
-  buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
+\subsection{Camera rotation modes using the arrow
+buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \item ~
-    \subsubsection{Rotate camera}\label{rotate-camera}
-  \end{enumerate}
-\end{enumerate}
+\subsubsection{Rotate camera}\label{rotate-camera}
+
+\includegraphics[width=3.95347in,height=2.34861in]{img/manual/media/image14.png}
+
+Rotation mode -- around camera
 
 The camera is rotated by the rotation step around its axis and the
 target is moved accordingly. This is the standard mode for rotation of
 the camera.
 
 \subsubsection{Rotate around target}\label{rotate-around-target}
+
+\includegraphics[width=3.95347in,height=2.03472in]{img/manual/media/image15.png}
+
+Rotation mode -- around target
 
 The camera is moved around the stationary target by the rotation step,
 maintaining a constant distance to the target. The camera is rotated to
@@ -393,18 +391,10 @@ If the rotations are changed to zero before using Reset View, the camera
 will then be zoomed out from the target, and rotated to look down the y
 axis.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \subsection{Calculation of rotation angles
-  modes}\label{calculation-of-rotation-angles-modes}
+\subsection{Calculation of rotation angles
+modes}\label{calculation-of-rotation-angles-modes}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \item ~
-    \subsubsection{Fixed-roll angle}\label{fixed-roll-angle}
-  \end{enumerate}
-\end{enumerate}
+\subsubsection{Fixed-roll angle}\label{fixed-roll-angle}
 
 In this mode, the angle gamma (roll) is constant. Pan the camera left or
 right always takes place around the global vertical Z-axis (not the
@@ -414,7 +404,9 @@ This mode can be likened to an aircrafts controls, where all turns are
 relative to the aircraft's axis, not the ground below. Rotate up / down
 raises / lowers the nose of the aircraft. Rotate left / right turns in
 the directions of the wings. Tilting the camera buttons tilts the
-aircraft.
+aircraft
+
+\includegraphics[width=0.40000in,height=0.50000in]{img/manual/media/image16.png}\includegraphics[width=0.45347in,height=0.45347in]{img/manual/media/image17.png}
 
 When the camera is pointing straight up or down, or when it is upside
 down in this mode, it is quite difficult to predict the result of the
@@ -447,6 +439,10 @@ approaching a location, with the camera rotating simultaneously so that
 the location is always observed, (as shown in the figure below). The
 camera positions represent three keyframes.
 
+\includegraphics[width=6.52292in,height=3.75556in]{img/manual/media/image18.png}
+
+Keyframe Animation with differing distances camera to target
+
 Between the first and second keyframes, the camera and target both move
 large distances. But between the second and third keyframes, the camera
 moves a much greater distance than the target. This can sometimes lead
@@ -459,17 +455,11 @@ It is important to note that the use of this function does not change
 the visual effect for the keyframes, and will help correct
 interpolation.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \section{Interpolation}\label{interpolation}
+\includegraphics[width=4.11597in,height=4.02292in]{img/manual/media/image19.png}
 
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \item ~
-    \subsection{Akima interpolation}\label{akima-interpolation}
-  \end{enumerate}
-\end{enumerate}
+\section{Interpolation}\label{interpolation}
+
+\subsection{Akima interpolation}\label{akima-interpolation}
 
 Catmull-Rom and Akima interpolation can both be used to get a ``smooth''
 transition of a value over the keyframes. These methods can mostly be
@@ -477,18 +467,10 @@ used interchangeably, where Akima stays closer to the points where as
 Catmull-Rom oscillates a little bit stronger. 5.2 applies to both
 interpolation forms.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \subsection{Catmul-Rom / Akima interpolation -
-  Advices}\label{catmul-rom-akima-interpolation---advices}
+\subsection{Catmul-Rom / Akima interpolation -
+Advices}\label{catmul-rom-akima-interpolation---advices}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \item ~
-    \subsubsection{Collision}\label{collision}
-  \end{enumerate}
-\end{enumerate}
+\subsubsection{Collision}\label{collision}
 
 Fast approaching the obstacle may cause inadvertent drag to the camera
 towards the center of the object. It is recommended to maintain the
@@ -511,7 +493,7 @@ and the options appear. In this example the main\_formula\_weight
 parameters have been changed from Akima to Linear. Interpolation type is
 color coded e.g. Linear parameters are highlighted in grey.
 
-\includegraphics[width=6.69291in,height=2.92087in]{img/manual/media/image27.png}
+\includegraphics[width=6.69291in,height=2.92087in]{img/manual/media/image26.png}
 
 \section{NetRender}\label{netrender}
 
@@ -532,22 +514,14 @@ The Server is also the computer which renders the combined image .
 The total number of CPUs (cores) used is the sum of server's CPUs cores
 + all client's CPUs cores.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item ~
-  \subsection{Starting NetRender}\label{starting-netrender}
+\subsection{Starting NetRender}\label{starting-netrender}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \item ~
-    \subsubsection{Server configuration}\label{server-configuration}
-  \end{enumerate}
-\end{enumerate}
+\subsubsection{Server configuration}\label{server-configuration}
 
 On the computer which will be used as the Server, Mode is set to
 \emph{Server.}
 
-\includegraphics[width=4.53071in,height=1.86614in]{img/manual/media/image28.png}
+\includegraphics[width=4.53071in,height=1.86614in]{img/manual/media/image27.png}
 
 \emph{Local server port} should be set to one which is not used by other
 applications, and is passed through routers (if any are used) and
@@ -567,7 +541,7 @@ Alternative way to launch the server is to use command line. Example:
 On the computers which will be used as Clents, Mode is set to
 \emph{Client}
 
-\includegraphics[width=5.02441in,height=1.43071in]{img/manual/media/image29.png}
+\includegraphics[width=5.02441in,height=1.43071in]{img/manual/media/image28.png}
 
 The remote server address must be set to the same as the Server computer
 which is running Mandelbulber in Server mode. The address can be given
@@ -581,7 +555,7 @@ Press \emph{Connect to server} button to connect to the server
 Once the connection is established correctly, the client application
 should show the status READY
 
-\includegraphics[width=5.07283in,height=1.48976in]{img/manual/media/image30.png}
+\includegraphics[width=5.07283in,height=1.48976in]{img/manual/media/image29.png}
 
 Alternative way to establish NetRender client is to use command line:
 
@@ -598,7 +572,7 @@ connected clients and the number of available processors (cores).
 
 i.e magda computer has 4 cores and is READY.
 
-\includegraphics[width=5.07283in,height=1.99843in]{img/manual/media/image31.png}
+\includegraphics[width=5.07283in,height=1.99843in]{img/manual/media/image30.png}
 
 \subsubsection{Rendering}\label{rendering}
 
@@ -716,7 +690,7 @@ you can see Percentage of Wrong Distance Estimations ("Bad DE") is 0,
 which is good!!. As a general rule less than 0.01 is good, but it is
 case specific and 3.0 sometimes is OK and .0001 sometimes is not.
 
-\includegraphics[width=4.51024in,height=2.48976in]{img/manual/media/image32.png}\\[2\baselineskip]T
+\includegraphics[width=4.51024in,height=2.48976in]{img/manual/media/image31.png}\\[2\baselineskip]T
 
 The Raymarching step multiplier or "fudge factor" (Rendering Engine tab)
 is set at 0.6, which is good for a hybrid. If I change it to 0.7 the
@@ -857,26 +831,31 @@ with the start and stop functions have all enabled if you wish.
 Generally linear functions all work well together in making
 hybrids.\\[2\baselineskip]In Statistics, maximum is approx. 80
 iterations. Generally hybrids take longer to render than standard
-formulas.\\[2\baselineskip]As well as adjusting formula parameters, you
-can use the iteration controls to tweak hybrids. In this example the
-first slot is set to repeat for 5 iterations before moving to slot 2.
-Slot 2 is set to stop at iteration 12, whereas slots 1 \& 3 can continue
-to termination conditions are met (bailout or maximum number of
-iterations).
+formulas.\\
+As well as adjusting formula parameters, you can use the iteration
+controls to tweak hybrids. In this example the first slot is set to
+repeat for 5 iterations before moving to slot 2. Slot 2 is set to stop
+at iteration 12, whereas slots 1 \& 3 can continue to termination
+conditions are met (bailout or maximum number of iterations).
 
 In the example above, slot2 of the hybrid sequenced ended at iteration
 12. 12 was chosen because how it fitted into the iteration sequence, as
-follows:\\[2\baselineskip]Slot1 x 5\\
+follows:\\
+Slot1 x 5\\
 0,1,2,3,4~ iteration numbers (note first iteration is iteration number
-0.)\\[2\baselineskip]slot2\\
-5\\[2\baselineskip]slot3~\\
-6\\[2\baselineskip]slot1 x 5\\
-7,8,9,10.11\\[2\baselineskip]slot2\\
-12~ // last use of slot2\\[2\baselineskip]\hspace*{0.333em}sequence
-continues slot1 x 5, slot3, .....to bailout.\\[2\baselineskip]So slot2
-is used only twice in the iteration process. If I had entered 11 instead
-of 12 for slot2's stop\_iterations, then the slot would have been used
-only once, if I entered 19 then it would run three times.
+0.)\\
+slot2\\
+5\\
+slot3~\\
+6\\
+slot1 x 5\\
+7,8,9,10.11\\
+slot2\\
+12~ // last use of slot2\\
+\hspace*{0.333em}sequence continues slot1 x 5, slot3, .....to bailout.\\
+So slot2 is used only twice in the iteration process. If I had entered
+11 instead of 12 for slot2's stop\_iterations, then the slot would have
+been used only once, if I entered 19 then it would run three times.
 
 \subsection{Q\&A . How do you get different materials on different
 shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
@@ -895,4 +874,4 @@ Similarly with primitives, click on the material preview image. And with
 Boolean Mode each fractal/transform has it's own material preview image
 when you scroll down.
 
-\includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image33.jpg}
+\includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image32.jpg}
