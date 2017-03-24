@@ -14,13 +14,21 @@ is calculated in many iterations:
 
 \[z_{n + 1} = z_{n}^{2} + c\]
 
-``z'' is a complex number (\emph{a} + i\emph{b}), where i = (imaginary
-number). The number is made of two parts : ``\emph{a}'' the real part
-and ``i\emph{b}'' the imaginary part.
+\begin{itemize}
+ 
 
-``c'' is the coordinates of the image point to be iterated.
+\item\emph{z} is a complex number (\emph{a} + i\emph{b}), where \emph{i} is imaginary
+number. 
 
-In 2D, ``z'' is a vector containing two complex number coordinates , x
+\[ i = \sqrt{-1} \]
+
+The number is made of two parts : \emph{a} the real part
+and i\emph{b} the imaginary part.
+
+\item\emph{c} is the coordinates of the image point to be iterated.
+\end{itemize}
+
+In 2D, \emph{z} is a vector containing two complex number coordinates , x
 and y, ( these points represent the pixel location where x represents
 the real part of the number {[}a{]} and y represents the imaginary part
 of the number {[}b{]}). Because they are complex numbers, they can be
@@ -31,10 +39,16 @@ Each original point (pixel position) is tested in the formula iteration
 loop, to determine if it belongs to the formula specific mathematical
 fractal set.
 
-The initial value of point ``z'' is assigned to equal ``c'', (z0 = c),
+The initial value of point \emph{z} is assigned to equal \emph{c}, ($ z_{0} = c $),
 this parameter is then used repeatedly in the iteration loop.
 
-\(z_{n + 1} = z_{n}^{2} + c\)-iteration-\textgreater{}\(z_{n + 2} = z_{n + 1}^{2} + c\)-iteration-\textgreater{}\(z_{n + 3} = z_{n + 4}^{2} + c\)etc.
+\(z_{n + 1} = z_{n}^{2} + c\)
+
+\(z_{n + 2} = z_{n + 1}^{2} + c\)
+
+\(z_{n + 3} = z_{n + 4}^{2} + c\)
+
+etc.
 
 Termination conditions are applied to ensure the formula does not
 iterate to infinity. The most common conditions used are called Bailout
@@ -46,14 +60,14 @@ The Bailout condition stops the iteration loop if the formula transforms
 
 In the Mandelbrot formula, after each iteration, the modulus of a
 complex number is calculated; in other words, the length of the vector
-from the origin (x = 0, y = 0) to the current ``z'' point. This vector
-length is often called ``r'' for it is the radius from the center
-(origin) to the current ``z'' point.
+from the origin (\emph{x} = 0, \emph{y} = 0) to the current \emph{z} point. This vector
+length is often called \emph{r} for it is the radius from the center
+(origin) to the current \emph{z} point.
 
-In this example, when the length r \textgreater{} 2 (i.e Bailout = 2),
+In this example, when the length \emph{r} \textgreater{} 2 (i.e \emph{Bailout} = 2),
 the termination condition has been met, then the iteration process is
 stopped and the resulting image point is marked with a light color.
-When, after many repeated iterations, ``r'' is still less than 2, then
+When, after many repeated iterations, \emph{r} is still less than 2, then
 it can be considered for simplicity that such a result will continue
 indefinitely. Iterations are therefore interrupted after a certain
 number of iterations (Maxiter). This point is marked on the image with
@@ -63,23 +77,22 @@ termination (black) and the rest of the points given lighter colors
 
 \subsection{3D fractals}\label{d-fractals}
 
-The three dimensional fractal type, the "Mandelbulb," is calculated from
+The three dimensional fractal type, the ``Mandelbulb'' is calculated from
 a fairly similar pattern to the Mandelbrot set. The difference is that
-the vector ``z'' contains three complex numbers ( x, y, z) or four
-dimensions (x, y, z, w). As they are part of the ``z'' vector, they are
-denoted as (z.x, z.y, z.z). Examples being Hypercomplex numbers and
-quaternions.
+the vector \emph{z} contains three complex numbers (\emph{x}, \emph{y},
+\emph{z}) or four dimensions (\emph{x}, \emph{y}, \emph{z}, \emph{w}). As they
+are part of the \emph{z} vector, they are denoted as (\emph{z.x}, \emph{z.y},
+\emph{z.z}). Examples being Hypercomplex numbers and quaternions.
 
 They can also be created by modification of quaternions or by a specific
 representation of trigonometric vectors. Generally, common maths
 operators are used, e.g., addition, multiplication, squaring, and
-powers), and also conditional functions ( e.g., if z.x \textgreater{}
-z.y, then z.x = something).
+powers), and also conditional functions ( e.g., \textbf{if} \emph{z.x} \textgreater{}
+\emph{z.y}, \textbf{then} \emph{z.x} = \emph{something}).
 
 Some other types of 3D fractal objects are based on iterative algorithms
 (IFS - Iterated Function Systems). An example would be the famous Menger
-Sponge.
-
+Sponge.\\*
 \includegraphics[width=3.57768in,height=2.68571in]{img/manual/media/image2.png}
 \includegraphics[width=2.77917in,height=2.69792in]{img/manual/media/image3.png}
 
@@ -141,39 +154,37 @@ Steps are then smaller, so there is less risk of "overshooting" the
 surface, but the rendering time increases due to more steps being
 required.
 
-Below is an example for a step multiplier of 0.5:
-
+Below is an example for a step multiplier of 0.5:\\*
 \includegraphics[width=6.68611in,height=3.67431in]{img/manual/media/image5.png}
 
 Raymarching with step multiplier 0.5 produces high iteration count and
 good DE
 
-Each formula is assigned a DE mode and function (``preferred''). In most
-cases the preferred \emph{mode} is Analytical DE (fastest).
+Each formula has assigned a DE mode and function (``preferred''). In most
+cases the preferred \emph{mode} is \emph{Analytical DE} (fastest).
 
 The preferred \emph{function} is assigned based on whether the formula
 is transforming in a linear or logarithmic manner. These setting can be
-varied on the Render Engine tab.
+varied on the \emph{Render Engine} tab.
 
-Analytical DE mode is faster than Delta DE mode to calculate. However
+\emph{Analytical DE} mode is faster than \emph{Delta DE} mode to calculate. However
 with some formulas only Delta DE mode will produce a good quality image.
 The DE modes can be used with either linear or logarithmic DE functions.
 
-Example linear out-\textgreater{}distance = r / fabs(DE);
+Example linear out: $ distance = \frac{r}{\lvert DE \rvert} $
 
-Example logarithmic: out-\textgreater{}distance = 0.5 * r * log(r) / DE;
+Example logarithmic: $ distance = \frac{0.5 * r * log(r)}{DE} $
 
 The quality produced by the DE mode and function combinations is formula
 specific. The setting of formula parameters can also greatly affect the
 quality produced by the DE. In some cases the choice of fractal image is
 determined by what location and parameters can produce good DE quality.
 
+Statistics Tab with histogram data:\\*
 \includegraphics[width=5.72083in,height=2.32569in]{img/manual/media/image6.png}
 
-Statistics Tab with histogram data
-
-In the Statistics (enable in View menu) you can see Percentage of Wrong
-Distance Estimations ("Bad DE"). As a general rule less than 0.01 is
+In the Statistics (enable in \emph{View} menu) you can see \emph{Percentage of Wrong
+Distance Estimations} ("Bad DE"). This number is the percentage of image pixels which potentially have big errors in distance estimation calculation (estimated distance was much too high). It is visible as a noise on the image. As a general rule less than 0.1 is
 good, but it is case specific and 3.0 sometimes is OK and 0.0001
 sometimes is not.
 
