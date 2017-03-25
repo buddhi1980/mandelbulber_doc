@@ -58,26 +58,26 @@ There are three modes for changing the relationship between camera and target.
 
 \subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}
 
-\includegraphics[width=3.95347in,height=1.75556in]{img/manual/media/image11.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/move_camera_and_target}
 
-Movement mode - camera and target
+Movement mode - \emph{camera and target}
 
-Moves both the camera and the target by the same distance in the same direction.
-The angle of camera rotation does not change.
+Arrows move both the camera and the target by the same distance in the same
+direction. The angle of camera rotation does not change.
 
 \subsubsection{Move camera mode}\label{move-camera-mode}
 
-\includegraphics[width=3.95347in,height=1.48819in]{img/manual/media/image12.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/move_only_camera}
 
-Movement mode - camera
+Movement mode - \textit{camera}
 
 Moves only the camera and rotates it in respect to the motionless target.
 
 \subsubsection{Move target mode}\label{move-target-mode}
 
-\includegraphics[width=3.98819in,height=1.80208in]{img/manual/media/image13.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/move_target}
 
-Movement mode - target
+Movement mode - \emph{target}
 
 Moves only the target while maintaining a fixed camera position. The camera
 rotates following the target. \textbf{Note:} In Relative Step Mode, the target
@@ -88,20 +88,19 @@ Relative Step Mode.
 \subsection{Linear camera and target movement modes using the mouse
 	pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
-A user can navigate in the render window with the user-defined \textbf{step}
-(absolute or relative) and the Mouse Click Function set to ``Move the camera.''
+A user can move the camera by indicating point on image and use left mouse
+button (go forward) or right button (go backward).
 
 \subsubsection{Move camera and target mode}\label{move-camera-and-target-mode-1}
 
-The target is moved to the point selected by the mouse. The camera is moved by a
-user defined step, and rotated.
+The target is moved to the point selected by the mouse. The camera is moved
+towards selected point by a user defined step, and rotated.
 
 In relative step mode, the camera is moved by distance equals to
-\emph{distance\_to\_indicated\_point} multiplied by \emph{step}
-parameter\emph{.}
+\emph{distance\_to\_indicated\_point} multiplied by \emph{step} parameter.
 
 In absolute step mode, the camera is moved by distance equals to \emph{step}
-parameter\emph{.}
+parameter.
 
 \subsubsection{Move camera mode}\label{move-camera-mode-1}
 
@@ -119,18 +118,18 @@ the same point but rotates following the target.
 
 \subsubsection{Rotate camera}\label{rotate-camera}
 
-\includegraphics[width=3.95347in,height=2.34861in]{img/manual/media/image14.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/rotate_camera}
 
-Rotation mode -- around camera
+Rotation mode - \emph{around camera}
 
 The camera is rotated by the rotation step around its axis and the target is
 moved accordingly. This is the standard mode for rotation of the camera.
 
 \subsubsection{Rotate around target}\label{rotate-around-target}
 
-\includegraphics[width=3.95347in,height=2.03472in]{img/manual/media/image15.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/rotate_around_target}
 
-Rotation mode -- around target
+Rotation mode - \emph{around target}
 
 The camera is moved around the stationary target by the rotation step,
 maintaining a constant distance to the target. The camera is rotated to look at
@@ -156,9 +155,9 @@ vertical axis).
 This mode can be likened to an aircrafts controls, where all turns are relative
 to the aircraft's axis, not the ground below. Rotate up / down raises / lowers
 the nose of the aircraft. Rotate left / right turns in the directions of the
-wings. Tilting the camera buttons tilts the aircraft
-
-\includegraphics[width=0.40000in,height=0.50000in]{img/manual/media/image16.png}\includegraphics[width=0.45347in,height=0.45347in]{img/manual/media/image17.png}
+wings. Tilting the camera buttons
+\includegraphics[width=0.20000in,height=0.20000in]{img/manual/media/button_roll_left.png}\includegraphics[width=0.20000in,height=0.20000in]{img/manual/media/button_roll_right.png}
+tilts the aircraft
 
 When the camera is pointing straight up or down, or when it is upside down in
 this mode, it is quite difficult to predict the result of the turn.
@@ -187,7 +186,7 @@ approaching a location, with the camera rotating simultaneously so that the
 location is always observed, (as shown in the figure below). The camera
 positions represent three keyframes.
 
-\includegraphics[width=6.52292in,height=3.75556in]{img/manual/media/image18.png}
+\includegraphics[width=0.7\linewidth]{img/manual/media/camera_target_tracking.png}
 
 Keyframe Animation with differing distances camera to target
 
@@ -196,10 +195,10 @@ distances. But between the second and third keyframes, the camera moves a much
 greater distance than the target. This can sometimes lead to unexpected camera
 rotations between keyframes.
 
-To compensate for this, on the Keyframe navigation tab use the button "Set the
-same distance from the camera for all the frames." This adjusts all keyframes by
+To compensate for this, on the Keyframe navigation tab use the button \emph{Set the
+same distance from the camera for all the frames} This adjusts all keyframes by
 setting a constant distance between camera and target. It is important to note
 that the use of this function does not change the visual effect for the
 keyframes, and will help correct interpolation.
 
-\includegraphics[width=4.11597in,height=4.02292in]{img/manual/media/image19.png}
+\includegraphics[width=0.7\linewidth]{img/manual/media/camera_target_tracking_2.png}
