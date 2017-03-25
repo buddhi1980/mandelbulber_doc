@@ -1,46 +1,45 @@
 \section{What are fractals?}\label{what-are-fractals}
 
-Fractals are objects with self-similarity, where the smaller fragments
-are similar to those on a larger scale. A characteristic feature is to
-have subtle details even at very high magnification.
+Fractals are objects with self-similarity, where the smaller fragments are
+similar to those on a larger scale. A characteristic feature is to have subtle
+details even at very high magnification.
 
 \subsection{Mandelbrot set}\label{mandelbrot-set}
 
-\includegraphics[width=3.39514in,height=2.94167in]{img/manual/media/image1.png}
+\includegraphics[width=0.5\linewidth]{img/manual/media/mandelbrot_set.png}
 
-This is a typical example of a two-dimensional fractal generated
-mathematically. This image is created with a very simple formula, which
-is calculated in many iterations:
+This is a typical example of a two-dimensional fractal generated mathematically.
+This image is created with a very simple formula, which is calculated in many
+iterations:
 
 \[z_{n + 1} = z_{n}^{2} + c\]
 
 \begin{itemize}
- 
-
-\item\emph{z} is a complex number (\emph{a} + i\emph{b}), where \emph{i} is imaginary
-number. 
-
-\[ i = \sqrt{-1} \]
-
-The number is made of two parts : \emph{a} the real part
-and i\emph{b} the imaginary part.
-
-\item\emph{c} is the coordinates of the image point to be iterated.
+	
+	
+	\item\emph{z} is a complex number (\emph{a} + i\emph{b}), where \emph{i} is
+	imaginary number.
+	
+	\[ i = \sqrt{-1} \]
+	
+	The number is made of two parts : \emph{a} the real part and i\emph{b} the
+	imaginary part.
+	
+	\item\emph{c} is the coordinates of the image point to be iterated.
 \end{itemize}
 
-In 2D, \emph{z} is a vector containing two complex number coordinates , x
-and y, ( these points represent the pixel location where x represents
-the real part of the number {[}a{]} and y represents the imaginary part
-of the number {[}b{]}). Because they are complex numbers, they can be
-positive or negative, but also there will still be a mathematical
-solution if a function requires the square root of a negative number.
+In 2D, \emph{z} is a vector containing two complex number coordinates , x and y,
+( these points represent the pixel location where x represents the real part of
+the number {[}a{]} and y represents the imaginary part of the number {[}b{]}).
+Because they are complex numbers, they can be positive or negative, but also
+there will still be a mathematical solution if a function requires the square
+root of a negative number.
 
-Each original point (pixel position) is tested in the formula iteration
-loop, to determine if it belongs to the formula specific mathematical
-fractal set.
+Each original point (pixel position) is tested in the formula iteration loop, to
+determine if it belongs to the formula specific mathematical fractal set.
 
-The initial value of point \emph{z} is assigned to equal \emph{c}, ($ z_{0} = c $),
-this parameter is then used repeatedly in the iteration loop.
+The initial value of point \emph{z} is assigned to equal \emph{c}, ($ z_{0} = c
+$), this parameter is then used repeatedly in the iteration loop.
 
 \(z_{n + 1} = z_{n}^{2} + c\)
 
@@ -50,125 +49,125 @@ this parameter is then used repeatedly in the iteration loop.
 
 etc.
 
-Termination conditions are applied to ensure the formula does not
-iterate to infinity. The most common conditions used are called Bailout
-and Maxiter. Maxiter is simply a condition to stop iterating when a
-maximum numbers of iterations is reached.
+The program has to determine if these series are convergent. To do this
+iterations should be repeated infinite number of times. But in this way won't be
+possible to get any image. There is used simplification.
 
-The Bailout condition stops the iteration loop if the formula transforms
-(moves) the point further than a set distance away from an ``origin''.
+Termination conditions are applied to ensure the formula does not iterate to
+infinity. The most common conditions used are called \textbf{Bailout} and
+\textbf{Maxiter}.
 
-In the Mandelbrot formula, after each iteration, the modulus of a
-complex number is calculated; in other words, the length of the vector
-from the origin (\emph{x} = 0, \emph{y} = 0) to the current \emph{z} point. This vector
-length is often called \emph{r} for it is the radius from the center
-(origin) to the current \emph{z} point.
+The \textbf{Bailout} condition stops the iteration loop if the formula
+transforms (moves) the point further than a set distance away from an
+``origin''. This detects if series are convergent (calculated point is outside
+the fractal body)
 
-In this example, when the length \emph{r} \textgreater{} 2 (i.e \emph{Bailout} = 2),
-the termination condition has been met, then the iteration process is
-stopped and the resulting image point is marked with a light color.
-When, after many repeated iterations, \emph{r} is still less than 2, then
-it can be considered for simplicity that such a result will continue
-indefinitely. Iterations are therefore interrupted after a certain
-number of iterations (Maxiter). This point is marked on the image with
-black. This results in a ``set'' of points that do not reach bailout
-termination (black) and the rest of the points given lighter colors
-(dependent on a chosen coloring method).
+\textbf{Maxiter} is simply a condition to stop iterating when a maximum numbers
+of iterations is reached (just to not do iterations infinite times)
+
+In the Mandelbrot formula, after each iteration, the modulus of a complex number
+is calculated; in other words, the length of the vector from the origin
+(\emph{x} = 0, \emph{y} = 0) to the current \emph{z} point. This vector length
+is often called \emph{r} for it is the radius from the center (origin) to the
+current \emph{z} point.
+
+In this example, when the length \emph{r} \textgreater{} 2 (i.e \emph{Bailout} =
+2), the termination condition has been met, then the iteration process is
+stopped and the resulting image point is marked with a light color. When, after
+many repeated iterations, \emph{r} is still less than 2, then it can be
+considered for simplicity that such a result will continue indefinitely.
+Iterations are therefore interrupted after a certain number of iterations
+(Maxiter). This point is marked on the image with black. This results in a
+``set'' of points that do not reach bailout termination (black) and the rest of
+the points given lighter colors (dependent on a chosen coloring method).
 
 \subsection{3D fractals}\label{d-fractals}
 
-The three dimensional fractal type, the ``Mandelbulb'' is calculated from
-a fairly similar pattern to the Mandelbrot set. The difference is that
-the vector \emph{z} contains three complex numbers (\emph{x}, \emph{y},
-\emph{z}) or four dimensions (\emph{x}, \emph{y}, \emph{z}, \emph{w}). As they
-are part of the \emph{z} vector, they are denoted as (\emph{z.x}, \emph{z.y},
-\emph{z.z}). Examples being Hypercomplex numbers and quaternions.
+The three dimensional fractal type, the ``Mandelbulb'' is calculated from a
+fairly similar pattern to the Mandelbrot set. The difference is that the vector
+\emph{z} contains three complex numbers (\emph{x}, \emph{y}, \emph{z}) or four
+dimensions (\emph{x}, \emph{y}, \emph{z}, \emph{w}). As they are part of the
+\emph{z} vector, they are denoted as (\emph{z.x}, \emph{z.y}, \emph{z.z}).
+Examples being Hypercomplex numbers and quaternions.
 
 They can also be created by modification of quaternions or by a specific
-representation of trigonometric vectors. Generally, common maths
-operators are used, e.g., addition, multiplication, squaring, and
-powers), and also conditional functions ( e.g., \textbf{if} \emph{z.x} \textgreater{}
-\emph{z.y}, \textbf{then} \emph{z.x} = \emph{something}).
+representation of trigonometric vectors. Generally, common maths operators are
+used, e.g., addition, multiplication, squaring, and powers), and also
+conditional functions ( e.g., \textbf{if} \emph{z.x} \textgreater{} \emph{z.y},
+\textbf{then} \emph{z.x} = \emph{something}).
 
-Some other types of 3D fractal objects are based on iterative algorithms
-(IFS - Iterated Function Systems). An example would be the famous Menger
-Sponge.\\*
-\includegraphics[width=3.57768in,height=2.68571in]{img/manual/media/image2.png}
-\includegraphics[width=2.77917in,height=2.69792in]{img/manual/media/image3.png}
+Some other types of 3D fractal objects are based on iterative algorithms (IFS -
+Iterated Function Systems). An example would be the famous Menger Sponge.\\*
+\includegraphics[height=0.4\linewidth]{img/manual/media/menger_sponge.png} \includegraphics[height=0.4\linewidth]{img/manual/media/sierpinski.png}
 
 \subsection{Mandelbulber Program}\label{mandelbulber-program}
 
-Mandelbulber is an easy to use, handy application designed to help you
-render 3D Mandelbrot fractals called Mandelbulb and some other kind of
-3D fractals like Mandelbox, Bulbbox, Juliabulb, Menger Sponge, \ldots{}.
-The following sections cover the program interface and give useful
-information about how to use it.
+Mandelbulber is an easy to use, handy application designed to help you render 3D
+Mandelbrot fractals called Mandelbulb and some other kind of 3D fractals like
+Mandelbox, Bulbbox, Juliabulb, Menger Sponge, \ldots{}. The following sections
+cover the program interface and give useful information about how to use it.
 
 \section{Distance Estimation}\label{distance-estimation}
 
-Distance Estimation (DE) is the calculation of an estimated distance
-from the given point to the nearest surface of the fractal. As suggested
-by the word 'estimate', it is an approximate value. It is calculated
-using simplified algorithms based on analytical (Analytical DE) or
-numerical (Delta DE) calculations of gradients.
+Distance Estimation (DE) is the calculation of an estimated distance from the
+given point to the nearest surface of the fractal. As suggested by the word
+'estimate', it is an approximate value. It is calculated using simplified
+algorithms based on analytical (Analytical DE) or numerical (Delta DE)
+calculations of gradients.
 
-DE is the most important algorithm required to render three-dimensional
-fractals within a reasonable time. It achieves a great reduction in the
-number of steps needed to find the exact area of the fractal while
-tracking a ``photon'' traveling toward the object along a ray (a
-simulated beam of light from the camera eye). A ray is generated for
-each pixel (1000 x 1000 resolution = 1,000,000 rays). They match FOV
-from the camera eye (i.e. they are not parallel.)
+DE is the most important algorithm required to render three-dimensional fractals
+within a reasonable time. It achieves a great reduction in the number of steps
+needed to find the exact area of the fractal while tracking a ``photon''
+traveling toward the object along a ray (a simulated beam of light from the
+camera eye). A ray is generated for each pixel (1000 x 1000 resolution =
+1,000,000 rays). They match FOV from the camera eye (i.e. they are not
+parallel.)
 
-Without the DE calculation, the proximity of the photon to the fractal
-surface would need to be repeatedly calculated after each of many very
-small steps. For example, without an estimate of where the fractal
-surface is, you may need up to 10,000 steps to trace a ray of light, for
-every pixel of the image.
+Without the DE calculation, the proximity of the photon to the fractal surface
+would need to be repeatedly calculated after each of many very small steps. For
+example, without an estimate of where the fractal surface is, you may need up to
+10,000 steps to trace a ray of light, for every pixel of the image.
 
-Using DE, the size of the steps along the ray of light can be increased,
-based on the calculated estimate of where the fractal surface should
-approximately be located. The process of moving along the ray and
-testing for the surface location is called ray-marching.
+Using DE, the size of the steps along the ray of light can be increased, based
+on the calculated estimate of where the fractal surface should approximately be
+located. The process of moving along the ray and testing for the surface
+location is called ray-marching.
 
-Ray marching looks like the illustration below. In each step, an
-estimation on the distance to the nearest fractal surface is calculated.
-The photon is moved along the ray by this distance. The next step is
-re-calculated based on the estimated distance. This distance is less so
-this time the Photon is moved a smaller distance. The ray-marching
-becomes more accurate closer to the surface of the fractal. The ray
-marching ceases when the photon becomes within a set ``distance
-threshold'' from the surface or after a maximum number of iteration if
-the option ``stop at maximum iteration'' is enabled.
+Ray marching looks like the illustration below. In each step, an estimation on
+the distance to the nearest fractal surface is calculated. The photon is moved
+along the ray by this distance. The next step is re-calculated based on the
+estimated distance. This distance is less so this time the Photon is moved a
+smaller distance. The ray-marching becomes more accurate closer to the surface
+of the fractal. The ray marching ceases when the photon becomes within a set
+``distance threshold'' from the surface or after a maximum number of iteration
+if the option ``stop at maximum iteration'' is enabled.
 
-\includegraphics[width=5.87222in,height=3.56944in]{img/manual/media/image4.png}
+\includegraphics[width=0.7\linewidth]{img/manual/media/distance_estimation_defactor_1.png}
 
-Since the estimation contains some error (sometimes quite large), there
-is a risk that the step of moving the "photon" will be too large, and
-incorrectly it will flow into the surface of the fractal. This may
-result in visible noise in the rendered image.
+Since the estimation contains some error (sometimes quite large), there is a
+risk that the step of moving the "photon" will be too large, and incorrectly it
+will flow into the surface of the fractal. This may result in visible noise in
+the rendered image.
 
-To prevent this, the "photon" can be moved by the estimated distance
-multiplied by a number between 0 and 1 ("ray-marching step multiplier").
-Steps are then smaller, so there is less risk of "overshooting" the
-surface, but the rendering time increases due to more steps being
-required.
+To prevent this, the "photon" can be moved by the estimated distance multiplied
+by a number between 0 and 1 ("ray-marching step multiplier"). Steps are then
+smaller, so there is less risk of "overshooting" the surface, but the rendering
+time increases due to more steps being required.
 
 Below is an example for a step multiplier of 0.5:\\*
-\includegraphics[width=6.68611in,height=3.67431in]{img/manual/media/image5.png}
+\includegraphics[width=0.7\linewidth]{img/manual/media/distance_estimation_defactor_05}
 
-Raymarching with step multiplier 0.5 produces high iteration count and
-good DE
+Raymarching with step multiplier 0.5 produces high iteration count and good DE
 
-Each formula has assigned a DE mode and function (``preferred''). In most
-cases the preferred \emph{mode} is \emph{Analytical DE} (fastest).
+Each formula has assigned a DE mode and function (``preferred''). In most cases
+the preferred \emph{mode} is \emph{Analytical DE} (fastest).
 
-The preferred \emph{function} is assigned based on whether the formula
-is transforming in a linear or logarithmic manner. These setting can be
-varied on the \emph{Render Engine} tab.
+The preferred \emph{function} is assigned based on whether the formula is
+transforming in a linear or logarithmic manner. These setting can be varied on
+the \emph{Render Engine} tab.
 
-\emph{Analytical DE} mode is faster than \emph{Delta DE} mode to calculate. However
-with some formulas only Delta DE mode will produce a good quality image.
+\emph{Analytical DE} mode is faster than \emph{Delta DE} mode to calculate.
+However with some formulas only Delta DE mode will produce a good quality image.
 The DE modes can be used with either linear or logarithmic DE functions.
 
 Example linear out: $ distance = \frac{r}{\lvert DE \rvert} $
@@ -176,78 +175,79 @@ Example linear out: $ distance = \frac{r}{\lvert DE \rvert} $
 Example logarithmic: $ distance = \frac{0.5 * r * log(r)}{DE} $
 
 The quality produced by the DE mode and function combinations is formula
-specific. The setting of formula parameters can also greatly affect the
-quality produced by the DE. In some cases the choice of fractal image is
-determined by what location and parameters can produce good DE quality.
+specific. The setting of formula parameters can also greatly affect the quality
+produced by the DE. In some cases the choice of fractal image is determined by
+what location and parameters can produce good DE quality.
 
 Statistics Tab with histogram data:\\*
-\includegraphics[width=5.72083in,height=2.32569in]{img/manual/media/image6.png}
+\includegraphics[width=0.7\linewidth]{img/manual/media/dock_statistics.png}
 
-In the Statistics (enable in \emph{View} menu) you can see \emph{Percentage of Wrong
-Distance Estimations} ("Bad DE"). This number is the percentage of image pixels which potentially have big errors in distance estimation calculation (estimated distance was much too high). It is visible as a noise on the image. As a general rule less than 0.1 is
-good, but it is case specific and 3.0 sometimes is OK and 0.0001
-sometimes is not.
+In the Statistics (enable in \emph{View} menu) you can see \emph{Percentage of
+	Wrong Distance Estimations} ("Bad DE"). This number is the percentage of image
+pixels which potentially have big errors in distance estimation calculation
+(estimated distance was much too high). It is visible as a noise on the image.
+As a general rule less than 0.1 is good, but it is case specific and 3.0
+sometimes is OK and 0.0001 sometimes is not.
 
-\section{Ray-marching - Maximum number of iterations vs. distance
-threshold
-condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}
+\section{Ray-marching - Maximum number of iterations vs. distance threshold
+	condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}
 
-The \emph{ray marching distance threshold} is the condition where the
-photon marching along the ray comes within a specified distance from the
-fractal surface and the ray-marching stops. This controls the size of
-the detail in the image, and is normally set to vary such that greater
-detail is obtained for the surface closest to the camera, (in the
-further regions of the fractal the distance threshold will be larger
-such that only bigger details are visible). Enabling ``Constant Detail
-Size'' on the Rendering Engine tab will make the distance threshold
-uniform.
+The \emph{ray marching distance threshold} is the condition where the photon
+marching along the ray comes within a specified distance from the fractal
+surface and the ray-marching stops. This controls the size of the detail in the
+image, and is normally set to vary such that greater detail is obtained for the
+surface closest to the camera, (in the further regions of the fractal the
+distance threshold will be larger such that only bigger details are visible).
+Enabling \emph{Constant Detail Size} on the \emph{Rendering Engine} tab will
+make the distance threshold uniform.
 
 There are two modes of stopping the ray-marching of each image pixel.
 
-1st case: Stop ray-marching at distance threshold (``Stop at maximum
-iteration'' is disabled).
+1st case: Stop ray-marching at distance threshold (\emph{Stop at maximum
+	iteration} is disabled).
 
-\protect\hypertarget{__DdeLink__1111_813559202}{}{}2nd case: Stop
-ray-marching at point when a maximum number of iterations is reached
-(``Stop at maximum iteration'' is enabled).
+2nd case: Stop ray-marching at point when a maximum number of iterations is
+reached (\emph{Stop at maximum iteration} is enabled).
 
-First important note: ``Stop at maximum iteration'' doesn't control the
-fractal iteration loop. The iteration loop always runs to achieve
-Bailout, (then if bailout is not reached the iteration stops at
-Max-Iter.
+First important note: \emph{Stop at maximum iteration} doesn't control the
+fractal iteration loop. It controls only ray-marching. The iteration loop always
+runs to achieve Bailout, (then if bailout is not reached the iteration stops at
+Maxiter).
 
-Ray-marching stops at distance threshold. In most cases the fractal
-iteration loop stops on bailout condition, (because away from surface it
-is not possible to reach Maxiter).
+\begin{samepage} Example for 1st case - stop ray-marching at distance threshold:
+	
+	\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_disttrhersh}
+	
+	Ray-marching stops at distance threshold. In most cases the fractal iteration
+	loop stops on bailout condition, (because away from surface it is not possible
+	to reach Maxiter). It makes rendering of fractals much faster. \end{samepage}
 
-\includegraphics[width=3.22795in,height=2.40000in]{img/manual/media/image7.png}
+\begin{samepage} Example for 2nd case: Stop ray-marching at Maxiter
+	
+	\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_maxiter}
+	
+	Ray-marching stops at the photon step when the maximum number of iterations is
+	reached (ray-marching distance threshold is ignored). In many cases iteration
+	loop stops on bailout condition (away from fractal surface), but on the fractal
+	surface the maximum number of iterations is calculated (when bailout is not
+	reached). \end{samepage}
 
-Example for 1st case: Stop ray-marching at bailout
+\begin{samepage} Example for 1st case: Stop ray-marching at bailout with low
+	Maxiter
+	
+	\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_disttrhersh_iter4}
+	
+	When maximum number of iterations is set to 4. Even if Maxiter is reached the
+	ray-marching is continued until the ray marching distance threshold is reached.
+\end{samepage}
 
-Ray-marching stops at the photon step when the maximum number of
-iterations is reached (ray-marching distance threshold is ignored). In
-many cases iteration loop stops on bailout condition (away from fractal
-surface), but on the fractal surface the maximum number of iterations is
-calculated (when bailout is not reached).
-
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image8.png}
-
-Example for 2nd case: Stop ray-marching at maxiter.
-
-When maximum number of iterations is set to 4. Even if Maxiter is
-reached the ray-marching is continued until the ray marching distance
-threshold is reached.
-
-\includegraphics[width=3.26929in,height=2.44016in]{img/manual/media/image9.png}
-
-Example for 1st case: Stop ray-marching at bailout with low bailout
-
-When maximum number of iterations is reached, then ray-marching is
-stopped even if distance threshold is not reached.
-
-\includegraphics[width=3.26890in,height=2.44016in]{img/manual/media/image10.png}\protect\hypertarget{__RefHeading___Toc1473_2059392462}{}{}
-
-Example for 2nd case: Stop ray-marching at maxiter with low maxiter
+\begin{samepage} Example for 2nd case: Stop ray-marching at maxiter with low
+	maxiter
+	
+	\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_maxiter_iter4}
+	
+	When maximum number of iterations is reached, then ray-marching is stopped even
+	if distance threshold is not reached. \end{samepage}
 
 \section{Navigation}\label{navigation}
 
@@ -255,68 +255,66 @@ To set the current view there are two elements:
 
 \textbf{Camera} - represents a point where the camera is located
 
-\textbf{Target} - represents the point onto which the camera will focus
-
-(i.e., the camera is \emph{always} looking at the target.)
+\textbf{Target} - represents the point onto which the camera will focus (the
+camera is \emph{always} looking at the target.)
 
 \subsection{Camera and Target movement
-step}\label{camera-and-target-movement-step}
+	step}\label{camera-and-target-movement-step}
 
-The relationship between the camera point and the target point can be
-altered manually by changing the numbers in the spin boxes, or by
-navigating with distance and rotation ``steps'' defined by the user.
+The relationship between the camera point and the target point can be altered
+manually by changing the numbers in the edit fields, or by navigating with
+distance and rotation ``steps'' defined by the user.
 
-For rotations, the camera is moved by the parameter \textbf{rotation
-step} (default 15 degrees). For movements of the camera and/or the
-target in a linear direction, the parameter \textbf{step} (default 0.5)
-is used. There are two modes for its use:
+For rotations, the camera is moved by the parameter \textbf{rotation step}
+(default 15 degrees). For movements of the camera and/or the target in a linear
+direction, the parameter \textbf{step} (default 0.5) is used. There are two
+modes for its use:
 
 \subsubsection{Relative step mode}\label{relative-step-mode}
 
-The \textbf{step} for moving the camera and/or target in a linear
-direction is calculated relative to the estimated distance from the
-surface of the fractal. The closer to the surface that the camera is
-located, the smaller the step. This prevents movement of the camera
-beneath the surface of fractal, because very close to the surface, a
-step needs to be very small.
+The \textbf{step} for moving the camera and/or target in a linear direction is
+calculated relative to the estimated distance from the surface of the fractal.
+The closer to the surface that the camera is located, the smaller the step. This
+prevents movement of the camera beneath the surface of fractal, because very
+close to the surface, a step needs to be very small.
 
-The actual step is equal to the distance from the fractal multiplied by
-the parameter \textbf{step}.
+The actual step is equal to the distance from the fractal multiplied by the
+parameter \textbf{step}.
 
-Example: If in this mode, the step is set at 0.5 and the nearest point
-of the fractal is 3.0, this camera will be moved 1.5 (no matter in which
-direction).
+Example: If in this mode, the step is set at 0.5 and the nearest point of the
+fractal is 3.0, this camera will be moved 1.5 (no matter in which direction).
 
-This mode is recommended in animations approaching the surface of the
-fractal.
+Relative step mode makes navigation easier, because a user don't need to think
+how much camera have to be moved to not hit the fractal surface.
+
+In animations this mode is recommended when camera is approaching the surface of
+the fractal.
 
 \subsubsection{Absolute step mode}\label{absolute-step-mode}
 
-Step movement of the camera and/or target is fixed. Therefore if the
-step is set at 0.5, the movement will be 0.5 in the direction of the
-arrow key or mouse pointer.
+Step movement of the camera and/or target is fixed. Therefore if the step is set
+at 0.5, the movement will be 0.5 in the direction of the arrow key or mouse
+pointer.
 
-This mode is recommended for animation camera flying with a fixed (or
-strictly controlled) speed.
+This mode is recommended for animation camera flying with a fixed (or strictly
+controlled) speed.
 
 \subsection{Linear camera and target movement modes using the arrow
-buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}
+	buttons}\label{linear-camera-and-target-movement-modes-using-the-arrow-buttons}
 
-A user can navigate by operating the arrow keys on the Navigation dock,
-with the user defined steps.
+A user can navigate by operating the arrow keys on the Navigation dock, with the
+user defined steps.
 
-There are three modes for changing the relationship between camera and
-target.
+There are three modes for changing the relationship between camera and target.
 
-\subsubsection{Move camera and target
-mode}\label{move-camera-and-target-mode}
+\subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}
 
 \includegraphics[width=3.95347in,height=1.75556in]{img/manual/media/image11.png}
 
 Movement mode - camera and target
 
-Moves both the camera and the target by the same distance in the same
-direction. The angle of camera rotation does not change.
+Moves both the camera and the target by the same distance in the same direction.
+The angle of camera rotation does not change.
 
 \subsubsection{Move camera mode}\label{move-camera-mode}
 
@@ -324,8 +322,7 @@ direction. The angle of camera rotation does not change.
 
 Movement mode - camera
 
-Moves only the camera and rotates it in respect to the motionless
-target.
+Moves only the camera and rotates it in respect to the motionless target.
 
 \subsubsection{Move target mode}\label{move-target-mode}
 
@@ -333,45 +330,43 @@ target.
 
 Movement mode - target
 
-Moves only the target while maintaining a fixed camera position. The
-camera rotates following the target. \textbf{Note:} In Relative Step
-Mode, the target is moved by distance related to distance of target to
-fractal surface. If target is inside the fractal (distance = 0), then
-this option will not work with Relative Step Mode.
+Moves only the target while maintaining a fixed camera position. The camera
+rotates following the target. \textbf{Note:} In Relative Step Mode, the target
+is moved by distance related to distance of target to fractal surface. If target
+is inside the fractal (distance = 0), then this option will not work with
+Relative Step Mode.
 
 \subsection{Linear camera and target movement modes using the mouse
-pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
+	pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
-A user can navigate in the render window with the user-defined
-\textbf{step} (absolute or relative) and the Mouse Click Function set to
-``Move the camera.''
+A user can navigate in the render window with the user-defined \textbf{step}
+(absolute or relative) and the Mouse Click Function set to ``Move the camera.''
 
-\subsubsection{Move camera and target
-mode}\label{move-camera-and-target-mode-1}
+\subsubsection{Move camera and target mode}\label{move-camera-and-target-mode-1}
 
-The target is moved to the point selected by the mouse. The camera is
-moved by a user defined step, and rotated.
+The target is moved to the point selected by the mouse. The camera is moved by a
+user defined step, and rotated.
 
 In relative step mode, the camera is moved by distance equals to
 \emph{distance\_to\_indicated\_point} multiplied by \emph{step}
 parameter\emph{.}
 
-In absolute step mode, the camera is moved by distance equals to
-\emph{step} parameter\emph{.}
+In absolute step mode, the camera is moved by distance equals to \emph{step}
+parameter\emph{.}
 
 \subsubsection{Move camera mode}\label{move-camera-mode-1}
 
-The camera is moved by the step (absolute or relative) in the direction
-of the mouse pointer, rotating the camera to look at the target. The
-target remains stationary.
+The camera is moved by the step (absolute or relative) in the direction of the
+mouse pointer, rotating the camera to look at the target. The target remains
+stationary.
 
 \subsubsection{Move target mode}\label{move-target-mode-1}
 
-The target is moved to the point selected by the mouse. The camera
-remains at the same point but rotates following the target.
+The target is moved to the point selected by the mouse. The camera remains at
+the same point but rotates following the target.
 
 \subsection{Camera rotation modes using the arrow
-buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
+	buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
 \subsubsection{Rotate camera}\label{rotate-camera}
 
@@ -379,9 +374,8 @@ buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
 Rotation mode -- around camera
 
-The camera is rotated by the rotation step around its axis and the
-target is moved accordingly. This is the standard mode for rotation of
-the camera.
+The camera is rotated by the rotation step around its axis and the target is
+moved accordingly. This is the standard mode for rotation of the camera.
 
 \subsubsection{Rotate around target}\label{rotate-around-target}
 
@@ -390,81 +384,74 @@ the camera.
 Rotation mode -- around target
 
 The camera is moved around the stationary target by the rotation step,
-maintaining a constant distance to the target. The camera is rotated to
-look at the target.
+maintaining a constant distance to the target. The camera is rotated to look at
+the target.
 
 \subsection{Reset View}\label{reset-view}
 
 Camera Position is reset, by being zoomed out from the fractal but still
 maintaing the camera angles.
 
-If the rotations are changed to zero before using Reset View, the camera
-will then be zoomed out from the target, and rotated to look down the y
-axis.
+If the rotations are changed to zero before using Reset View, the camera will
+then be zoomed out from the target, and rotated to look down the y axis.
 
 \subsection{Calculation of rotation angles
-modes}\label{calculation-of-rotation-angles-modes}
+	modes}\label{calculation-of-rotation-angles-modes}
 
 \subsubsection{Fixed-roll angle}\label{fixed-roll-angle}
 
-In this mode, the angle gamma (roll) is constant. Pan the camera left or
-right always takes place around the global vertical Z-axis (not the
-render window vertical axis).
+In this mode, the angle gamma (roll) is constant. Pan the camera left or right
+always takes place around the global vertical Z-axis (not the render window
+vertical axis).
 
-This mode can be likened to an aircrafts controls, where all turns are
-relative to the aircraft's axis, not the ground below. Rotate up / down
-raises / lowers the nose of the aircraft. Rotate left / right turns in
-the directions of the wings. Tilting the camera buttons tilts the
-aircraft
+This mode can be likened to an aircrafts controls, where all turns are relative
+to the aircraft's axis, not the ground below. Rotate up / down raises / lowers
+the nose of the aircraft. Rotate left / right turns in the directions of the
+wings. Tilting the camera buttons tilts the aircraft
 
 \includegraphics[width=0.40000in,height=0.50000in]{img/manual/media/image16.png}\includegraphics[width=0.45347in,height=0.45347in]{img/manual/media/image17.png}
 
-When the camera is pointing straight up or down, or when it is upside
-down in this mode, it is quite difficult to predict the result of the
-turn.
+When the camera is pointing straight up or down, or when it is upside down in
+this mode, it is quite difficult to predict the result of the turn.
 
 \subsubsection{Straight rotation}\label{straight-rotation}
 
-The camera is rotated around its own local axis (local vertical axis is
-the render window vertical axis.)
+The camera is rotated around its own local axis (local vertical axis is the
+render window vertical axis.)
 
-This mode is a more intuitive way to rotate the camera, e.g., turn the
-camera left always give the visual effect of the camera rotating in that
-direction. The rotation angles are automatically converted so they are
-appropriate for the selected direction. This mode changes the gamma
-angle (roll).
+This mode is a more intuitive way to rotate the camera, e.g., turn the camera
+left always give the visual effect of the camera rotating in that direction. The
+rotation angles are automatically converted so they are appropriate for the
+selected direction. This mode changes the gamma angle (roll).
 
-\subsection{Camera rotation in
-animations}\label{camera-rotation-in-animations}
+\subsection{Camera rotation in animations}\label{camera-rotation-in-animations}
 
-With animation, the camera point and the target point can move
-independently following their own trajectories, with the camera always
-looking towards the target point. It is important to be aware that the
-rotation angle of the camera is the result of the camera coordinates and
-the target coordinates.
+With animation, the camera point and the target point can move independently
+following their own trajectories, with the camera always looking towards the
+target point. It is important to be aware that the rotation angle of the camera
+is the result of the camera coordinates and the target coordinates.
 
 There are various ways of animating, depending on the objective.
 
 The following example is a flight animation, with the camera trajectory
-approaching a location, with the camera rotating simultaneously so that
-the location is always observed, (as shown in the figure below). The
-camera positions represent three keyframes.
+approaching a location, with the camera rotating simultaneously so that the
+location is always observed, (as shown in the figure below). The camera
+positions represent three keyframes.
 
 \includegraphics[width=6.52292in,height=3.75556in]{img/manual/media/image18.png}
 
 Keyframe Animation with differing distances camera to target
 
-Between the first and second keyframes, the camera and target both move
-large distances. But between the second and third keyframes, the camera
-moves a much greater distance than the target. This can sometimes lead
-to unexpected camera rotations between keyframes.
+Between the first and second keyframes, the camera and target both move large
+distances. But between the second and third keyframes, the camera moves a much
+greater distance than the target. This can sometimes lead to unexpected camera
+rotations between keyframes.
 
-To compensate for this, on the Keyframe navigation tab use the button
-"Set the same distance from the camera for all the frames." This adjusts
-all keyframes by setting a constant distance between camera and target.
-It is important to note that the use of this function does not change
-the visual effect for the keyframes, and will help correct
-interpolation.
+To compensate for this, on the Keyframe navigation tab use the button "Set the
+same distance from the camera for all the frames." This adjusts all keyframes by
+setting a constant distance between camera and target. It is important to note
+that the use of this function does not change the visual effect for the
+keyframes, and will help correct interpolation.
 
 \includegraphics[width=4.11597in,height=4.02292in]{img/manual/media/image19.png}
 
@@ -473,73 +460,67 @@ interpolation.
 \subsection{Akima interpolation}\label{akima-interpolation}
 
 Catmull-Rom and Akima interpolation can both be used to get a ``smooth''
-transition of a value over the keyframes. These methods can mostly be
-used interchangeably, where Akima stays closer to the points where as
-Catmull-Rom oscillates a little bit stronger. 5.2 applies to both
-interpolation forms.
+transition of a value over the keyframes. These methods can mostly be used
+interchangeably, where Akima stays closer to the points where as Catmull-Rom
+oscillates a little bit stronger. 5.2 applies to both interpolation forms.
 
 \subsection{Catmul-Rom / Akima interpolation -
-Advices}\label{catmul-rom-akima-interpolation---advices}
+	Advices}\label{catmul-rom-akima-interpolation---advices}
 
 \subsubsection{Collision}\label{collision}
 
-Fast approaching the obstacle may cause inadvertent drag to the camera
-towards the center of the object. It is recommended to maintain the
-principle that one keyframe does not reduce the distance to the object
-more than 5-times.
+Fast approaching the obstacle may cause inadvertent drag to the camera towards
+the center of the object. It is recommended to maintain the principle that one
+keyframe does not reduce the distance to the object more than 5-times.
 
 \subsubsection{Fly through the gap}\label{fly-through-the-gap}
 
-It is recommended to place a keyframe at the point where the camera
-flies through the gap
+It is recommended to place a keyframe at the point where the camera flies
+through the gap
 
 \subsubsection{Proper conduct cameras between
-objects}\label{proper-conduct-cameras-between-objects}
+	objects}\label{proper-conduct-cameras-between-objects}
 
-\subsection{Changing interpolation
-types}\label{changing-interpolation-types}
+\subsection{Changing interpolation types}\label{changing-interpolation-types}
 
-To change the interpolation algorithm, right click on the parameter list
-and the options appear. In this example the main\_formula\_weight
-parameters have been changed from Akima to Linear. Interpolation type is
-color coded e.g. Linear parameters are highlighted in grey.
+To change the interpolation algorithm, right click on the parameter list and the
+options appear. In this example the main\_formula\_weight parameters have been
+changed from Akima to Linear. Interpolation type is color coded e.g. Linear
+parameters are highlighted in grey.
 
 \includegraphics[width=6.69291in,height=2.92087in]{img/manual/media/image26.png}
 
 \section{NetRender}\label{netrender}
 
-NetRender is a tool that allows you to render the same image or
-animation on multiple computers simultaneously. If you have multiple
-computers connected to an Ethernet network, you can greatly increase
-overall computing power.
+NetRender is a tool that allows you to render the same image or animation on
+multiple computers simultaneously. If you have multiple computers connected to
+an Ethernet network, you can greatly increase overall computing power.
 
-One of the computers (server) manages the process of rendering. It sends
-a requests to the connected computers (clients) and collects the results
-of rendering. Other computers (clients) render different portions of the
-image and send it to the server. There can be only one server (master)
-but clients (slaves) can be any number. The more clients, the faster the
-rendering will be.
+One of the computers (server) manages the process of rendering. It sends a
+requests to the connected computers (clients) and collects the results of
+rendering. Other computers (clients) render different portions of the image and
+send it to the server. There can be only one server (master) but clients
+(slaves) can be any number. The more clients, the faster the rendering will be.
 
 The Server is also the computer which renders the combined image .
 
-The total number of CPUs (cores) used is the sum of server's CPUs cores
-+ all client's CPUs cores.
+The total number of CPUs (cores) used is the sum of server's CPUs cores + all
+client's CPUs cores.
 
 \subsection{Starting NetRender}\label{starting-netrender}
 
 \subsubsection{Server configuration}\label{server-configuration}
 
-On the computer which will be used as the Server, Mode is set to
-\emph{Server.}
+On the computer which will be used as the Server, Mode is set to \emph{Server.}
 
 \includegraphics[width=4.53071in,height=1.86614in]{img/manual/media/image27.png}
 
 \emph{Local server port} should be set to one which is not used by other
-applications, and is passed through routers (if any are used) and
-firewall. The default is 5555.
+applications, and is passed through routers (if any are used) and firewall. The
+default is 5555.
 
-If settings are correct, press \emph{Launch server and watch for
-clients} button to connect server to existing clients.
+If settings are correct, press \emph{Launch server and watch for clients} button
+to connect server to existing clients.
 
 At this point, the server is ready to work
 
@@ -549,22 +530,21 @@ Alternative way to launch the server is to use command line. Example:
 
 \subsubsection{Configuring the clients}\label{configuring-the-clients}
 
-On the computers which will be used as Clents, Mode is set to
-\emph{Client}
+On the computers which will be used as Clents, Mode is set to \emph{Client}
 
 \includegraphics[width=5.02441in,height=1.43071in]{img/manual/media/image28.png}
 
-The remote server address must be set to the same as the Server computer
-which is running Mandelbulber in Server mode. The address can be given
-as an IP address or a computer name.
+The remote server address must be set to the same as the Server computer which
+is running Mandelbulber in Server mode. The address can be given as an IP
+address or a computer name.
 
-The remote server port number must be exactly the same as the setting on
-the Server.
+The remote server port number must be exactly the same as the setting on the
+Server.
 
 Press \emph{Connect to server} button to connect to the server
 
-Once the connection is established correctly, the client application
-should show the status READY
+Once the connection is established correctly, the client application should show
+the status READY
 
 \includegraphics[width=5.07283in,height=1.48976in]{img/manual/media/image29.png}
 
@@ -572,14 +552,13 @@ Alternative way to establish NetRender client is to use command line:
 
 \$ mandelbulber2 -\/-nogui -\/-host 10.0.0.4 -\/-port 5555
 
-when connection is successfully established the program should return
-following message:
+when connection is successfully established the program should return following
+message:
 
-NetRender - Client Setup, link to server: 10.0.0.4, port: 5555\\
-NetRender - version matches (2090), connection
-established\\[2\baselineskip]On the Server computer, in the table "List
-of connected clients" should be shown the name and address of the
-connected clients and the number of available processors (cores).
+NetRender - Client Setup, link to server: 10.0.0.4, port: 5555\\ NetRender -
+version matches (2090), connection established\\[2\baselineskip]On the Server
+computer, in the table "List of connected clients" should be shown the name and
+address of the connected clients and the number of available processors (cores).
 
 i.e magda computer has 4 cores and is READY.
 
@@ -588,16 +567,15 @@ i.e magda computer has 4 cores and is READY.
 \subsubsection{Rendering}\label{rendering}
 
 Only the Server can initiate rendering on the computers connected using
-NetRender. When the RENDER button is pressed on the server, all the
-connected computers commence rendering.
+NetRender. When the RENDER button is pressed on the server, all the connected
+computers commence rendering.
 
-In the table "List of connected clients'" in the column "Done lines"
-will be shown the number of lines the image rendered by each of the
-computers.
+In the table "List of connected clients'" in the column "Done lines" will be
+shown the number of lines the image rendered by each of the computers.
 
-when rendering is finished, the Server computer, will display the
-complete image. On the Client computers, only that portion of the image
-which was rendered by that client will be displayed.
+when rendering is finished, the Server computer, will display the complete
+image. On the Client computers, only that portion of the image which was
+rendered by that client will be displayed.
 
 \section{Q\&A , Examples and Hints}\label{qa-examples-and-hints}
 
@@ -605,8 +583,8 @@ which was rendered by that client will be displayed.
 
 Example settings
 
-(copy to clipboard, then load in Mandelbulber using : File -- Load
-settings from clipboard):
+(copy to clipboard, then load in Mandelbulber using : File -- Load settings from
+clipboard):
 
 \# Mandelbulber settings file
 
@@ -658,8 +636,8 @@ mat1\_coloring\_palette\_offset 12.83;
 
 mat1\_coloring\_palette\_size 255;
 
-mat1\_surface\_color\_palette fd6029 698403 fff59c 000000 0b5e87 c68876
-a51c64 3b9fee d4ffd4 aba53c;
+mat1\_surface\_color\_palette fd6029 698403 fff59c 000000 0b5e87 c68876 a51c64
+3b9fee d4ffd4 aba53c;
 
 SSAO\_random\_mode true;
 
@@ -694,52 +672,49 @@ transf\_scaleC\_1 0;
 transf\_start\_iterations\_M 4;
 
 transf\_stop\_iterations\_M 5;\\[2\baselineskip]1) In the example the
-MengerSponge part is run only on iteration 4. A single iteration of
-another fractal to make a hybrid is often the best
-practice.\\[2\baselineskip]2) In the Statistics (enable in View menu)
-you can see Percentage of Wrong Distance Estimations ("Bad DE") is 0,
-which is good!!. As a general rule less than 0.01 is good, but it is
-case specific and 3.0 sometimes is OK and .0001 sometimes is not.
+MengerSponge part is run only on iteration 4. A single iteration of another
+fractal to make a hybrid is often the best practice.\\[2\baselineskip]2) In the
+Statistics (enable in View menu) you can see Percentage of Wrong Distance
+Estimations ("Bad DE") is 0, which is good!!. As a general rule less than 0.01
+is good, but it is case specific and 3.0 sometimes is OK and .0001 sometimes is
+not.
 
 \includegraphics[width=4.51024in,height=2.48976in]{img/manual/media/image31.png}\\[2\baselineskip]T
 
-The Raymarching step multiplier or "fudge factor" (Rendering Engine tab)
-is set at 0.6, which is good for a hybrid. If I change it to 0.7 the
-Percentage of Bad DE leaps up to 0.25 and you can see the areas of
-quality loss on your image.\\[2\baselineskip]Now if we disable the
-addCpixel Axis swap Constant Multiplier, we find we can now increase the
-Raymarching Step Multiplier to 0.9, and get a faster render and visually
-the same quality. So monitoring Percentage of Wrong Distance Estimations
-is a guide to managing quality. ( Note when doing animations you may
-want to drop the Raymarching step down a bit to allow for what might
-happen between keyframes.)\\[2\baselineskip]3) MandelboxMenger Hybrids
-can behave a bit differently to a lot of hybrids, in the fact that the
+The Raymarching step multiplier or "fudge factor" (Rendering Engine tab) is set
+at 0.6, which is good for a hybrid. If I change it to 0.7 the Percentage of Bad
+DE leaps up to 0.25 and you can see the areas of quality loss on your
+image.\\[2\baselineskip]Now if we disable the addCpixel Axis swap Constant
+Multiplier, we find we can now increase the Raymarching Step Multiplier to 0.9,
+and get a faster render and visually the same quality. So monitoring Percentage
+of Wrong Distance Estimations is a guide to managing quality. ( Note when doing
+animations you may want to drop the Raymarching step down a bit to allow for
+what might happen between keyframes.)\\[2\baselineskip]3) MandelboxMenger
+Hybrids can behave a bit differently to a lot of hybrids, in the fact that the
 Percentage Bad DE often improves when you zoom in.
 
 \textbf{maximum view distance}
 
-Located : Rendering Engine - Common Rendering
-settings\\[2\baselineskip]It is important to optimize this setting to
-minimize render time. You can reduce until the furthest part of the 3D
-object(s) starts to disappear. However with animation an allowance
-should be made for changes between
-keyframes.\\[2\baselineskip]hint/note.\\
-When navigating in Relative step mode, mouse click on
-spherical\_inversion, camera zooms out, tand maximum view distance
-becomes set on 280. If you don't reset it your render times will be
+Located : Rendering Engine - Common Rendering settings\\[2\baselineskip]It is
+important to optimize this setting to minimize render time. You can reduce until
+the furthest part of the 3D object(s) starts to disappear. However with
+animation an allowance should be made for changes between
+keyframes.\\[2\baselineskip]hint/note.\\ When navigating in Relative step mode,
+mouse click on spherical\_inversion, camera zooms out, tand maximum view
+distance becomes set on 280. If you don't reset it your render times will be
 increased.
 
 \textbf{Magic Angle} Benesi Mag Transforms
 
 In mathematics the Magic Angle = 54.7356° .
 
-When rendering basic mag transforms the image does not render parallel
-to the standard x,y,z global axis. On the fractal dock, in ``Global
-parameters'' set y-axis rotation to 35.2644° ( = 90° - 54.7356°). The
-fractal will then render parallel to the x-y plane.
+When rendering basic mag transforms the image does not render parallel to the
+standard x,y,z global axis. On the fractal dock, in ``Global parameters'' set
+y-axis rotation to 35.2644° ( = 90° - 54.7356°). The fractal will then render
+parallel to the x-y plane.
 
 \textbf{Example of using Transform\_Menger Fold to make
-Hybrid}\\[2\baselineskip]\# Mandelbulber settings file
+	Hybrid}\\[2\baselineskip]\# Mandelbulber settings file
 
 \# version 2.08
 
@@ -753,8 +728,7 @@ camera -1.528388569045064 -1.23063017895654 -0.0251755516595821;
 
 camera\_distance\_to\_target 0.0004503351519815117;
 
-camera\_rotation -14.07789975269277 -44.28785609194563
-3.773777260910995;
+camera\_rotation -14.07789975269277 -44.28785609194563 3.773777260910995;
 
 camera\_top 0.2333184436621841 0.6598138513697914 0.7142885869084139;
 
@@ -830,59 +804,45 @@ transf\_scale3D\_333 1.055556 1.027778 0.861111;
 
 transf\_function\_enabledx false;
 
-On this transform UI, the standard menger sponge formula is split into a
-start and end function. The simplest way to use this transform is in
-Hybrid Mode, having the menger fold transform in slots 1 \& 3. In slot 2
-place any linear type formula or transform. (ie more mengers, kifs,
-mboxes, amazing surf, folds, rotation , Benesi T1
-etc).\\[2\baselineskip]In slot 1 disable the stop function and in slot 3
-disable the start function, resulting in a standard menger sponge with
-something in the middle.\\[2\baselineskip]BTW in fact you can mix around
-with the start and stop functions have all enabled if you wish.
-Generally linear functions all work well together in making
-hybrids.\\[2\baselineskip]In Statistics, maximum is approx. 80
-iterations. Generally hybrids take longer to render than standard
-formulas.\\
-As well as adjusting formula parameters, you can use the iteration
-controls to tweak hybrids. In this example the first slot is set to
-repeat for 5 iterations before moving to slot 2. Slot 2 is set to stop
-at iteration 12, whereas slots 1 \& 3 can continue to termination
-conditions are met (bailout or maximum number of iterations).
+On this transform UI, the standard menger sponge formula is split into a start
+and end function. The simplest way to use this transform is in Hybrid Mode,
+having the menger fold transform in slots 1 \& 3. In slot 2 place any linear
+type formula or transform. (ie more mengers, kifs, mboxes, amazing surf, folds,
+rotation , Benesi T1 etc).\\[2\baselineskip]In slot 1 disable the stop function
+and in slot 3 disable the start function, resulting in a standard menger sponge
+with something in the middle.\\[2\baselineskip]BTW in fact you can mix around
+with the start and stop functions have all enabled if you wish. Generally linear
+functions all work well together in making hybrids.\\[2\baselineskip]In
+Statistics, maximum is approx. 80 iterations. Generally hybrids take longer to
+render than standard formulas.\\ As well as adjusting formula parameters, you
+can use the iteration controls to tweak hybrids. In this example the first slot
+is set to repeat for 5 iterations before moving to slot 2. Slot 2 is set to stop
+at iteration 12, whereas slots 1 \& 3 can continue to termination conditions are
+met (bailout or maximum number of iterations).
 
-In the example above, slot2 of the hybrid sequenced ended at iteration
-12. 12 was chosen because how it fitted into the iteration sequence, as
-follows:\\
-Slot1 x 5\\
-0,1,2,3,4~ iteration numbers (note first iteration is iteration number
-0.)\\
-slot2\\
-5\\
-slot3~\\
-6\\
-slot1 x 5\\
-7,8,9,10.11\\
-slot2\\
-12~ // last use of slot2\\
-\hspace*{0.333em}sequence continues slot1 x 5, slot3, .....to bailout.\\
-So slot2 is used only twice in the iteration process. If I had entered
-11 instead of 12 for slot2's stop\_iterations, then the slot would have
-been used only once, if I entered 19 then it would run three times.
+In the example above, slot2 of the hybrid sequenced ended at iteration 12. 12
+was chosen because how it fitted into the iteration sequence, as follows:\\
+Slot1 x 5\\ 0,1,2,3,4~ iteration numbers (note first iteration is iteration
+number 0.)\\ slot2\\ 5\\ slot3~\\ 6\\ slot1 x 5\\ 7,8,9,10.11\\ slot2\\ 12~ //
+last use of slot2\\ \hspace*{0.333em}sequence continues slot1 x 5, slot3,
+.....to bailout.\\ So slot2 is used only twice in the iteration process. If I
+had entered 11 instead of 12 for slot2's stop\_iterations, then the slot would
+have been used only once, if I entered 19 then it would run three times.
 
 \subsection{Q\&A . How do you get different materials on different
-shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
+	shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
 
-This is how I have been doing it.\\[2\baselineskip]\emph{Rectangle at
-the bottom marked A.}\\[2\baselineskip]This is where you~ start a new
-material or load an existing.~ The active material is highlighted in
-blue. Meaning it is active in the \textbf{material editor} where you
-create or modify the material.\\[2\baselineskip]\emph{Rectangle at top
-left marked B.}\\[2\baselineskip]One way to use a material is to go to
-Global Parameters, click on the material preview image, and the
-\textbf{Material Manager} UI will appear with the materials you have
-loaded or created. Click on the one you want to use, then close that
-UI.\\
-Similarly with primitives, click on the material preview image. And with
-Boolean Mode each fractal/transform has it's own material preview image
-when you scroll down.
+This is how I have been doing it.\\[2\baselineskip]\emph{Rectangle at the bottom
+	marked A.}\\[2\baselineskip]This is where you~ start a new material or load an
+existing.~ The active material is highlighted in blue. Meaning it is active in
+the \textbf{material editor} where you create or modify the
+material.\\[2\baselineskip]\emph{Rectangle at top left marked
+	B.}\\[2\baselineskip]One way to use a material is to go to Global Parameters,
+click on the material preview image, and the \textbf{Material Manager} UI will
+appear with the materials you have loaded or created. Click on the one you want
+to use, then close that UI.\\ Similarly with primitives, click on the material
+preview image. And with Boolean Mode each fractal/transform has it's own
+material preview image when you scroll down.
 
 \includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image32.jpg}
+
