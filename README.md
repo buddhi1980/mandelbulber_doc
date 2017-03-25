@@ -1,5 +1,5 @@
 # Mandelbulber End User Manual
-Documentation for Mandelbulber program.
+Documentation for Mandelbulber 3D Fractal Generation System.
 
 # Latex Engine
 The main file is handbook.tex
