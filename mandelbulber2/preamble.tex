@@ -14,9 +14,27 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{hyperref}
-\usepackage{fancyvrb}
 
-\DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=.5in, fontsize=\small}
+\usepackage[many]{tcolorbox}
+\newtcolorbox{notebox}[1][]{ 
+	enhanced, 
+	breakable, 
+	pad at break=2mm,
+	left=2mm,
+	right=10mm, 
+	colback=white,
+	colframe=black!50!yellow, 
+	drop fuzzy midday
+	shadow=black!50!yellow, 
+	width={0.95\textwidth}, 
+	frame hidden, 
+	segmentation hidden, 
+	before=\par\vspace*{2mm},
+	after=\par\bigskip, title=#1
+}
+
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=.5in, fontsize=\small, samepage=true}
 
 %\usepackage[default,osfigures,scale=0.95]{opensans} %% open sans text style
 \usepackage[T1]{fontenc}
@@ -30,3 +48,5 @@
 	linkcolor    = blue,
 	citecolor   = red
 }
+
+
