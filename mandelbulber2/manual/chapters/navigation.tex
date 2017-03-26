@@ -2,10 +2,11 @@
 
 To set the current view there are two elements:
 
-\textbf{Camera} - represents a point where the camera is located
-
-\textbf{Target} - represents the point onto which the camera will focus (the
-camera is \emph{always} looking at the target.)
+\begin{description}
+	\item[Camera]\index{navigation!camera} represents a point where the camera is located
+	\item[Target]\index{navigation!target} represents the point onto which the camera will focus (the
+	camera is \emph{always} looking at the target.)
+\end{description}
 
 \subsection{Camera and Target movement
 	step}\label{camera-and-target-movement-step}
@@ -19,7 +20,7 @@ For rotations, the camera is moved by the parameter \textbf{rotation step}
 direction, the parameter \textbf{step} (default 0.5) is used. There are two
 modes for its use:
 
-\subsubsection{Relative step mode}\label{relative-step-mode}
+\subsubsection{Relative step mode}\label{relative-step-mode}\index{navigation!relative step}
 
 The \textbf{step} for moving the camera and/or target in a linear direction is
 calculated relative to the estimated distance from the surface of the fractal.
@@ -39,7 +40,7 @@ how much camera have to be moved to not hit the fractal surface.
 In animations this mode is recommended when camera is approaching the surface of
 the fractal.
 
-\subsubsection{Absolute step mode}\label{absolute-step-mode}
+\subsubsection{Absolute step mode}\label{absolute-step-mode}\index{navigation!absolute step}
 
 Step movement of the camera and/or target is fixed. Therefore if the step is set
 at 0.5, the movement will be 0.5 in the direction of the arrow key or mouse
@@ -61,7 +62,7 @@ There are three modes for changing the relationship between camera and target.
 	\item move only target
 \end{itemize}
 
-\subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}
+\subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}\index{navigation!camera}
 \nopagebreak
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/move_camera_and_target}
@@ -74,7 +75,7 @@ Arrows move both the camera and the target by the same distance in the same
 direction. The angle of camera rotation does not change.
 
 
-\subsubsection{Move camera mode}\label{move-camera-mode}
+\subsubsection{Move camera mode}\label{move-camera-mode}\index{navigation!camera}
 \nopagebreak
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/move_only_camera}
@@ -85,7 +86,7 @@ Movement mode - \textit{camera}
 
 Moves only the camera and rotates it in respect to the motionless target.
 
-\subsubsection{Move target mode}\label{move-target-mode}
+\subsubsection{Move target mode}\label{move-target-mode}\index{navigation!target}
 \nopagebreak
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/move_target}
@@ -132,7 +133,7 @@ the same point but rotates following the target.
 \subsection{Camera rotation modes using the arrow
 	buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
-\subsubsection{Rotate camera}\label{rotate-camera}
+\subsubsection{Rotate camera}\label{rotate-camera}\index{navigation!rotate}
 \nopagebreak
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/rotate_camera}
@@ -157,7 +158,7 @@ The camera is moved around the stationary target by the rotation step,
 maintaining a constant distance to the target. The camera is rotated to look at
 the target.
 
-\subsection{Reset View}\label{reset-view}
+\subsection{Reset View}\label{reset-view}\index{navigation!reset view}
 
 Camera Position is reset, by being zoomed out from the fractal but still
 maintaing the camera angles.
@@ -194,7 +195,7 @@ left always give the visual effect of the camera rotating in that direction. The
 rotation angles are automatically converted so they are appropriate for the
 selected direction. This mode changes the gamma angle (roll).
 
-\subsection{Camera rotation in animations}\label{camera-rotation-in-animations}
+\subsection{Camera rotation in animations}\label{camera-rotation-in-animations}\index{animation!rotation}
 
 With animation, the camera point and the target point can move independently
 following their own trajectories, with the camera always looking towards the
@@ -222,5 +223,6 @@ same distance from the camera for all the frames} This adjusts all keyframes by
 setting a constant distance between camera and target. It is important to note
 that the use of this function does not change the visual effect for the
 keyframes, and will help correct interpolation.
+\nopagebreak
 
 \includegraphics[width=0.7\linewidth]{img/manual/media/camera_target_tracking_2.png}

@@ -2,9 +2,9 @@
 
 Fractals are objects with self-similarity, where the smaller fragments are
 similar to those on a larger scale. A characteristic feature is to have subtle
-details even at very high magnification.
+details even at very high magnification.\index{fractal}
 
-\subsection{Mandelbrot set}\label{mandelbrot-set}
+\subsection{Mandelbrot set}\label{mandelbrot-set}\index{Mandelbrot Set}
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/mandelbrot_set.png}
 
@@ -57,12 +57,12 @@ Termination conditions are applied to ensure the formula does not iterate to
 infinity. The most common conditions used are called \textbf{Bailout} and
 \textbf{Maxiter}.
 
-The \textbf{Bailout} condition stops the iteration loop if the formula
+The \textbf{Bailout}\index{termination condition!bailout} condition stops the iteration loop if the formula
 transforms (moves) the point further than a set distance away from an
 ``origin''. This detects if series are convergent (calculated point is outside
 the fractal body)
 
-\textbf{Maxiter} is simply a condition to stop iterating when a maximum numbers
+\textbf{Maxiter}\index{termination condition!maxiter} is simply a condition to stop iterating when a maximum numbers
 of iterations is reached (just to not do iterations infinite times)
 
 In the Mandelbrot formula, after each iteration, the modulus of a complex number
@@ -83,7 +83,7 @@ the points given lighter colors (dependent on a chosen coloring method).
 
 \subsection{3D fractals}\label{d-fractals}
 
-The three dimensional fractal type, the ``Mandelbulb'' is calculated from a
+The three dimensional fractal type, the ``Mandelbulb''\index{Mandelbulb} is calculated from a
 fairly similar pattern to the Mandelbrot set. The difference is that the vector
 \emph{z} contains three complex numbers (\emph{x}, \emph{y}, \emph{z}) or four
 dimensions (\emph{x}, \emph{y}, \emph{z}, \emph{w}). As they are part of the
@@ -97,7 +97,7 @@ conditional functions ( e.g., \textbf{if} \emph{z.x} \textgreater{} \emph{z.y},
 \textbf{then} \emph{z.x} = \emph{something}).
 
 Some other types of 3D fractal objects are based on iterative algorithms (IFS -
-Iterated Function Systems). An example would be the famous Menger Sponge.
+Iterated Function Systems\index{IFS}). An example would be the famous Menger Sponge\index{Menger Sponge}.
 \nopagebreak
 
 \includegraphics[height=0.4\linewidth]{img/manual/media/menger_sponge.png} \includegraphics[height=0.4\linewidth]{img/manual/media/sierpinski.png}

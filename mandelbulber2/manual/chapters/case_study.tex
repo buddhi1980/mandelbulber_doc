@@ -57,13 +57,14 @@ In the example the MengerSponge part is run only on iteration 4. A single
 iteration of another fractal to make a hybrid is often the best practice.
 
 In the Statistics (enable in View menu) you can see Percentage of Wrong Distance
-Estimations ("Bad DE") is 0, which is good!!. As a general rule less than 0.01
+Estimations \index{statistics!wrong distance estimations}("Bad DE") is 0, which is good!!. As a general rule less than 0.01
 is good, but it is case specific and 3.0 sometimes is OK and .0001 sometimes is
 not.
+\nopagebreak
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/mandelboxmenger_statistics.png}
 
-The \emph{Raymarching step multiplier} (\emph{Rendering Engine} tab) or
+The \emph{Raymarching step multiplier}\index{ray marching!step multiplier} (\emph{Rendering Engine} tab) or
 \emph{fudge factor} is set at 0.6, which is good for a hybrid. If I change it to
 0.7 the Percentage of Bad DE leaps up to 0.25 and you can see the areas of
 quality loss on your image.
@@ -71,14 +72,14 @@ quality loss on your image.
 Now if we disable the \emph{addCpixel Axis swap Constant Multiplier}, we find we
 can now increase the \emph{Raymarching Step Multiplier} to 0.9, and get a faster
 render and visually the same quality. So monitoring Percentage of Wrong Distance
-Estimations is a guide to managing quality. ( Note when doing animations you may
+Estimations is a guide to managing quality. (Note when doing animations you may
 want to drop the Raymarching step down a bit to allow for what might happen
 between keyframes.)
 
-MandelboxMenger Hybrids can behave a bit differently to a lot of hybrids, in the
+MandelboxMenger Hybrids\index{fractal!hybrid} can behave a bit differently to a lot of hybrids, in the
 fact that the \emph{Percentage Bad DE} often improves when you zoom in.
 
-\paragraph{Optimizing of \emph{maximum view distance}} Located : Rendering
+\paragraph{Optimizing of \emph{maximum view distance}}\index{ray marching!maximum view distance} Located : Rendering
 Engine - Common Rendering settings
 
 It is important to optimize this setting to minimize render time. You can reduce
@@ -99,7 +100,7 @@ y-axis rotation to 35.2644° (= 90° - 54.7356°). The fractal will then render
 parallel to the x-y plane.
 
 \subsubsection{Example of using Transform Menger Fold to make
-	Hybrid}\label{example-of-using-transfrom-mengerfold}
+	Hybrid}\label{example-of-using-transfrom-mengerfold}\index{fractal!hybrid}
 
 \begin{verbatim}[fontsize=\scriptsize]
 # Mandelbulber settings file
@@ -183,7 +184,7 @@ was chosen because how it fitted into the iteration sequence, as follows:
 \item \textbf{Slot 2} -- iteration 12 (last use of \textbf{Slot 2})
 \end{itemize}
 
-Sequence continues \textbf{Slot 1} x 5, \textbf{Slot 3}, ... to bailout.
+Sequence continues \textbf{Slot 1} x 5, \textbf{Slot 3}, \ldots to bailout.
 
 As you see \textbf{Slot 2} is used only twice in the iteration process. If I had entered 11 instead of 12 for \textbf{Slot 2}'s \emph{stop iterations}, then the slot would have been used only once, if I entered 19 then it would run three times.
 

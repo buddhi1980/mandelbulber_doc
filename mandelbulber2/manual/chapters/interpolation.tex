@@ -1,4 +1,4 @@
-\section{Interpolation}\label{interpolation}
+\section{Interpolation}\label{interpolation}\index{interpolation}
 
 To get smooth transitions of parameters between keyframe there are used
 interpolation functions, which calculates intermediate values. There is no need
@@ -38,7 +38,7 @@ There are implemented several interpolation functions:
 	
 \end{samepage}
 
-\subsubsection{Interpolation - None}\label{interpolation-none}
+\subsubsection{Interpolation - None}\label{interpolation-none}\index{interpolation!none}
 
 Parameter is not interpolated. After every keyframe the value of parameter will
 have step change. This mode can be used with boolean values or with variables
@@ -46,7 +46,7 @@ which have to be kept at constant levels for some number of keyframes.
 
 \includegraphics[width=0.5\linewidth]{img/manual/media/interpolation_none}
 
-\subsubsection{Interpolation - Linear}\label{interpolation-linear}
+\subsubsection{Interpolation - Linear}\label{interpolation-linear}\index{interpolation!linear}
 
 Value of parameter is interpolated using linear functions.
 
@@ -65,7 +65,7 @@ changes of speed.
 This interpolation mode works like \emph{Linear}, but is prepared of angular
 parameters. If value exceed 360 degrees, then will go back to zero.
 
-\subsubsection{Interpolation - Akima}\label{interpolation-akima}
+\subsubsection{Interpolation - Akima}\label{interpolation-akima}\index{interpolation!Akima}
 
 The Akima interpolation is a continuously differentiable sub-spline
 interpolation. It is built from piecewise third order polynomials.
@@ -84,7 +84,7 @@ should be animated in smooth way.
 This interpolation mode works like \emph{Akima}, but is prepared of angular
 parameters. If value exceed 360 degrees, then will go back to zero.
 
-\subsubsection{Interpolation - Catmul-Rom}\label{interpolation-catmul-rom}
+\subsubsection{Interpolation - Catmul-Rom}\label{interpolation-catmul-rom}\index{interpolation!Catmul-Rom}
 
 Catmull-Rom splines are cubic interpolating splines formulated such that the
 tangent at each point $ y_i(x_i) $ is calculated using the previous and next
