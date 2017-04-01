@@ -8,3 +8,5 @@ compile the program with:
 
 Tested on Windows 10 using miktex engine.
 
+# Reducing size of PDF file
+`gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=handbook-compressed.pdf handbook.pdf`
