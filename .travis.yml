@@ -8,14 +8,12 @@ script:
 - makeindex handbook.idx
 - cd ..
 - pdflatex -output-directory build handbook.tex
-- gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=build/handbook-compressed.pdf build/handbook.pdf
-
+- gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=build/handbook-compressed.pdf
+  build/handbook.pdf
 deploy:
   provider: releases
   api_key:
-    secure:
-  file:
-    - build/handbook.pdf
-  skip_cleanup: true
+    secure: jsAeIEF7OQKod7UCb3nvBGo7r9vQCUgW56zx/JtvWyIopVRVOPFbfKZCVtygdimXmASlNQ0KWp9qif4X/sqiHPsce8HfrtpLCwjH+TDdydvKPAGHIKO0yi5VjyqrMEEiaQCrx5RQFevmHs6JZcnVvwo56rKy3Wl4JT36iZ24MzOHiAcNvRcdDOuAO16P1PBB1pqFHpPjUxhwZN11ARZZpO3uuaWdlr973Zka7YkT+yb0cCpGAHhPW2NN6tz5FzFEotwyLN/9MZ7ErI88PjFflzdfqUPLxdTjvCqSuOjpWDkzha0iHNbQDpWQm/juyR8NMEHqRqv1WUZ+w++B3epZsrJTbEwSBp99DKrMONt85TiVT3JQrxTYFEngtzb7dQp2DB0mSwJ7AaKGe6uPSI4iZq/HriIH+iRs5UBo3QOCPsR9x6wBiu1Hv+H8IJqcafldDjytrQglW/KbEd47Udyo/fQc4CfUNquUkzIaLHqPmNeCJdliNiSMAwhGzY1Yt1H0hwfbEJtYfQh50C2wMMV4AWhOYczQSz0HvoGvJfcJ8TRUjrqSxPUaivR38//EGrGUXQjN8Sc0IuYu0eIGi6rPcUhQY7ZC90+aoDqK+En+LnspiaILi4tACan6e00DGVBMAm8BqzAYGJZsVVZ0Uv7JykxyYSpC2yihpHsSn/ZH/Z8=
+  file: build/handbook-compressed.pdf
   on:
-    tags: true
+    repo: buddhi1980/mandelbulber_doc
