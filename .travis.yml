@@ -1,0 +1,15 @@
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install texlive-latex-base
+script:
+- mkdir build
+- pdflatex -output-directory build handbook.tex
+deploy:
+  provider: releases
+  api_key:
+    secure:
+  file:
+    - build/handbook.pdf
+  skip_cleanup: true
+  on:
+    tags: true
