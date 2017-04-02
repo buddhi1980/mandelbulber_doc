@@ -17,3 +17,5 @@ deploy:
   file: build/handbook-compressed.pdf
   on:
     repo: buddhi1980/mandelbulber_doc
+    tags: true
+    all_branches: true
