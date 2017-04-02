@@ -1,0 +1,19 @@
+# Minimal AppVeyor build configuration
+# https://www.appveyor.com/docs/build-configuration
+version: 1.0.{build}-{branch}
+image: Visual Studio 2015
+platform:
+  - x64
+configuration:
+  - Release
+before_build:
+  - ECHO BEFORE BUILD
+build_script:
+- ECHO BUILD %CONFIGURATION% %PLATFORM%
+after_build:
+  - netstat -ab
+  - tree /F bin\%CONFIGURATION%
+  - 7z a mandelbulber_doc-%CONFIGURATION%-%APPVEYOR_REPO_COMMIT%.zip bin\%CONFIGURATION%
+artifacts:
+  - path: mandelbulber_doc-%CONFIGURATION%-%APPVEYOR_REPO_COMMIT%.zip
+    name: mandelbulber_doc-%CONFIGURATION%
