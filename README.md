@@ -1,3 +1,5 @@
+[![Build Status Linux / OSX](https://travis-ci.org/buddhi1980/mandelbulber_doc.svg?branch=master)](https://travis-ci.org/buddhi1980/mandelbulber_doc)
+
 # Mandelbulber End User Manual
 Documentation for Mandelbulber 3D Fractal Generation System.
 
