@@ -216,7 +216,7 @@ Third formula \emph{Box Fold Bulb Pow 2} adds leaf like features to the shape.
 \subsubsection{More iterations for each slot}
 
 In each slot there can be defined how many times fractal formula will be used in series. 
-On the tab for given fractal there is parameter \emph{Iterations}. By default is set to 1. If will be increased to 2 on first and second tab, the sequence of formulas will look as following:
+On the tab for given fractal there is parameter \emph{Iterations}. By default is set to 1. If will be increased to 2 on first and second tab, the sequence of formulas will look as following:\label{two-iterations-per-slot}
 
 \includegraphics[width=\linewidth]{img/manual/media/iteration_loop_hybrid_sequence_2.png}
 
@@ -237,12 +237,34 @@ As it was before the initial shape is defined by first two iterations of \emph{M
 
 \subsubsection{Range of iterations for slot}
 
+The sequence of fractal formulas can be more sophisticated. There is possible to define range of iterations on which given formula will be used.
+
+In the example below, on the second formula slot with \emph{Menger Sponge} range of iterations was from 4 to 250. On each tab there are parameters \emph{Start at iteration} and {Stop at iteration} which are used to define this range.
+
 \includegraphics[width=\linewidth]{img/manual/media/iteration_loop_hybrid_sequence_4.png}
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/hybrid_sequence_example_4.png}
+During first pass of sequence \emph{Menger Sponge} formula could be used at iterations 2 and 3. Because \emph{Start at iteration} was 4 this formula slot was skipped. During second pass of sequence \emph{Menger Sponge} formula was used at iterations 5 and 6 which were already in defined range of iterations.
+
+The shape of fractal is following:\nopagebreak
+
+\includegraphics[width=0.7\linewidth]{img/manual/media/hybrid_sequence_example_4.png}
+
+Because iteration number 2 is \emph{Box Fold Bulb Pow 2} formula the shape of it much more visible.
 
 \subsubsection{Changed order in sequence}
 
+The order of fractal formulas can be easily changed. Each fractal tab has buttons with arrows
+
+\includegraphics[width=\linewidth]{img/manual/media/fractal_tabs_with_defined_fractals_arrows.png}
+
+Pressing of these buttons causes swapping of fractal tabs.
+
+Example based on first case showed in section \ref{two-iterations-per-slot}:  Swapped \emph{Mandelbulb - Power 2} and \emph{Menger Sponge} gives following sequence 
+
 \includegraphics[width=\linewidth]{img/manual/media/iteration_loop_hybrid_sequence_5.png}
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/hybrid_sequence_example_5.png}
+As it is visible on image below, the shape of the fractal is completely different.\nopagebreak
+
+\includegraphics[width=0.7\linewidth]{img/manual/media/hybrid_sequence_example_5.png}
+
+Even if are used the same fractal formulas and with the same number of iterations per slot, the shape strongly depends on order of formulas. Now first \emph{Menger Sponge} formula gives initial shape of fractal and \emph{Mandelbulb - Power 2} just only modifies details.
