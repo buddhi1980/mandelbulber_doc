@@ -127,29 +127,28 @@ z.z *= fractal->foldingIntPow.zFactor;
 
 \subsubsection{Processing of single formula fractals}
 
-Single formula fractals are processed in simple way. Calculation of fractal
-formulas is repeated several times like it is showed on following
+Single formula fractals are processed in a simple way. Calculation of fractal
+formulas is repeated several times like it is showed in the following
 diagrams:\nolinebreak \nopagebreak
 
 \includegraphics[width=\linewidth]{img/manual/media/iteration_loops.png}
 
-When calculation of the iteration loop finished the result value of \emph{z} is
-used to estimate distance to fractal body and to calculate color of surface.
+When the calculation of the iteration loop finishes the result value of \emph{z} is
+used to estimate the distance to the fractal body and to calculate the color of the surface.
 
 \subsection{Hybrid fractals}\index{fractal!hybrid}
 
-There is possible to mix different fractal formulas by alternating them, to get
-new fractal shapes. That fractal are named \emph{hybrid fractals}. Mandelbulber
-program already have many different fractal formulas which gives opportunity to
-get very big variety of shapes. But using hybrid fractals increases
-possibilities a lot.
+It is possible to mix different fractal formulas by alternating their use in the iteration loop.
+This way new fractal shapes can be achieved. These fractal combinations are named \emph{hybrid fractals}. 
+In the Mandelbulber program there are already many different fractal formulas available which give the user 
+the opportunity to use a vast variety of shapes.
 
 \subsubsection{Iteration loop of hybrid fractals}
 
 In general hybrid fractals are calculated in the same way as regular fractals.
-There is iteration loop, \emph{maxiter} and \emph{bailout} condition. The
-difference is in body of iteration loop. Instead of one fractal formula there
-can be used different fractal formula in every iteration. There is defined
+The calculation consists of iteration loop, \emph{maxiter} and \emph{bailout} condition. The
+difference is in the body of iteration loop: Instead of one fractal formula there
+can be used a different fractal formula in every iteration. There is defined
 sequence which decides in which iteration the formula will be calculated. How
 the sequence will work depends on following selections: \begin{itemize} \item
 	Which fractal formulas are selected in formula slots \item How many iterations
