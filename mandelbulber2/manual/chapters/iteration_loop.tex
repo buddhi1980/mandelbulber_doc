@@ -1,9 +1,9 @@
 \section{Iteration loop}\label{iteration-loop}
 
 In section \ref{mandelbrot-set} there was mentioned that fractals are calculated
-by repeating of iteration loop. The loop is terminated when there is calculated
-number of iterations equals to \emph{maxiter} or bailout condition is achieved.
-In this section will be explained what is calculated inside the loop.
+by repeating inside an iteration loop. The loop is terminated when the calculated
+number of iterations equals to \emph{maxiter} or the bailout condition is reached.
+In this section the calculations inside this loop will be explained.
 
 \subsection{Single formula fractals}\label{single-formula-fractals}
 
@@ -24,7 +24,7 @@ Cross section at $ z_z = 0 $ looks exactly the same as Mandelbrot Set.
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_mandelbulb_power_2}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{verbatim}[fontsize=\scriptsize]
+		\begin{cppcode}
 double x2 = z.x * z.x;
 double y2 = z.y * z.y;
 double z2 = z.z * z.z;
@@ -35,7 +35,7 @@ double newz = -2.0 * z.z * sqrt(x2 + y2);
 z.x = newx;
 z.y = newy;
 z.z = newz;
-		\end{verbatim}
+		\end{cppcode}
 	\end{minipage}
 \end{tabular} 
 
@@ -48,7 +48,7 @@ transformations where some of them are conditional. \nopagebreak
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_menger_sponge.png}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{verbatim}[fontsize=\scriptsize]
+		\begin{cppcode}
 z.x = fabs(z.x);
 z.y = fabs(z.y);
 z.z = fabs(z.z);
@@ -62,7 +62,7 @@ z *= 3.0;
 z.x -= 2.0;
 z.y -= 2.0;
 if (z.z > 1.0) z.z -= 2.0;
-		\end{verbatim}
+		\end{cppcode}
 	\end{minipage}
 \end{tabular} 
 
@@ -82,14 +82,17 @@ The end of formula is the same as \emph{Mandelbulb Power 2}. \nopagebreak
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_box_fold_pwr2.png}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{verbatim}[fontsize=\scriptsize]
+		\begin{cppcode}
 //box fold
 if (fabs(z.x) > fractal->foldingIntPow.foldFactor)
-z.x = sign(z.x) * fractal->foldingIntPow.foldFactor * 2.0 - z.x;
+	z.x = sign(z.x) * fractal->foldingIntPow.foldFactor
+		 * 2.0 - z.x;
 if (fabs(z.y) > fractal->foldingIntPow.foldFactor)
-z.y = sign(z.y) * fractal->foldingIntPow.foldFactor * 2.0 - z.y;
+	z.y = sign(z.y) * fractal->foldingIntPow.foldFactor
+		 * 2.0 - z.y;
 if (fabs(z.z) > fractal->foldingIntPow.foldFactor)
-z.z = sign(z.z) * fractal->foldingIntPow.foldFactor * 2.0 - z.z;
+	z.z = sign(z.z) * fractal->foldingIntPow.foldFactor
+		 * 2.0 - z.z;
 
 //spherical fold
 double fR2_2 = 1.0;
@@ -118,7 +121,7 @@ zTemp.y = 2.0 * z.x * z.y * temp;
 zTemp.z = -2.0 * z.z * sqrt(x2 + y2);
 z = zTemp;
 z.z *= fractal->foldingIntPow.zFactor;
-		\end{verbatim}
+		\end{cppcode}
 	\end{minipage}
 \end{tabular} 
 
