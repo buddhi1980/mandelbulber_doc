@@ -6,8 +6,8 @@ before_install:
 
 script:
 - mkdir build
-- pdflatex -output-directory build handbook.tex
-- pdflatex -output-directory build handbook.tex
+- pdflatex -shell-escape -output-directory build handbook.tex
+- pdflatex -shell-escape -output-directory build handbook.tex
 - cd build
 - makeindex handbook.idx
 - cd ..
