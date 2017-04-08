@@ -1,6 +1,9 @@
+dist: trusty
+
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install texlive-latex-base texlive-latex-extra python-pygments
+- sudo apt-get install texlive-full texlive-latex-base texlive-latex-extra python-pygments
+
 script:
 - mkdir build
 - pdflatex -output-directory build handbook.tex
