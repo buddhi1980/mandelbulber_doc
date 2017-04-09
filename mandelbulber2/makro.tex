@@ -27,20 +27,25 @@
 % #5 : caption 2
 % #6 : label 2
 \def\twoImagesWithTwoCaptionsFullWidth#1#2#3#4#5#6{%
-\begin{figure}[H]
-\begin{center}
-\begin{minipage}[b]{0.4\textwidth}
-\includegraphics[height=0.7\linewidth]{#1}
-        \vspace*{-5mm}
-		\caption{#2}
-		\label{#3}
-\end{minipage}
-\begin{minipage}[b]{0.4\textwidth}
-    \includegraphics[height=0.7\linewidth]{#4}
-	    \vspace*{-5mm}
-		\caption{#5}
-		\label{#6}
-\end{minipage}
-\end{center}
-\end{figure}
+	\begin{figure}[H]
+		
+		\begin{center}
+			\begin{minipage}[b]{0.4\textwidth}
+				\begin{center}
+					\includegraphics[height=0.7\linewidth]{#1}
+					\vspace*{-5mm}
+					\caption{#2}
+					\label{#3}
+				\end{center}
+			\end{minipage}
+			\begin{minipage}[b]{0.4\textwidth}
+				\begin{center}
+					\includegraphics[height=0.7\linewidth]{#4}
+					\vspace*{-5mm}
+					\caption{#5}
+					\label{#6}
+				\end{center}
+			\end{minipage}
+		\end{center}
+	\end{figure}
 }
