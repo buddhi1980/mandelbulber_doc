@@ -18,6 +18,10 @@
 \usepackage{float}
 \usepackage[super]{nth}
 
+\usepackage[font={footnotesize,it}]{caption}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
 \usepackage{makeidx}
 \makeindex
 
@@ -67,14 +71,13 @@
 %}
 
 \lstset{language=C++,
-    basicstyle = \ttfamily,
 	keywordstyle = \color{blue}\ttfamily,
 	stringstyle = \color{red}\ttfamily,
 	commentstyle = \color[rgb]{0,0.7,0}\ttfamily,
 	morecomment = [l][\color{magenta}]{\#},
 	frame=lines,
 	framesep=0.5mm,
-	basicstyle=\tiny
+	basicstyle=\scriptsize\ttfamily
 }
 
 \usepackage{titlesec}

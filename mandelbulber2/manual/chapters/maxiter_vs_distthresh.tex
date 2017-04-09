@@ -24,36 +24,35 @@ runs to achieve Bailout\index{termination condition!bailout}, (then if bailout i
 Maxiter). (see page \pageref{bailout-maxiter})
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_disttrhersh}
-	{Example for 1st case - stop ray-marching at distance threshold}
-	{stop_raymarching_at_disttrhersh}
+{Example for 1st case - stop ray-marching at distance threshold}
+{stop_raymarching_at_disttrhersh}
 
-Ray-marching stops at distance threshold\index{ray marching!distance threshold}. In most cases the fractal iteration
+On figure \ref{stop_raymarching_at_disttrhersh} ray-marching stops at distance threshold\index{ray marching!distance threshold}. In most cases the fractal iteration
 loop stops on bailout condition\index{termination condition!bailout}, (because away from surface it is not possible
 to reach Maxiter). It makes rendering of fractals much faster.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_maxiter}
-	{Example for 2nd case: Stop ray-marching at Maxiter}
-	{stop_raymarching_at_maxiter}
+{Example for 2nd case: Stop ray-marching at Maxiter}
+{stop_raymarching_at_maxiter}
 
-Ray-marching stops at the photon step when the maximum number of iterations is
+On figure \ref{stop_raymarching_at_maxiter} ray-marching stops at the photon step when the maximum number of iterations is
 reached\index{termination condition!maxiter} (ray-marching distance threshold is ignored). In many cases iteration
 loop stops on bailout condition (away from fractal surface), but on the fractal
 surface the maximum number of iterations is calculated (when bailout is not
 reached).
 
-Example for 1st case: Stop ray-marching at bailout with low Maxiter \nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_disttrhersh_iter4}
+{Example for 1st case: Stop ray-marching at bailout with low Maxiter}
+{stop-raymarching-at-bailout-low-maxiter}
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_disttrhersh_iter4}
-
-When maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
+Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
 ray-marching is continued until the ray marching distance threshold is reached.
 
+\simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_maxiter_iter4}
+{Example for 2nd case: Stop ray-marching at maxiter with low maxiter}
+{stop ray-marching-at-maxiter-low-maxiter}
 
-Example for 2nd case: Stop ray-marching at maxiter with low maxiter \nopagebreak
-
-\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_maxiter_iter4}
-
-When maximum number of iterations is reached, then ray-marching is stopped even
+Figure \ref{stop ray-marching-at-maxiter-low-maxiter} shows case when maximum number of iterations is reached. Ray-marching is stopped even
 if distance threshold is not reached.
 
 
