@@ -2,7 +2,7 @@ dist: trusty
 
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install texlive-latex-base texlive-latex-extra
+- sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended
 
 script:
 - mkdir build

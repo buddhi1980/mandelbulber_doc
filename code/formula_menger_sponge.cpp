@@ -1,0 +1,10 @@
+z.x = fabs(z.x);
+z.y = fabs(z.y);
+z.z = fabs(z.z);
+if (z.x - z.y < 0.0) swap(z.x, z.y);
+if (z.x - z.z < 0.0) swap(z.x, z.z);
+if (z.y - z.z < 0.0) swap(z.y, z.z);
+z *= 3.0;
+z.x -= 2.0;
+z.y -= 2.0;
+if (z.z > 1.0) z.z -= 2.0;
