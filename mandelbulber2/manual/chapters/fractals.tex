@@ -6,7 +6,9 @@ details even at very high (up to infinite) magnification.\index{fractal}
 
 \subsection{Mandelbrot set}\label{mandelbrot-set}\index{Mandelbrot Set}
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/mandelbrot_set.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/mandelbrot_set.png}
+	{Mandelbrot Set}
+	{mandelbrot_set}
 
 This is a typical example of a two-dimensional fractal generated mathematically.
 This image is created with a very simple formula, which is calculated in many
@@ -41,6 +43,7 @@ determine if it belongs to the formula specific mathematical fractal set.
 The initial value of point \emph{z} is assigned to equal \emph{c}, ($ z_{0} = c
 $), this parameter is then used repeatedly in the iteration loop.
 
+\begin{center}
 \(z_{n + 1} = z_{n}^{2} + c\)
 
 \(z_{n + 2} = z_{n + 1}^{2} + c\)
@@ -48,6 +51,7 @@ $), this parameter is then used repeatedly in the iteration loop.
 \(z_{n + 3} = z_{n + 2}^{2} + c\)
 
 etc.
+\end{center}
 
 The program has to determine if these series are convergent. To do this
 iterations should be repeated an infinite number of times. But since a computer cannot
@@ -100,7 +104,12 @@ Some other types of 3D fractal objects are based on iterative algorithms (IFS -
 Iterated Function Systems\index{IFS}). An example would be the famous Menger Sponge\index{Menger Sponge}.
 \nopagebreak
 
-\includegraphics[height=0.4\linewidth]{img/manual/media/menger_sponge.png} \includegraphics[height=0.4\linewidth]{img/manual/media/sierpinski.png}
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/menger_sponge.png}
+	{Menger Sponge}
+	{menger_sponge}
+	{img/manual/media/sierpinski.png}
+	{Sierpinski}
+	{sierpinski}
 
 \subsection{Mandelbulber Program}\label{mandelbulber-program}
 

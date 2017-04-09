@@ -23,17 +23,17 @@ fractal iteration loop. It controls only ray-marching. The iteration loop always
 runs to achieve Bailout\index{termination condition!bailout}, (then if bailout is not reached the iteration stops at
 Maxiter). (see page \pageref{bailout-maxiter})
 
-Example for 1st case - stop ray-marching at distance threshold: \nopagebreak
-
-\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_disttrhersh}
+\simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_disttrhersh}
+	{Example for 1st case - stop ray-marching at distance threshold}
+	{stop_raymarching_at_disttrhersh}
 
 Ray-marching stops at distance threshold\index{ray marching!distance threshold}. In most cases the fractal iteration
 loop stops on bailout condition\index{termination condition!bailout}, (because away from surface it is not possible
 to reach Maxiter). It makes rendering of fractals much faster.
 
-Example for 2nd case: Stop ray-marching at Maxiter \nopagebreak
-
-\includegraphics[width=0.5\linewidth]{img/manual/media/stop_raymarching_at_maxiter}
+\simpleImageWithCaptionHalfWidth{img/manual/media/stop_raymarching_at_maxiter}
+	{Example for 2nd case: Stop ray-marching at Maxiter}
+	{stop_raymarching_at_maxiter}
 
 Ray-marching stops at the photon step when the maximum number of iterations is
 reached\index{termination condition!maxiter} (ray-marching distance threshold is ignored). In many cases iteration
