@@ -24,7 +24,7 @@ Cross section at $ z_z = 0 $ looks exactly the same as Mandelbrot Set.
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_mandelbulb_power_2}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{cppcode}
+	    \begin{lstlisting}
 double x2 = z.x * z.x;
 double y2 = z.y * z.y;
 double z2 = z.z * z.z;
@@ -35,7 +35,7 @@ double newz = -2.0 * z.z * sqrt(x2 + y2);
 z.x = newx;
 z.y = newy;
 z.z = newz;
-		\end{cppcode}
+        \end{lstlisting}
 	\end{minipage}
 \end{tabular} 
 
@@ -48,7 +48,7 @@ transformations where some of them are conditional. \nopagebreak
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_menger_sponge.png}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{cppcode}
+	\begin{lstlisting}
 z.x = fabs(z.x);
 z.y = fabs(z.y);
 z.z = fabs(z.z);
@@ -62,7 +62,7 @@ z *= 3.0;
 z.x -= 2.0;
 z.y -= 2.0;
 if (z.z > 1.0) z.z -= 2.0;
-		\end{cppcode}
+        \end{lstlisting}
 	\end{minipage}
 \end{tabular} 
 
@@ -82,7 +82,7 @@ The end of formula is the same as \emph{Mandelbulb Power 2}. \nopagebreak
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_box_fold_pwr2.png}	
 	& 
 	\begin{minipage}[b]{0.5\linewidth}
-		\begin{cppcode}
+	    \begin{lstlisting}
 //box fold
 if (fabs(z.x) > fractal->foldingIntPow.foldFactor)
 	z.x = sign(z.x) * fractal->foldingIntPow.foldFactor
@@ -121,7 +121,7 @@ zTemp.y = 2.0 * z.x * z.y * temp;
 zTemp.z = -2.0 * z.z * sqrt(x2 + y2);
 z = zTemp;
 z.z *= fractal->foldingIntPow.zFactor;
-		\end{cppcode}
+        \end{lstlisting}
 	\end{minipage}
 \end{tabular} 
 

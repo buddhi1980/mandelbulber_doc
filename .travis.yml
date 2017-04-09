@@ -2,16 +2,16 @@ dist: trusty
 
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install texlive-full texlive-latex-base texlive-latex-extra python-pygments
+- sudo apt-get install texlive-latex-base texlive-latex-extra
 
 script:
 - mkdir build
-- pdflatex -shell-escape -output-directory build handbook.tex
-- pdflatex -shell-escape -output-directory build handbook.tex
+- pdflatex -output-directory build handbook.tex
+- pdflatex -output-directory build handbook.tex
 - cd build
 - makeindex handbook.idx
 - cd ..
-- pdflatex -shell-escape -interaction nonstopmode -halt-on-error -file-line-error -output-directory build handbook.tex
+- pdflatex -interaction nonstopmode -halt-on-error -file-line-error -output-directory build handbook.tex
 - gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=build/handbook-compressed.pdf build/handbook.pdf
 
 deploy:

@@ -14,7 +14,7 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{hyperref}
-\usepackage{minted}
+\usepackage{listings}
 \usepackage[super]{nth}
 
 \usepackage{makeidx}
@@ -54,15 +54,26 @@
 	citecolor   = red
 }
 
+%deactivated, since too much hassle with setup, see lstlistings instead
 % set minted (code formatted) font size 
-\usemintedstyle{emacs}
+%\usemintedstyle{emacs}
+%\newminted{cpp}{
+%	frame=lines,
+%	framesep=2mm,
+%	baselinestretch=1,
+%	fontsize=\footnotesize,
+%	% linenos
+%}
 
-\newminted{cpp}{
+\lstset{language=C++,
+    basicstyle = \ttfamily,
+	keywordstyle = \color{blue}\ttfamily,
+	stringstyle = \color{red}\ttfamily,
+	commentstyle = \color{green}\ttfamily,
+	morecomment = [l][\color{magenta}]{\#},
 	frame=lines,
 	framesep=2mm,
-	baselinestretch=1,
-	fontsize=\footnotesize,
-	% linenos
+	basicstyle=\footnotesize
 }
 
 \usepackage{titlesec}
