@@ -4,6 +4,22 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Makro simple image with 75% width
+% #1 : file path
+% #2 : caption
+% #3 : label
+\def\simpleImageWithCaptionFullWidth#1#2#3{%
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=1.00\linewidth]{#1}
+			\vspace*{-2mm}
+			\caption{#2}
+			\vspace*{-8mm}
+			\label{#3}
+		\end{center}
+	\end{figure}
+}
+
 % Makro simple image
 % #1 : file path
 % #2 : caption
@@ -14,10 +30,44 @@
 	\includegraphics[width=0.5\linewidth]{#1}
 	    \vspace*{-2mm}
 		\caption{#2}
+		\vspace*{-8mm}
 		\label{#3}
 	\end{center}
 \end{figure}
 }
+
+% Makro simple image with 75% width
+% #1 : file path
+% #2 : caption
+% #3 : label
+\def\simpleImageWithCaption75Width#1#2#3{%
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.75\linewidth]{#1}
+		\vspace*{-2mm}
+		\caption{#2}
+		\vspace*{-8mm}
+		\label{#3}
+	\end{center}
+\end{figure}
+}
+
+% Makro simple image with 25% width
+% #1 : file path
+% #2 : caption
+% #3 : label
+\def\simpleImageWithCaptionSmallWidth#1#2#3{%
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.25\linewidth]{#1}
+			\vspace*{-2mm}
+			\caption{#2}
+			\vspace*{-8mm}
+			\label{#3}
+		\end{center}
+	\end{figure}
+}
+
 
 % Makro two images with two captions
 % #1 : file path 1

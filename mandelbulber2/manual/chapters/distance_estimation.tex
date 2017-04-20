@@ -33,7 +33,9 @@ of the fractal. The ray marching ceases when the photon becomes within a set
 ``distance threshold''\index{ray marching!distance threshold} from the surface or after a maximum number of iteration
 if the option ``stop at maximum iteration'' is enabled.
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/distance_estimation_defactor_1.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/distance_estimation_defactor_1.png}
+{Distance Estimation with DE factor 1}
+{distance_estimation_defactor_1}
 
 Since the estimation contains some error (sometimes quite large), there is a
 risk that the step of moving the "photon" will be too large, and incorrectly it
@@ -45,10 +47,11 @@ by a number between 0 and 1 ("ray-marching step multiplier"\index{ray marching!s
 smaller, so there is less risk of "overshooting" the surface, but the rendering
 time increases due to more steps being required.
 
-Below is an example for a step multiplier of 0.5:
 \nopagebreak
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/distance_estimation_defactor_05}
+\simpleImageWithCaptionHalfWidth{img/manual/media/distance_estimation_defactor_05.png}
+{Distance Estimation with DE factor 0.5}
+{distance_estimation_defactor_05}
 
 Raymarching with step multiplier 0.5 produces high iteration count and good DE
 
@@ -72,10 +75,12 @@ specific. The setting of formula parameters can also greatly affect the quality
 produced by the DE. In some cases the choice of fractal image is determined by
 what location and parameters can produce good DE quality.
 
-Statistics Tab with histogram data\index{statistics!wrong distance estimations}:
+%Statistics Tab with histogram data\index{statistics!wrong distance estimations}:
 \nopagebreak
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/dock_statistics.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/dock_statistics.png}
+{Statistics Tab with histogram data}
+{dock_statistic}
 
 In the Statistics (enable in \emph{View} menu) you can see \emph{Percentage of
 	Wrong Distance Estimations} ("Bad DE"). This number is the percentage of image

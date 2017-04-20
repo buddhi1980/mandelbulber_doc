@@ -7,36 +7,35 @@ frame. Limited number of keyframes is enough to define good looking animation.
 
 \subsection{Interpolation types}\label{interpolation-types}
 
-There are implemented several interpolation functions:
+Parameters in Mandelbulber can use different interpolation functions:
 
+\begin{multicols}{3}
 \begin{enumerate}
 	
 	\item None
-	
+
 	\item Linear
-	
+
 	\item Linear angle
 	
-	\item Akima
-	
+	\item Akima	
+
 	\item Akima angle
 	
 	\item Catmul-Rom
-	
-	\item Catmul-Rom angle degrees
+
+	\item Catmul-Rom angle
 	
 \end{enumerate}
+\end{multicols}
 
-\begin{samepage}
-	
-	The chart bellow shows comparison between different interpolation modes
-	
-	\includegraphics[width=1.0\linewidth]{img/manual/media/interpolations}
-	
-	As it is visible, depending which interpolation function will be used, the
-	final result of animation will be different.
-	
-\end{samepage}
+The chart in figure \ref{interpolations} shows a comparison between different interpolation modes
+As it is visible, depending which interpolation function will be used, the
+final result of animation will be different.
+
+\simpleImageWithCaptionFullWidth{img/manual/media/interpolations.png}
+{Interpolation types}
+{interpolations}
 
 \subsubsection{Interpolation - None}\label{interpolation-none}\index{interpolation!none}
 
@@ -44,7 +43,9 @@ Parameter is not interpolated. After every keyframe the value of parameter will
 have step change. This mode can be used with boolean values or with variables
 which have to be kept at constant levels for some number of keyframes.
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/interpolation_none}
+\simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_none.png}
+{Interpolation - None}
+{interpolation_none}
 
 \subsubsection{Interpolation - Linear}\label{interpolation-linear}\index{interpolation!linear}
 
@@ -58,7 +59,9 @@ interpolation mode is good for fractal parameters and material properties. It's
 not recommended to use it for camera or objects movement paths, because of rapid
 changes of speed.
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/interpolation_linear.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_linear.png}
+{Interpolation - Linear}
+{interpolation_linear}
 
 \subsubsection{Interpolation - Linear angle}\label{interpolation-linear-angle}
 

@@ -63,37 +63,27 @@ There are three modes for changing the relationship between camera and target.
 \end{itemize}
 
 \subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}\index{navigation!camera}
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/move_camera_and_target}
-\nopagebreak
-
-Movement mode - \emph{camera and target}
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/move_camera_and_target.png}
+{Movement mode - camera and target}
+{move_camera_and_target}
 
 Arrows move both the camera and the target by the same distance in the same
 direction. The angle of camera rotation does not change.
 
-
 \subsubsection{Move camera mode}\label{move-camera-mode}\index{navigation!camera}
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/move_only_camera}
-\nopagebreak
-
-Movement mode - \textit{camera}
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/move_only_camera.png}
+{Movement mode - camera}
+{move_only_camera}
 
 Moves only the camera and rotates it in respect to the motionless target.
 
 \subsubsection{Move target mode}\label{move-target-mode}\index{navigation!target}
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/move_target}
-\nopagebreak
-
-Movement mode - \emph{target}
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/move_target.png}
+{Movement mode - target}
+{move_target}
 
 Moves only the target while maintaining a fixed camera position. The camera
 rotates following the target. \textbf{Note:} In Relative Step Mode, the target
@@ -134,25 +124,19 @@ the same point but rotates following the target.
 	buttons}\label{camera-rotation-modes-using-the-arrow-buttons}
 
 \subsubsection{Rotate camera}\label{rotate-camera}\index{navigation!rotate}
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/rotate_camera}
-\nopagebreak
-
-Rotation mode - \emph{around camera}
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/rotate_camera.png}
+{Rotation mode - around camera}
+{rotate_camera}
 
 The camera is rotated by the rotation step around its axis and the target is
 moved accordingly. This is the standard mode for rotation of the camera.
 
 \subsubsection{Rotate around target}\label{rotate-around-target}
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/rotate_around_target}
-\nopagebreak
-
-Rotation mode - \emph{around target}
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/rotate_around_target.png}
+{Rotation mode - around target}
+{rotate_around_target}
 
 The camera is moved around the stationary target by the rotation step,
 maintaining a constant distance to the target. The camera is rotated to look at
@@ -206,12 +190,12 @@ There are various ways of animating, depending on the objective.
 
 The following example is a flight animation, with the camera trajectory
 approaching a location, with the camera rotating simultaneously so that the
-location is always observed, (as shown in the figure below). The camera
+location is always observed, (as shown in the figure \ref{camera_target_tracking}). The camera
 positions represent three keyframes.
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/camera_target_tracking.png}
-
-Keyframe Animation with differing distances camera to target
+\simpleImageWithCaptionHalfWidth{img/manual/media/camera_target_tracking.png}
+{Keyframe Animation with differing distances camera to target}
+{camera_target_tracking}
 
 Between the first and second keyframes, the camera and target both move large
 distances. But between the second and third keyframes, the camera moves a much
@@ -222,7 +206,8 @@ To compensate for this, on the Keyframe navigation tab use the button \emph{Set 
 same distance from the camera for all the frames} This adjusts all keyframes by
 setting a constant distance between camera and target. It is important to note
 that the use of this function does not change the visual effect for the
-keyframes, and will help correct interpolation.
-\nopagebreak
+keyframes, and will help correct interpolation. See figure \ref{camera_target_tracking_2}.
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/camera_target_tracking_2.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/camera_target_tracking_2.png}
+{Keyframe Animation with equal distances camera to target}
+{camera_target_tracking_2}
