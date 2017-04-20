@@ -78,9 +78,11 @@ x \leq x_{i+1}\]
 
 This interpolation method is very good for most of animated parameters. It can
 be used for camera and target animation and for many other parameters which
-should be animated in smooth way.
+should be animated in a smooth way.
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/interpolation_akima.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_akima.png}
+{Interpolation - Akima}
+{interpolation_akima}
 
 \subsubsection{Interpolation - Akima angle}\label{interpolation-akima-angle}
 
@@ -100,11 +102,13 @@ point on the spline.
 
 This interpolation gives very smooth results. Animated objects looks like made
 of springy materials. It can be used to animate fractal parameters and also
-camera path. This interpolation can produce oscillations, so has to be used
-carefully. As it is visible on the chart below, values went below zero when all
-of keyframe values were higher than zero.
+camera path. This interpolation can produce oscillations, so it has to be used
+carefully. As it is visible on figure \ref{interpolation_catmulrom}, 
+values went below zero even if all of keyframe values were higher than zero.
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/interpolation_catmulrom.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_catmulrom.png}
+{Interpolation - Catmul-Rom}
+{interpolation_catmulrom}
 
 \subsubsection{Interpolation - Catmul-Rom
 	angle}\label{interpolation-catmul-rom-angle}
@@ -119,32 +123,35 @@ parameters. If value exceed 360 degrees, then will go back to zero.
 
 Fast approaching the obstacle may cause inadvertent drag to the camera towards
 the center of the object. 
-\nopagebreak
 
-\includegraphics[width=0.4\linewidth]{img/manual/media/catmull-rom_collision.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_collision.png}
+{Interpolation - Catmul-Rom with collision}
+{catmull-rom_collision}
 
 It is recommended to maintain the principle that one
-keyframe does not reduce the distance to the object more than 5-times.
-\nopagebreak
+keyframe does not reduce the distance to the object more than five times.
 
-\includegraphics[width=0.4\linewidth]{img/manual/media/catmull-rom_no_collision.png}
-
+\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_no_collision.png}
+{Interpolation - Catmul-Rom without collision}
+{catmull-rom_no_collision}
 
 \subsubsection{Fly through the gap}\label{fly-through-the-gap}
 
 It is recommended to place a keyframe at the point where the camera flies
-through the gap
-\nopagebreak
+through the gap.
 
-\includegraphics[width=0.4\linewidth]{img/manual/media/catmull-rom_hole.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_hole.png}
+{Interpolation - Catmul-Rom through a hole}
+{catmull-rom_hole}
 
 \subsubsection{Proper conduct cameras between
 	objects}\label{proper-conduct-cameras-between-objects}
 
-Image below shows how keyframes should be located between objects to avoid collisions caused by interpolation functions.
-\nopagebreak  
+Figure \ref{catmull-rom_example} shows how keyframes should be located between objects to avoid collisions caused by interpolation functions.
 
-\includegraphics[width=0.4\linewidth]{img/manual/media/catmull-rom_example.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_example.png}
+{Interpolation - Catmul-Rom through a hole}
+{catmull-rom_example}
 
 \subsection{Changing interpolation types}\label{changing-interpolation-types}
 
@@ -153,4 +160,6 @@ options appear. In this example the main\_formula\_weight parameters have been
 changed from Akima to Linear. Interpolation type is color coded e.g. Linear
 parameters are highlighted in grey.
 
-\includegraphics[width=\linewidth]{img/manual/media/change_interpolation_type.png}
+\simpleImageWithCaptionFullWidth{img/manual/media/change_interpolation_type.png}
+{Changing an interpolation type}
+{change_interpolation_type}
