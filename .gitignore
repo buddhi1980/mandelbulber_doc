@@ -1,0 +1,7 @@
+############# IGNORES #############
+handbook.aux
+handbook.log
+handbook.out
+handbook.synctex.gz
+handbook.toc
+
