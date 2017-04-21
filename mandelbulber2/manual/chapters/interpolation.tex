@@ -122,26 +122,23 @@ parameters. If value exceed 360 degrees, then will go back to zero.
 \subsubsection{Collision}\label{collision}
 
 Fast approaching the obstacle may cause inadvertent drag to the camera towards
-the center of the object. 
-
-\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_collision.png}
-{Interpolation - Catmul-Rom with collision}
-{catmull-rom_collision}
-
-It is recommended to maintain the principle that one
+the center of the object. It is recommended to maintain the principle that one
 keyframe does not reduce the distance to the object more than five times.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_no_collision.png}
-{Interpolation - Catmul-Rom without collision}
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/catmull-rom_collision.png}
+{Catmul-Rom with collision}
+{catmull-rom_collision}
+{img/manual/media/catmull-rom_no_collision.png}
+{Catmul-Rom without collision}
 {catmull-rom_no_collision}
 
 \subsubsection{Fly through the gap}\label{fly-through-the-gap}
 
 It is recommended to place a keyframe at the point where the camera flies
-through the gap.
+through a hole / gap in the fractal.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_hole.png}
-{Interpolation - Catmul-Rom through a hole}
+\simpleImageWithCaptionSmallWidth{img/manual/media/catmull-rom_hole.png}
+{Interpolation - Catmul-Rom path through a hole}
 {catmull-rom_hole}
 
 \subsubsection{Proper conduct cameras between
@@ -149,8 +146,8 @@ through the gap.
 
 Figure \ref{catmull-rom_example} shows how keyframes should be located between objects to avoid collisions caused by interpolation functions.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/catmull-rom_example.png}
-{Interpolation - Catmul-Rom through a hole}
+\simpleImageWithCaptionSmallWidth{img/manual/media/catmull-rom_example.png}
+{Interpolation - Catmul-Rom path evading different obstacles}
 {catmull-rom_example}
 
 \subsection{Changing interpolation types}\label{changing-interpolation-types}
