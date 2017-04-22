@@ -21,9 +21,11 @@ Flight animation mode allows to edit every single animation frame in animation t
 	
 	\item disable all effects which can slow down rendering like ambient occlusion, reflections, transparency, volumetric lights, etc. All effects can be re-enabled before final rendering of animation.
 	
-	\item Open \emph{Flight animation} editor. It can be opened from top pull-down-menu by activating \emph{View} / \emph{Show animation dock}. On the bottom of application window will appear dock with \emph{Flight animation (every frame)} tab (showed below)
+	\item Open \emph{Flight animation} editor. It can be opened from top pull-down-menu by activating \emph{View} / \emph{Show animation dock}. On the bottom of application window will appear dock with \emph{Flight animation (every frame)} tab (showed on picture \ref{flight-animation-dock})
 	
-	\includegraphics[width=0.7\linewidth]{img/manual/media/flight_animation_dock.png}
+	\simpleImageWithCaption75Width{img/manual/media/flight_animation_dock.png}
+	{Flight animation dock}
+	{flight-animation-dock}
 	
 	\item Set parameters of animation
 	
@@ -66,10 +68,54 @@ Flight animation mode allows to edit every single animation frame in animation t
 	
 	Rendering of animation can be stopped at any time and continued later. When \emph{Render flight animation} is pressed, there will be rendered only these frames which are missing in folder with animation image frames. Already rendered frames will be skipped.
 	
-	\underline{Possible additional operations}
+\end{enumerate}
+	
+	\subsection{Flight animation - more options}
+	
+	\subsubsection{Adding more parameters to animation}
+	
+	There is possible to animate almost every parameter in Mandelbulber. Each edit field has assigned parameter. If you hold mouse pointer on edit field of interesting parameter, the tooltip will displayed. 
+	
+	\simpleImageWithCaption75Width{img/manual/media/tooltip_with_parameter_name.png}
+	{Example tooltip with parameter name}
+	{example-tooltip-with-parameter-name}
+		
+	Below parameter description there is \emph{Parameter name} (in showed example it is \emph{glow\_intensity})
+	
+	The parameter can be added to \emph{Flight animation}. If you right click on edit field, then use \emph{Add to flight animation} from context menu, the parameter will appear in animation table  (picture \ref{flight-animation-table})
+			
+	\subsubsection{Editing animation in the table}
+	
+	There is possible to edit every single animation frame in animation table. Every cell in the table is editable.  When value is being edited, the preview is refreshed.
+	
+		\simpleImageWithCaption75Width{img/manual/media/editing_parameters_in_flight_table.png}
+	{Animation table with all recorded frames and one additional parameter}
+	{flight-animation-table}
+	
+	On picture (picture \ref{flight-animation-table}) there are showed changes of \emph{main\_glow\_intensity}. On frame 2 is changed to 10 and on frame 5 is changed to 50.
+	
+	To get smooth change of value within selected range of frames there is an option to do linear interpolation of values. 
+	
+	\underline{Example:} We would like to have smooth transition of glow intensity starting from frame 30 (\emph{glow} = 0.2) and ending on frame 100 (\emph{glow} = 10)
+	\begin{itemize}
+		\item Right click in the table on cell for glow intensity at frame 100
+		\item Use option  \emph{Interpolate next frames}
+		\item \emph{Last frame number} set to 100
+		\item \emph{Value for last frame} set to 10
+		\item When you press OK, you should see that in the table the glow intensity parameter is increasing to 10 from frame 30 to 100
+	\end{itemize} 
+	
+	To cut animation at the start or at the and there is an option to delete range of frames. If you right click on the frame number, there are two options:
+	\begin{itemize}
+		\item \emph{Delete all frames to here}
+		\item \emph{Delete all frames from here}
+	\end{itemize}
+	
 	
 	%TODO adding of parameters to animation, manual editing, deleting of frames
 	
-\end{enumerate}
+
 
 \subsection{Keyframe animation - workflow}\label{keyframe-animation}
+
+	This section will be written soon
