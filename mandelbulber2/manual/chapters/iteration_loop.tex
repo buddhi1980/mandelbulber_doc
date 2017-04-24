@@ -1,17 +1,17 @@
 \section{Iteration loop}\label{iteration-loop}
 
 In section \ref{mandelbrot-set} it was mentioned that fractals are calculated
-by repeating a formula /emph{iterating} in an iteration loop. The iterations are counted starting from Iteration 0, and at the end of each iteration the count number is increased by 1, then the next iteration of the formula commences (e.g. Iters 0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, which is either when the iteration count equals the \emph{maxiter} or when the /emph({bailout}) condition is achieved.
+by repeating a formula /emph{iterating} in an iteration loop. The iteration count starts with iteration number 0, at the end of each iteration the count number is increased by 1, then the next iteration of the formula commences (e.g. sequence iters 0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, which is either when the iteration count equals the \emph{maxiter} or when the /emph({bailout}) condition is achieved.
 
-This section explains what is calculated within the iteration loop.
+This section explains the calculations within the iteration loop.
 
 A fractal formula is built from mathematical equations. These equations can be modifications of the Mandelbrot Set equation (e.g Mandelbulb), and also other mathematical equations.
 
-The equations are made from mathematical operators ( +, -, \times, \div)  and can include functions (e.g.\sin, \cos, \tan, \exp, \log, \sqrt{}, pow) and also conditions (e.g. if x > y then "get the result from an equation").
+The equations are made from mathematical operators ( +, -, \times, \div)  and can include functions (e.g.\sin, \cos, \tan, \exp, \log, \sqrt{}, pow) and also conditions (e.g. if x > y then "run an equation (s)").
 
 A set of equations that have a specific function within the formula are called /emph{transforms}, e.g rotation, scale.
 
-With each iteration of the formula, the point being iterated is \emph{mapped} (moved) to new coordinates.  
+With each iteration of the formula, the point being iterated is \emph{mapped} (moved) to new coordinates as a result of the mathematical equations.  
 
 \subsection{Single formula fractals}\label{single-formula-fractals}
 
@@ -74,8 +74,8 @@ transforms, some of them conditional. \nopagebreak
 \subsubsection{Box Fold Bulb Pow 2}
 \nopagebreak
 
-This formula is a made from a set of different transforms. It is a good example
-which shows that a fractal formula can be much more complicated than the
+This formula is made from a set of different transforms. It is a good example
+how a fractal formula can be more complicated than the
 \emph{Mandelbrot Set} formula.
 
 First part is a ``box fold''\index{transform!box fold} transform which conditionally maps the point in x,y,z  directions. Second part is a ``spherical fold''\index{transform!spherical fold} which does conditional scaling in a radial direction.
