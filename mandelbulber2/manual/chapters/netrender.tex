@@ -21,7 +21,9 @@ client's CPUs cores.
 
 On the computer which will be used as the Server, Mode is set to \emph{Server.}
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/netrender_server.png}
+\simpleImageWithCaption75Width{img/manual/media/netrender_server.png}
+{NetRender in 'Server' mode}
+{netrender_server}
 
 \emph{Local server port} should be set to one which is not used by other
 applications, and is passed through routers (if any are used) and firewall. The
@@ -43,7 +45,9 @@ $ mandelbulber2 --server --port 5555 pathToFileToRender.fract
 On the computers which will be used as Clents, \emph{Mode} is set to
 \emph{Client}
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/netrender_client.png}
+\simpleImageWithCaption75Width{img/manual/media/netrender_client.png}
+{NetRender in 'Client' mode}
+{netrender_client}
 
 The remote server address must be set to the same as the Server computer which
 is running Mandelbulber in Server mode. The address can be given as an IP
@@ -57,7 +61,9 @@ Press \emph{Connect to server} button to connect to the server
 Once the connection is established correctly, the client application should show
 the status \emph{READY}
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/netrender_client_connected.png}
+\simpleImageWithCaption75Width{img/manual/media/netrender_client_connected.png}
+{NetRender in 'Client' mode connected to the server}
+{netrender_client_connected}
 
 Alternative way to establish NetRender client is to use command line:
 
@@ -77,9 +83,11 @@ On the Server computer, in the table "List of connected clients" should be shown
 the name and address of the connected clients and the number of available
 processors (cores).
 
-i.e ``magda'' computer has 4 cores and is \emph{READY}.
+i.e in figure \ref{netrender_server_connected} ``magda'' computer has 4 cores and is \emph{READY}.
 
-\includegraphics[width=0.7\linewidth]{img/manual/media/netrender_server_connected.png}
+\simpleImageWithCaption75Width{img/manual/media/netrender_server_connected.png}
+{NetRender in 'Server' mode with a connected client}
+{netrender_server_connected}
 
 \subsubsection{Rendering}\label{rendering}
 

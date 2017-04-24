@@ -56,13 +56,14 @@ transf_stop_iterations_M 5;
 In the example the MengerSponge part is run only on iteration 4. A single
 iteration of another fractal to make a hybrid is often the best practice.
 
-In the Statistics (enable in View menu) you can see Percentage of Wrong Distance
-Estimations \index{statistics!wrong distance estimations}("Bad DE") is 0, which is good!!. As a general rule less than 0.01
+In the Statistics (enable in View menu) in figure \ref{mandelboxmenger_statistics} you can see Percentage of Wrong Distance
+Estimations \index{statistics!wrong distance estimations}("Bad DE") is 0, which is good! As a general rule less than 0.01
 is good, but it is case specific and 3.0 sometimes is OK and .0001 sometimes is
 not.
-\nopagebreak
 
-\includegraphics[width=0.5\linewidth]{img/manual/media/mandelboxmenger_statistics.png}
+\simpleImageWithCaptionHalfWidth{img/manual/media/mandelboxmenger_statistics.png}
+{Statistics tab of the MandelboxMenger formula}
+{mandelboxmenger_statistics}
 
 The \emph{Raymarching step multiplier}\index{ray marching!step multiplier} (\emph{Rendering Engine} tab) or
 \emph{fudge factor} is set at 0.6, which is good for a hybrid. If I change it to
@@ -192,17 +193,24 @@ As you see \textbf{Slot 2} is used only twice in the iteration process. If I had
 \subsection{Q\&A . How do you get different materials on different
 	shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
 
-This is how I have been doing it.\\[2\baselineskip]\emph{Rectangle at the bottom
-	marked A.}\\[2\baselineskip]This is where you~ start a new material or load an
+This is how I have been doing it, see also figure \ref{material_selection}:
+
+\emph{Rectangle at the bottom marked A.}
+
+This is where you~ start a new material or load an
 existing.~ The active material is highlighted in blue. Meaning it is active in
-the \textbf{material editor} where you create or modify the
-material.\\[2\baselineskip]\emph{Rectangle at top left marked
-	B.}\\[2\baselineskip]One way to use a material is to go to Global Parameters,
+the \textbf{material editor} where you create or modify the material.
+
+\emph{Rectangle at top left marked B.}
+
+One way to use a material is to go to Global Parameters,
 click on the material preview image, and the \textbf{Material Manager} UI will
 appear with the materials you have loaded or created. Click on the one you want
 to use, then close that UI.\\ Similarly with primitives, click on the material
 preview image. And with Boolean Mode each fractal/transform has it's own
 material preview image when you scroll down.
 
-\includegraphics[width=6.69291in,height=4.68465in]{img/manual/media/image32.jpg}
+\simpleImageWithCaption75Width{img/manual/media/material_selection.jpg}
+{Material selection}
+{material_selection}
 
