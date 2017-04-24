@@ -1,70 +1,133 @@
 \section{Iteration loop}\label{iteration-loop}
 
-In section \ref{mandelbrot-set} there was mentioned that fractals are calculated
-by repeating inside an iteration loop. The loop is terminated when the calculated
-number of iterations equals to \emph{maxiter} or the bailout condition is reached.
-In this section the calculations inside this loop will be explained.
+In section \ref{mandelbrot-set} it was mentioned that fractals are calculated
+by repeating a formula /emph{iterating} in an iteration loop. The iterations are counted starting from Iteration 0, and at the end of each iteration the count number is increased by 1, then the next iteration of the formula commences (e.g. Iters 0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, which is either when the iteration count equals the \emph{maxiter} or when the /emph({bailout}) condition is achieved.
+
+This section explains what is calculated within the iteration loop.
+
+A fractal formula is built from mathematical equations. These equations can be modifications of the Mandelbrot Set equation (e.g Mandelbulb), and also other mathematical equations.
+
+The equations are made from mathematical operators ( +, -, \times, \div)  and can include functions (e.g.\sin, \cos, \tan, \exp, \log, \sqrt{}, pow) and also conditions (e.g. if x > y then "get the result from an equation").
+
+A set of equations that have a specific function within the formula are called /emph{transforms}, e.g rotation, scale.
+
+With each iteration of the formula, the point being iterated is \emph{mapped} (moved) to new coordinates.  
 
 \subsection{Single formula fractals}\label{single-formula-fractals}
 
-The simplest 3D fractals are calculated using single fractal formula which is
-build from many equations and conditions. These equations can be modifications
-of Mandelbrot Set equation or can be different mathematical equations with
-several conditions.
+The simplest 3D fractals are calculated by iterating a single fractal formula. More complex fractals are made by iterating a mix of formulas, adding extra transforms, and/or including additional conditions. 
 
-Below there are 3 examples of fractals formulas with C language code
+Below there are 3 examples of fractals formulas written in C language code
 
 \subsubsection{Mandelbulb Power 2}\index{Mandelbulb} \nopagebreak
 
-This formula is modified Mandelbrot Set equation, expanded to \nth{3} dimension.
+This formula is a modified Mandelbrot Set equation, expanded to \nth{3} dimension.
 Cross section at $ z_z = 0 $ looks exactly the same as Mandelbrot Set.
 \nopagebreak
 
 \begin{tabular}{l l}
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_mandelbulb_power_2}	
-	  &   
+	& 
 	\begin{minipage}[b]{0.5\linewidth}
-	\lstinputlisting[caption={Formula > Mandelbulb Power 2}]{code/formula_mandelbulb_power_2.cpp}
+		\begin{verbatim}[fontsize=\scriptsize]
+		double x2 = z.x * z.x;
+		double y2 = z.y * z.y;
+		double z2 = z.z * z.z;
+		double temp = 1.0 - z2 / (x2 + y2);
+		double newx = (x2 - y2) * temp;
+		double newy = 2.0 * z.x * z.y * temp;
+		double newz = -2.0 * z.z * sqrt(x2 + y2);
+		z.x = newx;
+		z.y = newy;
+		z.z = newz;
+		\end{verbatim}
 	\end{minipage}
 \end{tabular} 
 
 \subsubsection{Menger Sponge}\index{Menger Sponge} \nopagebreak
 
-This formula is Iterated Function System (IFS). It contains several
-transformations where some of them are conditional. \nopagebreak
+This formula is an Iterated Function System (IFS). It contains several
+transforms, some of them conditional. \nopagebreak
 
 \begin{tabular}{l l}
-	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_menger_sponge.png}
-	  &   
+	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_menger_sponge.png}	
+	& 
 	\begin{minipage}[b]{0.5\linewidth}
-	\lstinputlisting[caption={Formula > Menger Sponge}]{code/formula_menger_sponge.cpp}
+		\begin{verbatim}[fontsize=\scriptsize]
+		z.x = fabs(z.x);
+		z.y = fabs(z.y);
+		z.z = fabs(z.z);
+		
+		if (z.x - z.y < 0.0) swap(z.x, z.y);
+		if (z.x - z.z < 0.0) swap(z.x, z.z);
+		if (z.y - z.z < 0.0) swap(z.y, z.z);
+		
+		z *= 3.0;
+		
+		z.x -= 2.0;
+		z.y -= 2.0;
+		if (z.z > 1.0) z.z -= 2.0;
+		\end{verbatim}
 	\end{minipage}
 \end{tabular} 
 
 \subsubsection{Box Fold Bulb Pow 2}
 \nopagebreak
 
-This formula is a set of different transforms and equations. It's a good example
-which shows that fractal formula can be much more complicated than
-\emph{Mandelbrot Set}.
+This formula is a made from a set of different transforms. It is a good example
+which shows that a fractal formula can be much more complicated than the
+\emph{Mandelbrot Set} formula.
 
-First part is ``box fold''\index{transform!box fold} transform which do
-transformations based on box walls. Second part is ``spherical
-fold''\index{transform!spherical fold} which do transformations based on sphere.
-The end of formula is the same as \emph{Mandelbulb Power 2}.\nopagebreak
+First part is a ``box fold''\index{transform!box fold} transform which conditionally maps the point in x,y,z  directions. Second part is a ``spherical fold''\index{transform!spherical fold} which does conditional scaling in a radial direction.
+The end of formula is the same as \emph{Mandelbulb Power 2}. \nopagebreak
 
 \begin{tabular}{l l}
 	\includegraphics[width=0.3\linewidth]{img/manual/media/formula_box_fold_pwr2.png}	
-	  &   
+	& 
 	\begin{minipage}[b]{0.5\linewidth}
-	\lstinputlisting[caption={Formula > Box fold Power 2}]{code/formula_box_fold_pwr2.cpp}
+		\begin{verbatim}[fontsize=\scriptsize]
+		//box fold
+		if (fabs(z.x) > fractal->foldingIntPow.foldFactor)
+		z.x = sign(z.x) * fractal->foldingIntPow.foldFactor * 2.0 - z.x;
+		if (fabs(z.y) > fractal->foldingIntPow.foldFactor)
+		z.y = sign(z.y) * fractal->foldingIntPow.foldFactor * 2.0 - z.y;
+		if (fabs(z.z) > fractal->foldingIntPow.foldFactor)
+		z.z = sign(z.z) * fractal->foldingIntPow.foldFactor * 2.0 - z.z;
+		
+		//spherical fold
+		double fR2_2 = 1.0;
+		double mR2_2 = 0.25;
+		double r2_2 = z.Dot(z);
+		double tglad_factor1_2 = fR2_2 / mR2_2;
+		
+		if (r2_2 < mR2_2)
+		{
+		z = z * tglad_factor1_2;
+		}
+		else if (r2_2 < fR2_2)
+		{
+		double tglad_factor2_2 = fR2_2 / r2_2;
+		z = z * tglad_factor2_2;
+		}
+		
+		//Mandelbulb power 2
+		z = z * 2.0;
+		double x2 = z.x * z.x;
+		double y2 = z.y * z.y;
+		double z2 = z.z * z.z;
+		double temp = 1.0 - z2 / (x2 + y2);
+		zTemp.x = (x2 - y2) * temp;
+		zTemp.y = 2.0 * z.x * z.y * temp;
+		zTemp.z = -2.0 * z.z * sqrt(x2 + y2);
+		z = zTemp;
+		z.z *= fractal->foldingIntPow.zFactor;
+		\end{verbatim}
 	\end{minipage}
 \end{tabular} 
 
 \subsubsection{Processing of single formula fractals}
 
-Single formula fractals are processed in a simple way. The calculation of the fractal
-formulas is repeated several times like it is shown in figure \ref{iteration_loops}. \nolinebreak \nopagebreak
+Single formula fractals are simply iterated several times until termination conditions are met, as shown in figure \ref{iteration_loops}. \nolinebreak \nopagebreak
 
 
 \simpleImageWithCaption75Width{img/manual/media/iteration_loops.png}
