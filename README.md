@@ -15,6 +15,6 @@ Tested on Windows 10 using miktex engine.
 # Create PDF Manual with Travis CI
 To Release the PDF, create a new tag. Example commands:
 ``` 
-git tag -a v2.11.0.6 -m "Mandelbulber doc v2.11.0.6"`
+git tag -a v2.11.0.6 -m "Mandelbulber doc v2.11.0.6"
 git push -u origin --tags
 ```
