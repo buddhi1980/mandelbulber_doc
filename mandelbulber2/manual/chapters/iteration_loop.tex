@@ -9,7 +9,7 @@ A fractal formula is built from mathematical equations. These equations can be m
 
 The equations are made from mathematical operators ($+, -, *, /$) 
 and can include functions (e.g. $\sin, \cos, \tan, \exp, \log, sqrt, pow$) 
-and also conditions (e.g. if x > y then "run an equation (s)").
+and also conditions (e.g. if x > y then "run an equation(s)").
 
 A set of equations that have a specific function within the formula are called \emph{transforms}, e.g rotation, scale.
 
@@ -50,7 +50,7 @@ transforms, some of them conditional. \nopagebreak
 
 \subsubsection{Box Fold Bulb Pow 2}
 
-This formula is made from a set of different transforms. It is a good example
+This formula is made from a set of different transforms. It is a good example of
 how a fractal formula can be more complicated than the
 \emph{Mandelbrot Set} formula.
 
@@ -74,28 +74,31 @@ Single formula fractals are simply iterated several times until termination cond
 {Simple Iteration loops with one formula}
 {iteration_loops}
 
-When the calculation of the iteration loop finishes the result value of \emph{z} is
+When the calculation of the iteration loop finishes the resulting final value of \emph{z} is
 used to estimate the distance to the fractal body and to calculate the color of the surface.
 
 \subsection{Hybrid fractals}\index{fractal!hybrid}
 
-It is possible to mix different fractal formulas by alternating their use in the iteration loop.
+It is possible to mix different fractal formulas in a sequence within the iteration loop.
 This way new fractal shapes can be achieved. These fractal combinations are named \emph{hybrid fractals}. 
-In the Mandelbulber program there are already many different fractal formulas available which give the user 
-the opportunity to use a vast variety of shapes.
+There are many different fractal formulas available in the Mandelbulber program, which allows the user to create a vast variety of hybrid shapes.
 
 \subsubsection{Iteration loop of hybrid fractals}
 
-In general hybrid fractals are calculated in the same way as regular fractals.
-The calculation consists of iteration loop, \emph{maxiter} and \emph{bailout} condition. The
-difference is in the body of the iteration loop: Instead of one fractal formula there
-can be used a different fractal formula in every iteration. The defined
-sequence decides in which iteration which formula will be used as the calculation step.
+In general hybrid fractals are calculated in a similar way to single formula fractals.
+The calculation consists of the iteration loop, \emph{maxiter} and \emph{bailout} condition. The
+difference is that in a hybrid iteration loop, a user can include up to nine different fractal formulas (or transforms), and create various sequences. A user can also create hybrid sequences by using other copies of a formula that have different parameter settings.
+Each formula is configured in a separate slot (tab).
+\simpleImageWithCaption75Width{img/manual/media/fractal_tabs.png}
+{Fractal Tab - Formula only in first slot}
+{fractal_tabs}
+
+The iteration count numbers define when in the sequence each formula is calculated.
 How the sequence will work depends on the following selections:
 \begin{itemize}
-	\item Which fractal formulas are selected in formula slots
+	\item Which fractal formulas are selected in the formula slots
 	\item How many iterations are assigned to each formula
-	\item Range of iteration numbers where formula will be used
+	\item The range of iteration numbers when the formula will be used
 	\item From which fractal slot the sequence will be repeated
 \end{itemize}
 
@@ -103,15 +106,7 @@ How the sequence will work depends on the following selections:
 {Complex Iteration loop with hybrid fractal}
 {iteration_loop_hybrid}
 
-In Mandelbulber it is possible to define nine different fractal formulas which
-ca be alternated. Each formula is configured in a separate slot (tab).
-
-\simpleImageWithCaption75Width{img/manual/media/fractal_tabs.png}
-{Fractal Tab - Formula only in first slot}
-{fractal_tabs}
-
-By default it is possible to setup the fractal formula in the first slot only,
-because the program works in single fractal formula mode. There are two ways to
+By default the program works in single fractal formula mode, where you can only configure the first slot, (tab #1). There are two ways to
 enable hybrid fractals:
 \begin{itemize}
 	\item Click in any slot with a number higher than one. The program will ask if you want to
@@ -119,8 +114,8 @@ enable hybrid fractals:
 	\item Go to \emph{Objects} / \emph{Hybrid} tab. Tick \emph{Enable hybrid fractals} checkbox.
 \end{itemize}
 
-After that you can switch to any slot and define fractal formulas in each slot
-(if needed) like it's shown in figure \ref{fractal_tabs_with_defined_fractals_tabs_highlighted}.
+Once hybrid fractals has been enabled, a user can choose additional formulas from the dropdown menus in any of the nine slots,
+like as shown in figure \ref{fractal_tabs_with_defined_fractals_tabs_highlighted}.
 In this figure \emph{Mandelbulb - Power 2} is selected in slot \#1, \emph{Menger Sponge}
 in slot \#2 and \emph{Box Fold Bulb Pow 2} in slot \#3. These formulas will be
 used in the next examples.
@@ -131,130 +126,136 @@ used in the next examples.
 
 \subsubsection{One iteration for each slot}
 
-The simplest way how hybrid fractal can be defined is to use each fractal
-formula for only one iteration in the looped sequence.
+The simplest way to create a hybrid fractal is a sequence where formulas are calculated one after another, then the sequence is repeated until termination conditions are met.
 
 In figure \ref{iteration_loop_hybrid_sequence_1}, the sequence consists of one \emph{Mandelbulb - Power 2}, one \emph{Menger Sponge} and
-one \emph{Box Fold Bulb Pow 2}. The length of the sequence is three, so by every three
-iterations the sequencer repeats with the first slot.
+one \emph{Box Fold Bulb Pow 2}. The length of the sequence is three slots, so after every third iteration the sequence repeats from the first slot. The numbers are the Iteration Count, starting at Iteration 0. The count increases by 1 after \underline{every} iteration performed in the iteration loop.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_1.png}
-{Hybrid sequence - Simple sequence for three different formulas}
+{Hybrid sequence - Simple sequence using three different formulas}
 {iteration_loop_hybrid_sequence_1}
 
-This sequence gives a shape which is a mix of properties of all three
+This sequence gives a shape combining properties of all three
 formulas, see figure \ref{hybrid_sequence_example_1}.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_1.png}
-{Hybrid sequence render - Simple sequence for three different formulas}
+{Hybrid sequence render - Simple sequence using three different formulas}
 {hybrid_sequence_example_1}
 
 Because in the first iteration (slot \#1) \emph{Mandelbulb - Power 2} is used, the general shape
-of the fractal is a little similar to \emph{Mandelbulb - Power 2}.
+of the fractal has some similarities to the \emph{Mandelbulb - Power 2}.
 
-In the next iteration the \emph{Menger Sponge} formula is used. A single iteration
+\emph{Note: Generally, the first few iterations of a fractal strongly influence the final hybrid fractal shape.}
+
+In the next iteration \emph{Menger Sponge} formula is used. A single iteration
 of this formula produces the shape of figure \ref{single_iteration_of_menger_sponge}.
 
 \simpleImageWithCaptionSmallWidth{img/manual/media/single_iteration_of_menger_sponge.png}
 {Single iteration of the Menger Sponge}
 {single_iteration_of_menger_sponge}
 
-Some properties of this shape are transferred to the generated shape of the hybrid fractal.
+Some features of this shape are transferred to the generated shape of the hybrid fractal.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/single_iteration_of_menger_sponge_hybrid.png}
 {Hybrid with Menger Sponge features marked in red}
 {single_iteration_of_menger_sponge_hybrid}
 
-The Menger sponge shape is distorted, because \emph{Mandelbulb - Power 2} has
+The Menger Sponge shape is distorted, because \emph{Mandelbulb - Power 2} has
 already deformed the space.
 
 The third formula \emph{Box Fold Bulb Pow 2} adds leaf-like features to the shape.
 
 \simpleImageWithCaptionSmallWidth{img/manual/media/hybrid_sequence_example_1_leaf_shapes.png}
-{Hybrid close up on leaf-like shapes produced by 'Box Fold Bulb Pow 2' formula}
+{Hybrid close up of leaf-like shapes produced by 'Box Fold Bulb Pow 2' formula}
 {hybrid_sequence_example_1_leaf_shapes}
 
 \subsubsection{More iterations for each slot}
 
-In each slot it is configurable how many times the fractal formula will be used in the sequence.
-On the tab for the given fractal there is parameter \emph{Iterations}.
-By default it is set to 1. If this value was increased to 2 on the first and the second tab,
-the sequence of formulas are like they are visible in figure \ref{iteration_loop_hybrid_sequence_2}. \label{two-iterations-per-slot}
+With each slot a user can define how many times the fractal formula will be used in the sequence.
+On each of the nine slots there is a parameter named \emph{Iterations} which is set to 1 by default.
+This is the number of iterations (repeats) of the formula performed before the loop moves on to the next formula in the sequence.
+If this value is increased to 2 on the first and second formula slots,
+then the sequence of the formulas will be as shown in figure \ref{iteration_loop_hybrid_sequence_2}. \label{two-iterations-per-slot}
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_2.png}
-{Hybrid sequence - Iteration count on first and second tab set to two}
+{Hybrid sequence - The first and second slots set to 2 repeat iterations}
 {iteration_loop_hybrid_sequence_2}
 
-The first and the second formula is repeated twice and the third only once.
-The fractal will get the shape in figure \ref{hybrid_sequence_example_2}:
+The first and second formulas are repeated twice and the third formula only once.
+The resulting fractal shape is shown in figure \ref{hybrid_sequence_example_2}:
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_2.png}
-{Hybrid sequence result - Iteration count on first and second tab set to two}
+{Hybrid sequence result - The first and second slots set to 2 repeat iterations}
 {hybrid_sequence_example_2}
 
-Because \emph{Mandelbulb - Power 2} has two iterations at the beginning, the shape of this formula is more visible.
+Because the \emph{Mandelbulb - Power 2} calculation is repeated for two iterations at the beginning, the shape of this initial formula strongly influences the final shape of the hybrid fractal.
 
-If the parameter \emph{Iterations} on the second tab is set to 10,
+If the parameter \emph{Iterations} on the second slot is set to 10,
 then the \emph{Menger Sponge} formula is used from iteration 2 to iteration 11.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_3.png}
-{Hybrid sequence - Iteration count on second tab set to ten}
+{Hybrid sequence - The second slot set to 10 repeat iterations}
 {iteration_loop_hybrid_sequence_3}
 
-Like before the initial shape is defined by the first two iterations of \emph{Mandelbulb - Power 2},
-but the high number of \emph{Menger Sponge} iterations makes \emph{Menger Sponge} features very well visible.
+As above, the initial shape is mainly defined by the first two iterations of \emph{Mandelbulb - Power 2},
+but the high number of \emph{Menger Sponge} iterations makes the \emph{Menger Sponge} features being more apparent.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_3.png}
-{Hybrid sequence result - Iteration count on second tab set to ten}
+{Hybrid sequence result - The second slot set to 10 repeat iterations}
 {hybrid_sequence_example_3}
 
 \subsubsection{Range of iterations for slot}
 
-The sequence of fractal formulas can be configured more sophisticated.
-It is possible to define a range of iterations on which a given formula will be used.
+The sequences can become more complicated by specifying the range of iterations when a formula will be calculated in the loop.
 
-The second formula slot (\emph{Menger Sponge}) in the sequence of figure \ref{iteration_loop_hybrid_sequence_4} has the range of iterations set to \emph{from 4 to 250}.
 On each tab the parameters \emph{Start at iteration} and {Stop at iteration} are used to define this range.
+
+During running the iteration loop, the program is moving through the enabled formula slots, checking formula iteration range conditions. If the current Iteration Count number is within the range then an iteration of that formula is performed, and the Iteration Count is increased by 1.
+
+The second formula slot (\emph{Menger Sponge}) in the sequence shown in figure \ref{iteration_loop_hybrid_sequence_4}, has the iteration range set to \emph{from 4 to 250}.
+
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_4.png}
 {Hybrid sequence - Range of iteration set to 4-250 on first tab}
 {iteration_loop_hybrid_sequence_4}
 
-During the first pass of the sequence \emph{Menger Sponge} formula could be used at iterations 2 and 3.
-Because \emph{Start at iteration} was 4 this formula slot was skipped.
+During the first pass of the sequence \emph{Menger Sponge} formula could not be used at iterations 2 and 3,
+because \emph{Start at iteration} was 4 for this formula and therefore the slot was skipped.
 During the second pass of the sequence \emph{Menger Sponge} formula was used at iterations 5 and 6,
-because these iterations are inside the defined range of iterations.
+because those iterations were inside the defined range of iterations.
 
-The shape of the resulting fractal is visible in figure \ref{hybrid_sequence_example_4}
+The shape of the resulting fractal is shown in figure \ref{hybrid_sequence_example_4}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_4.png}
-{Hybrid sequence result - Range of iteration set to 4-250 on first tab}
+{Hybrid sequence result - Range of iteration set to 4-250 on first formula slot}
 {hybrid_sequence_example_4}
 
-Because iteration number 2 is \emph{Box Fold Bulb Pow 2} formula the shape of it is much more visible.
+Because at iteration number 2 \emph{Menger Sponge} formula was skipped, the \emph{Box Fold Bulb Pow 2} formula has much more influence on the final shape.
 
 \subsubsection{Changed order in sequence}
 
-The order of fractal formulas can be easily changed with the use of the arrow buttons.
+The order of fractal formulas can be easily changed between slots with the use of the arrow buttons.
 
 \simpleImageWithCaption75Width{img/manual/media/fractal_tabs_with_defined_fractals_arrows.png}
 {Fractal tabs with highlighted tab-arrows}
 {fractal_tabs_with_defined_fractals_arrows}
 
-Pressing these buttons causes swapping of fractal tabs and by that a swapping of the position inside the sequence.
+Pressing these buttons causes swapping of fractal formula tabs between slots, and therefore changes the formula's position inside  the sequence.
 
-Example based on first case showed in section \ref{two-iterations-per-slot}:
-Swapped \emph{Mandelbulb - Power 2} and \emph{Menger Sponge} gives the sequence of figure \ref{iteration_loop_hybrid_sequence_5}.
+Example based on first case shown in section \ref{two-iterations-per-slot}:
+Swapped \emph{Mandelbulb - Power 2} and \emph{Menger Sponge} creates the sequence shown in figure \ref{iteration_loop_hybrid_sequence_5}.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_5.png}
 {Hybrid sequence - Swapped tab one and two}
 {iteration_loop_hybrid_sequence_5}
 
-As visible in figure \ref{hybrid_sequence_example_5}, the shape of the fractal is completely different.
+As evident in figure \ref{hybrid_sequence_example_5}, the shape of the fractal is completely different.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_5.png}
 {Hybrid sequence render - Swapped tab one and two}
 {hybrid_sequence_example_5}
 
-Even if the the same fractal formulas are used and in the same number of iterations per slot, the shape strongly depends on the order of the formulas.
-Now first \emph{Menger Sponge} formula gives initial shape of fractal and \emph{Mandelbulb - Power 2} only modifies the details.
+Now the first \emph{Menger Sponge} formula creates the initial shape of the fractal, and \emph{Mandelbulb - Power 2} only modifies the details.
+
+Even if the same fractal formulas are used in each slot, and for the same number of iterations, the final shape will strongly depend on the parameter settings of the first few formulas that are iterated. There are also a few formulas and transforms which have a very strong influence on the final shape, and these are often run for just 1 or 2 iterations during the iterating of the fractal.
+
