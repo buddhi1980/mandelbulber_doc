@@ -1,19 +1,24 @@
 \section{Iteration loop}\label{iteration-loop}
 
 In section \ref{mandelbrot-set} it was mentioned that fractals are calculated
-by repeating a formula \emph{iterating} in an iteration loop. The integer \emph{"i"} is used to represent the \emph{iteration count} number.
+by repeating a formula \emph{iterating} in an iteration loop. 
+The integer \emph{"i"} is used to represent the \emph{iteration count} number.
 
-The iteration count starts with i = 0, then at the end of each iteration the count number is increased by 1, and the next iteration of the formula commences (e.g.iteration count  0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, which is either when the iteration count i =  \emph{maxiter} or when the \emph({bailout}) condition is achieved. 
+The iteration count starts with i = 0, then at the end of each iteration the
+count number is increased by 1, and the next iteration of the formula commences 
+(e.g. iteration count  0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, 
+which is either when the iteration count i =  \emph{maxiter} or when the \emph({bailout}) condition is achieved. 
 
 This section explains the calculations within the iteration loop.
 
-A fractal formula is built from mathematical equations. These equations can be modifications of the Mandelbrot Set equation (e.g Mandelbulb), and also other mathematical equations.
+A fractal formula is built from mathematical equations. 
+These equations can be modifications of the Mandelbrot Set equation (e.g Mandelbulb) and also other mathematical equations.
 
 The equations are made from mathematical operators ($+, -, *, /$) 
 and can include mathematical functions (e.g. $\sin, \cos, \tan, \exp, \log, sqrt, pow, fabs$) 
 and also mathematical conditions (e.g. if x > y then "compute following equation(s)", if i > 4 then "compute following equation(s)").
 
-The equations are applied to vector z or any parts of z (i.e the z.x, z.y & z.z components)
+The equations are applied to vector z or any parts of z (i.e the z.x, z.y and z.z components)
 
 Examples:
 \emph{z.x = fabs(z.x);} is using the function fabs (i.e. z.x is assigned the absoulute value of z.x)
@@ -99,7 +104,8 @@ In general hybrid fractals are calculated in a similar way to single formula fra
 The calculation consists of the iteration loop, \emph{maxiter} and \emph{bailout} condition. The
 difference is that when \emph{hybrid mode} is enabled, a user can create a \emph{sequence} of up to nine different fractal formulas (or transforms) inside the iteration loop. 
 
-By default the program works in single fractal formula mode, where you can only configure the parameters of the formula tab in the first slot, (#1). There are two ways to enable hybrid fractals:
+By default the program works in single fractal formula mode, where you can only configure the parameters of the formula tab in the first slot,
+(\#1). There are two ways to enable hybrid fractals:
 \begin{itemize}
 	\item Click in any slot with a number higher than one. The program will ask if you want to
 	enable hybrid fractals or boolean mode. Select \emph{Enable hybrid fractals}
@@ -123,7 +129,9 @@ Each formula's parameters can be configured in the formula tab opened in an enab
 
 The iteration count numbers determine when in the sequence each formula is calculated.
 
-The sequence is in the order of enabled formula slots from #1 to slot #9, (e.g. If the sequence is calculating formulas in slots #1 and #5, then the iteration loop repeats the sequence of slot #1 calculation followed by slot #5 calculation.)
+The sequence is in the order of enabled formula slots from \#1 to slot \#9, (e.g. If the sequence is calculating formulas in slots
+\#1 and \#5, then the iteration loop repeats the sequence of slot \#1 calculation followed by slot
+\#5 calculation.)
 How the sequence will work depends on the following selections:
 \begin{itemize}
 	\item Which fractal formulas are selected in the formula slots
@@ -154,7 +162,7 @@ formulas, see figure \ref{hybrid_sequence_example_1}.
 {Hybrid sequence render - Simple sequence using three different formulas}
 {hybrid_sequence_example_1}
 
-Because the first iteration is (slot #1) \emph{Mandelbulb - Power 2}, the general shape
+Because the first iteration is (slot \#1) \emph{Mandelbulb - Power 2}, the general shape
 of the fractal will be simlar in shape to the \emph{Mandelbulb - Power 2}.
 
 \emph{Note: Generally, the first few iterations of a fractal strongly influence the final hybrid fractal shape.}
