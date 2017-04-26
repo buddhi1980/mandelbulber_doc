@@ -25,17 +25,16 @@ modes for its use:
 The \textbf{step} for moving the camera and/or target in a linear direction is
 calculated relative to the estimated distance from the surface of the fractal.
 The closer to the surface that the camera is located, the smaller the step. This
-prevents movement of the camera beneath the surface of fractal, because very
-close to the surface, a step needs to be very small.
+prevents the camera moving to a location beneath the surface of the fractal.
 
 The actual step is equal to the distance from the fractal multiplied by the
 parameter \textbf{step}.
 
-Example: If in this mode, the step is set at 0.5 and the nearest point of the
-fractal is 3.0, this camera will be moved 1.5 (no matter in which direction).
+Example: If the step is set at 0.5 and the nearest point of the
+fractal is 3.0, the camera will be moved 1.5 (no matter in which direction).
 
-Relative step mode makes navigation easier, because a user don't need to think
-how much camera have to be moved to not hit the fractal surface.
+Relative step mode makes navigation easier, because a user does not need to think about the movement size required to avoid
+the camera moving into the fractal.
 
 In animations this mode is recommended when camera is approaching the surface of
 the fractal.
@@ -46,7 +45,7 @@ Step movement of the camera and/or target is fixed. Therefore if the step is set
 at 0.5, the movement will be 0.5 in the direction of the arrow key or mouse
 pointer.
 
-This mode is recommended for animation camera flying with a fixed (or strictly
+This mode is recommended for flight animation with the camera flying at a fixed (or strictly
 controlled) speed.
 
 \subsection{Linear camera and target movement modes using the arrow
