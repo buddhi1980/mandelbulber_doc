@@ -13,15 +13,21 @@
 \newcommand{\mSubtitle}{End User Manual}
 \newcommand{\mVersionDocument}{2.11.0.9.5}
 \newcommand{\mDateDocument}{2017-April}
-\newcommand{\mAuthor}{
-	
-Krzysztof Marczak (\href{mailto:buddhi1980@gmail.com}{buddhi1980@gmail.com}),
-
-Graeme McLaren (\href{mailto:mclarekin@gmail.com}{mclarekin@gmail.com}),
-
-Sebastian Jennen (\href{mailto:sebastian.jennen@gmx.de}{sebastian.jennen@gmx.de}),
-
-Robert Pancoast (\href{mailto:RobertPancoast77@gmail.com}{RobertPancoast77@gmail.com})}
+\newcommand{\mAuthor}{	
+\begin{tabular}{r|p{11cm}}
+	\textsc{Krzysztof Marczak:}
+		& (\href{mailto:buddhi1980@gmail.com}
+		{buddhi1980@gmail.com}) \\
+	\textsc{Graeme McLaren:}
+		& (\href{mailto:mclarekin@gmail.com}
+		{mclarekin@gmail.com}) \\
+	\textsc{Sebastian Jennen:}
+		& (\href{mailto:sebastian.jennen@gmx.de}
+		{sebastian.jennen@gmx.de}) \\
+	\textsc{Robert Pancoast:}
+		& (\href{mailto:RobertPancoast77@gmail.com}
+		{RobertPancoast77@gmail.com})
+\end{tabular}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -34,31 +40,50 @@ Robert Pancoast (\href{mailto:RobertPancoast77@gmail.com}{RobertPancoast77@gmail
 
 %%% Title
 \begin{titlepage}
-	\begin{center}
-		\vspace{1.5cm}
-			\includegraphics[width=5cm]{img/mandelbulber_logo.png} \\
-		\vspace{0.5cm}
-		\Huge\textbf{\mTitle}\\
-		\Huge\mSubtitle\\
-		\vspace{1.5cm}
+\begin{center}
+	\vspace{1.5cm}
+		\includegraphics[width=5cm]{img/mandelbulber_logo.png} \\
+	\vspace{0.5cm}
+	\Huge\textbf{\mTitle}\\
+	\Huge\mSubtitle\\
+	\vspace{1.5cm}
+	
+	%%% Build Information
+	\begin{tabular}{c}
 		\large\textbf{Version \mVersionDocument} (\mDateDocument)\\
-		\vspace{1.5cm}
-	\end{center}
+		\specialrule{3.14159265358979pt}{1pt}{1pt}
+	\end{tabular}
+	\break
 	\normalsize
-	\begin{flushleft}
-                        \hspace{3cm} \textbf{Download:}         \hfill \url{https://sourceforge.net/projects/mandelbulber/}\\
-                        \hspace{3cm} \textbf{Project Website:}  \hfill \url{https://github.com/buddhi1980/mandelbulber2/}\\
-                        \hspace{3cm} \textbf{Forum:}            \hfill \url{http://www.fractalforums.com/mandelbulber/}\\
-	\end{flushleft}
-	\vspace{2cm}
-	\textbf{Editors:}\\
-	\mAuthor\\
+	\begin{tabular}{r|p{11cm}}
+		\textsc{Download:}
+		& (\href{https://sourceforge.net/projects/mandelbulber/}
+		{https://sourceforge.net/projects/mandelbulber/}) \\
+		\textsc{Development:}
+		& (\href{https://github.com/buddhi1980/mandelbulber2/}
+		{https://github.com/buddhi1980/mandelbulber2/}) \\
+		\textsc{Community:}
+		& (\href{http://www.fractalforums.com/mandelbulber/}
+		{http://www.fractalforums.com/mandelbulber/})                        
+    \end{tabular}
 	\vspace{3cm}
+	
+	%%% Editors
+	\begin{tabular}{c}
+		\large\textbf{Editors}\\
+		\specialrule{1.618033988749895pt}{1pt}{1pt}
+	\end{tabular}
+	\break
+	\mAuthor\\
+	\vspace{4.5cm}
+	
+	%%% BG Image
 	\begin{flushright}
-		\small{background image by Torsten Stier (2017)}\\	
-	        \hspace{1cm}
+	\tiny{background image by Torsten Stier (2017)}\\	
+    \hspace{1cm}
 	\end{flushright}
 	\vfill
+\end{center}
 \end{titlepage}
 
 %%% Table of contents
