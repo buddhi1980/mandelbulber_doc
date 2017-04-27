@@ -1,13 +1,13 @@
 \section{Ray-marching - Maximum number of iterations vs. distance threshold
 	condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}
 
-The \emph{ray marching distance threshold}index{ray marching!distance threshold} is the condition where the photon
+The \emph{ray marching distance threshold}\index{ray marching!distance threshold} is the condition where the photon
 marching along the ray comes within a specified distance from the fractal
 surface and the ray-marching stops. This controls the size of the detail in the
 image, and is normally set to vary such that greater detail is obtained for the
 surface closest to the camera, (in the further regions of the fractal the
 distance threshold will be larger such that only bigger details are visible).
-Enabling \emph{Constant Detail Size}index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will
+Enabling \emph{Constant Detail Size}\index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will
 make the distance threshold uniform.
 
 There are two modes of stopping the ray-marching of each image pixel.
@@ -26,6 +26,7 @@ Maxiter). (see page \pageref{bailout-maxiter})
 On figure \ref{stop_raymarching_at_disttrhersh} ray-marching stops at distance threshold\index{ray marching!distance threshold}. In most cases the fractal iteration
 loop stops on bailout condition\index{termination condition!bailout}, (because away from surface it is not possible
 to reach Maxiter). It makes rendering of fractals much faster.
+
 On figure \ref{stop_raymarching_at_maxiter} ray-marching stops at the photon step when the maximum number of iterations is
 reached\index{termination condition!maxiter} (ray-marching distance threshold is ignored). In many cases iteration
 loop stops on bailout condition (away from fractal surface), but on the fractal
@@ -48,6 +49,7 @@ reached).
 
 Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
 ray-marching is continued until the ray marching distance threshold is reached.
+
 Figure \ref{stop ray-marching-at-maxiter-low-maxiter} shows case when maximum number of iterations is reached. Ray-marching is stopped even
 if distance threshold is not reached.
 

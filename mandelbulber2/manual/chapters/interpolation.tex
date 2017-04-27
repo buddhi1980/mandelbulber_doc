@@ -27,7 +27,8 @@ Parameters in Mandelbulber can be transitioned using several interpolation modes
 \end{enumerate}
 \end{multicols}
 
-The chart in figure \ref{interpolations} shows a comparison between different interpolation modes
+The chart in figure \ref{interpolations} shows a comparison between different interpolation modes.
+
 The choice of mode, greatly effects the animation.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/interpolations.png}
@@ -71,7 +72,7 @@ interpolation. It is built from piecewise third order polynomials.
 \[ y(x) = a_0 + a_1 (x - x_i) + a_2 (x - x_i)^2 + a_3 (x - x_i)^3\] \[x_i  \leq
 x \leq x_{i+1}\]
 
-This interpolation function produces smooth transitioning through the keyframes.It is very good for most animated parameters. It 
+This interpolation function produces smooth transitioning through the keyframes. It is very good for most animated parameters. It 
 is used for camera and target animation and for many other parameters which
 should be animated in a smooth way.
 
@@ -148,7 +149,7 @@ Figure \ref{catmull-rom_example} shows how keyframes should be located between o
 \subsection{Changing interpolation types}\label{changing-interpolation-types}
 
 To change the interpolation algorithm, right click on the parameter list and the
-options appear. In this example the main\_formula\_weight parameters have been
+options appear. In this example the \emph{main\_DE\_factor} have been
 changed from Akima to Linear. Interpolation type is color coded e.g. Linear
 parameters are highlighted in grey.
 
