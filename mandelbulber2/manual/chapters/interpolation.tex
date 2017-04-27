@@ -1,13 +1,11 @@
 \section{Interpolation}\label{interpolation}\index{interpolation}
 
-To get smooth transitions of parameters between keyframe there are used
-interpolation functions, which calculates intermediate values. There is no need
-for manual change of camera position and fractal parameters for every animation
-frame. Limited number of keyframes is enough to define good looking animation.
+Interpolation functions, which calculate intermediate values, are used to make smooth parameter transitions between keyframes. There is no need for manual editing of every animation camera position and fractal parameters. 
+frame. A limited number of keyframes is enough to define good looking animation.
 
 \subsection{Interpolation types}\label{interpolation-types}
 
-Parameters in Mandelbulber can use different interpolation functions:
+Parameters in Mandelbulber can be transitioned using several interpolation modes:
 
 \begin{multicols}{3}
 \begin{enumerate}
@@ -30,8 +28,7 @@ Parameters in Mandelbulber can use different interpolation functions:
 \end{multicols}
 
 The chart in figure \ref{interpolations} shows a comparison between different interpolation modes
-As it is visible, depending which interpolation function will be used, the
-final result of animation will be different.
+The choice of mode, greatly effects the animation.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/interpolations.png}
 {Interpolation types}
@@ -39,9 +36,8 @@ final result of animation will be different.
 
 \subsubsection{Interpolation - None}\label{interpolation-none}\index{interpolation!none}
 
-Parameter is not interpolated. After every keyframe the value of parameter will
-have step change. This mode can be used with boolean values or with variables
-which have to be kept at constant levels for some number of keyframes.
+The parameter remains constant between keyframes. The parameter will change abrubtly at the any keyframe that has a change in value. This mode can be used with boolean values or with variables
+which have to be kept at a constant value for a number of keyframes.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_none.png}
 {Interpolation - None}
@@ -49,15 +45,14 @@ which have to be kept at constant levels for some number of keyframes.
 
 \subsubsection{Interpolation - Linear}\label{interpolation-linear}\index{interpolation!linear}
 
-Value of parameter is interpolated using linear functions.
+The value of the parameter is interpolated using linear functions.
 
 \[ y(x) = y_i + (x - x_i) \frac{y_{i+1} - y_i}{x_{i+1} - x_i}\] \[x_i  \leq x
 \leq x_{i+1}\]
 
 Changes of parameters are easy to predict. There are no overshoots. This
-interpolation mode is good for fractal parameters and material properties. It's
-not recommended to use it for camera or objects movement paths, because of rapid
-changes of speed.
+interpolation mode is good for fractal parameters and material properties. It is
+generally not recommended to be used for camera or object movement paths, because of the abrubt changes of speed.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_linear.png}
 {Interpolation - Linear}
@@ -76,8 +71,8 @@ interpolation. It is built from piecewise third order polynomials.
 \[ y(x) = a_0 + a_1 (x - x_i) + a_2 (x - x_i)^2 + a_3 (x - x_i)^3\] \[x_i  \leq
 x \leq x_{i+1}\]
 
-This interpolation method is very good for most of animated parameters. It can
-be used for camera and target animation and for many other parameters which
+This interpolation function produces smooth transitioning through the keyframes.It is very good for most animated parameters. It 
+is used for camera and target animation and for many other parameters which
 should be animated in a smooth way.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_akima.png}
@@ -86,8 +81,8 @@ should be animated in a smooth way.
 
 \subsubsection{Interpolation - Akima angle}\label{interpolation-akima-angle}
 
-This interpolation mode works like \emph{Akima}, but is prepared of angular
-parameters. If value exceed 360 degrees, then will go back to zero.
+This interpolation mode works like \emph{Akima}, but is written for angular
+parameters. If a value exceeds 360 degrees, then it will reset back to zero.
 
 \subsubsection{Interpolation - Catmul-Rom}\label{interpolation-catmul-rom}\index{interpolation!Catmul-Rom}
 
@@ -100,11 +95,11 @@ point on the spline.
 -3 & 1 \\ \end{bmatrix} \begin{bmatrix} y_{i-1} \\ y_i \\ y_{i+1} \\ y_{i+2}
 \end{bmatrix} \]
 
-This interpolation gives very smooth results. Animated objects looks like made
-of springy materials. It can be used to animate fractal parameters and also
-camera path. This interpolation can produce oscillations, so it has to be used
-carefully. As it is visible on figure \ref{interpolation_catmulrom}, 
-values went below zero even if all of keyframe values were higher than zero.
+This interpolation gives very smooth results. Animated objects looks likethey are made
+of springy materials. It can be used to animate fractal parameters and also the
+camera path. This interpolation mode can produce oscillations, so it has to be used
+carefully. Figure \ref{interpolation_catmulrom}, 
+shows where interpolated values went below zero,  where all of the keyframe values were higher than zero. The ocsillation problem is commonly seen near the begining and end of an animation
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_catmulrom.png}
 {Interpolation - Catmul-Rom}
