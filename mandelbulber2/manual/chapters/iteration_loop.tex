@@ -1,13 +1,13 @@
 \section{Iteration loop}\label{iteration-loop}
 
 In section \ref{mandelbrot-set} it was mentioned that fractals are calculated
-by repeating a formula \emph{iterating} in an iteration loop. 
+by repeating a formula (\emph{iterating}) in an iteration loop. 
 The integer \emph{"i"} is used to represent the \emph{iteration count} number.
 
 The iteration count starts with i = 0, then at the end of each iteration the
 count number is increased by 1, and the next iteration of the formula commences 
 (e.g. iteration count  0, 1, 2, 3, ...). The iterating continues until \emph{termination conditions} are met, 
-which is either when the iteration count i =  \emph{maxiter} or when the \emph({bailout}) condition is achieved. 
+which is either when the iteration count i =  \emph{maxiter} or when the \emph{bailout} condition is achieved. 
 
 This section explains the calculations within the iteration loop.
 
@@ -21,13 +21,16 @@ and also mathematical conditions (e.g. if x > y then "compute following equation
 The equations are applied to vector z or any parts of z (i.e the z.x, z.y and z.z components)
 
 Examples:
-\emph{z.x = fabs(z.x);} is using the function fabs (i.e. z.x is assigned the absoulute value of z.x)
+
+\emph{z.x = fabs(z.x);} is using the function fabs (i.e. z.x is assigned the absoulute value of z.x).
+
 \emph{if ( z.x - z.y < 0.0) swap(z.x, z.y);} is using the conditional function if() to determine if the values of z.x and z.y should be swapped.
-\emph{( z *= 3.0)} is using the operator * to multiply the all components of vector z by 3.0.
+
+\emph{ z *= 3.0} is using the operator * to multiply the all components of vector z by 3.0.
 
 A set of equations that have a specific function within the formula are called \emph{transforms}, e.g rotation, scale.
 
-The general form, is a formula is constructed from one or more transforms, which are constructed from equations.
+The generally a formula is constructed from one or more transforms, which are constructed from equations.
 
 With each iteration of the formula, the point being iterated is \emph{mapped} (moved) to new coordinates as a result of the mathematical equations.  
 
@@ -129,9 +132,10 @@ Each formula's parameters can be configured in the formula tab opened in an enab
 
 The iteration count numbers determine when in the sequence each formula is calculated.
 
-The sequence is in the order of enabled formula slots from \#1 to slot \#9, (e.g. If the sequence is calculating formulas in slots
+The sequence is in the order of the enabled formula slots from \#1 to slot \#9, (e.g. If the sequence is calculating formulas in slots
 \#1 and \#5, then the iteration loop repeats the sequence of slot \#1 calculation followed by slot
 \#5 calculation.)
+
 How the sequence will work depends on the following selections:
 \begin{itemize}
 	\item Which fractal formulas are selected in the formula slots
@@ -218,7 +222,7 @@ then the \emph{Menger Sponge} formula is used from iteration 2 to iteration 11.
 {iteration_loop_hybrid_sequence_3}
 
 As above, the initial shape is mainly defined by the first two iterations of \emph{Mandelbulb - Power 2},
-but the high number of \emph{Menger Sponge} iterations makes the \emph{Menger Sponge} features being more apparent.
+but the high number of \emph{Menger Sponge} iterations makes the \emph{Menger Sponge} features become more apparent.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_3.png}
 {Hybrid sequence result - The second slot set to 10 repeat iterations}
@@ -228,7 +232,7 @@ but the high number of \emph{Menger Sponge} iterations makes the \emph{Menger Sp
 
 The sequences can become more complicated by specifying the range of iterations when a formula will be calculated in the loop.
 
-On each formula tab the parameters \emph{Start at iteration} and {Stop at iteration} are used to define this range.
+On each formula tab the parameters \emph{Start at iteration} and \emph{Stop at iteration} are used to define this range.
 
 When computing the iteration loop, the program is moving through the enabled formula slots, checking formula iteration range conditions. If the current Iteration Count number is within the range then a calculation of that formula is performed, and the Iteration Count is increased by 1. If the Iteration Count number is outside the iteration range condition, then the formula is skipped (i.e. no calculation and therefore the iteration count remains unchanged). The program then moves to the next enabled slot in the sequence.
 
@@ -247,7 +251,7 @@ because those iterations were inside the defined range of iterations.
 The shape of the resulting fractal is shown in figure \ref{hybrid_sequence_example_4}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_4.png}
-{Hybrid sequence result - Range of iteration set to 4-250 on first formula slot}
+{Hybrid sequence result - Range of iteration set to 4-250 on second formula slot}
 {hybrid_sequence_example_4}
 
 Because at iteration number 2 \emph{Menger Sponge} formula was skipped, \emph{Box Fold Bulb Pow 2} formula has much more influence on the final shape.
@@ -260,7 +264,7 @@ The order of fractal formulas can be easily changed between slots with the use o
 {Fractal tabs with highlighted tab-arrows}
 {fractal_tabs_with_defined_fractals_arrows}
 
-Pressing these buttons causes swapping of fractal formula tabs between slots, and therefore changes the formula's position inside  the sequence. All formula parameters setting are moved in the swap.
+These buttons swap the fractal tabs between the slots, and therefore  the formula's position inside the sequence will change. All formula parameters setting are moved in the swap.
 
 Example based on first case shown in section \ref{two-iterations-per-slot}:
 Swapped \emph{Mandelbulb - Power 2} and \emph{Menger Sponge} creates the sequence shown in figure \ref{iteration_loop_hybrid_sequence_5}.
