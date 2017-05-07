@@ -1,6 +1,6 @@
 \section{Miscellaneous}\label{miscellaneous}
 
-This chapter contains miscellaneous information like  Q\%A and Hints. Some of this information will be relocated if a new chapter is written that covers the subject.
+This chapter contains miscellaneous information like  Q\&A and Hints. Some of this information will be relocated if a new chapter is written that covers the subject.
 
 
 \subsection{Q\&A . }\label{Q|&A}
@@ -31,23 +31,26 @@ material preview image when you scroll down.
 
 
 \paragraph{100\% CPU even it's not rendering anything} May 2017
+
 Q. New version freezes my machine. After launching an application, it started  to use 100\% CPU even it's not rendering anything.
 I'm on Linux Mint 18 with i7 CPU and 8gb of RAM
 
 A. Maybe the program is re-rendering  all top toolbar preset icons (with fractal previews). You may need to  wait some time for this to finish. (SOLVED)
 
-\paragraph{Morphing between fractals} May 2017
+\paragraph{Morphing between fractals} May 2017.
+
 Q. I want to animate a fly through different fractals, smoothly merging with each other. For example, "Amazing box" fractal slowly transforming to "Beth 323" and then to other fractal. Also changing backgrounds would be awesome.
 
-A.  See & (\href{https://youtu.be/RHVCt1WXuAU}{https://youtu.be/RHVCt1WXuAU})  And, from menu bar select    File \- Load examples, and load example called  mandelbox\_menger\_morph, this is the settings file for that video, and you will be able to see how it was done.
+A.  See (\href{https://youtu.be/RHVCt1WXuAU}{https://youtu.be/RHVCt1WXuAU})  And, from menu bar select    File \- Load examples, and load example called  mandelbox\_menger\_morph, this is the settings file for that video, and you will be able to see how it was done.
 
 For morphing between fractals  the "weight" parameter is used.  Weight determines the influence each formula has in the image at each frame.  Weight = 0 (0\% influence), weight = 1 (100\%).
+
 So as  the weight is adjusted from 0 up to 1, then the influence of that formula is introduced. At the same time, the other formulas weight is being reduced from 1 down to 0.
 
 Good practice would be to find a good setting for a "halfway: keyframe.
 
-keyframe\#0   formula1 weight = 1 and formula 2 weight = 0
-keyframe\#1   formula1 weight = A and formula 2 weight = B    // the halfway keyframe
+keyframe\#0   formula1 weight = 1 and formula 2 weight = 0\\
+keyframe\#1   formula1 weight = A and formula 2 weight = B    // the halfway keyframe\\
 keyframe\#2   formula1 weight = 0 and formula 2 weight = 1
 
 The values of A and B that are chosen, control the way morphing works between keyframe\#0 and keyframe\#2.
@@ -56,20 +59,22 @@ Using weight controls has hardly been tested yet, even though it has been availa
 
 Some combination of formulas morph better than others
 
-Animation/morphing takes a lot of render time, so do initial draft animations at low resolution, and choose fast formulas.
+Animation/morphing takes a lot of render time, so render initial draft animations at low resolution, and choose fast formulas.
 
 In Mandelbulber nearly all parameter can be animated, (and also animated in response to audio files), but integers can not normally be animated therefore you can not morph smoothly between iteration count numbers
 
 
 \paragraph{Different Materials for Hybrids} May 2017
+
 Q. I cannot find any information on how to assign different material on different fractals? I enabled hybrids, for morphing animation and I want two fractals to look differently. Users guide method gives me the same material on both fractals. I'm changing materials in global parameters>material manager .What am I doing wrong?
 
 A. In hybrid mode we are making a single fractal so the color is the same at a single frame. We can only change color over time (frames)
 
 \paragraph{Several Fractals in one image} May 2017
+
 Q.  Is it possible to put few fractals in same scene, not as hybrids but just close to each other?
 
-A. In  boolean mode, you can place up to nine different fractals in your image, you can assign each fractal a different material. Page 26? of the user manual briefly covers this.
+A. In  boolean mode, you can place up to nine different fractals in your image, you can assign each fractal a different material.
 
 \subsection{Hints}\label{Hints}
 
@@ -81,8 +86,7 @@ until the furthest part of the 3D object(s) starts to disappear. However with
 animation an allowance should be made for changes between keyframes.
 
 \textbf{Note!} When navigating in Relative step mode, mouse click on
-spherical\_inversion, camera zooms out, and maximum view distance becomes set at a big number like
-on 280. If you do not reset this parameterthen your render times will be unnecessarily increased.
+spherical\_inversion, camera zooms out, and maximum view distance becomes set at a big number like maybe 280. If you do not reset this parameter then your render times will be unnecessarily increased.
 
 
 \paragraph{Magic Angle} Benesi Mag Transforms
