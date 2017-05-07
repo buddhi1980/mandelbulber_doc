@@ -80,26 +80,7 @@ between keyframes.)
 MandelboxMenger Hybrids\index{fractal!hybrid} can behave a bit differently to a lot of hybrids, in the
 fact that the \emph{Percentage Bad DE} often improves when you zoom in.
 
-\paragraph{Optimizing of \emph{maximum view distance}}\index{ray marching!maximum view distance} Located : Rendering
-Engine - Common Rendering settings
 
-It is important to optimize this setting to minimize render time. You can reduce
-until the furthest part of the 3D object(s) starts to disappear. However with
-animation an allowance should be made for changes between keyframes.
-
-\textbf{Note!} When navigating in Relative step mode, mouse click on
-spherical\_inversion, camera zooms out, tand maximum view distance becomes set
-on 280. If you don't reset it your render times will be increased.
-	
-
-\paragraph{Magic Angle} Benesi Mag Transforms
-
-In mathematics the Magic Angle = 54.7356° .
-
-When rendering basic mag transforms the image does not render parallel to the
-standard x,y,z global axis. On the fractal dock, in ``Global parameters'' set
-y-axis rotation to 35.2644° (= 90° - 54.7356°). The fractal will then render
-parallel to the x-y plane.
 
 \subsubsection{Example of using Transform Menger Fold to make
 	Hybrid}\label{example-of-using-transfrom-mengerfold}\index{fractal!hybrid}
@@ -189,28 +170,4 @@ was chosen because how it fitted into the iteration sequence, as follows:
 Sequence continues \textbf{Slot 1} x 5, \textbf{Slot 3}, \ldots to bailout.
 
 As you see \textbf{Slot 2} is used only twice in the iteration process. If I had entered 11 instead of 12 for \textbf{Slot 2}'s \emph{stop iterations}, then the slot would have been used only once, if I entered 19 then it would run three times.
-
-\subsection{Q\&A . How do you get different materials on different
-	shapes?}\label{qa-.-how-do-you-get-different-materials-on-different-shapes}
-
-This is how I have been doing it, see also figure \ref{material_selection}:
-
-\emph{Rectangle at the bottom marked A.}
-
-This is where you~ start a new material or load an
-existing.~ The active material is highlighted in blue. Meaning it is active in
-the \textbf{material editor} where you create or modify the material.
-
-\emph{Rectangle at top left marked B.}
-
-One way to use a material is to go to Global Parameters,
-click on the material preview image, and the \textbf{Material Manager} UI will
-appear with the materials you have loaded or created. Click on the one you want
-to use, then close that UI.\\ Similarly with primitives, click on the material
-preview image. And with Boolean Mode each fractal/transform has it's own
-material preview image when you scroll down.
-
-\simpleImageWithCaption75Width{img/manual/media/material_selection.jpg}
-{Material selection}
-{material_selection}
 
