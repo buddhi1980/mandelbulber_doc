@@ -1,3 +1,5 @@
+\pagebreak
+
 \section{Developer information}\label{developers}\index{Developer Information}
 
 The Mandelbulber team welcomes everyone who likes to help us with the development of the software.
@@ -8,27 +10,56 @@ No magic involved, you just need to learn the tools and utilities to modify and 
 The following chapters will help you get ready for development.
 
 \subsection{Setup}\label{developers-setup}
+
+Mandelbulber is using git as version control system and github as the hoster.
+If you do not know git yet, you may find the following ressource helpful: 
+
+https://git-scm.com/book/en/v1/Getting-Started
+
+Anyway the following setup steps will assume you git cloned the repository:
+
+https://github.com/buddhi1980/mandelbulber2
+
+locally to a project folder. This folder will be referenced as \textbf{MANDELBULBER2\_DIR}.
+
 \subsubsection{Setup Debian/Ubuntu}\label{developers-setup-debian-and-ubuntu}
 
-TODO
+To setup the system for development in debian and ubuntu you can use the files: 
+
+[MANDELBULBER2\_DIR]/mandelbulber2/tools/prepare\_for\_dev\_ubuntu.sh
+
+[MANDELBULBER2\_DIR]/mandelbulber2/tools/prepare\_for\_dev\_debian\_testing.sh
+
+Please make sure you read them before execution!
 
 \subsubsection{Setup Windows}\label{developers-setup-windows}
 
 TODO
 
 \subsection{Building}\label{developers-building}
+\subsubsection{Building with MSVC}\label{developers-building-msvc}
+
+Download and install latest MS Visual Studio version (tested with Visual Studio Community 2017).
+Make sure you enable nuget support as an installed software.
+
+Then open the project file 
+
+[MANDELBULBER2\_DIR]/mandelbulber2/msvc/mandelbulber2.sln
+
+and compile. Good luck!
+
 \subsubsection{Building with qtcreator}\label{developers-building-qtcreator}
 
 Compilation in QtCreator
 
 \begin{itemize}
-	\item open [PROJECT\_PATH]/mandelbulber2/qmake folder in File Manager
+	\item open [MANDELBULBER2\_DIR]/mandelbulber2/qmake folder in File Manager
 	\item open mandelbulber.pro in Qt Creator
 	\item when it's open, click Configure Project
 	\item unfold Compiler Messages window (on the bottom of window)
 	\item click hammer icon (build - left/bottom corner)
-	   the program will be compiled. If you did all steps correctly, shouldn't be error here
-	\item try to run the program using green arrow
+	   the program will be compiled. If you did all steps correctly, you shouldn't receive any error
+	\item try to run the program using the green arrow
 \end{itemize}
 
 \subsection{Writing own formulas in Mandelbulber}\label{developers-writing-own-formulas}
@@ -61,40 +92,38 @@ fractalList->append(sFractalDescription("Kaleidoscopic IFS", "kaleidoscopic_ifs"
 	\item 10th parameter: TODO
 \end{itemize}
 
-- fractal\_formulas.cpp - here are definitions of function which calculate single fractal iteration. There is no adding of C constant and bailout condition here.
+- fractal\_formulas.cpp - here are definitions of functions which calculate single fractal iteration. There is no adding of C constant and bailout condition here.
 
 example:
 \lstinputlisting[caption={Formula > Mandelbulb formula}]{code/formula_mandelbulb_with_function.cpp}
 
-TODO check copied content of this subsubsection from here on...
-
-arguments:
-z - input / output variable containing iteration vector
-const cFractal *fractal - read only container with all fractal parameters
-sMandelbulbAux \&aux - input / output auxiliary structure containing values needed for instant to calculate estimated distance
+The arguments are the same for each formula:
+\begin{itemize}
+	\item \textbf{CVector4 \&z}: input / output variable containing iteration vector
+	\item \textbf{const sFractal * fractal}: read only container with all fractal parameters
+	\item \textbf{sExtendedAux \& aux}: input / output auxiliary structure containing values 
+		needed for instance to calculate estimated distance
+\end{itemize}
 
 All parameters and data structures are defined in fractal.h
 
-- fractal\_formulas.hpp - here are declaration of functions
+- fractal\_formulas.hpp - here are tehe header declaration of the functions
 
-- compute\_fractal.cpp:42 - void Compute(const cFourFractals \&four, const sFractalIn \&in, sFractalOut *out) - here is the main iteration loop. You need to add in line about 290 calling of your new function.
-  In line 305 you can do some exceptions for adding C constant
+- initparameters.cpp:499
 
-		TODO
+\begin{lstlisting}
+void InitFractalParams(cParameterContainer *par)
+\end{lstlisting}
 
-  In line 344 there are bailout conditions. Now all formulas use the same condition. You you need to create any special escape condition then just tell me.
-
-TODO
-
-- initparameters.cpp:389 - void InitFractalParams(cParameterContainer *par) - here are definition of names of parameters which are used in UI and settings files. If you add new formula then try to utilize existing names. If there is nothing which fits to your needs, then add new one
+ - here are definition of names of parameters which are used in UI and settings files. If you add new formula then try to utilize existing names. If there is nothing which fits to your needs, then add a new one
 
 - fractal.cpp, fractal.hpp - here are data structures for fractal parameters. There is also copying of values from internal parameter representation to data structures which you use in fractal functions
 
 \subsubsection{Designing user interface}\label{developers-designing-user-interface}
 
-To create UI files you can use Qt Designer application. The best would be if you make them based on existing files. All ui files are located in formula/ui folder. Names start with fractal\_ and the rest of name is the same as internal fractal name. Even if formula doesn't use any parameters, you need to create UI file which is the same like fractal\_quaternion.ui (some kind of dummy).
+To create UI files you can use Qt Designer application. The best would be if you make them based on existing files. All ui files are located in formula/ui folder. Names start with fractal\_ and the rest of name is the same as internal fractal name. Even if a formula doesn't use any parameters, you need to create an UI file with no adjustable input fields, see fractal\_quaternion.ui for example (some kind of dummy).
 
-In UI files there are very important important names of edit fields. The program connects automatically edit fields with adequate parameters and connects edit fields with sliders/knobs. But to make it working first part of the name must describe type of edit widget. Use following prefixes:
+In the UI files the names of the edit fields define their type and their parameter reference. The program connects automatically edit fields with adequate parameters and with sliders / knobs. But to make it working first part of the name must describe type of edit widget. Use following prefixes:
 \begin{itemize}
 	\item spinbox\_ - scalar value
 	\item slider\_ - slider for scalar value
@@ -109,4 +138,8 @@ In UI files there are very important important names of edit fields. The program
 	\item vect3 - 3d vector (related to CVector3 data type). Name must ends with axis name
 \end{itemize}
 
-Rest of the name of edit field must be the same as defined in initparameters.cpp
+The rest of the names of the edit field must be the same as defined in initparameters.cpp
+
+\subsubsection{Autogeneration of opencl formula code}\label{developers-autogen-opencl-formulas}
+
+TODO
