@@ -38,14 +38,9 @@ if the option ``stop at maximum iteration'' is enabled.
 {distance_estimation_defactor_1}
 
 Since the estimation contains some error (sometimes quite large), there is a
-risk that the step of moving the ``photon'' will be too large, and incorrectly it
-will flow into the surface of the fractal. This may result in visible noise in
-the rendered image.
+risk that the step of moving the ``photon'' will be too large, and incorrectly the step will go past the fractal surface. This may result in visible noise in the rendered image.
 
-To prevent this, the ``photon'' can be moved by the estimated distance multiplied
-by a number between 0 and 1 (\emph{ray-marching step multiplier}\index{ray marching!step multiplier}). Steps are then
-smaller, so there is less risk of ``overshooting'' the surface (better image quality), but the rendering
-time increases due to more steps being required.
+To prevent this, the ``photon'' can be moved by the estimated distance multiplied by a number between 0 and 1 (\emph{ray-marching step multiplier}\index{ray marching!step multiplier}). Steps are then smaller, so there is less risk of ``overstepping'' the surface (better image quality), but the rendering time increases due to more steps being required.
 
 \nopagebreak
 
@@ -86,3 +81,22 @@ pixels which potentially have big errors in distance estimation calculation
 (estimated distance was much too high). It is visible as a noise on the image.
 As a general rule less than 0.1 is good, but it is case specific and 3.0
 sometimes is OK and 0.0001 sometimes is not.
+
+Figure \ref{bad_de_menger_sponge} below, is an example of Bad DE due to over-stepping. It starts to occur at the corner nearest to the camera, resulting in the black areas and distintegration of the fractal. If the ray-marching step multiplier is set even higher, the fractal will entirely disintegrate. This disintegration will generally be reflected in the Percentage of Wrong Distance Estimations statistic.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/bad_de_menger_sponge.png}
+{Example of over-stepping}
+{bad_de_menger_sponge}
+
+Figure \ref{linear_de_offset} below, shows the Linear DE offset parameter located in the Hybrids tab.
+For standard mandelbox types and IFS there are two similar analytic distance estimation calculations used. When making a hybrid that mixes these types, then adjusting the Linear DE offset parameter can assist in fine tuning the DE calculation.
+
+Generic  linear out: $ distance = \frac{r - offset}{\lvert DE \rvert} $
+
+The Linear DE offset is normally used in the range from 0.0 (mandelbox) to 2.0 (IFS).
+
+ 
+\simpleImageWithCaptionHalfWidth{img/manual/media/linear_de_offset.png}
+{Linear DE offset parameter}
+{linear_de_offset}
+
