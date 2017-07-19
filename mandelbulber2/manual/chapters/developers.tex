@@ -79,17 +79,16 @@ fractalList->append(sFractalDescription("Kaleidoscopic IFS", "kaleidoscopic_ifs"
 \end{lstlisting}
 
 \begin{itemize}
-	\item 1st parameter: Displayed name of the fractal
-	\item 2nd parameter: internal name of the fractal. The same name is used for UI files
-	\item 3rd parameter: the same name as in enumFractalFormula
-	\item 4th parameter: The function name as defined in fractal\_formulas.cpp
-	\item 5th parameter: type of distance estimation. Most of formulas use deltaDE estimation which needs more computation
-		but doesn't need any special code from you.
-	\item 6th parameter: TODO
-	\item 7th parameter: TODO
-	\item 8th parameter: TODO
-	\item 9th parameter: TODO
-	\item 10th parameter: TODO
+	\item 1st field: Displayed name of the fractal
+	\item 2nd field: internal name of the fractal. The same name is used for UI files
+	\item 3rd field: the same name as in enumFractalFormula
+	\item 4th field: The function name as defined in fractal\_formulas.cpp
+	\item 5th parameter: Preferred distance estimation method. The deltaDE method needs more computation time but doesn't need analytical DE coding knowledge.
+	\item 6th field: Preferred distance estimation function
+	\item 7th field: TODO
+	\item 8th field: Default bailout value
+	\item 9th field: Final calculation type
+	\item 10th field: Coloring function
 \end{itemize}
 
 - fractal\_formulas.cpp - here are definitions of functions which calculate single fractal iteration. There is no adding of C constant and bailout condition here.
