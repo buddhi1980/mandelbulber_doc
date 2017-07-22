@@ -11,22 +11,22 @@
 
 \newcommand{\mTitle}{Mandelbulber}
 \newcommand{\mSubtitle}{End User Manual}
-\newcommand{\mVersionDocument}{2.11.0.9.5}
-\newcommand{\mDateDocument}{2017-April}
+\newcommand{\mVersionDocument}{2.12.0.9.6}
+\newcommand{\mDateDocument}{2017-July}
 \newcommand{\mAuthor}{	
 \begin{tabular}{r|p{11cm}}
 	\textsc{Krzysztof Marczak:}
-		& (\href{mailto:buddhi1980@gmail.com}
-		{buddhi1980@gmail.com}) \\
+		& \href{mailto:buddhi1980@gmail.com}
+		{buddhi1980@gmail.com} \\
 	\textsc{Graeme McLaren:}
-		& (\href{mailto:mclarekin@gmail.com}
-		{mclarekin@gmail.com}) \\
+		& \href{mailto:mclarekin@gmail.com}
+		{mclarekin@gmail.com} \\
 	\textsc{Sebastian Jennen:}
-		& (\href{mailto:sebastian.jennen@gmx.de}
-		{sebastian.jennen@gmx.de}) \\
+		& \href{mailto:sebastian.jennen@gmx.de}
+		{sebastian.jennen@gmx.de} \\
 	\textsc{Robert Pancoast:}
-		& (\href{mailto:RobertPancoast77@gmail.com}
-		{RobertPancoast77@gmail.com})
+		& \href{mailto:RobertPancoast77@gmail.com}
+		{RobertPancoast77@gmail.com}
 \end{tabular}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,27 +55,33 @@
 	\end{tabular}
 	\break
 	\normalsize
-	\begin{tabular}{r|p{11cm}}
-		\textsc{Download:}
-		& (\href{https://sourceforge.net/projects/mandelbulber/}
-		{https://sourceforge.net/projects/mandelbulber/}) \\
-		\textsc{Development:}
-		& (\href{https://github.com/buddhi1980/mandelbulber2/}
-		{https://github.com/buddhi1980/mandelbulber2/}) \\
-		\textsc{Community:}
-		& (\href{http://www.fractalforums.com/mandelbulber/}
-		{http://www.fractalforums.com/mandelbulber/})                        
-    \end{tabular}
-	\vspace{3cm}
-	
+	\begin{flushright}
+		\begin{tabular}{r|p{11cm}}
+			\textsc{Download:}
+			& \href{https://sourceforge.net/projects/mandelbulber/}
+			{https://sourceforge.net/projects/mandelbulber/} \\
+			\textsc{Development:}
+			& \href{https://github.com/buddhi1980/mandelbulber2/}
+			{https://github.com/buddhi1980/mandelbulber2/} \\
+			\textsc{Community:}
+			& \href{http://www.fractalforums.com/mandelbulber/}
+			{http://www.fractalforums.com/mandelbulber/} \\
+			& \href{https://www.facebook.com/groups/mandelbulber/}
+			{https://www.facebook.com/groups/mandelbulber/}                        
+	    \end{tabular}
+	\end{flushright}
+	\vspace{2cm}
+
 	%%% Editors
 	\begin{tabular}{c}
 		\large\textbf{Editors}\\
 		\specialrule{1.618033988749895pt}{1pt}{1pt}
 	\end{tabular}
 	\break
-	\mAuthor\\
-	\vspace{4.5cm}
+	\begin{flushright}
+		\mAuthor\\
+	\end{flushright}
+	\vspace{2.5cm}
 	
 	%%% BG Image
 	\begin{flushright}
@@ -88,7 +94,11 @@
 
 %%% Table of contents
 \setcounter{page}{1}
-\tableofcontents
+\renewcommand{\contentsname}{Table of contents}
+{
+	\hypersetup{hidelinks}
+	\tableofcontents
+}
 \newpage
 
 %\printnomenclature
