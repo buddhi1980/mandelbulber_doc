@@ -1,12 +1,40 @@
+
+
 \section{OpenCL}\label{opencl}\index{OpenCL}
 
-OpenCL is a ... TODO
+The use of OpenCL enables offloading the rendering of the fractal to the
+GPU or to an accelerator card. This can highly reduce the render time.
+OpenCL itself is an industry standard developed by the Khronos group and
+is a well established framework. The two mayor GPU vendors (ATI / Nvidia)
+among others implement the OpenCL specification in their drivers.
 
 \subsection{Setup of OpenCL}\label{setup-opencl}
-TODO
+To render in Mandelbulber with OpenCL you will need to install a recent driver.
+The newest GPU driver available can be obtained from the links in the next table.
+Choose your operation system and misc settings.
+Then download and install the driver image.
+
+\begin{center}
+	\begin{tabular}{ | l | r | }
+		\hline
+		AMD 	&
+		\href{http://support.amd.com/en-us/download/}{http://support.amd.com/en-us/download/}
+		\\ \hline
+		Nvidia 	& 
+		\href{http://www.nvidia.de/Download/index.aspx}{http://www.nvidia.de/Download/index.aspx}
+		\\ \hline
+		Intel	&
+		\href{https://downloadcenter.intel.com}{https://downloadcenter.intel.com}
+		\\ \hline
+	\end{tabular}
+\end{center}
+
+You should also be able to use free drivers, if they support OpenCL.
+Sadly the performance of those drivers is typically below the performance of the proprietary ones.
 
 \subsubsection{Setup of OpenCL on Windows}\label{setup-opencl-windows}
-TODO
+With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
+Proceed with \ref{configure-opencl}.
 
 \subsubsection{Setup of OpenCL on Linux}\label{setup-opencl-linux}
 TODO
@@ -18,3 +46,23 @@ TODO
 TODO
 
 \subsection{Configuring OpenCL}\label{configure-opencl}
+Open Mandelbulber and navigate to: Menu > File > Program Preferences > OpenCL (GPU).
+You will find the configuration page in figure \ref{opencl_tab}.
+
+\simpleImageWithCaptionFullWidth{img/manual/media/opencl_tab.png}
+{OpenCL Tab in preferences}
+{opencl_tab}
+
+\begin{itemize}
+	\item First you need to enable OpenCL by enabling the checkbox
+	\item Then you need to select the platform and device to identify the OpenCL hardware 
+		element to render with.
+	\item \textbf{Precision} - Switch between float and double precision
+	\begin{itemize}
+		\item \textbf{float} - gives high performance render, but is limited in precision, 
+			sometimes this mode can result in artifacts and bad DE.
+		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
+	\end{itemize}
+	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
+	\item \textbf{Memory Limit} - TODO
+\end{itemize}
