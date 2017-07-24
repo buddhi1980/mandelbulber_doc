@@ -97,4 +97,27 @@ standard x,y,z global axis. On the fractal dock, in ``Global parameters'' set
 y-axis rotation to 35.2644° (= 90° - 54.7356°). The fractal will then render
 parallel to the x-y plane.
 
+\paragraph{Formulas containing a varying scale function}
+
+
+Abox - Mod 1, Mod 2 , Mod 11, 4D and  VS icen1
+
+Mandelbox Vary Scale 4D
+
+Amazing Surf
+
+Amazing Surf - Mod 1
+
+The  formulas listed above include a transform a scale varying transform which is initialized by the Scale value (parameter name: mandelbox.scale). 
+
+aux.actualScale =
+
+fractal->mandelbox.scale + fractal->mandelboxVary4D.scaleVary * (fabs(aux.actualScale) - 1.0);
+
+The program looks  in slot1 \textbf{only}, for the initial value of  mandelbox.scale.
+
+Because of this, when in Hybrid Mode it is best to place these formulas in slot1.
+
+However, these formulas can be used in other slots, but the program will always look for parameter name: mandelbox.scale  in slot1 to set an initial value. If the parameter does not exist, then the program will use a default value of 2.0.
+
 
