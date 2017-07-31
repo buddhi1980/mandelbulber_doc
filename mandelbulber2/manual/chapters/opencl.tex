@@ -42,9 +42,6 @@ TODO
 \subsubsection{Setup of OpenCL on MacOS}\label{setup-opencl-macos}
 TODO
 
-\subsubsection{Setup Trouble shooting}\label{setup-opencl-troubleshooting}
-TODO
-
 \subsection{Configuring OpenCL}\label{configure-opencl}
 Open Mandelbulber and navigate to: Menu > File > Program Preferences > OpenCL (GPU).
 You will find the configuration page in figure \ref{opencl_tab}.
@@ -66,3 +63,38 @@ You will find the configuration page in figure \ref{opencl_tab}.
 	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
 	\item \textbf{Memory Limit} - TODO
 \end{itemize}
+
+\subsection{Trouble shooting OpenCL}\label{opencl-troubleshooting}
+
+\subsubsection{Driver crash under Windows}
+
+When Mandelbulber is run under Windows, the OS will monitor the GPU with a watchdog. When the card becomes unresponsive for more than two seconds, the driver will shutdown and crash with a message like:
+
+\textbf{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
+
+A workaround for this problem is to increase this timeout limit. To do so you need to add or modify two keys in the windows registry. Beware: Do this at your own risk, changing any wrong keys in the windows registry may cause windows to stop working properly!
+
+\begin{enumerate}
+	
+	\item \textbf{Open registry editor:} [Start] > Run > Type in "Regedit" > Hit Enter
+	\item \textbf{Navigate to key:} Open \emph{HKEY\_LOCAL\_MACHINE > System > CurrentControlSet > Control > GraphicsDrivers}
+	\item \textbf{Create the keys (Modify if exist):}
+	\begin{enumerate}
+		\item Create key of type \textbf{DWORD (32-bit)} and name \textbf{TdrDelay} with a value of \textbf{30} as Decimal value.
+		\item Create key of type \textbf{DWORD (32-bit)} and name \textbf{TdrDdiDelay} with a value of \textbf{30} as Decimal value.	
+	\end{enumerate}	
+	\item \textbf{Reboot}
+
+\end{enumerate}
+
+You can find more information about this topic in the following resources:
+
+The original Blogpost in Fragmentarium, which has been used as the source of this article: \url{http://blog.hvidtfeldts.net/index.php/2011/12/fragmentarium-faq/}
+
+Windows Explanation about the affected registry keys: \url{https://docs.microsoft.com/en-us/windows-hardware/drivers/display/tdr-registry-keys}
+
+Conversation about this topic in the fractalforums Mandelbulber group:
+\url{http://www.fractalforums.com/feature-requests/render-bucket-size-control-for-opencl/msg102868/#new}
+
+Battlefield trouble shooting with same problem:
+\url{https://www.reddit.com/r/battlefield_4/comments/1xzzn4/tdrdelay_10_fixed_my_crashes_since_last_patch/}
