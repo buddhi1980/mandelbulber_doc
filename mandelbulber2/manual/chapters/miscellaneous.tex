@@ -97,27 +97,58 @@ standard x,y,z global axis. On the fractal dock, in ``Global parameters'' set
 y-axis rotation to 35.2644° (= 90° - 54.7356°). The fractal will then render
 parallel to the x-y plane.
 
-\paragraph{Formulas containing a varying scale function}
+\paragraph{Formulas containing a varying scale functions}
+
+Some function allow the variation of a parameter over iteration time.
 
 
-Abox - Mod 1, Mod 2 , Mod 11, 4D and  VS icen1
+\textbf{aux.actualScale}
 
-Mandelbox Vary Scale 4D
+This scale varying transform is initialized by the Scale value (parameter name: mandelbox.scale) in \emph{Slot1}. It is found in the formulas listed below :
 
-Amazing Surf
-
-Amazing Surf - Mod 1
-
-The  formulas listed above include a transform a scale varying transform which is initialized by the Scale value (parameter name: mandelbox.scale). 
-
-aux.actualScale =
-
-fractal->mandelbox.scale + fractal->mandelboxVary4D.scaleVary * (fabs(aux.actualScale) - 1.0);
+\begin{itemize}
+	\item Abox - Mod 1, Mod 2 , Mod 11, 4D and  VS icen1
+	\item Mandelbox Vary Scale 4D
+	\item Amazing Surf  and Amazing Surf - Mod 1
+\end{itemize}
 
 The program looks  in slot1 \textbf{only}, for the initial value of  mandelbox.scale.
 
 Because of this, when in Hybrid Mode it is best to place these formulas in slot1.
 
 However, these formulas can be used in other slots, but the program will always look for parameter name: mandelbox.scale  in slot1 to set an initial value. If the parameter does not exist, then the program will use a default value of 2.0.
+
+
+\textbf{aux.actualScaleA}
+
+There is a newer version which can be used in any slot. Currently this function is used in  the following:
+
+\begin{itemize}
+	\item Abox - Mod 12, Fold Box - Mod 1
+	\item T>Spherical Fold Parab
+	\item T>Scale Vary V2.12 and T>Scale Vary Multi
+	\end{itemize}
+	
+With both aux.scale and aux.scaleA, it is often best to use them only once in a Hybrid Mode setup.
+
+\textbf{T>Scale VaryV1}
+
+This is a simple linear scale variation.
+
+\simpleImageWithCaptionFullWidth{img/manual/media/scale_varyV1.png}
+{Transform Scale VaryV1}
+{scale_varyV1}
+
+\textbf{T>Scale VaryVCL}
+
+VCL is short for vary curvi-linear. With this transform there is the options to use linear slopes(green), curvi-linear (red) or parabolic (yellow).
+
+\simpleImageWithCaptionFullWidth{img/manual/media/scale_vary_VCL.png}
+{Transform Scale Vary VCL}
+{scale_vary_VCL}
+
+
+
+
 
 
