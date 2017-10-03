@@ -37,7 +37,11 @@ With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are 
 Proceed with \ref{configure-opencl}.
 
 \subsubsection{Setup of OpenCL on Linux}\label{setup-opencl-linux}
-TODO
+With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
+Proceed with \ref{configure-opencl}. 
+If you are a developer and compile your own Mandelbulber version
+you need to have the package \textbf{opencl-headers} installed in the system.  
+See also the corresponding README.
 
 \subsubsection{Setup of OpenCL on MacOS}\label{setup-opencl-macos}
 TODO
@@ -61,7 +65,7 @@ You will find the configuration page in figure \ref{opencl_tab}.
 		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
 	\end{itemize}
 	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
-	\item \textbf{Memory Limit} - TODO
+	\item \textbf{Memory Limit} - Memory limit in MB for the device
 \end{itemize}
 
 \subsection{Trouble shooting OpenCL}\label{opencl-troubleshooting}
