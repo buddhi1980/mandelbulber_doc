@@ -34,7 +34,7 @@ Sadly the performance of those drivers is typically below the performance of the
 
 \subsubsection{Setup of OpenCL on Windows}\label{setup-opencl-windows}
 With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
-Proceed with \ref{configure-opencl}.
+Proceed with \ref{configure-opencl}. Note: Windows users may need to edit the registry to avoid timeout errors, refer \ref{opencl-troubleshooting}
 
 \subsubsection{Setup of OpenCL on Linux}\label{setup-opencl-linux}
 With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
@@ -65,12 +65,12 @@ You will find the configuration page in figure \ref{opencl_tab}.
 %		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
 %	\end{itemize}
 %	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
-	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most of graphics cards cannot handle memory objects larger than 512MB. If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When program needs more memory (too high image resolution), then effects will be rendered using CPU.
-	\item \textbf{Mode} - This setting is located in Navigation dock just below RENDER button. Switches the rendering engine between different levels of shader extent.
+	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 512MB. If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When the program needs more memory (image resolution too high), then the effects will be rendered using CPU.
+	\item \textbf{Mode} - This setting is located in the Navigation dock just below the RENDER button. It switches the rendering engine between different levels of shader extent.
 	\begin{itemize}
 		\item  \textbf{no OpenCL} - temporarily disables OpenCL 
-		\item  \textbf{fast} - renders preview of fractal shape. Appearance of fractal is not realistic, but rendering is very fast.
-		\item  \textbf{limited} - image is rendered with most of effects except reflection and refraction of light. This mode offers realistic rendering, but uses less graphics card resources than \emph{full} mode. 
+		\item  \textbf{fast} - renders preview of the fractal shape. The appearance of the fractal is not realistic, but the rendering is very fast.
+		\item  \textbf{limited} - image is rendered with most of the effects, except reflection and refraction of light. This mode offers realistic rendering, but uses less graphics card resources than \emph{full} mode. 
 		\item  \textbf{full} - renders all effects
 	\end{itemize}	
 
