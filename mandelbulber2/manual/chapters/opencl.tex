@@ -50,7 +50,7 @@ TODO
 Open Mandelbulber and navigate to: Menu > File > Program Preferences > OpenCL (GPU).
 You will find the configuration page in figure \ref{opencl_tab}.
 
-\simpleImageWithCaptionFullWidth{img/manual/media/opencl_tab.png}
+\simpleImageWithCaption75Width{img/manual/media/opencl_tab.png}
 {OpenCL Tab in preferences}
 {opencl_tab}
 
@@ -58,15 +58,26 @@ You will find the configuration page in figure \ref{opencl_tab}.
 	\item First you need to enable OpenCL by enabling the checkbox
 	\item Then you need to select the platform and device to identify the OpenCL hardware 
 		element to render with.
-	\item \textbf{Precision} - Switch between float and double precision
+%	\item \textbf{Precision} - Switch between float and double precision
+%	\begin{itemize}
+%		\item \textbf{float} - gives high performance render, but is limited in precision, 
+%			sometimes this mode can result in artifacts and bad DE.
+%		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
+%	\end{itemize}
+%	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
+	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most of graphics cards cannot handle memory objects larger than 512MB. If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When program needs more memory (too high image resolution), then effects will be rendered using CPU.
+	\item \textbf{Mode} - This setting is located in Navigation dock just below RENDER button. Switches the rendering engine between different levels of shader extent.
 	\begin{itemize}
-		\item \textbf{float} - gives high performance render, but is limited in precision, 
-			sometimes this mode can result in artifacts and bad DE.
-		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
-	\end{itemize}
-	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
-	\item \textbf{Memory Limit} - Memory limit in MB for the device
+		\item  \textbf{no OpenCL} - temporarily disables OpenCL 
+		\item  \textbf{fast} - renders preview of fractal shape. Appearance of fractal is not realistic, but rendering is very fast.
+		\item  \textbf{limited} - image is rendered with most of effects except reflection and refraction of light. This mode offers realistic rendering, but uses less graphics card resources than \emph{full} mode. 
+		\item  \textbf{full} - renders all effects
+	\end{itemize}	
+
+	
 \end{itemize}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/opencl_mode.png}{OpenCL Mode in Navigation dock}
+	{opencl_mode}
 
 \subsection{Trouble shooting OpenCL}\label{opencl-troubleshooting}
 
@@ -75,6 +86,8 @@ You will find the configuration page in figure \ref{opencl_tab}.
 When Mandelbulber is run under Windows, the OS will monitor the GPU with a watchdog. When the card becomes unresponsive for more than two seconds, the driver will shutdown and crash with a message like:
 
 \textbf{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
+
+It can happen when there are enabled effects which make rendering of each pixel very long. 
 
 A workaround for this problem is to increase this timeout limit. To do so you need to add or modify two keys in the windows registry. Beware: Do this at your own risk, changing any wrong keys in the windows registry may cause windows to stop working properly!
 
@@ -97,7 +110,7 @@ You can find more information about this topic in the following resources:
 
 The original Blogpost in Fragmentarium, which has been used as the source of this article: \url{http://blog.hvidtfeldts.net/index.php/2011/12/fragmentarium-faq/}
 
-Windows Explanation about the affected registry keys: \url{https://docs.microsoft.com/en-us/windows-hardware/drivers/display/tdr-registry-keys}
+Microsoft Explanation about the affected registry keys: \url{https://docs.microsoft.com/en-us/windows-hardware/drivers/display/tdr-registry-keys}
 
 Conversation about this topic in the fractalforums Mandelbulber group:
 \url{http://www.fractalforums.com/feature-requests/render-bucket-size-control-for-opencl/msg102868/#new}
