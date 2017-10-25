@@ -7,6 +7,7 @@ GPU or to an accelerator card. This can highly reduce the render time.
 OpenCL itself is an industry standard developed by the Khronos group and
 is a well established framework. The two mayor GPU vendors (ATI / Nvidia)
 among others implement the OpenCL specification in their drivers.
+OpenCL uses single precision floating point accuracy, so the minimum camera to surface distance is about 1e-05, whereas  this distance can be reduced to about 1e-09 with openCL disabled. Therefore openCL is not suitable for zooming down into fine detailed areas.
 
 \subsection{Setup of OpenCL}\label{setup-opencl}
 To render in Mandelbulber with OpenCL you will need to install a recent driver.
