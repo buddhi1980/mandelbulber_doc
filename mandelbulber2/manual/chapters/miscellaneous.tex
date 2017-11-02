@@ -76,6 +76,23 @@ Q.  Is it possible to put few fractals in same scene, not as hybrids but just cl
 
 A. In  boolean mode, you can place up to nine different fractals in your image, you can assign each fractal a different material.
 
+\paragraph{Can the priority of GPU be set} November 2017
+
+Q. Rendering anything using OpenCL currently brings my system to a crawl, graphically speaking. Anything elsewhere only progresses once a square of fractal image has been rendered and Mandelbulber moves onto the next one. If the render is especially complex my system feels like it has frozen completely as I can't interact with anything until the next square is done.
+
+Is there any way to reduce the priority of the GPU processing? Admittedly I don't even know if OpenCL processes work in this way but it makes GPU rendering near unusable for me for more complex images.
+
+Using Ubuntu 16.04 and 17.10 (Unity 7 and GNOME 3) with a GeForce GTX 750 Ti (need a new one!), driver version 384.90. Current git build of Mandelbulber.
+
+A. Graphics drivers have no capability to set priorities for tasks. In general they are not so well prepared for multitasking. It's also not possible to reduce allocation of GPU. 
+
+Actually there is used CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE to run the program with optimal global_work_size. If will be used lower size, rendering will be slower, but you will not see difference in multitasking. It's because rendering of each pixel will still take the same time, but amount of simultaneously rendered pixel will be lower. For that time GPU is busy.So in general as fast the enqueued work is executed as the system is more responsive.
+
+Calculation of 3D fractals is computation extensive, so it's not possible to get quick calculation.
+This is big disadvantage of computation on GPUs.
+If you want to have system well running with background GPU computation, you need to have second graphics card which will be used only for computation.
+
+
 \subsection{Hints}\label{Hints}
 
 \paragraph{Optimizing of \emph{maximum view distance}}\index{ray marching!maximum view distance} Located : Rendering
