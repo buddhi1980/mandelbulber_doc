@@ -86,7 +86,7 @@ Using Ubuntu 16.04 and 17.10 (Unity 7 and GNOME 3) with a GeForce GTX 750 Ti (ne
 
 A. Graphics drivers have no capability to set priorities for tasks. In general they are not so well prepared for multitasking. It's also not possible to reduce allocation of GPU. 
 
-Actually there is used CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE to run the program with optimal global_work_size. If will be used lower size, rendering will be slower, but you will not see difference in multitasking. It's because rendering of each pixel will still take the same time, but amount of simultaneously rendered pixel will be lower. For that time GPU is busy.So in general as fast the enqueued work is executed as the system is more responsive.
+Actually there is used CL\_KERNEL\_PREFERRED\_WORK\_GROUP\_SIZE\_MULTIPLE to run the program with optimal global\_work\_size. If will be used lower size, rendering will be slower, but you will not see difference in multitasking. It's because rendering of each pixel will still take the same time, but amount of simultaneously rendered pixel will be lower. For that time GPU is busy.So in general as fast the enqueued work is executed as the system is more responsive.
 
 Calculation of 3D fractals is computation extensive, so it's not possible to get quick calculation.
 This is big disadvantage of computation on GPUs.
@@ -227,7 +227,7 @@ A  component value is added based on the distance of the point from the origin a
 
 A  component value is added based on the DE value of the point at termination.
 
-\simpleImageWithCaptionFullWidth{img/manual/media/DE_color.png}
+\simpleImageWithCaptionSmallWidth{img/manual/media/DE_color.png}
 {DE color component}
 {DE_color}
 
