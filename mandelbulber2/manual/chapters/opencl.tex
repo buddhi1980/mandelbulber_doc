@@ -72,8 +72,10 @@ You will find the configuration page in figure \ref{opencl_tab}.
 		\item  \textbf{no OpenCL} - temporarily disables OpenCL 
 		\item  \textbf{fast} - renders preview of the fractal shape. The appearance of the fractal is not realistic, but the rendering is very fast.
 		\item  \textbf{limited} - image is rendered with most of the effects, except reflection and refraction of light. This mode offers realistic rendering, but uses less graphics card resources than \emph{full} mode. 
-		\item  \textbf{full} - renders all effects
-	\end{itemize}	
+		\item  \textbf{full} - renders all effects		
+	\end{itemize}
+
+Note: When openCL is enabled the image will be rendered in \textbf{fast mode}, a user must change to limited or full modes to get a realistic appearance. The default setting is \textbf{fast mode}  because on low cost gfx cards (like built-in Intel), \textbf{full} mode doesn't work and can cause the gfx driver to crash. 	
 
 	
 \end{itemize}
