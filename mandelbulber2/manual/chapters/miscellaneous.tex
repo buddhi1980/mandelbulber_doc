@@ -264,4 +264,42 @@ Left image below is with iterScale = 0.0, the right image has the function disab
 {without_iter}
 
 
+\paragraph{Addition of constant "c" in functions (z = fn(z) + c)}
+This is just a general bit about formula structure.
+
+A lot of standard formulas add a constant at the end of the iteration loop, i.e. "do some maths then add a constant", and repeat until termination conditions are met.
+
+Bulbs, abox/surf, quaternion, pseudo kleinians do
+
+Menger, prism, sierpinski and alot of other IFS do not.
+
+Boxbulbs are often best without but they can still have a constant added.
+
+But you can carefully add any constant to any formula anywhere in the loop.
+
+The standard constants added at the end of the loop are either a Julia constant(coordinates) or the original-point-being-iterated often referred to as c pixel.
+
+The standard approach is to either add c pixel OR julia constant
+
+if (julia enabled) z += vec3(julia);
+else z += vec3(c pixel) * vec3(constant multiplier);
+
+In Mandelbulb V1.21 and Fragmentarium I use z += (c pixel * constant multiplier) + (julia); as then I can use both constants at once or simply zero out what I don't want.
+
+Mandelbulber is historically set up the standard way, ( choice of c pixel OR Julia at the end of the loop).
+However there are plenty of formulas in the list where you can use both or just build a formula out of transforms in hybrid mode.
+
+Summary. How standard fractals are constructed is just a safe starting point, you can mix it all up, the aim is achieving "a quality image in a reasonable time".
+
+
+Added by user (thankyou).
+Thanks for the informative summary. Some additional info for those less familiar with Mandelbulber: These parameters are set in the Objects palette. The Fractals tab (where you select the formula(s)) has a checkbox to select whether or not to use the constant. For formulas where the constant is normally used, it will be labeled "Don't add global C constant"; for formulas where the constant is not normally used, it will be labeled "Add global C constant". Leave unchecked for the normal behavior or check for the opposite.
+
+The Global parameters tab has a checkbox for "Julia mode" to select whether to add the Julia constant (if checked) or the current pixel (if not), as well as the Constant multiplier. The Fractals tab will have a remark at the top if Julia is checked.
+
+Two notes:
+
+1. Julia mode and the Constant multiplier are ignored if the global C constant is not used.
+
+2. If you use multiple formulas (hybrid mode), the Julia mode setting applies to all of them where the global C constant is used. In Boolean Mode, additional parameters appear at the bottom of the formula UI. These include parameters for the addition of constant for each boolean mode fractal.
 
