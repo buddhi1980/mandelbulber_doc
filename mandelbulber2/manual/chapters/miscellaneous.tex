@@ -185,9 +185,11 @@ The parameter controls are generally like this :
 {Aux.color parameters}
 {aux_color_parameters_vary_VCL}
 
-When the iteration loop is running, this number is increased each time a condition is met.  The result is dependent on how many times before termination  that the condition is met..
+When the iteration loop is running, this number is increased each time a condition is met.  The result is dependent on how many times before termination  that the condition is met.
 
-Currently there are two types of algorithms that use aux.color.  Example maths:
+Currently there are two types of algorithms that use aux.color. In V2.13 Amazing Surf Mod2 has different aux.color calulations. In V2.14 Mandelbox Variable, PseudoKleinian Mod2 and some basic transforms, have aux.color mode 2 and 3 options.
+
+Example  maths (mode 1):
 
 Box Fold
 if  (z  >  limit  OR  z  <   -limit)   aux.color +=  boxFoldComponent.
@@ -305,6 +307,6 @@ Two notes:
 \paragraph{Antialiasing with photo editing software}
 Added by user (thankyou).
 
-When there are subpixel size details, image quality benefits hugely from antialiasing, which can be done in photoshop. Default blending uses a formula post gamma correction, which makes green and red blur to brown, for example. A setting in photoshop allows calculation pre gamma, which blends to yellow as it should! This makes a difference when using bicubic smoothing for shrinking images - especially 4x shrink.
+When there are subpixel size details, image quality benefits hugely from antialiasing, which can be done in photo editing software. Default blending uses a formula post gamma correction, which makes green and red blur to brown, for example. A setting in some photo editing software (e.g. photoshop) allows calculation pre gamma, which blends to yellow as it should! This makes a difference when using bicubic smoothing for shrinking images - especially 4x shrink.
 
 
