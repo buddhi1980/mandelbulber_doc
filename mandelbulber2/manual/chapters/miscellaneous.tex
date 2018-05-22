@@ -309,4 +309,27 @@ Added by user (thankyou).
 
 When there are subpixel size details, image quality benefits hugely from antialiasing, which can be done in photo editing software. Default blending uses a formula post gamma correction, which makes green and red blur to brown, for example. A setting in some photo editing software (e.g. photoshop) allows calculation pre gamma, which blends to yellow as it should! This makes a difference when using bicubic smoothing for shrinking images - especially 4x shrink.
 
+\paragraph{Some notes on using "Multiple rays with light map" for coloring.}
+Added by user (thankyou).
+Menno Jansen 
+Mandelbulber facebook.11 May at 20:23
+
+Note. Multiple rays with light map Ambient Occlusion (AO) is slow so it is best to be used with OpenCL.
+
+1) Materials Editor: disable “Use colors from a palette ..” and use the default gray with the Single Color.
+
+2) Effects/Ray-tracing: Type > choose “Multiple rays with light map” and choose which map you want to use as “Light map texture”. Also make the Intensity value higher.
+Note: you can choose any photo you want as Light Map. But make sure that it is a photo/image with some dominant colors. A photo/image with all kind of colors will result in a bland render. A photo/image with a blue sky, green grass and red ball for example will result in a more defined color setting with render.
+Also I disable Glow under Volumetric. But this is a personal taste I guess
+
+3) Effects/Lights: Main light source > set the Intensity to a lower value, 0,5 for example
+
+4) Image Adjustment: Picture > Lower the Gamma value and set the Saturation value higher (how much depends on the light map you used at step 2.
+
+5) Rendering Engine: - Shape Control > Enable “Stop at maximum iteration (at maxiter)”. Then set a very low value (4 for example) to start with at “Maximum number of fractal iterations (maxiter)”. Playing around with this value really makes the difference together with step 6!!
+
+6) Rendering Engine: play around with the “Raymarching step mult. (controls quality)” and “Detail level” values.
+
+Also, you could try to add Extra Light source in dark areas . When your dominant color of the Light Map is for example red, try to add extra Light Source(s) that is blue at a not too high intensity. This can give a very cool result.
+
 
