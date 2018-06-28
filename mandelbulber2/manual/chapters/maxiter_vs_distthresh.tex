@@ -53,3 +53,10 @@ ray-marching is continued until the ray marching distance threshold is reached.
 Figure \ref{stop ray-marching-at-maxiter-low-maxiter} shows case when maximum number of iterations is reached. Ray-marching is stopped even
 if distance threshold is not reached.
 
+Enabling \emph{Constant Detail Size}\index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will make the distance threshold uniform. This takes longer, but gives a more accurate representation of detail in the distance, and can be used to address color variation over distance like in the image below.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/constant_detail_size.jpg}
+{Constant detail size}
+{constant_detail_size}
+
+
