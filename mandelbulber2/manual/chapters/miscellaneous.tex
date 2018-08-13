@@ -330,6 +330,12 @@ Also I disable Glow under Volumetric. But this is a personal taste I guess
 
 6) Rendering Engine: play around with the “Raymarching step mult. (controls quality)” and “Detail level” values.
 
-Also, you could try to add Extra Light source in dark areas . When your dominant color of the Light Map is for example red, try to add extra Light Source(s) that is blue at a not too high intensity. This can give a very cool result.
+Also, you could try to add Extra Light source in dark areas. When your dominant color of the Light Map is for example red, try to add extra Light Source(s) that is blue at a not too high intensity. This can give a very cool result.
 
 
+\paragraph{Monte Carlo MC Global Illumination.}
+Global Illumination is a part of the Monte Carlo (MC) DOF algorithm, located in the Depth of Field (DOF)combobox. It cannot be rendered without MC DOF. If the DOF blurred image is not required, then reduce the DOF radius to produce only the Global Illumination effect.
+
+About estimated rendering time: at the beginning it can be very long, because there is an initial assumption that is needed to calculate the maximum number of MC samples. But during rendering there is an estimated "actual noise level" for each image tile. If the noise level for a given tile is satisfactory, then it is no longer rendered. More samples are only calculated on tiles where the noise level is still too high. When many tiles get low noise level, then rendering progress is faster. Statistical noise estimation optimizes the MC effects a lot.
+
+What this means is that initial "estimated to end" time shown on the progress bar can be very conservative. The actual render time can be much smaller (e.g maybe 3 to 8 times faster).
