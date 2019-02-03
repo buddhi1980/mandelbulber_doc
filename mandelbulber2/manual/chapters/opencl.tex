@@ -2,7 +2,7 @@
 
 \section{OpenCL}\label{opencl}\index{OpenCL}
 
-The use of OpenCL enables offloading the rendering of the fractal to the
+The use of OpenCL \index{termination condition!maxiter} enables offloading the rendering of the fractal to the
 GPU or to an accelerator card. This can highly reduce the render time.
 OpenCL itself is an industry standard developed by the Khronos group and
 is a well established framework. The two mayor GPU vendors (ATI / Nvidia)
@@ -57,30 +57,39 @@ You will find the configuration page in figure \ref{opencl_tab}.
 
 \begin{itemize}
 	\item First you need to enable OpenCL by enabling the checkbox
+	
 	\item Then you need to select the platform and device to identify the OpenCL hardware 
 		element to render with.
+		
+	\item Select devices which you want to use during rendering. Can be used many devices simultaneously. There need to be selected at least one device.
 %	\item \textbf{Precision} - Switch between float and double precision
 %	\begin{itemize}
 %		\item \textbf{float} - gives high performance render, but is limited in precision, 
 %			sometimes this mode can result in artifacts and bad DE.
 %		\item \textbf{double}- gives lower performance render (at least by factor 2), but has the same accuracy as the non OpenCL version. This mode may prevent artifacts.
 %	\end{itemize}
-%	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.	
-	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 512MB. If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When the program needs more memory (image resolution too high), then the effects will be rendered using CPU.
+%	\item \textbf{Mode} - Switches the rendering engine between different levels of shader extent.
 	\item \textbf{Mode} - This setting is located in the Navigation dock just below the RENDER button. It switches the rendering engine between different levels of shader extent.
-	\begin{itemize}
-		\item  \textbf{no OpenCL} - temporarily disables OpenCL  Rendering is done by CPU.
-		\item  \textbf{fast} - renders preview of the fractal shape. The appearance of the fractal is not realistic, but the rendering is very fast.
-		\item  \textbf{medium} - image is rendered with correct surface colors, but volumetric effects, reflection and refraction of light is not calculated. There is used only first defined material. This mode offers more realistic rendering than in \emph{fast} mode and uses less graphics card resources than in \emph{full} mode. 
-		\item  \textbf{full} - renders all effects	
-	\end{itemize}
-
-Note: When openCL is enabled the image will be rendered in \textbf{fast mode}, a user must change to limited or full modes to get a realistic appearance. The default setting is \textbf{fast mode}  because on low cost gfx cards (like built-in Intel), \textbf{full} mode doesn't work and can cause the gfx driver to crash. 	
-
-	
-\end{itemize}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/opencl_mode.png}{OpenCL Mode in Navigation dock}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/opencl_mode.png}{OpenCL Mode in Navigation dock}
 	{opencl_mode}
+\begin{itemize}
+	\item  \textbf{no OpenCL} - temporarily disables OpenCL  Rendering is done by CPU.
+	\item  \textbf{fast} - renders preview of the fractal shape. The appearance of the fractal is not realistic, but the rendering is very fast.
+	\item  \textbf{medium} - image is rendered with correct surface colors, but volumetric effects, reflection and refraction of light is not calculated. There is used only first defined material. This mode offers more realistic rendering than in \emph{fast} mode and uses less graphics card resources than in \emph{full} mode. 
+	\item  \textbf{full} - renders all effects	
+\end{itemize}
+
+	\item \textbf{Percentage of reserved GPU time for a system} - rendering using OpenCL can slow down the system when there is used the same graphics card as display adapter. To be able to use the system you can reserve small percentage of GPU time for other programs.
+	
+	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 1/4 of total memory installed in graphics card. It is recommended to set memory limit not greater than value suggested below slider.  
+	
+	If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When the program needs more memory (image resolution too high), then the effects will be rendered using CPU.
+	
+	\item \textbf{Use fast relaxed math} - It speeds up rendering but can cause unexpected behavior on old gfx cards.
+	 
+	\item \textbf{Disable cache of OpenCL programs} - clears and disable cache for OpenCL programs used by NVidia drivers. When chache is disabled, then OpenCL programs are compiled before every rendering.
+\end{itemize}
+
 
 \subsection{Trouble shooting OpenCL}\label{opencl-troubleshooting}
 
@@ -88,7 +97,9 @@ Note: When openCL is enabled the image will be rendered in \textbf{fast mode}, a
 
 When Mandelbulber is run under Windows, the OS will monitor the GPU with a watchdog. When the card becomes unresponsive for more than two seconds, the driver will shutdown and crash with a message like:
 
-\textbf{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
+\emph{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
+
+Mandelbulber will show messages like \emph{Cannot equeue OpenCL output buffers}
 
 It can happen when there are enabled effects which make rendering of each pixel very long. 
 
@@ -109,6 +120,8 @@ Change of registry takes effect after restart of Windows.
 
 \end{enumerate}
 
+Instead of manual registry edits you can use \emph{TDR\_disable.bat} script located in program folder. You have to run it as administrator
+
 You can find more information about this topic in the following resources:
 
 The original Blogpost in Fragmentarium, which has been used as the source of this article: \url{http://blog.hvidtfeldts.net/index.php/2011/12/fragmentarium-faq/}
@@ -121,11 +134,12 @@ Conversation about this topic in the fractalforums Mandelbulber group:
 Battlefield trouble shooting with same problem:
 \url{https://www.reddit.com/r/battlefield_4/comments/1xzzn4/tdrdelay_10_fixed_my_crashes_since_last_patch/}
 
-\subsubsection{Artifacts from glow and fog}
-
- Limited floating point accuracy can cause artifacts can when using glow or fog, if the Maximum View Distance is too large. In the image below the distance was set at 192, reducing this to 30 removes the visible artifacts.
- 
- 	\simpleImageWithCaptionHalfWidth{img/manual/media/artifacts_from_glow_or_fog.png}{artifacts from glow or fog.png}
- 		{artifacts_from_glow_or_fog}
+%Artifacts are eleminated in 2.17
+%\subsubsection{Artifacts from glow and fog}
+%
+% Limited floating point accuracy can cause artifacts can when using glow or fog, if the Maximum View Distance is too large. In the image below the distance was set at 192, reducing this to 30 removes the visible artifacts.
+% 
+% 	\simpleImageWithCaptionHalfWidth{img/manual/media/artifacts_from_glow_or_fog.png}{artifacts from glow or fog.png}
+% 		{artifacts_from_glow_or_fog}
  
  
