@@ -1,8 +1,7 @@
 \section{What are fractals?}\label{what-are-fractals}
 
 Fractals are objects with self-similarity, where the smaller fragments are
-similar to those on a larger scale. A characteristic feature about fractals are subtle
-details even at very high (up to infinite) magnification.\index{fractal}
+similar to those on a larger scale. A characteristic feature is that the mathematics often produce infinite levels of smaller fractal detail, such that viewing the detail is only limited by the floating point accuracy used in the calculations\index{fractal}
 
 \subsection{Mandelbrot set}\label{mandelbrot-set}\index{Mandelbrot Set}
 
@@ -27,11 +26,11 @@ iterations:
 	The number is made of two parts: \emph{a} the real part and i\emph{b} the
 	imaginary part.
 		
-	\item\emph{c} is the coordinates of the image point to be iterated.
+	\item\emph{c} is the original position of the image point to be iterated.
 \end{itemize}
 
 In 2D, \emph{z} is a vector containing two complex number coordinates, x and y,
-( these points represent the pixel location where x represents the real part of
+(these points represent the pixel location where x represents the real part of
 the number {[}a{]} and y represents the imaginary part of the number {[}b{]}).
 Because they are complex numbers, they can be positive or negative, but also
 there will still be a mathematical solution if a function requires the square
@@ -91,7 +90,7 @@ One simple method is to assign a different color depending on the distance of th
 
 \subsection{3D fractals}\label{d-fractals}
 
-The three dimensional fractal type, the ``Mandelbulb''\index{Mandelbulb} is calculated from a
+The three dimensional fractal type, the ``Mandelbulb'',\index{Mandelbulb} is calculated from a
 fairly similar pattern to the Mandelbrot set. The difference is that the vector
 \emph{z} contains three components (\emph{x}, \emph{y}, \emph{z}) or four
 dimensions (\emph{x}, \emph{y}, \emph{z}, \emph{w}). As they are part of the
