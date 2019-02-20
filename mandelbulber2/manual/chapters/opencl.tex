@@ -61,7 +61,7 @@ You will find the configuration page in figure \ref{opencl_tab}.
 	\item Then you need to select the platform and device to identify the OpenCL hardware 
 		element to render with.
 		
-	\item Select devices which you want to use during rendering. Can be used many devices simultaneously. There need to be selected at least one device.
+	\item Select the devices which you want to use for rendering. Many devices can be used simultaneously. At least one device needs to be selected.
 %	\item \textbf{Precision} - Switch between float and double precision
 %	\begin{itemize}
 %		\item \textbf{float} - gives high performance render, but is limited in precision, 
@@ -79,15 +79,15 @@ You will find the configuration page in figure \ref{opencl_tab}.
 	\item  \textbf{full} - renders all effects	
 \end{itemize}
 
-	\item \textbf{Percentage of reserved GPU time for a system} - rendering using OpenCL can slow down the system when there is used the same graphics card as display adapter. To be able to use the system you can reserve small percentage of GPU time for other programs.
+	\item \textbf{Percentage of reserved GPU time for a system} - rendering using OpenCL can slow down the system when the same graphics card is used as the display adapter and alos for rendering. To be able to use the system you can reserve a small percentage of GPU time for other programs.
 	
-	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 1/4 of total memory installed in graphics card. It is recommended to set memory limit not greater than value suggested below slider.  
+	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 1/4 of the total memory installed in the graphics card. It is recommended to set the memory limit to not greater than the value suggested below the slider.  
 	
 	If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When the program needs more memory (image resolution too high), then the effects will be rendered using CPU.
 	
 	\item \textbf{Use fast relaxed math} - It speeds up rendering but can cause unexpected behavior on old gfx cards.
 	 
-	\item \textbf{Disable cache of OpenCL programs} - clears and disable cache for OpenCL programs used by NVidia drivers. When chache is disabled, then OpenCL programs are compiled before every rendering.
+	\item \textbf{Disable cache of OpenCL programs} - clears and disable cache for OpenCL programs used by NVidia drivers. When cache is disabled, then OpenCL programs are compiled before every render.
 \end{itemize}
 
 
@@ -99,7 +99,7 @@ When Mandelbulber is run under Windows, the OS will monitor the GPU with a watch
 
 \emph{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
 
-Mandelbulber will show messages like \emph{Cannot equeue OpenCL output buffers}
+Mandelbulber will show messages like \emph{Cannot enqueue OpenCL output buffers}
 
 It can happen when there are enabled effects which make rendering of each pixel very long. 
 
@@ -120,7 +120,7 @@ Change of registry takes effect after restart of Windows.
 
 \end{enumerate}
 
-Instead of manual registry edits you can use \emph{TDR\_disable.bat} script located in program folder. You have to run it as administrator
+Instead of manual registry edits you can use \emph{TDR\_disable.bat} script located in the program folder. You have to run it as administrator.
 
 Some gfx driver updates have appeared to remove these changes to the registry, this maybe Win10 OS and/or Nvidia driver updates. If OpenCL begins to crash after an update, then check the registry.
 
@@ -136,10 +136,10 @@ Conversation about this topic in the fractalforums Mandelbulber group:
 Battlefield trouble shooting with same problem:
 \url{https://www.reddit.com/r/battlefield_4/comments/1xzzn4/tdrdelay_10_fixed_my_crashes_since_last_patch/}
 
-%Artifacts are eleminated in 2.17
+%Artifacts are eliminated in 2.17
 %\subsubsection{Artifacts from glow and fog}
 %
-% Limited floating point accuracy can cause artifacts can when using glow or fog, if the Maximum View Distance is too large. In the image below the distance was set at 192, reducing this to 30 removes the visible artifacts.
+% Limited floating point accuracy can cause artifacts when using glow or fog, if the Maximum View Distance is too large. In the image below the distance was set at 192, reducing this to 30 removes the visible artifacts.
 % 
 % 	\simpleImageWithCaptionHalfWidth{img/manual/media/artifacts_from_glow_or_fog.png}{artifacts from glow or fog.png}
 % 		{artifacts_from_glow_or_fog}
