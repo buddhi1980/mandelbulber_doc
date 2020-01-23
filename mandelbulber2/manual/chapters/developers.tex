@@ -65,33 +65,33 @@ Compilation in QtCreator
 \subsection{Writing own formulas in Mandelbulber}\label{developers-writing-own-formulas}
 \subsubsection{Writing formula code}\label{developers-writing-formula-code}
 
-Adding new formulas:
+Fractal formulas are placed in the folder [MANDELBULBER2\_DIR]/mandelbulber2/formula/definition.
+To create a new formula you can use an existing formula there as a template.
 
-- fractal\_list.hpp:45 - \emph{enum enumFractalFormula} - here is the list of formulas. Add new formula at the end with unique number.
+The class name should be the camel case form of the filename.
 
-- fractal\_list.cpp:41 - \emph{void DefineFractalList(QList<sFractalDescription> *fractalList)} - here is detailed list of formulas
+Example:
+fractal_transf_add_cpixel_sin_or_cos.cpp -> cFractalTransfAddCpixelSinOrCos
+
+In the constructor of the class you specify the behaviour and properties how to render the formula.
 
 example:
-\begin{lstlisting}
-fractalList->append(sFractalDescription("Kaleidoscopic IFS", "kaleidoscopic_ifs",
-		kaleidoscopicIfs, KaleidoscopicIfsIteration, analyticDEType, linearDEFunction,
-		cpixelDisabledByDefault, 100, analyticFunctionIFS, coloringFunctionIFS));
-\end{lstlisting}
+\lstinputlisting[caption={Formula > Mandelbulb constructor}]{code/formula_mandelbulb_constructor.cpp}
 
 \begin{itemize}
-	\item 1st field: Displayed name of the fractal
-	\item 2nd field: internal name of the fractal. The same name is used for UI files
-	\item 3rd field: the same name as in enumFractalFormula
+	\item nameInComboBox: Displayed name of the fractal
+	\item internalName: internal name of the fractal. The same name is used for UI files
+	\item internalID: the same name as in enumFractalFormula
 	\item 4th field: The function name as defined in fractal\_formulas.cpp
-	\item 5th parameter: Preferred distance estimation method. The deltaDE method needs more computation time but doesn't need analytical DE coding knowledge.
-	\item 6th field: Preferred distance estimation function
-	\item 7th field: TODO
-	\item 8th field: Default bailout value
-	\item 9th field: Final calculation type
-	\item 10th field: Coloring function
+	\item DEType: Preferred distance estimation method. The deltaDE method needs more computation time but doesn't need analytical DE coding knowledge.
+	\item DEFunctionType: Preferred distance estimation function
+	\item cpixelAddition: TODO
+	\item defaultBailout: Default bailout value
+	\item DEAnalyticFunction: Final calculation type
+	\item coloringFunction: Coloring function
 \end{itemize}
 
-- fractal\_formulas.cpp - here are definitions of functions which calculate single fractal iteration. There is no adding of C constant and bailout condition here.
+- In the method "FormulaCode" you then specify the formula contacts of the fractal.
 
 example:
 \lstinputlisting[caption={Formula > Mandelbulb formula}]{code/formula_mandelbulb_with_function.cpp}
@@ -105,8 +105,6 @@ The arguments are the same for each formula:
 \end{itemize}
 
 All parameters and data structures are defined in fractal.h
-
-- fractal\_formulas.hpp - here are tehe header declaration of the functions
 
 - initparameters.cpp:499
 
