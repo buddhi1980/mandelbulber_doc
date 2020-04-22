@@ -1,5 +1,7 @@
 dist: trusty
 before_install:
+- openssl aes-256-cbc -K $encrypted_64d1c9367528_key -iv $encrypted_64d1c9367528_iv
+  -in githubKey.enc -out ~\/.ssh/githubKey -d
 - openssl aes-256-cbc -K $encrypted_2f1c23056049_key -iv $encrypted_2f1c23056049_iv
   -in githubKey.pub.enc -out ~\/.ssh/githubKey.pub -d
 - sudo apt-get update -qq
