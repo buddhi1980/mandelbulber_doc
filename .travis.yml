@@ -1,12 +1,11 @@
 dist: trusty
-
 before_install:
+- openssl aes-256-cbc -K $encrypted_2f1c23056049_key -iv $encrypted_2f1c23056049_iv
+  -in githubKey.pub.enc -out ~\/.ssh/githubKey.pub -d
 - sudo apt-get update -qq
 - sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended
-
 script:
 - bash build.sh
-
 deploy:
   provider: releases
   prerelease: true
@@ -14,8 +13,5 @@ deploy:
     secure: jsAeIEF7OQKod7UCb3nvBGo7r9vQCUgW56zx/JtvWyIopVRVOPFbfKZCVtygdimXmASlNQ0KWp9qif4X/sqiHPsce8HfrtpLCwjH+TDdydvKPAGHIKO0yi5VjyqrMEEiaQCrx5RQFevmHs6JZcnVvwo56rKy3Wl4JT36iZ24MzOHiAcNvRcdDOuAO16P1PBB1pqFHpPjUxhwZN11ARZZpO3uuaWdlr973Zka7YkT+yb0cCpGAHhPW2NN6tz5FzFEotwyLN/9MZ7ErI88PjFflzdfqUPLxdTjvCqSuOjpWDkzha0iHNbQDpWQm/juyR8NMEHqRqv1WUZ+w++B3epZsrJTbEwSBp99DKrMONt85TiVT3JQrxTYFEngtzb7dQp2DB0mSwJ7AaKGe6uPSI4iZq/HriIH+iRs5UBo3QOCPsR9x6wBiu1Hv+H8IJqcafldDjytrQglW/KbEd47Udyo/fQc4CfUNquUkzIaLHqPmNeCJdliNiSMAwhGzY1Yt1H0hwfbEJtYfQh50C2wMMV4AWhOYczQSz0HvoGvJfcJ8TRUjrqSxPUaivR38//EGrGUXQjN8Sc0IuYu0eIGi6rPcUhQY7ZC90+aoDqK+En+LnspiaILi4tACan6e00DGVBMAm8BqzAYGJZsVVZ0Uv7JykxyYSpC2yihpHsSn/ZH/Z8=
   file: build/handbook-compressed.pdf
   skip_cleanup: true
-  
   on:
-    # repo: buddhi1980/mandelbulber_doc
-    # tags: true
     all_branches: true
