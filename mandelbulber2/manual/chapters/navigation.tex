@@ -8,6 +8,18 @@ To set the current view there are two elements:
 	camera is \emph{always} looking at the target.)
 \end{description}
 
+\subsection{Navigation by mouse pointer dragging}\label{navigation-by-mouse-pointer-dragging} \index{navigation!drag}
+
+In most cases the easiest way of moving and rotating the camera is dragging fractal by holding mouse button and moving mouse pointer
+
+\begin{description}
+	\item[Holding left mouse button] - rotates camera by moving target
+	\item[Holding right mouse button] - rotates camera around indicated point by moving camera and target
+	\item[Holding middle button] - rotates the camera by changing only roll angle
+	\item[Holding left and right buttons] - moves the camera and target relatively to indicated point
+	\item[Holding control key and rotating mouse wheel] - moving the camera forward/backward towards indicated point
+\end{description}
+
 \subsection{Camera and Target movement
 	step}\label{camera-and-target-movement-step}
 
@@ -88,8 +100,7 @@ Moves only the camera and rotates it in respect to the motionless target.
 
 Moves only the target while maintaining a fixed camera position. The camera rotates following the target. \textbf{Note:} In Relative Step Mode, the target is moved by distance related to distance of target to fractal surface. If target is inside the fractal (distance = 0), then this option will not work with Relative Step Mode.
 
-\subsection{Linear camera and target movement modes using the mouse
-	pointer}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
+\subsection{Linear camera and target movement modes using clicks on image}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
 A user can move the camera by selecting a point on the image with the mouse pointer, and then using either left mouse button (move forward) or right button (move backward).
 
