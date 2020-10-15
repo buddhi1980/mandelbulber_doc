@@ -1,0 +1,55 @@
+\section{Materials}\label{materials}\index{materials}
+
+\subsection{Defining and assigning materials}\label{defining-materials}\index{materials!defining}
+
+Materials define appearance of object surfaces and can be used to give very interesting or even realistic look to objects. Material which can be used in Mandelbulber can use just plain colors, use fractal properties to generate colors or use external files with textures. Materials can also define physical properties of objects lice transparency, reflectance, roughness or luminosity. 
+
+In the program there can be defined set of the materials which will be shared between multiple objects. In the easiest scenario there could be used only one material for all objects.
+
+All already defined materials are visible in \emph{Materials} dock (figure \ref{materials_dock}).
+From this window user can manage materials.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_dock.png}
+{Docked window with defined material}
+{materials_dock}
+
+Clicking on chosen material will bring \emph{Material editor}, where are visible all material properties.
+
+In this dock there are folowing options:
+
+\begin{description}
+		\item[New material] -- add new definition of material
+		\item[Delete material] -- deletes selected material
+		\item[Edit material] -- opens separate window with \emph{Material editor}
+		\item[Load material] -- open file selector for loading already defined material
+		\item[Same material as] -- open file selector for saving material into the file
+\end{description}
+
+Material can be assigned to different types of objects: main fractal, boolean fractals or primitives. One material can me assigned to many objects. For every object there need to be assigned any material.
+
+\subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}
+
+To assign material to main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab. Clicking on material icon will bring \emph{Material manager} window where can be selected material. This selected material will be associated with main fractal object. After further changes of material properties in \emph{Material editor} there is no need to assign material once again.
+\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_main_fractal.png}
+{Material icon in Global parameters}
+{materials_assign_to_main_fractal}
+
+\subsubsection{Assigning material to primitive object}\label{assigning-material-to-primitive}
+
+To assign material to particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below parameters of this primitive there is an icon for material selection.
+ 
+\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_primitive.png}
+{Material icon in definition of primitive object}
+{materials_assign_to_primitive}
+
+\subsubsection{Assigning material to one of fractals in boolean mode}\label{assigning-material-to-boolean}
+
+To assign material to particular fractal when is enabled boolean mode, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to formula tab for which material will be assigned. Selection of a material is below fractal formula parameters.
+
+\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_boolean.png}
+{Material icon below fractal formula parameters in boolean mode}
+{materials_assign_to_primitive}
+
