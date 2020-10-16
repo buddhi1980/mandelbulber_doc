@@ -53,3 +53,48 @@ To assign material to particular fractal when is enabled boolean mode, go to \em
 {Material icon below fractal formula parameters in boolean mode}
 {materials_assign_to_primitive}
 
+\subsection{Parameters of materials}\label{materials-parameters}\index{materials!parameters}
+
+Parameters of materials can be edited in \emph{Material editor} dock. On the top of material editor there is real-time preview of the material and name of the material. Name can be freely edited for easier identification of the material.
+
+\subsubsection{Gradients}\label{materials-gradients}
+
+Gradients can be applied to fractal objects. If material with gradients is assigned to primitive object, then gradient will be ignored and will be used plain color instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
+{Gradient applied to fractal and primitive objects}
+{materials_gradient_on_primitive}
+
+For every parameter which uses gradient there is the same type of gradient editor. Gradient can has up to 100 intermediate colors. First and colors are always the same, because gradient is repeated in the loop.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_editor.png}
+{Gradient editor}
+{materials_gradient_edtor}
+
+Gradient editor has following buttons:\index{materials!gradient editor}
+\nopagebreak
+\begin{description}
+	\item[Defined colors (1)] -- colors used in the gradient. Double click on color opens window where color can be changes. Color box can be moved along the gradient (only first and last color cannot be moved) 
+	\item[Randomize colors (2)] -- randomizes all colors in the gradient
+	\item[Randomize all (3)] -- randomizes number of colors, their positions and colors
+	\item[Increase brightness (4)] -- increases brightness of all colors
+	\item[Decrease brightness (5)] -- decreases brightness of all colors
+	\item[Invert (6)] -- inverts all colors
+	\item[Increase saturation (7)] -- increases saturation of all colors
+	\item[Decrease saturation (8)] -- decreases saturation of all colors
+\end{description}
+
+Right click on the gradient displays context menu which has following options:
+\nopagebreak
+\begin{description}
+	\item[Add] -- Adds new color box in the position of mouse pointer
+	\item[Remove] -- Removes color box in the position of mouse pointer
+	\item[Delete all] -- deletes all colors from the gradient. There is kept only first and last color.
+	\item[Change number of colors] -- changes number of colors with recalculation of color boxes
+	\item[Grab colors from image] -- opens file selector to chose an image from which colors will be extracted
+	\item[Load colors from file] -- opens file selector to chose text file with already defined gradient
+	\item[Save colors to file] -- opens file selector to chose file where gradient will be saved as text file.
+	\item[Copy] -- copies gradient to clipboard. It can be used to copy all colors from one gradient to other one (e.g. to use the same colors for transparency as for surface color)
+	\item[Paste] -- pastes gradient from clipboard. 
+\end{description}
+

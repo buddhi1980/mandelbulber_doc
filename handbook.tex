@@ -11,8 +11,8 @@
 
 \newcommand{\mTitle}{Mandelbulber}
 \newcommand{\mSubtitle}{End User Manual}
-\newcommand{\mVersionDocument}{2.17.0.0}
-\newcommand{\mDateDocument}{2019-February}
+\newcommand{\mVersionDocument}{2.32.0.0}
+\newcommand{\mDateDocument}{2020-October}
 \newcommand{\mAuthor}{	
 \begin{tabular}{r|p{11cm}}
 	\textsc{Krzysztof Marczak:}
@@ -40,65 +40,67 @@
 
 %%% Title
 \begin{titlepage}
-\begin{center}
-	\vspace{1.5cm}
-		\includegraphics[width=5cm]{img/mandelbulber_logo.png} \\
-	\vspace{0.5cm}
-	\Huge\textbf{\mTitle}\\
-	\Huge\mSubtitle\\
-	\vspace{1.5cm}
+	\begin{center}
+		\vspace{1.5cm}
+			\includegraphics[width=5cm]{img/mandelbulber_logo.png} \\
+		\vspace{0.5cm}
+		\Huge\textbf{\mTitle}\\
+		\Huge\mSubtitle\\
+		\vspace{1.5cm}
+		
+		%%% Build Information
+		\begin{tabular}{c}
+			\large\textbf{Version \mVersionDocument} (\mDateDocument)\\
+			\specialrule{3.14159265358979pt}{1pt}{1pt}
+		\end{tabular}
+		\break
+		\normalsize
+		\begin{flushright}
+			\begin{tabular}{r|p{11cm}}
+				\textsc{Download:}
+				& \href{https://sourceforge.net/projects/mandelbulber/}
+				{https://sourceforge.net/projects/mandelbulber/} \\
+				\textsc{Development:}
+				& \href{https://github.com/buddhi1980/mandelbulber2/}
+				{https://github.com/buddhi1980/mandelbulber2/} \\
+				\textsc{Community:}
+				& \href{http://www.fractalforums.com/mandelbulber/}
+				{http://www.fractalforums.com/mandelbulber/} \\
+				& \href{https://www.facebook.com/groups/mandelbulber/}
+				{https://www.facebook.com/groups/mandelbulber/}                        
+		    \end{tabular}
+		\end{flushright}
+		\vspace{2cm}
 	
-	%%% Build Information
-	\begin{tabular}{c}
-		\large\textbf{Version \mVersionDocument} (\mDateDocument)\\
-		\specialrule{3.14159265358979pt}{1pt}{1pt}
-	\end{tabular}
-	\break
-	\normalsize
-	\begin{flushright}
-		\begin{tabular}{r|p{11cm}}
-			\textsc{Download:}
-			& \href{https://sourceforge.net/projects/mandelbulber/}
-			{https://sourceforge.net/projects/mandelbulber/} \\
-			\textsc{Development:}
-			& \href{https://github.com/buddhi1980/mandelbulber2/}
-			{https://github.com/buddhi1980/mandelbulber2/} \\
-			\textsc{Community:}
-			& \href{http://www.fractalforums.com/mandelbulber/}
-			{http://www.fractalforums.com/mandelbulber/} \\
-			& \href{https://www.facebook.com/groups/mandelbulber/}
-			{https://www.facebook.com/groups/mandelbulber/}                        
-	    \end{tabular}
-	\end{flushright}
-	\vspace{2cm}
-
-	%%% Editors
-	\begin{tabular}{c}
-		\large\textbf{Editors}\\
-		\specialrule{1.618033988749895pt}{1pt}{1pt}
-	\end{tabular}
-	\break
-	\begin{flushright}
-		\mAuthor\\
-	\end{flushright}
-	\vspace{2.5cm}
-	
-	%%% BG Image
-	\begin{flushright}
-	\tiny{background image by Torsten Stier (2017)}\\	
-    \hspace{1cm}
-	\end{flushright}
-	\vfill
-\end{center}
+		%%% Editors
+		\begin{tabular}{c}
+			\large\textbf{Editors}\\
+			\specialrule{1.618033988749895pt}{1pt}{1pt}
+		\end{tabular}
+		\break
+		\begin{flushright}
+			\mAuthor\\
+		\end{flushright}
+		\vspace{2.5cm}
+		
+		%%% BG Image
+		%\begin{flushright}
+		%\tiny{background image by Torsten Stier (2017)}\\	
+	    %\hspace{1cm}
+		%\end{flushright}
+		\vfill
+	\end{center}
 \end{titlepage}
 
 %%% Table of contents
 \setcounter{page}{1}
+\renewcommand{\baselinestretch}{0.6}\normalsize
 \renewcommand{\contentsname}{Table of contents}
 {
 	\hypersetup{hidelinks}
 	\tableofcontents
 }
+\renewcommand{\baselinestretch}{1.0}\normalsize
 \newpage
 
 %\printnomenclature
