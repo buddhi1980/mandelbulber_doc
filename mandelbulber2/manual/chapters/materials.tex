@@ -2,34 +2,34 @@
 
 \subsection{Defining and assigning materials}\label{defining-materials}\index{materials!defining}
 
-Materials define appearance of object surfaces and can be used to give very interesting or even realistic look to objects. Material which can be used in Mandelbulber can use just plain colors, use fractal properties to generate colors or use external files with textures. Materials can also define physical properties of objects lice transparency, reflectance, roughness or luminosity. 
+Materials define the appearance of object surfaces and volume and can be used to give objects a very interesting or even realistic look. Materials which can be used in Mandelbulber can use just plain colors, use fractal properties to generate colors or use external files with textures. Materials can also define physical properties of objects like transparency, reflectance, roughness or luminosity. 
 
-In the program there can be defined set of the materials which will be shared between multiple objects. In the easiest scenario there could be used only one material for all objects.
+In the program materials can be defined as distinct entities which can be assigned to multiple objects. In the easiest scenario only one material could be used for all objects.
 
-All already defined materials are visible in \emph{Materials} dock (figure \ref{materials_dock}).
-From this window user can manage materials.
+All defined materials are visible in the \emph{Materials} dock (figure \ref{materials_dock}).
+From this window the user can manage the materials.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_dock.png}
 {Docked window with defined material}
 {materials_dock}
 
-Clicking on chosen material will bring \emph{Material editor}, where are visible all material properties.
+Clicking on chosen material will bring up the \emph{Material editor}, where all material properties are visible.
 
-In this dock there are folowing options:
+The folowing options are available in this dock:
 
 \begin{description}
 		\item[New material] -- add new definition of material
-		\item[Delete material] -- deletes selected material
-		\item[Edit material] -- opens separate window with \emph{Material editor}
-		\item[Load material] -- open file selector for loading already defined material
-		\item[Same material as] -- open file selector for saving material into the file
+		\item[Delete material] -- delete selected material
+		\item[Edit material] -- open separate window with \emph{Material editor}
+		\item[Load material] -- open file selector for loading an already defined material
+		\item[Same material as] -- open file selector for saving material into a file
 \end{description}
 
-Material can be assigned to different types of objects: main fractal, boolean fractals or primitives. One material can me assigned to many objects. For every object there need to be assigned any material.
+Material can be assigned to different types of objects: main fractal, boolean fractals or primitives. One material can me assigned to many objects. For every object there needs to be one assigned material.
 
 \subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}
 
-To assign material to main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab. Clicking on material icon will bring \emph{Material manager} window where can be selected material. This selected material will be associated with main fractal object. After further changes of material properties in \emph{Material editor} there is no need to assign material once again.
+To assign a material to the main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab. Clicking on material icon will bring up the \emph{Material manager} window where the material can be selected. This selected material will be associated with the main fractal object. Further changes of the material properties in \emph{Material editor} will directly affect all objects with this assigned material.
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_main_fractal.png}
 {Material icon in Global parameters}
@@ -37,16 +37,16 @@ To assign material to main fractal object go to \emph{Objects} dock and \emph{Gl
 
 \subsubsection{Assigning material to primitive object}\label{assigning-material-to-primitive}
 
-To assign material to particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below parameters of this primitive there is an icon for material selection.
+To assign a material to a particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below parameters of this primitive there is an icon for the material selection.
  
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_primitive.png}
 {Material icon in definition of primitive object}
 {materials_assign_to_primitive}
 
-\subsubsection{Assigning material to one of fractals in boolean mode}\label{assigning-material-to-boolean}
+\subsubsection{Assigning material to one of the fractals in boolean mode}\label{assigning-material-to-boolean}
 
-To assign material to particular fractal when is enabled boolean mode, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to formula tab for which material will be assigned. Selection of a material is below fractal formula parameters.
+To assign a material to particular fractal when the boolean mode is enabled, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to formula tab of the fractal, which should be assigned with the material. The selection of the material is located below the fractal formula parameters.
 
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_boolean.png}
@@ -55,28 +55,28 @@ To assign material to particular fractal when is enabled boolean mode, go to \em
 
 \subsection{Parameters of materials}\label{materials-parameters}\index{materials!parameters}
 
-Parameters of materials can be edited in \emph{Material editor} dock. On the top of material editor there is real-time preview of the material and name of the material. Name can be freely edited for easier identification of the material.
+The parameters of a material can be edited in the \emph{Material editor} dock. On the top of the material editor is real-time preview of the material and the name of the material. The name can be edited freely for easier identification of the material.
 
 \subsubsection{Gradients}\label{materials-gradients}
 
-Gradients can be applied to fractal objects. If material with gradients is assigned to primitive object, then gradient will be ignored and will be used plain color instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
+Gradients can be applied to fractal objects. If material with gradients is assigned to primitive object, then gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
 {materials_gradient_on_primitive}
 
-For every parameter which uses gradient there is the same type of gradient editor. Gradient can has up to 100 intermediate colors. First and colors are always the same, because gradient is repeated in the loop.
+For every parameter which uses a gradient there is the same type of gradient editor. A Gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in the loop.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_editor.png}
 {Gradient editor}
 {materials_gradient_edtor}
 
-Gradient editor has following buttons:\index{materials!gradient editor}
+The gradient editor has the following buttons:\index{materials!gradient editor}
 \nopagebreak
 \begin{description}
-	\item[Defined colors (1)] -- colors used in the gradient. Double click on color opens window where color can be changes. Color box can be moved along the gradient (only first and last color cannot be moved) 
+	\item[Defined colors (1)] -- colors used in the gradient. A double click on the color opens a window where the color can be changed. The color box can be moved along the gradient (only the first and last color cannot be moved)
 	\item[Randomize colors (2)] -- randomizes all colors in the gradient
-	\item[Randomize all (3)] -- randomizes number of colors, their positions and colors
+	\item[Randomize all (3)] -- randomizes the number of colors, their positions and the colors
 	\item[Increase brightness (4)] -- increases brightness of all colors
 	\item[Decrease brightness (5)] -- decreases brightness of all colors
 	\item[Invert (6)] -- inverts all colors
@@ -84,17 +84,17 @@ Gradient editor has following buttons:\index{materials!gradient editor}
 	\item[Decrease saturation (8)] -- decreases saturation of all colors
 \end{description}
 
-Right click on the gradient displays context menu which has following options:
+Right click on the gradient opens the context menu which has the following options:
 \nopagebreak
 \begin{description}
 	\item[Add] -- Adds new color box in the position of mouse pointer
 	\item[Remove] -- Removes color box in the position of mouse pointer
-	\item[Delete all] -- deletes all colors from the gradient. There is kept only first and last color.
+	\item[Delete all] -- deletes all colors from the gradient. Only the first and last color are kept.
 	\item[Change number of colors] -- changes number of colors with recalculation of color boxes
 	\item[Grab colors from image] -- opens file selector to chose an image from which colors will be extracted
 	\item[Load colors from file] -- opens file selector to chose text file with already defined gradient
 	\item[Save colors to file] -- opens file selector to chose file where gradient will be saved as text file.
-	\item[Copy] -- copies gradient to clipboard. It can be used to copy all colors from one gradient to other one (e.g. to use the same colors for transparency as for surface color)
+	\item[Copy] -- copies gradient to clipboard. This can be used to copy all colors from one gradient to another one (e.g. to use the same colors for transparency as for surface color)
 	\item[Paste] -- pastes gradient from clipboard. 
 \end{description}
 
