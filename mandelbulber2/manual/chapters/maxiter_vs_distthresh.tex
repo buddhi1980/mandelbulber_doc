@@ -33,30 +33,30 @@ loop stops on bailout condition (away from fractal surface), but on the fractal
 surface the maximum number of iterations is calculated (when bailout is not
 reached).
 
+Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
+ray-marching is continued until the ray marching distance threshold is reached.
+
 \twoImagesWithTwoCaptionsFullWidth{img/manual/media/stop_raymarching_at_disttrhersh.png}
 {Example for 1st case - stop ray-marching at distance threshold}
 {stop_raymarching_at_disttrhersh}
 {img/manual/media/stop_raymarching_at_maxiter.png}
 {Example for 2nd case: Stop ray-marching at Maxiter}
-{stop_raymarching_at_maxiter}
+{stop_raymarching_at_maxiter}{H}
+
+Figure \ref{stop ray-marching-at-maxiter-low-maxiter} shows case when maximum number of iterations is reached. Ray-marching is stopped even
+if distance threshold is not reached.
 
 \twoImagesWithTwoCaptionsFullWidth{img/manual/media/stop_raymarching_at_disttrhersh_iter4.png}
 {Example for 1st case: Stop ray-marching at bailout with low Maxiter}
 {stop-raymarching-at-bailout-low-maxiter}
 {img/manual/media/stop_raymarching_at_maxiter_iter4.png}
 {Example for 2nd case: Stop ray-marching at maxiter with low maxiter}
-{stop ray-marching-at-maxiter-low-maxiter}
+{stop ray-marching-at-maxiter-low-maxiter}{h}
 
-Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
-ray-marching is continued until the ray marching distance threshold is reached.
-
-Figure \ref{stop ray-marching-at-maxiter-low-maxiter} shows case when maximum number of iterations is reached. Ray-marching is stopped even
-if distance threshold is not reached.
-
-Enabling \emph{Constant Detail Size}\index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will make the distance threshold uniform. This takes longer, but gives a more accurate representation of detail in the distance, and can be used to address color variation over distance like in the image below.
+Enabling \emph{Constant Detail Size}\index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will make the distance threshold uniform. This takes longer, but gives a more accurate representation of detail in the distance, and can be used to address color variation over distance (figure \ref{constant_detail_size}).
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/constant_detail_size.jpg}
 {Constant detail size}
-{constant_detail_size}
+{constant_detail_size}{h}
 
 

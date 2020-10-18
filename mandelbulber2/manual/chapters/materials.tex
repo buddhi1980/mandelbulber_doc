@@ -11,7 +11,7 @@ From this window the user can manage the materials.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_dock.png}
 {Docked window with defined material}
-{materials_dock}
+{materials_dock}{h}
 
 Clicking on chosen material will bring up the \emph{Material editor}, where all material properties are visible.
 
@@ -29,29 +29,29 @@ Material can be assigned to different types of objects: main fractal, boolean fr
 
 \subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}
 
-To assign a material to the main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab. Clicking on material icon will bring up the \emph{Material manager} window where the material can be selected. This selected material will be associated with the main fractal object. Further changes of the material properties in \emph{Material editor} will directly affect all objects with this assigned material.
+To assign a material to the main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab (figure \ref{materials_assign_to_main_fractal}). Clicking on material icon will bring up the \emph{Material manager} window where the material can be selected. This selected material will be associated with the main fractal object. Further changes of the material properties in \emph{Material editor} will directly affect all objects with this assigned material.
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_main_fractal.png}
 {Material icon in Global parameters}
-{materials_assign_to_main_fractal}
+{materials_assign_to_main_fractal}{h}
 
 \subsubsection{Assigning material to primitive object}\label{assigning-material-to-primitive}
 
-To assign a material to a particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below parameters of this primitive there is an icon for the material selection.
+To assign a material to a particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below parameters of this primitive there is an icon for the material selection (figure \ref{materials_assign_to_primitive}).
  
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_primitive.png}
 {Material icon in definition of primitive object}
-{materials_assign_to_primitive}
+{materials_assign_to_primitive}{H}
 
 \subsubsection{Assigning material to one of the fractals in boolean mode}\label{assigning-material-to-boolean}
 
-To assign a material to particular fractal when the boolean mode is enabled, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to formula tab of the fractal, which should be assigned with the material. The selection of the material is located below the fractal formula parameters.
+To assign a material to particular fractal when the boolean mode is enabled, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to formula tab of the fractal, which should be assigned with the material. The selection of the material is located below the fractal formula parameters (figure \ref{materials_assign_to_boolean}).
 
 \nopagebreak
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_boolean.png}
 {Material icon below fractal formula parameters in boolean mode}
-{materials_assign_to_primitive}
+{materials_assign_to_boolean}{H}
 
 \subsection{Parameters of materials}\label{materials-parameters}\index{materials!parameters}
 
@@ -63,15 +63,15 @@ Gradients can be applied to fractal objects. If material with gradients is assig
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
-{materials_gradient_on_primitive}
+{materials_gradient_on_primitive}{h}
 
 For every parameter which uses a gradient there is the same type of gradient editor. A Gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in the loop.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_editor.png}
 {Gradient editor}
-{materials_gradient_edtor}
+{materials_gradient_edtor}{h}
 
-The gradient editor has the following buttons:\index{materials!gradient editor}
+The gradient editor has the following buttons (figure \ref{materials_gradient_edtor}):\index{materials!gradient editor}
 \nopagebreak
 \begin{description}
 	\item[Defined colors (1)] -- colors used in the gradient. A double click on the color opens a window where the color can be changed. The color box can be moved along the gradient (only the first and last color cannot be moved)
@@ -97,4 +97,86 @@ Right click on the gradient opens the context menu which has the following optio
 	\item[Copy] -- copies gradient to clipboard. This can be used to copy all colors from one gradient to another one (e.g. to use the same colors for transparency as for surface color)
 	\item[Paste] -- pastes gradient from clipboard. 
 \end{description}
+
+Gradients are used in the material when option \emph{Use colors from gradients} is enabled. Gradients can be used for following channels: surface color, specular highlights, diffuse, luminosity, roughness, reflectance and transparency.
+
+All of channels have following common settings:
+\begin{description}
+	\item[Palette offset] -- shift colors along the color palette (figures \ref{material-palette-offset-0}, \ref{material-palette-offset-02}, \ref{material-palette-offset-05})
+	
+	\threeImagesWithTwoCaptionsFullWidth
+	{img/manual/media/material_palette_offset_0.png}
+	{palette offset = 0}
+	{material-palette-offset-0}
+	{img/manual/media/material_palette_offset_0.2.png}
+	{palette offset = 0.2}
+	{material-palette-offset-02}
+	{img/manual/media/material_palette_offset_0.5.png}
+	{palette offset = 0.5}
+	{material-palette-offset-05}
+	
+	\item[Color speed] -- frequency of color changing (figures \ref{material-color_speed_025}, \ref{material-color_speed_1}, \ref{material-color_speed_4})
+	
+	\threeImagesWithTwoCaptionsFullWidth
+	{img/manual/media/material_color_speed_025.png}
+	{color speed = 0.25}
+	{material-color_speed_025}
+	{img/manual/media/material_color_speed_1.png}
+	{color speed = 1}
+	{material-color_speed_1}
+	{img/manual/media/material_color_speed_4.png}
+	{color speed = 4}
+	{material-color_speed_4}
+	
+	\item[Coloring algorithm] -- selection of algorithm which will be used to distribute colors. Algorithms use particular properties of fractal (results of orbit trap algorithms)\index[orbit trap]
+	\begin{description}
+		\item[Standard] -- color index is calculated as a length of z vector
+		\begin{center}
+			\(c = |z|\)
+		\end{center}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
+		{Standard coloring algorithm}
+		{material-coloring-standard}{H}
+		
+		\item[orbit trap: z.Dot(point)] -- color index is calculated as a dot product of z vector and point coordinates
+		\begin{center}
+			\(c = |z \cdot p|\)
+		\end{center}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_zdotpoint.png}
+		{orbit trap: z.Dot(point) coloring algorithm}
+		{material-coloring-zdotpoint}{H}
+		
+		\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
+		\begin{center}
+			\(c = ||z - p|-r|\)
+		\end{center}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_sphere.png}
+		{orbit trap: Sphere coloring algorithm}
+		{material-coloring-zdotpoint}{H}
+		
+		\item[orbit trap: Cross] -- color index is calculated as distance of z vector from orbit trap of cross shape
+		\begin{center}
+			\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
+		\end{center}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_cross.png}
+		{orbit trap: Cross coloring algorithm}
+		{material-coloring-cross}{H}
+		
+		\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
+		\begin{center}
+			\(c = |z \cdot d|\)
+		\end{center}
+		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_line_z1.png}
+		{orbit trap: Line coloring algorithm (direction vector 0;0;1)}
+		{material-coloring-line}{H}
+	\end{description}
+\end{description}
+
+
+
+
+
+
+
+
 

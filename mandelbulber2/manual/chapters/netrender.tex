@@ -19,11 +19,11 @@ client's CPUs cores.
 
 \subsubsection{Server configuration}\label{server-configuration}
 
-On the computer which will be used as the Server, Mode is set to \emph{Server.}
+On the computer which will be used as the Server, Mode is set to \emph{Server} (figure \ref{netrender_server}).
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_server.png}
 {NetRender in 'Server' mode}
-{netrender_server}
+{netrender_server}{h}
 
 \emph{Local server port} should be set to one which is not used by other
 applications, and is passed through routers (if any are used) and firewall. The
@@ -43,11 +43,11 @@ $ mandelbulber2 --server --port 5555 pathToFileToRender.fract
 \subsubsection{Configuring the clients}\label{configuring-the-clients}
 
 On the computers which will be used as Clents, \emph{Mode} is set to
-\emph{Client}
+\emph{Client} (figure \ref{netrender_client}).
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_client.png}
 {NetRender in 'Client' mode}
-{netrender_client}
+{netrender_client}{h}
 
 The remote server address must be set to the same as the Server computer which
 is running Mandelbulber in Server mode. The address can be given as an IP
@@ -59,11 +59,11 @@ Server.
 Press \emph{Connect to server} button to connect to the server
 
 Once the connection is established correctly, the client application should show
-the status \emph{READY}
+the status \emph{READY} (figure \ref{netrender_client_connected})
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_client_connected.png}
 {NetRender in 'Client' mode connected to the server}
-{netrender_client_connected}
+{netrender_client_connected}{h}
 
 Alternative way to establish NetRender client is to use command line:
 
@@ -87,7 +87,7 @@ i.e in figure \ref{netrender_server_connected} ``magda'' computer has 4 cores an
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_server_connected.png}
 {NetRender in 'Server' mode with a connected client}
-{netrender_server_connected}
+{netrender_server_connected}{h}
 
 \subsubsection{Rendering}\label{rendering}
 

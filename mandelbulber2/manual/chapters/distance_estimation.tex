@@ -15,8 +15,6 @@ The process of stepping along the ray and testing for the surface location, is c
 
 Without the DE calculation, the proximity of the fractal surface would need to be repeatedly calculated after each of many very small steps along the ray from the camera. For example, without an estimate of where the fractal surface is, you may need up to 10,000 steps to trace a ray of light, for every pixel of the image.
 
-
-
 Ray marching\index{ray marching} looks like the illustration below. In each step, an estimation on
 the distance to the nearest fractal surface is calculated. The calculation point is moved
 along the ray by this distance. The next step is re-calculated based on the
@@ -26,19 +24,17 @@ of the fractal. The ray marching ceases when a step moves the calculation point 
 ``distance threshold''\index{ray marching!distance threshold} from the surface or after a maximum number of iteration
 if the option ``stop at maximum iteration'' is enabled.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/distance_estimation_defactor_1.png}
-{Distance Estimation with DE factor 1}
-{distance_estimation_defactor_1}
-
 Since the estimation contains some error (sometimes quite large), there is a risk that a step will be too large, and incorrectly step past the fractal surface. This may result in visible noise in the rendered image.
 
-To prevent this, the step can be multiplied by a number between 0 and 1 (\emph{ray-marching step multiplier}\index{ray marching!step multiplier}). Steps are then smaller, so there is less risk of ``overstepping'' the surface (better image quality), but the rendering time increases due to more steps being required.
+To prevent this, the step can be multiplied by a number between 0 and 1 (\emph{ray-marching step multiplier}\index{ray marching!step multiplier}). Steps are then smaller, so there is less risk of ``overstepping'' the surface (better image quality), but the rendering time increases due to more steps being required (figure \ref{distance_estimation_defactor_1}, \ref{distance_estimation_defactor_05}).
 
-\nopagebreak
+\simpleImageWithCaptionHalfWidth{img/manual/media/distance_estimation_defactor_1.png}
+{Distance Estimation with DE factor 1}
+{distance_estimation_defactor_1}{h}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/distance_estimation_defactor_05.png}
 {Distance Estimation with DE factor 0.5}
-{distance_estimation_defactor_05}
+{distance_estimation_defactor_05}{h}
 
 Each formula has assigned a DE mode and function (``automatic''). In most cases
 the automatic \emph{mode} is \emph{Analytical DE} (fastest).
@@ -65,30 +61,29 @@ what location and parameters can produce good DE quality.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/dock_statistics.png}
 {Statistics Tab with histogram data}
-{dock_statistic}
+{dock_statistic}{h}
 
-In the Statistics (enable in \emph{View} menu) you can see \emph{Percentage of
+In the Statistics (figure \ref{dock_statistic}) (enable in \emph{View} menu) you can see \emph{Percentage of
 	Wrong Distance Estimations} (``Bad DE''). This number is the percentage of image
 pixels which potentially have big errors in distance estimation calculation
 (estimated distance was much too high). It is visible as a noise on the image.
 As a general rule less than 0.1 is good, but it is case specific and 3.0
 sometimes is OK and 0.0001 sometimes is not.
 
-Figure \ref{bad_de_menger_sponge} below, is an example of Bad DE due to over-stepping. It starts to occur at the corner nearest to the camera, resulting in the black areas and distintegration of the fractal. If the ray-marching step multiplier is set even higher, the fractal will entirely disintegrate. This disintegration will generally be reflected in the Percentage of Wrong Distance Estimations statistic.
+Figure \ref{bad_de_menger_sponge}, is an example of Bad DE due to over-stepping. It starts to occur at the corner nearest to the camera, resulting in the black areas and distintegration of the fractal. If the ray-marching step multiplier is set even higher, the fractal will entirely disintegrate. This disintegration will generally be reflected in the Percentage of Wrong Distance Estimations statistic.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/bad_de_menger_sponge.png}
 {Example of over-stepping}
-{bad_de_menger_sponge}
+{bad_de_menger_sponge}{h}
 
-Figure \ref{linear_de_offset} below, shows the Linear DE offset parameter located in the Hybrids tab.
+Figure \ref{linear_de_offset}, shows the Linear DE offset parameter located in the Hybrids tab.
 For standard mandelbox types and IFS there are two similar analytic distance estimation calculations used. When making a hybrid that mixes these types, then adjusting the Linear DE offset parameter can assist in fine tuning the DE calculation.
 
 Generic  linear out: $ distance = \frac{r - offset}{\lvert DE \rvert} $
 
 The Linear DE offset is normally used in the range from 0.0 (mandelbox) to 2.0 (IFS).
-
  
 \simpleImageWithCaptionHalfWidth{img/manual/media/linear_de_offset.png}
 {Linear DE offset parameter}
-{linear_de_offset}
+{linear_de_offset}{h}
 
