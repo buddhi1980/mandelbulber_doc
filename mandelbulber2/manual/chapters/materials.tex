@@ -53,17 +53,19 @@ To assign a material to a particular fractal when the boolean mode is enabled, g
 {Material icon below fractal formula parameters in boolean mode}
 {materials_assign_to_boolean}{H}
 
-\subsection{Parameters of materials}\label{materials-parameters}\index{materials!parameters}
+\subsection{Editing parameters of materials}\label{materials-parameters}\index{materials!parameters}
 
 The parameters of a material can be edited in the \emph{Material editor} dock. On the top of the material editor is a real-time preview of the material and the name of the material. The name can be edited freely for easier identification of the material.
 
-\subsubsection{Gradients}\label{materials-gradients}
+\subsection{Gradients}\label{materials-gradients}
 
 Gradients can be applied to fractal objects. If material with gradients is assigned to a primitive object, then gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
 {materials_gradient_on_primitive}{h}
+
+\subsubsection{Gradient editor}\label{materials-gradient-editor}
 
 For every parameter which uses a gradient there is the same type of gradient editor. A Gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in a loop.
 
@@ -98,6 +100,8 @@ Right click on the gradient opens the context menu which has the following optio
 	\item[Paste] -- pastes gradient from clipboard. 
 \end{description}
 
+\subsubsection{Gradient common options}\label{materials-gradient-common-options}
+
 Gradients are used in the material when option \emph{Use colors from gradients} is enabled. Gradients can be used for the following channels: surface color, specular highlights, diffuse, luminosity, roughness, reflectance and transparency.
 
 All of the channels have the following common settings:
@@ -127,51 +131,99 @@ All of the channels have the following common settings:
 	{img/manual/media/material_color_speed_4.png}
 	{color speed = 4}
 	{material-color_speed_4}
+\end{description}
 	
-	\item[Coloring algorithm] -- selection of the algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index[orbit trap]
-	\begin{description}
-		\item[Standard] -- color index is calculated as a length of z vector
-		\begin{center}
-			\(c = |z|\)
-		\end{center}
-		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
-		{Standard coloring algorithm}
-		{material-coloring-standard}{H}
-		
-		\item[orbit trap: z.Dot(point)] -- color index is calculated as a dot product of z vector and point coordinates
-		\begin{center}
-			\(c = |z \cdot p|\)
-		\end{center}
-		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_zdotpoint.png}
-		{orbit trap: z.Dot(point) coloring algorithm}
-		{material-coloring-zdotpoint}{H}
-		
-		\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
-		\begin{center}
-			\(c = ||z - p|-r|\)
-		\end{center}
-		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_sphere.png}
-		{orbit trap: Sphere coloring algorithm}
-		{material-coloring-zdotpoint}{H}
-		
-		\item[orbit trap: Cross] -- color index is calculated as distance of z vector from orbit trap of cross shape
-		\begin{center}
-			\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
-		\end{center}
-		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_cross.png}
-		{orbit trap: Cross coloring algorithm}
-		{material-coloring-cross}{H}
-		
-		\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
-		\begin{center}
-			\(c = |z \cdot d|\)
-		\end{center}
-		\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_line_z1.png}
-		{orbit trap: Line coloring algorithm (direction vector 0;0;1)}
-		{material-coloring-line}{H}
-	\end{description}
+\subsubsection{Coloring algorithms}\label{materials-coloring-algorithms}
+	
+Option \emph{Coloring algorithm} allows selection of the algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index{orbit trap}
+
+\begin{description}
+	\item[Standard] -- color index is calculated as a length of z vector
+	\begin{center}
+		\(c = |z|\)
+	\end{center}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
+	{Standard coloring algorithm}
+	{material-coloring-standard}{H}
+	
+	\item[orbit trap: z.Dot(point)] -- color index is calculated as a dot product of z vector and point coordinates
+	\begin{center}
+		\(c = |z \cdot p|\)
+	\end{center}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_zdotpoint.png}
+	{orbit trap: z.Dot(point) coloring algorithm}
+	{material-coloring-zdotpoint}{H}
+	
+	\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
+	\begin{center}
+		\(c = ||z - p|-r|\)
+	\end{center}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_sphere.png}
+	{orbit trap: Sphere coloring algorithm}
+	{material-coloring-zdotpoint}{H}
+	
+	\item[orbit trap: Cross] -- color index is calculated as distance of z vector from orbit trap of cross shape
+	\begin{center}
+		\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
+	\end{center}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_cross.png}
+	{orbit trap: Cross coloring algorithm}
+	{material-coloring-cross}{H}
+	
+	\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
+	\begin{center}
+		\(c = |z \cdot d|\)
+	\end{center}
+	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_line_z1.png}
+	{orbit trap: Line coloring algorithm (direction vector 0;0;1)}
+	{material-coloring-line}{H}
 \end{description}
 
+\subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}
+
+Gradient for \emph{surface color} defines color channel of fractal surface. It is default way of coloring fractals.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
+{Color gradient for fractal surface}
+{material-color-gradient-example}{H}
+
+\subsubsection{Gradient for specular highlights}\label{materials-specular-gradient}
+
+Gradient for \emph{specular highlights} defines colors of specular effect. More details about this effects are in chapter \ref{materials-specular}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_specular.png}
+{Gradient for specular effect colors}
+{material-color-gradient-example}{H}
+
+\subsubsection{Gradient for diffuse}\label{materials-diffuse-gradient}
+
+Gradient for \emph{specular highlights} defines intensity of diffuse channel. Brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_diffuse.png}
+{Gradient for diffusion channel}
+{material-color-gradient-example}{H}
+
+\subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
+
+\subsubsection{Gradient for roughness}\label{materials-roughness-gradient}
+
+\subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
+
+\subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
+
+\subsection{Surface color}\label{materials-surface_color}
+
+\subsection{Shading}\label{materials-shading}
+
+\subsection{Specular highlights}\label{materials-specular}
+
+\subsection{Common options for textures}\label{materials-textures}
+
+\subsection{Advanced parameters of materials}\label{materials-advanced}
+
+\subsubsection{Color by numbers}\label{materials-color by numbers}
+
+\subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
 
 
