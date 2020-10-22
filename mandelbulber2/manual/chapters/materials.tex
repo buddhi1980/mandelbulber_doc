@@ -243,6 +243,15 @@ T>DIFS Hybrid Color - for coloring T>DIFS.
 T>Hybrid Color - more options for coloring based on the points position at termination.
 T>Hybrid Color2 - more options for coloring based on data from the iteration loop.
 
+\subsubsection{Extra Hybrid Mode Color Optionss}\label{materials-extra hybrid mode color options}
+
+When in hybrid mode (and more than one slot is enabled) the color is calculated as the addition of three parts:
+
+final color = orbit trap  +  aux.color  +  radius / aux.DE
+
+With the historic code the ratio of the three parts was fixed.
+
+With Extra Hybrid Mode Color Options enabled, the influence of the three parts can now be controlled. This also allows for some backwards compatibility with Pre V2.15 color. If Extra Hybrid Mode Color Options is disabled then the calculation is run without the scales (this is faster).
 
 \subsubsection{Color by numbers}\label{materials-color by numbers}
 
