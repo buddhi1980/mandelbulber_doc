@@ -154,6 +154,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: z.Dot(point) coloring algorithm}
 	{material-coloring-zdotpoint}{H}
 	
+	\pagebreak
 	\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
 	\begin{center}
 		\(c = ||z - p|-r|\)
@@ -170,6 +171,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: Cross coloring algorithm}
 	{material-coloring-cross}{H}
 	
+	\pagebreak
 	\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
 	\begin{center}
 		\(c = |z \cdot d|\)
@@ -207,19 +209,57 @@ Gradient for \emph{specular highlights} defines intensity of diffuse channel. Br
 {Gradient for diffusion channel}
 {material-color-gradient-diffuse}{H}
 
+\pagebreak
 \subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
+Gradient for \emph{luminosity} defines intensity of luminosity channel. This property has effect when \emph{luminosity} parameter has value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_luminosity.png}
+{Gradient for luminosity channel with enabled Monte Carlo Global Illumination and luminosity = 10}
+{material-color-gradient-luminosity}{H}
 
 \subsubsection{Gradient for roughness}\label{materials-roughness-gradient}
 
+Gradient for \emph{luminosity} defines intensity of roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_roughness.png}
+{Gradient for roughness intensity}
+{material-color-gradient-roughness}{H}
+
+\pagebreak
 \subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
 
+Gradient for \emph{reflectance} defines amount and color of reflected light. This property has effect when \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_reflectance.png}
+{Gradient for reflectance color and intensity}
+{material-color-gradient-reflectance}{H}
+
 \subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
+
+Gradient for \emph{transparency} defines color of transparency and opacity. This property has effect when \emph{Transparency} parameter is greater than zero. 
+It recomended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency_bright.png}
+{Gradient for transparency color - example of bright colors to get high transparency}
+{material-color-gradient-transparency-bright}{H}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency.png}
+{Gradient for transparency color}
+{material-color-gradient-transparency}{H}
 
 \subsection{Surface color}\label{materials-surface_color}
 
 \subsection{Shading}\label{materials-shading}
 
 \subsection{Specular highlights}\label{materials-specular}
+
+\subsection{Luminosity}\label{materials-luminosity}
+
+\subsection{Roughness}\label{materials-roughness}
+
+\subsection{Reflectance}\label{materials-reflectance}
+
+\subsection{Transparency}\label{materials-transparency}
 
 \subsection{Common options for textures}\label{materials-textures}
 
@@ -269,7 +309,6 @@ e) the fifth is case coloringFunctionAbox
 
 This is calculated as the addition of three parts
 
-\filbreak
 \begin{lstlisting}
 case coloringFunctionABox:
 colorIndex = aux.color * 100 
@@ -306,7 +345,7 @@ Color by numbers components are mixed by weights and the summation of the compon
 \textbf{Initial colorValue}. Default is 0.0, increasing this allows for the use of negative colorValues.
 
 \textbf{ColorValue Initial Conditions Components}
-By default all points have an initial colorValue of 0.0. Here it is possible to change the initial colorValue  based on the coordinates of the original point "c", (using radius_c and c.x, c.y & c.z.) Coloring can be applied using these functions alone or with other functions.
+By default all points have an initial colorValue of 0.0. Here it is possible to change the initial colorValue  based on the coordinates of the original point "c", (using radius\_c and c.x, c.y \& c.z.) Coloring can be applied using these functions alone or with other functions.
 
 \textbf{Orbit trap component}. Apply a weight to the orbit trap output colorMin.
 
