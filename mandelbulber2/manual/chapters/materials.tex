@@ -279,7 +279,7 @@ colorIndex = aux.color * 100
 
 aux.color is made up of components from the box fold and spherical fold.
 
-radius at termination * parameter named absolute value of z  / 1e13 (mandelbox formula only and if in slot#1) Note: for converging fractals the radius at termination can be very small.
+radius at termination * parameter named absolute value of z  / 1e13 (mandelbox formula only and if in slot-1) Note: for converging fractals the radius at termination can be very small.
 
 ((fractalColoring.coloringAlgorithm != fractalColoring_Standard) ? colorMin * 1000.0 : 0.0)
 colorMin * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
@@ -311,6 +311,18 @@ By default all points have an initial colorValue of 0.0. Here it is possible to 
 \textbf{Orbit trap component}. Apply a weight to the orbit trap output colorMin.
 
 \textbf{auxillary color components}. Apply weights to aux.color and aux.colorHybrid outputs obtained from some fractals and transforms.
+
+\textbf{radius components} 
+
+A component value is added based on the distance of the point from the origin at termination.
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/radius.png}
+{Radius coloring component}
+{radius}
+{img/manual/media/radius_squared.png}
+{Radius squared coloring component}
+{radius_squared}{H}
+
+\textbf{radius / DE components}
 
 \subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
