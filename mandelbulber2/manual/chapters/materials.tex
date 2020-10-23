@@ -237,7 +237,7 @@ Gradient for \emph{reflectance} defines amount and color of reflected light. Thi
 \subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
 
 Gradient for \emph{transparency} defines color of transparency and opacity. This property has effect when \emph{Transparency} parameter is greater than zero. 
-It recomended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
+It is recommended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency_bright.png}
 {Gradient for transparency color - example of bright colors to get high transparency}
@@ -249,7 +249,28 @@ It recomended to use bright colors in the gradient for transparency. More detail
 
 \subsection{Surface color}\label{materials-surface_color}
 
+This property defines color of diffused light which is applied on whole object. This color is used when \emph{surface color gradient} is disabled or when material is applied to primitive object.
+This  color is mixed with colors from bitmap texture.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/material_surface_color.png}
+{Different surface colors}
+{material-surface-color-example}{H}
+
 \subsection{Shading}\label{materials-shading}
+
+When \emph{shading} parameter is 1.0 then surface brightness depends on angle of incidence of light. Decreasing of this parameter reduces strength of this rule. When it is 0, then surface color has the same brightness at every angle. 
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_shadng_0.png}
+{shading = 0}
+{material-shading-0}
+{img/manual/media/material_shadng_05.png}
+{shading = 0.5}
+{material-shading-05}
+{img/manual/media/material_shadng_1.png}
+{shading = 1.0}
+{material-shading-1}
+
 
 \subsection{Specular highlights}\label{materials-specular}
 
