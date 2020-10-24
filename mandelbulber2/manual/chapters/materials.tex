@@ -59,7 +59,7 @@ The parameters of a material can be edited in the \emph{Material editor} dock. O
 
 \subsection{Gradients}\label{materials-gradients}
 
-Gradients can be applied to fractal objects. If material with gradients is assigned to a primitive object, then gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
+Gradients can be applied to fractal objects. If a material with gradients is assigned to a primitive object, then the gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
@@ -67,7 +67,7 @@ Gradients can be applied to fractal objects. If material with gradients is assig
 
 \subsubsection{Gradient editor}\label{materials-gradient-editor}
 
-For every parameter which uses a gradient there is the same type of gradient editor. A Gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in a loop.
+For every parameter which uses a gradient there is the same type of gradient editor. A gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in a loop.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_editor.png}
 {Gradient editor}
@@ -135,10 +135,10 @@ All of the channels have the following common settings:
 	
 \subsubsection{Coloring orbit trap algorithms}\label{materials-coloring-0rbi-trap-algorithms}
 	
-Option \emph{Coloring algorithm} allows selection of the algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index{orbit trap}
+Option \emph{Coloring algorithm} allows the selection of the orbit trap algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index{orbit trap}
 
 \begin{description}
-	\item[Standard] -- color index is calculated as a length of z vector
+	\item[Standard] -- color index is calculated as the length of z vector
 	\begin{center}
 		\(c = |z|\)
 	\end{center}
@@ -146,7 +146,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{Standard coloring algorithm}
 	{material-coloring-standard}{H}
 	
-	\item[orbit trap: z.Dot(point)] -- color index is calculated as a dot product of z vector and point coordinates
+	\item[orbit trap: z.Dot(point)] -- color index is calculated as the dot product of z vector and point coordinates
 	\begin{center}
 		\(c = |z \cdot p|\)
 	\end{center}
@@ -154,7 +154,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: z.Dot(point) coloring algorithm}
 	{material-coloring-zdotpoint}{H}
 	
-	\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
+	\item[orbit trap: Sphere] -- color index is calculated as the distance of z vector from a sphere of the radius defined by the parameter \emph{Orbit trap sphere radius}
 	\begin{center}
 		\(c = ||z - p|-r|\)
 	\end{center}
@@ -162,7 +162,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: Sphere coloring algorithm}
 	{material-coloring-sphere}{H}
 	
-	\item[orbit trap: Cross] -- color index is calculated as distance of z vector from orbit trap of cross shape
+	\item[orbit trap: Cross] -- color index is calculated as the distance of z vector from a cross shape orbit trap
 	\begin{center}
 		\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
 	\end{center}
@@ -170,7 +170,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: Cross coloring algorithm}
 	{material-coloring-cross}{H}
 	
-	\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
+	\item[orbit trap: Line] -- color index is calculated as the distance of z vector from a line defined by \emph{Orbit trap line direction vector}
 	\begin{center}
 		\(c = |z \cdot d|\)
 	\end{center}
@@ -185,7 +185,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 
 \subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}
 
-Gradient for \emph{surface color} defines color channel of fractal surface. It is default way of coloring fractals.
+Gradient for \emph{surface color} defines the color channel for the fractal surface. It is the default method of coloring fractals.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_standard.png}
 {Color gradient for fractal surface}
@@ -193,7 +193,7 @@ Gradient for \emph{surface color} defines color channel of fractal surface. It i
 
 \subsubsection{Gradient for specular highlights}\label{materials-specular-gradient}
 
-Gradient for \emph{specular highlights} defines colors of specular effect. More details about this effects are in chapter \ref{materials-specular}
+Gradient for \emph{specular highlights} defines the colors of the specular effect. More details about this effect are in chapter \ref{materials-specular}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_specular.png}
 {Gradient for specular effect colors}
@@ -201,14 +201,14 @@ Gradient for \emph{specular highlights} defines colors of specular effect. More 
 
 \subsubsection{Gradient for diffuse}\label{materials-diffuse-gradient}
 
-Gradient for \emph{specular highlights} defines intensity of diffuse channel. Brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
+Gradient for \emph{diffuse} defines the intensity of the diffuse channel. A brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_diffuse.png}
 {Gradient for diffusion channel}
 {material-color-gradient-diffuse}{H}
 
 \subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
-Gradient for \emph{luminosity} defines intensity of luminosity channel. This property has effect when \emph{luminosity} parameter has value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
+Gradient for \emph{luminosity} defines the intensity of the luminosity channel. This property is enabled when the \emph{luminosity} parameter has a value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_luminosity.png}
 {Gradient for luminosity channel with enabled Monte Carlo Global Illumination and luminosity = 10}
@@ -216,7 +216,7 @@ Gradient for \emph{luminosity} defines intensity of luminosity channel. This pro
 
 \subsubsection{Gradient for roughness}\label{materials-roughness-gradient}
 
-Gradient for \emph{luminosity} defines intensity of roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
+Gradient for \emph{roughness} defines the intensity of the roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_roughness.png}
 {Gradient for roughness intensity}
@@ -224,7 +224,7 @@ Gradient for \emph{luminosity} defines intensity of roughness effect. This prope
 
 \subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
 
-Gradient for \emph{reflectance} defines amount and color of reflected light. This property has effect when \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
+Gradient for \emph{reflectance} defines the amount and color of the reflected light. This property is enabled when the \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_reflectance.png}
 {Gradient for reflectance color and intensity}
@@ -232,7 +232,7 @@ Gradient for \emph{reflectance} defines amount and color of reflected light. Thi
 
 \subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
 
-Gradient for \emph{transparency} defines color of transparency and opacity. This property has effect when \emph{Transparency} parameter is greater than zero. 
+Gradient for \emph{transparency} defines the color of transparency and opacity. This property is enabled when the \emph{Transparency} parameter is greater than zero. 
 It is recommended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_transparency_bright.png}
@@ -245,7 +245,7 @@ It is recommended to use bright colors in the gradient for transparency. More de
 
 \subsection{Surface color}\label{materials-surface_color}
 
-This property defines color of diffused light which is applied on whole object. This color is used when \emph{surface color gradient} is disabled or when material is applied to primitive object.
+This property defines the color of diffused light which is applied on the whole object. This color is used when \emph{surface color gradient} is disabled or when the material is applied to a primitive object.
 This  color is mixed with colors from bitmap texture.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_surface_color.png}
@@ -254,7 +254,7 @@ This  color is mixed with colors from bitmap texture.
 
 \subsection{Shading}\label{materials-shading}
 
-When \emph{shading} parameter is 1.0 then surface brightness depends on angle of incidence of light. Decreasing of this parameter reduces strength of this rule. When it is 0, then surface color has the same brightness at every angle. 
+When \emph{shading} parameter is 1.0 then the surface brightness depends on the angle of incidence of light. Decreasing this parameter reduces the strength of this rule. When it is 0, then the surface color has the same brightness at every angle. 
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_shadng_0.png}
@@ -395,12 +395,36 @@ colorIndex = aux.color * 100
 + ((fractalColoring.coloringAlgorithm != fractalColoring_Standard) ? colorMin * 1000.0 : 0.0); 
 \end{lstlisting}
 
-aux.color is made up of components from the box fold and spherical fold.
+1. \textbf{aux.color part} is made up of components from the box fold and sphere fold.
 
-radius at termination * parameter named absolute value of z  / 1e13 (mandelbox formula only and if in slot-1) Note: for converging fractals the radius at termination can be very small.
+\underline{Box Fold}
+if  (z  >  limit  OR  z  <   -limit)   aux.color +=  boxFoldComponent.
+
+Note that the box fold component can create  speckly areas with mandelbox type fractals.
+
+\underline{Sphere Fold}. 
+if (rr < minR2)    aux.color +=  minR2Component.
+else if (rr < maxR2)    aux.color +=  maxR2Component.
+
+And therefore  if(rr> maxR2 ) there is no addition of a component.
+
+With a standard mandelbox we need to cut open the fractal to see these  components acting on their own. Red is the minR2 component and blue the maxR2 component.
+
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/box_fold.png}
+{Box fold component}
+{box_fold}
+{img/manual/media/sphere_fold_minR2_maxR2.png}
+{Sphere fold component}
+{sphere_fold_minR2_maxR2}{H}
 
 
-colorMin * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
+2. \textbf{radius} at termination * parameter named absolute value of z  / 1e13 
+
+
+3. \textbf{colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
+
+
+
 
 
 \subsubsection{Extra Hybrid Mode Color Options}\label{materials-extra-hybrid-mode-color-options}
@@ -441,6 +465,23 @@ A component value is added based on the distance of the point from the origin at
 {radius_squared}{H}
 
 \textbf{radius / DE components}
+
+\textbf{Axis Bias}
+
+These functions are tools to globally manipulate/distort the color. 
+Examples maths:
+
+$XYZ_bias                component = abs(z.x) \ast biasScale.x;$
+$Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
+
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/xyz_bias.png}
+{XYZ coloring component}
+{xyz_bias}
+{img/manual/media/plane_bias.png}
+{Plane bias coloring component}
+{plane_bias_squared}{H}
+
+
 
 \subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
