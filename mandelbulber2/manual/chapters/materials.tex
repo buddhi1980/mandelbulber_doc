@@ -59,7 +59,7 @@ The parameters of a material can be edited in the \emph{Material editor} dock. O
 
 \subsection{Gradients}\label{materials-gradients}
 
-Gradients can be applied to fractal objects. If material with gradients is assigned to a primitive object, then gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
+Gradients can be applied to fractal objects. If a material with gradients is assigned to a primitive object, then the gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
@@ -67,7 +67,7 @@ Gradients can be applied to fractal objects. If material with gradients is assig
 
 \subsubsection{Gradient editor}\label{materials-gradient-editor}
 
-For every parameter which uses a gradient there is the same type of gradient editor. A Gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in a loop.
+For every parameter which uses a gradient there is the same type of gradient editor. A gradient can have up to 100 intermediate colors. The first and the last color are always the same, because the gradient is repeated in a loop.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_editor.png}
 {Gradient editor}
@@ -135,10 +135,10 @@ All of the channels have the following common settings:
 	
 \subsubsection{Coloring orbit trap algorithms}\label{materials-coloring-0rbi-trap-algorithms}
 	
-Option \emph{Coloring algorithm} allows selection of the algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index{orbit trap}
+Option \emph{Coloring algorithm} allows the selection of the orbit trap algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms)\index{orbit trap}
 
 \begin{description}
-	\item[Standard] -- color index is calculated as a length of z vector
+	\item[Standard] -- color index is calculated as the length of z vector
 	\begin{center}
 		\(c = |z|\)
 	\end{center}
@@ -146,7 +146,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{Standard coloring algorithm}
 	{material-coloring-standard}{H}
 	
-	\item[orbit trap: z.Dot(point)] -- color index is calculated as a dot product of z vector and point coordinates
+	\item[orbit trap: z.Dot(point)] -- color index is calculated as the dot product of z vector and point coordinates
 	\begin{center}
 		\(c = |z \cdot p|\)
 	\end{center}
@@ -155,7 +155,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{material-coloring-zdotpoint}{H}
 	
 	\pagebreak
-	\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
+	\item[orbit trap: Sphere] -- color index is calculated as the distance of z vector from a sphere of the radius defined by the parameter \emph{Orbit trap sphere radius}
 	\begin{center}
 		\(c = ||z - p|-r|\)
 	\end{center}
@@ -163,7 +163,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{orbit trap: Sphere coloring algorithm}
 	{material-coloring-sphere}{H}
 	
-	\item[orbit trap: Cross] -- color index is calculated as distance of z vector from orbit trap of cross shape
+	\item[orbit trap: Cross] -- color index is calculated as the distance of z vector from a cross shape orbit trap
 	\begin{center}
 		\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
 	\end{center}
@@ -172,7 +172,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	{material-coloring-cross}{H}
 	
 	\pagebreak
-	\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
+	\item[orbit trap: Line] -- color index is calculated as the distance of z vector from a line defined by \emph{Orbit trap line direction vector}
 	\begin{center}
 		\(c = |z \cdot d|\)
 	\end{center}
@@ -187,7 +187,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 
 \subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}
 
-Gradient for \emph{surface color} defines color channel of the fractal surface. It is the default method of coloring fractals.
+Gradient for \emph{surface color} defines the color channel for the fractal surface. It is the default method of coloring fractals.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
 {Color gradient for fractal surface}
