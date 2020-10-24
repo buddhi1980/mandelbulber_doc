@@ -337,12 +337,36 @@ colorIndex = aux.color * 100
 + ((fractalColoring.coloringAlgorithm != fractalColoring_Standard) ? colorMin * 1000.0 : 0.0); 
 \end{lstlisting}
 
-aux.color is made up of components from the box fold and spherical fold.
+1. \textbf{aux.color part} is made up of components from the box fold and sphere fold.
 
-radius at termination * parameter named absolute value of z  / 1e13 (mandelbox formula only and if in slot-1) Note: for converging fractals the radius at termination can be very small.
+\underline{Box Fold}
+if  (z  >  limit  OR  z  <   -limit)   aux.color +=  boxFoldComponent.
+
+Note that the box fold component can create  speckly areas with mandelbox type fractals.
+
+\underline{Sphere Fold}. 
+if (rr < minR2)    aux.color +=  minR2Component.
+else if (rr < maxR2)    aux.color +=  maxR2Component.
+
+And therefore  if(rr> maxR2 ) there is no addition of a component.
+
+With a standard mandelbox we need to cut open the fractal to see these  components acting on their own. Red is the minR2 component and blue the maxR2 component.
+
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/box_fold.png}
+{Box fold component}
+{box_fold}
+{img/manual/media/sphere_fold_minR2_maxR2.png}
+{Sphere fold component}
+{sphere_fold_minR2_maxR2}{H}
 
 
-colorMin * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
+2. \textbf{radius} at termination * parameter named absolute value of z  / 1e13 
+
+
+3. \textbf{colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
+
+
+
 
 
 \subsubsection{Extra Hybrid Mode Color Options}\label{materials-extra-hybrid-mode-color-options}
@@ -383,6 +407,23 @@ A component value is added based on the distance of the point from the origin at
 {radius_squared}{H}
 
 \textbf{radius / DE components}
+
+\textbf{Axis Bias}
+
+These functions are tools to globally manipulate/distort the color. 
+Examples maths:
+
+$XYZ_bias                component = abs(z.x) \ast biasScale.x;$
+$Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
+
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/xyz_bias.png}
+{XYZ coloring component}
+{xyz_bias}
+{img/manual/media/plane_bias.png}
+{Plane bias coloring component}
+{plane_bias_squared}{H}
+
+
 
 \subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
