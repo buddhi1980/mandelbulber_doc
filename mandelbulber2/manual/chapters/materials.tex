@@ -187,7 +187,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 
 \subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}
 
-Gradient for \emph{surface color} defines color channel of fractal surface. It is default way of coloring fractals.
+Gradient for \emph{surface color} defines color channel of the fractal surface. It is the default method of coloring fractals.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
 {Color gradient for fractal surface}
@@ -195,7 +195,7 @@ Gradient for \emph{surface color} defines color channel of fractal surface. It i
 
 \subsubsection{Gradient for specular highlights}\label{materials-specular-gradient}
 
-Gradient for \emph{specular highlights} defines colors of specular effect. More details about this effects are in chapter \ref{materials-specular}
+Gradient for \emph{specular highlights} defines the colors of the specular effect. More details about this effect are in chapter \ref{materials-specular}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_specular.png}
 {Gradient for specular effect colors}
@@ -203,7 +203,7 @@ Gradient for \emph{specular highlights} defines colors of specular effect. More 
 
 \subsubsection{Gradient for diffuse}\label{materials-diffuse-gradient}
 
-Gradient for \emph{specular highlights} defines intensity of diffuse channel. Brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
+Gradient for \emph{diffuse} defines the intensity of the diffuse channel. A brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_diffuse.png}
 {Gradient for diffusion channel}
@@ -211,7 +211,7 @@ Gradient for \emph{specular highlights} defines intensity of diffuse channel. Br
 
 \pagebreak
 \subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
-Gradient for \emph{luminosity} defines intensity of luminosity channel. This property has effect when \emph{luminosity} parameter has value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
+Gradient for \emph{luminosity} defines the intensity of the luminosity channel. This property is enabled when the \emph{luminosity} parameter has a value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_luminosity.png}
 {Gradient for luminosity channel with enabled Monte Carlo Global Illumination and luminosity = 10}
@@ -219,7 +219,7 @@ Gradient for \emph{luminosity} defines intensity of luminosity channel. This pro
 
 \subsubsection{Gradient for roughness}\label{materials-roughness-gradient}
 
-Gradient for \emph{luminosity} defines intensity of roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
+Gradient for \emph{roughness} defines the intensity of the roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_roughness.png}
 {Gradient for roughness intensity}
@@ -228,7 +228,7 @@ Gradient for \emph{luminosity} defines intensity of roughness effect. This prope
 \pagebreak
 \subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
 
-Gradient for \emph{reflectance} defines amount and color of reflected light. This property has effect when \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
+Gradient for \emph{reflectance} defines the amount and color of the reflected light. This property is enabled when the \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_reflectance.png}
 {Gradient for reflectance color and intensity}
@@ -236,7 +236,7 @@ Gradient for \emph{reflectance} defines amount and color of reflected light. Thi
 
 \subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
 
-Gradient for \emph{transparency} defines color of transparency and opacity. This property has effect when \emph{Transparency} parameter is greater than zero. 
+Gradient for \emph{transparency} defines the color of transparency and opacity. This property is enabled when the \emph{Transparency} parameter is greater than zero. 
 It is recommended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency_bright.png}
@@ -249,7 +249,7 @@ It is recommended to use bright colors in the gradient for transparency. More de
 
 \subsection{Surface color}\label{materials-surface_color}
 
-This property defines color of diffused light which is applied on whole object. This color is used when \emph{surface color gradient} is disabled or when material is applied to primitive object.
+This property defines the color of diffused light which is applied on the whole object. This color is used when \emph{surface color gradient} is disabled or when the material is applied to a primitive object.
 This  color is mixed with colors from bitmap texture.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/material_surface_color.png}
@@ -258,7 +258,7 @@ This  color is mixed with colors from bitmap texture.
 
 \subsection{Shading}\label{materials-shading}
 
-When \emph{shading} parameter is 1.0 then surface brightness depends on angle of incidence of light. Decreasing of this parameter reduces strength of this rule. When it is 0, then surface color has the same brightness at every angle. 
+When \emph{shading} parameter is 1.0 then the surface brightness depends on the angle of incidence of light. Decreasing this parameter reduces the strength of this rule. When it is 0, then the surface color has the same brightness at every angle. 
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_shadng_0.png}
