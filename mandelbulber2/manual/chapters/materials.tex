@@ -26,12 +26,12 @@ The following options are available in this dock:
 \end{description}
 
 A material can be assigned to different types of objects: main fractal, boolean fractals or primitives. One material can me assigned to many objects. For every object there needs to be one assigned material.
-
+\pagebreak
 \subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}
 
 To assign a material to the main fractal object go to \emph{Objects} dock and \emph{Global parameters} tab (figure \ref{materials_assign_to_main_fractal}). Clicking on the material icon will bring up the \emph{Material manager} window where the material can be selected. This selected material will be associated with the main fractal object. Further changes of the material properties in \emph{Material editor} will directly affect all objects with this assigned material.
 \nopagebreak
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_main_fractal.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_assign_to_main_fractal.png}
 {Material icon in Global parameters}
 {materials_assign_to_main_fractal}{h}
 
@@ -40,7 +40,7 @@ To assign a material to the main fractal object go to \emph{Objects} dock and \e
 To assign a material to a particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below the parameters of this primitive there is an icon for the material selection (figure \ref{materials_assign_to_primitive}).
  
 \nopagebreak
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_primitive.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_assign_to_primitive.png}
 {Material icon in definition of primitive object}
 {materials_assign_to_primitive}{H}
 
@@ -49,7 +49,7 @@ To assign a material to a particular primitive object go to \emph{Objects} dock 
 To assign a material to a particular fractal when the boolean mode is enabled, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to the formula tab of the fractal, which should be assigned with the material. The selection of the material is located below the fractal formula parameters (figure \ref{materials_assign_to_boolean}).
 
 \nopagebreak
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_assign_to_boolean.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_assign_to_boolean.png}
 {Material icon below fractal formula parameters in boolean mode}
 {materials_assign_to_boolean}{H}
 
@@ -61,7 +61,7 @@ The parameters of a material can be edited in the \emph{Material editor} dock. O
 
 Gradients can be applied to fractal objects. If material with gradients is assigned to a primitive object, then gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradients_on_primitives.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradients_on_primitives.png}
 {Gradient applied to fractal and primitive objects}
 {materials_gradient_on_primitive}{h}
 
@@ -142,7 +142,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	\begin{center}
 		\(c = |z|\)
 	\end{center}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_standard.png}
 	{Standard coloring algorithm}
 	{material-coloring-standard}{H}
 	
@@ -150,16 +150,15 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	\begin{center}
 		\(c = |z \cdot p|\)
 	\end{center}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_zdotpoint.png}
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_zdotpoint.png}
 	{orbit trap: z.Dot(point) coloring algorithm}
 	{material-coloring-zdotpoint}{H}
 	
-	\pagebreak
 	\item[orbit trap: Sphere] -- color index is calculated as distance of z vector from sphere of radius defined by parameter \emph{Orbit trap sphere radius}
 	\begin{center}
 		\(c = ||z - p|-r|\)
 	\end{center}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_sphere.png}
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_sphere.png}
 	{orbit trap: Sphere coloring algorithm}
 	{material-coloring-sphere}{H}
 	
@@ -167,16 +166,15 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 	\begin{center}
 		\(c = \mathrm{min}(|z.x|, |z.y|, |z.z|)\)
 	\end{center}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_cross.png}
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_cross.png}
 	{orbit trap: Cross coloring algorithm}
 	{material-coloring-cross}{H}
 	
-	\pagebreak
 	\item[orbit trap: Line] -- color index is calculated as distance of z vector from line defined by \emph{Orbit trap line direction vector}
 	\begin{center}
 		\(c = |z \cdot d|\)
 	\end{center}
-	\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_line_z1.png}
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_line_z1.png}
 	{orbit trap: Line coloring algorithm (direction vector 0;0;1)}
 	{material-coloring-line}{H}
 \end{description}
@@ -189,7 +187,7 @@ Option \emph{Coloring algorithm} allows selection of the algorithm which will be
 
 Gradient for \emph{surface color} defines color channel of fractal surface. It is default way of coloring fractals.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_color_algorithm_standard.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_color_algorithm_standard.png}
 {Color gradient for fractal surface}
 {material-color-gradient-example}{H}
 
@@ -197,7 +195,7 @@ Gradient for \emph{surface color} defines color channel of fractal surface. It i
 
 Gradient for \emph{specular highlights} defines colors of specular effect. More details about this effects are in chapter \ref{materials-specular}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_specular.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_specular.png}
 {Gradient for specular effect colors}
 {material-color-gradient-specular}{H}
 
@@ -205,15 +203,14 @@ Gradient for \emph{specular highlights} defines colors of specular effect. More 
 
 Gradient for \emph{specular highlights} defines intensity of diffuse channel. Brighter gradient causes stronger light diffusion which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_diffuse.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_diffuse.png}
 {Gradient for diffusion channel}
 {material-color-gradient-diffuse}{H}
 
-\pagebreak
 \subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
 Gradient for \emph{luminosity} defines intensity of luminosity channel. This property has effect when \emph{luminosity} parameter has value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_luminosity.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_luminosity.png}
 {Gradient for luminosity channel with enabled Monte Carlo Global Illumination and luminosity = 10}
 {material-color-gradient-luminosity}{H}
 
@@ -221,16 +218,15 @@ Gradient for \emph{luminosity} defines intensity of luminosity channel. This pro
 
 Gradient for \emph{luminosity} defines intensity of roughness effect. This property has effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_roughness.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_roughness.png}
 {Gradient for roughness intensity}
 {material-color-gradient-roughness}{H}
 
-\pagebreak
 \subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
 
 Gradient for \emph{reflectance} defines amount and color of reflected light. This property has effect when \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_reflectance.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_reflectance.png}
 {Gradient for reflectance color and intensity}
 {material-color-gradient-reflectance}{H}
 
@@ -239,11 +235,11 @@ Gradient for \emph{reflectance} defines amount and color of reflected light. Thi
 Gradient for \emph{transparency} defines color of transparency and opacity. This property has effect when \emph{Transparency} parameter is greater than zero. 
 It is recommended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency_bright.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_transparency_bright.png}
 {Gradient for transparency color - example of bright colors to get high transparency}
 {material-color-gradient-transparency-bright}{H}
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_gradient_transparency.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_transparency.png}
 {Gradient for transparency color}
 {material-color-gradient-transparency}{H}
 
@@ -252,7 +248,7 @@ It is recommended to use bright colors in the gradient for transparency. More de
 This property defines color of diffused light which is applied on whole object. This color is used when \emph{surface color gradient} is disabled or when material is applied to primitive object.
 This  color is mixed with colors from bitmap texture.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/material_surface_color.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_surface_color.png}
 {Different surface colors}
 {material-surface-color-example}{H}
 
@@ -271,8 +267,70 @@ When \emph{shading} parameter is 1.0 then surface brightness depends on angle of
 {shading = 1.0}
 {material-shading-1}
 
-
 \subsection{Specular highlights}\label{materials-specular}
+
+Specular highlights are bright spots of light that appears on shiny objects when illuminated. This effect is very fast for in calculation in compare with light reflections. However specular highlights provide a strong visual cue for the shape of an object and its location with respect to light sources in the scene.
+There are two types of highlights in Mandelbulber, which can be used simultaneously:
+\begin{description}
+	\item[Plastic specular reflections] which color is the same as light source color and doesn't depend on surface color
+	\item[Metallic specular reflections] which color is mix of light source color and surface color
+\end{description}
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_specular_off.png}
+{no highlights}
+{material-specular off}
+{img/manual/media/material_specular_plastic.png}
+{plastic}
+{material-specular-plastic}
+{img/manual/media/material_specular_metallic.png}
+{metallic}
+{metallic-specular-metallic}
+
+Following parameters are used to define appearance of specular highlights
+\begin{description}
+	\item[Specular highlight color] adds color to highlights
+	\simpleImageWithCaptionThirdWidth{img/manual/media/material_specular_color.png}
+	{Different colors of specular highlights}
+	{material-specular-colors}{H}
+
+	\item[Specular highlight brightness] controls visibility of highlights
+	\threeImagesWithTwoCaptionsFullWidth
+	{img/manual/media/material_specular_brigness_05.png}
+	{brightness = 0.5}
+	{material-specular-brightness-0}
+	{img/manual/media/material_specular_brigness_2.png}
+	{brightness = 2}
+	{material-specular-brightness-05}
+	{img/manual/media/material_specular_brigness_10.png}
+	{brightness = 10}
+	{material-specular-brightness-1}
+	
+	\item[Specular highlight width] controls size of bright spots
+	\threeImagesWithTwoCaptionsFullWidth
+	{img/manual/media/material_specular_width_0006.png}
+	{width = 0.006}
+	{material-specular-width-0006}
+	{img/manual/media/material_specular_width_005.png}
+	{width = 0.05}
+	{material-specular-width-005}
+	{img/manual/media/material_specular_width_02.png}
+	{width = 0.2}
+	{material-specular-width-02}
+	
+	\item[Roughness] controls roughness of metallic specular highlights
+	\threeImagesWithTwoCaptionsFullWidth
+	{img/manual/media/material_specular_metalic_roughness_01.png}
+	{roughness = 0.1}
+	{material-specular-roughness-01}
+	{img/manual/media/material_specular_metalic_roughness_1.png}
+	{roughness = 1}
+	{material-specular-roughness-1}
+	{img/manual/media/material_specular_metalic_roughness_10.png}
+	{roughness = 10}
+	{material-specular-roughness-10}
+		
+\end{description}
 
 \subsection{Luminosity}\label{materials-luminosity}
 
