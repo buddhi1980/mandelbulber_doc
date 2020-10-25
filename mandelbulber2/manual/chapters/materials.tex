@@ -269,11 +269,11 @@ When \emph{shading} parameter is 1.0 then the surface brightness depends on the 
 
 \subsection{Specular highlights}\label{materials-specular}
 
-Specular highlights are bright spots of light that appears on shiny objects when illuminated. This effect is very fast for in calculation in compare with light reflections. However specular highlights provide a strong visual cue for the shape of an object and its location with respect to light sources in the scene.
+Specular highlights are bright spots of light that appears on shiny objects when illuminated. This effect is very fast to calculate compared to light reflections. Specular highlights provide a strong visual cue for the shape of an object and its location with respect to light sources in the scene.
 There are two types of highlights in Mandelbulber, which can be used simultaneously:
 \begin{description}
-	\item[Plastic specular reflections] which color is the same as light source color and doesn't depend on surface color
-	\item[Metallic specular reflections] which color is mix of light source color and surface color
+	\item[Plastic specular reflections] where the color is the same as the light source color and doesn't depend on the surface color
+	\item[Metallic specular reflections] where the color is a mix of the light source color and the surface color
 \end{description}
 
 \threeImagesWithTwoCaptionsFullWidth
@@ -287,14 +287,14 @@ There are two types of highlights in Mandelbulber, which can be used simultaneou
 {metallic}
 {metallic-specular-metallic}
 
-Following parameters are used to define appearance of specular highlights
+The following parameters are used to define the appearance of the specular highlights
 \begin{description}
 	\item[Specular highlight color] adds color to highlights
 	\simpleImageWithCaptionThirdWidth{img/manual/media/material_specular_color.png}
 	{Different colors of specular highlights}
 	{material-specular-colors}{H}
 
-	\item[Specular highlight brightness] controls visibility of highlights
+	\item[Specular highlight brightness] controls the visibility of the highlights
 	\threeImagesWithTwoCaptionsFullWidth
 	{img/manual/media/material_specular_brigness_05.png}
 	{brightness = 0.5}
@@ -306,7 +306,7 @@ Following parameters are used to define appearance of specular highlights
 	{brightness = 10}
 	{material-specular-brightness-1}
 	
-	\item[Specular highlight width] controls size of bright spots
+	\item[Specular highlight width] controls the size of the bright spots
 	\threeImagesWithTwoCaptionsFullWidth
 	{img/manual/media/material_specular_width_0006.png}
 	{width = 0.006}
@@ -318,7 +318,7 @@ Following parameters are used to define appearance of specular highlights
 	{width = 0.2}
 	{material-specular-width-02}
 	
-	\item[Roughness] controls roughness of metallic specular highlights
+	\item[Roughness] controls the roughness of the metallic specular highlights
 	\threeImagesWithTwoCaptionsFullWidth
 	{img/manual/media/material_specular_metalic_roughness_01.png}
 	{roughness = 0.1}
@@ -397,10 +397,16 @@ colorIndex = aux.color * 100
 
 1. \textbf{aux.color part} is made up of components from the box fold and sphere fold.
 
+\simpleImageWithCaptionFullWidth{img/manual/media/aux_color_parameters.png}
+{General arrangement of aux.color parameters}
+{aux_color_parameters_vary_VCL}{H}
+
 \underline{Box Fold}
 if  (z  >  limit  OR  z  <   -limit)   aux.color +=  boxFoldComponent.
 
-Note that the box fold component can create  speckly areas with mandelbox type fractals.
+Note that the box fold component can create speckly areas with mandelbox type fractals.
+
+
 
 \underline{Sphere Fold}. 
 if (rr < minR2)    aux.color +=  minR2Component.
@@ -419,9 +425,10 @@ With a standard mandelbox we need to cut open the fractal to see these  componen
 
 
 2. \textbf{radius} at termination * parameter named absolute value of z  / 1e13 
+This parameter only works with the Mandelbox forumla and must be in the first slot.
 
 
-3. \textbf{colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000)
+3. \textbf{colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000.
 
 
 
@@ -450,6 +457,11 @@ Color by numbers components are mixed by weights and the summation of the compon
 \textbf{ColorValue Initial Conditions Components}
 By default all points have an initial colorValue of 0.0. Here it is possible to change the initial colorValue  based on the coordinates of the original point "c", (using radius\_c and c.x, c.y \& c.z.) Coloring can be applied using these functions alone or with other functions.
 
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/initial_conditions.png}
+{Mandelbox 12.0 high with 1.0 bands based on intial conditions}
+{initial_conditions}{H}
+
 \textbf{Orbit trap component}. Apply a weight to the orbit trap output colorMin.
 
 \textbf{auxillary color components}. Apply weights to aux.color and aux.colorHybrid outputs obtained from some fractals and transforms.
@@ -457,6 +469,7 @@ By default all points have an initial colorValue of 0.0. Here it is possible to 
 \textbf{radius components} 
 
 A component value is added based on the distance of the point from the origin at termination.
+This is also used for some backwards compatibility issues.
 \twoImagesWithTwoCaptionsFullWidth{img/manual/media/radius.png}
 {Radius coloring component}
 {radius}
@@ -466,9 +479,11 @@ A component value is added based on the distance of the point from the origin at
 
 \textbf{radius / DE components}
 
+A component value is added based on the distance of the point from the origin divided by the DE value at termination. If the fractal has only DE based on scale then this will have little effect as the radius will remain proportional to DE. This is mainly used for some backwards compatibility issues.
+
 \textbf{Axis Bias}
 
-These functions are tools to globally manipulate/distort the color. 
+These functions are tools to globally manipulate/distort the color across the fractal surfaces. 
 Examples maths:
 
 $XYZ_bias                component = abs(z.x) \ast biasScale.x;$
@@ -481,7 +496,13 @@ $Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
 {Plane bias coloring component}
 {plane_bias_squared}{H}
 
+\textbf{ColorValue iteration components}
 
+
+\textbf{Final ColorValue Controls}
+Thes palette deforming options have been superseded to some extent by the implementation of the adjustable palette gradient. The last component Round is still useful.
+
+Minimum and maximum colorValue parameters clamp the range of colorValue and are useful for diagnostics.
 
 \subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
