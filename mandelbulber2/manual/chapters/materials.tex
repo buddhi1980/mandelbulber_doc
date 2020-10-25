@@ -449,8 +449,13 @@ With Extra Hybrid Mode Color Options enabled, the influence of the three parts c
 \subsubsection{Color by numbers}\label{materials-color-by-numbers}
 
 Color by numbers is an exact mathematical approach (which also helps with fractal calculation diagnostics).
-With the default palette gradient and the Color Speed set to 1.0, then a calculated colorValue of 2.0 will assign the color at a distance of two default palette intervals (pale yellow).
-Color by numbers components are mixed by weights and the summation of the components is the Final ColorValue.
+
+Color by numbers components are mixed by weights and the summation of the components is multiplied by 256 to produce the Final ColorValue.
+
+With the default palette gradient and the Color Speed set to 1.0, then a 3D distance of 1.0 equates to a Final ColorValue of 256. Along the default palette Final ColorValue 0 = Orange, 256 = Green, 512 = Pale Yellow, etc.
+Knowing colorValues numbers allows us to manipulate colors in specific ways (from simple to complex).
+
+The color palette size is 2560 Final ColorValue units long. In color by numbers the palette repeats the sequence until it reaches the Maximum ColorValue limit.
 
 \textbf{Initial colorValue}. Default is 0.0, increasing this allows for the use of negative colorValues.
 
@@ -502,7 +507,14 @@ $Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
 \textbf{Final ColorValue Controls}
 Thes palette deforming options have been superseded to some extent by the implementation of the adjustable palette gradient. The last component Round is still useful.
 
-Minimum and maximum colorValue parameters clamp the range of colorValue and are useful for diagnostics.
+These functions are calculated before getting the RGB color from the palette. They only manipulate colorValues, so they need a range of colorValue inputs to work. These functions are global and work on the whole palette. The default palette is linear, with the colors spaced evenly apart, with a smooth symmetrical transition between each of them. The first three "curve" functions effectively deform the palette such that the colors are no longer evenly spaced.
+The additionCurve function (for lack of a better name) is an inverse function, producing a steep curve that levels off towards a known value. Low colorValue colors will come closer together and high colorValues will all increase by approximately the same amount.
+The parabolic curve produces gradual change over low colorValues in comparison to rapid increase for higher colorValues.
+The trig curve is sinusoidal. The additions to deform the palette a re derived from a cos curve (period =1 covers a 256 unit length of the palette. A very large period makes it work similar to a parabolic
+These functions add a varying value to the colorValue. The starting point of the function along the palette can be set, so as to control the location of the deformation.
+The round option produces uniformly colored bands with no transitions.
+
+Minimum and maximum colorValue parameters limit the palette and can be helpful in determining what colorValue is producing a certain area of color.
 
 \subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
 
