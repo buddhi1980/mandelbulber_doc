@@ -450,9 +450,9 @@ With Extra Hybrid Mode Color Options enabled, the influence of the three parts c
 
 Color by numbers is an exact mathematical approach (which also helps with fractal calculation diagnostics).
 
-Color by numbers components are mixed by weights and the summation of the components is multiplied by 256 to produce the Final ColorValue.
+Color by numbers components are mixed by weights and the summation of the colorValue components is multiplied by 256 to produce the Final ColorValue.
 
-With the default palette gradient and the Color Speed set to 1.0, then a 3D distance of 1.0 equates to a Final ColorValue of 256. Along the default palette Final ColorValue 0 = Orange, 256 = Green, 512 = Pale Yellow, etc.
+With the default palette gradient and the Color Speed set to 1.0, then a 3D distance of 1.0 equates to a colorValue of 1.0 and a Final ColorValue of 256. Along the default palette Final ColorValue 0 = Orange, 256 = Green, 512 = Pale Yellow, etc.
 Knowing colorValues numbers allows us to manipulate colors in specific ways (from simple to complex).
 
 The color palette size is 2560 Final ColorValue units long. In color by numbers the palette repeats the sequence until it reaches the Maximum ColorValue limit.
@@ -462,10 +462,12 @@ The color palette size is 2560 Final ColorValue units long. In color by numbers 
 \textbf{ColorValue Initial Conditions Components}
 By default all points have an initial colorValue of 0.0. Here it is possible to change the initial colorValue  based on the coordinates of the original point "c", (using radius\_c and c.x, c.y \& c.z.) Coloring can be applied using these functions alone or with other functions.
 
-
-\simpleImageWithCaptionThirdWidth{img/manual/media/initial_conditions.png}
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/initial_conditions.png}
 {Mandelbox 12.0 high with 1.0 bands based on intial conditions}
-{initial_conditions}{H}
+{initial_conditions}
+{img/manual/media/initial_conditions_pk.png}
+{Using c.z for vertical variation}
+{initial_conditions_pk}{H}
 
 \textbf{Orbit trap component}. Apply a weight to the orbit trap output colorMin.
 
@@ -474,17 +476,19 @@ By default all points have an initial colorValue of 0.0. Here it is possible to 
 \textbf{radius components} 
 
 A component value is added based on the distance of the point from the origin at termination.
-This is also used for some backwards compatibility issues.
-\twoImagesWithTwoCaptionsFullWidth{img/manual/media/radius.png}
-{Radius coloring component}
-{radius}
-{img/manual/media/radius_squared.png}
-{Radius squared coloring component}
-{radius_squared}{H}
+This is similar to one iteration of Standard orbit trap coloring. This is also used for some backwards compatibility issues.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/pseudoK_Cbn_rad.png}
+{Radius components}
+{pseudoK_Cbn_rad}{H}
 
 \textbf{radius / DE components}
 
-A component value is added based on the distance of the point from the origin divided by the DE value at termination. If the fractal has only DE based on scale then this will have little effect as the radius will remain proportional to DE. This is mainly used for some backwards compatibility issues.
+A component value is added based on the distance of the point from the origin divided by the DE value at termination. If the fractal has only DE based on scale then this will have little effect as the radius will remain proportional to DE, but does work with pseudo kleinian. This is mainly used for some backwards compatibility issues.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/pseudoK_Cbn_rad_de.png}
+{Radius / DE components}
+{pseudoK_Cbn_rad_de.png}{H}
 
 \textbf{Axis Bias}
 
@@ -503,16 +507,45 @@ $Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
 
 \textbf{ColorValue iteration components}
 
+As this is iteration based it produces color banding.
+
+Example maths:
+
+$colorValue =  sum_of_all_components *  ( 1.0 + iterScale / ( iter + 1.0));$
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/pseudoK_Cbn_iter_comp.png}
+{iteration components}
+{pseudoK_Cbn_iter_comp}{H}
 
 \textbf{Final ColorValue Controls}
 Thes palette deforming options have been superseded to some extent by the implementation of the adjustable palette gradient. The last component Round is still useful.
 
 These functions are calculated before getting the RGB color from the palette. They only manipulate colorValues, so they need a range of colorValue inputs to work. These functions are global and work on the whole palette. The default palette is linear, with the colors spaced evenly apart, with a smooth symmetrical transition between each of them. The first three "curve" functions effectively deform the palette such that the colors are no longer evenly spaced.
+
 The additionCurve function (for lack of a better name) is an inverse function, producing a steep curve that levels off towards a known value. Low colorValue colors will come closer together and high colorValues will all increase by approximately the same amount.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/col_add_curve.png}
+{addition curve function}
+{col_add_curve}{H}
+
 The parabolic curve produces gradual change over low colorValues in comparison to rapid increase for higher colorValues.
-The trig curve is sinusoidal. The additions to deform the palette a re derived from a cos curve (period =1 covers a 256 unit length of the palette. A very large period makes it work similar to a parabolic
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/col_para.png}
+{parabolic function}
+{col_para}{H}
+
+The trig curve is sinusoidal. The additions to deform the palette a re derived from a cos curve (period =1 covers a 256 unit length of the palette. A very large period makes it work similar to a parabolic.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/col_trig.png}
+{trig function}
+{col_trig}{H}
+
 These functions add a varying value to the colorValue. The starting point of the function along the palette can be set, so as to control the location of the deformation.
 The round option produces uniformly colored bands with no transitions.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/col_round.png}
+{round function}
+{col_round}{H}
 
 Minimum and maximum colorValue parameters limit the palette and can be helpful in determining what colorValue is producing a certain area of color.
 
