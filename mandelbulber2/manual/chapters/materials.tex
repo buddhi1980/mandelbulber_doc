@@ -332,9 +332,33 @@ The following parameters are used to define the appearance of the specular highl
 		
 \end{description}
 
+\subsection{Rough surface}\label{materials-roughness}
+
+\emph{Rough surface} property randomizes direction of reflected and refracted light. This effect gives very good results when is used with high reflectance. To get blurred reflections it is recommended to enable \emph{Monte Carlo algorithm} in \emph{Effect / Ray-tracing} tab. \emph{Roughness} parameter controls intensity of the effect.
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_rougness_0.png}
+{roughness = 0}
+{material-surface-roughness-0}
+{img/manual/media/material_rougness_001.png}
+{roughness = 0.01}
+{material-surface-roughness-001}
+{img/manual/media/material_rougness_01.png}
+{roughness = 0.1}
+{material-surface-roughness-01}
+
 \subsection{Luminosity}\label{materials-luminosity}
 
-\subsection{Roughness}\label{materials-roughness}
+\emph{Luminosity} property makes surface bright even when the object is not illuminated by any light source. When emph{Monte Carlo algorithm} and \emph{Calculate MC global illumination} are enabled, objects with high luminosity can illuminate other objects on the scene. 
+
+\begin{description}
+	\item[Luminosity] defines intensity of the effect. To get effect of illumination of scene in\emph{ MC Global Illumination} mode, \emph{luminosity} value has to be very high (about 5 - 100). 
+	\item[Luminosity color] defines color of emitted light
+\end{description}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_luminosity.png}
+{High luminosity values (about 5) and enabled MC global illumination}
+{material-luminosity}{H}
 
 \subsection{Reflectance}\label{materials-reflectance}
 
@@ -372,7 +396,8 @@ For each formula there is one of five color functions assigned. The first three 
 \begin{lstlisting}
 colorIndex = colorMin * constant;
 \end{lstlisting}
-	
+
+%TODO it is too much detailed. Average user don't need to know what is in the code.	
 
 a) case coloringFunctionDefault: constant = 5000; (the most commonly assigned).
 
