@@ -490,16 +490,12 @@ These functions are tools to globally manipulate/distort the color across the fr
  
 Examples maths:
 
-$XYZ_bias                component = abs(z.x) \ast biasScale.x;$
+$XYZ\  bias\  component\ =\ abs(z.x) \ast biasScale.x;$
 
-$Plane_bias              component = z.y \\ast z.z \ast biasScale.y;$
-
-\twoImagesWithTwoCaptionsFullWidth{img/manual/media/xyz_bias.png}
+\simpleImageWithCaptionThirdWidth{img/manual/media/pseudoK_Cbn_xyz.png}
 {XYZ coloring component}
-{xyz_bias}
-{img/manual/media/plane_bias.png}
-{Plane bias coloring component}
-{plane_bias_squared}{H}
+{pseudoK_Cbn_xyz}{H}
+
 
 \textbf{ColorValue iteration components}
 
@@ -507,7 +503,7 @@ As this is iteration based it produces color banding.
 
 Example maths:
 
-$colorValue =  sum_of_all_components *  ( 1.0 + iterScale / ( iter + 1.0));$
+$colorValue =  sum\ of\ all\ components *  ( 1.0 + iterScale / ( iter + 1.0));$
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/pseudoK_Cbn_iter_comp.png}
 {iteration components}
@@ -530,14 +526,14 @@ The parabolic curve produces gradual change over low colorValues in comparison t
 {parabolic function}
 {col_para}{H}
 
-The trig curve is sinusoidal. The additions to deform the palette a re derived from a cos curve (period =1 covers a 256 unit length of the palette. A very large period makes it work similar to a parabolic.
+The trig curve is sinusoidal. The additions to deform the palette are derived from a cos curve (period = 1 covers a 256-unit length of the palette. A very large period makes it work similar to a parabolic.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/col_trig.png}
 {trig function}
 {col_trig}{H}
 
 These functions add a varying value to the colorValue. The starting point of the function along the palette can be set, so as to control the location of the deformation.
-The round option produces uniformly colored bands with no transitions.
+The round option produces uniformly-colored bands with no transitions.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/col_round.png}
 {round function}
@@ -545,7 +541,7 @@ The round option produces uniformly colored bands with no transitions.
 
 Minimum and maximum colorValue parameters limit the palette and can be helpful in determining what colorValue is producing a certain area of color.
 
-\subsubsection{Mandelbox coloring options}\label{materials-mandelbox}
+
 
 
 
