@@ -334,7 +334,7 @@ The following parameters are used to define the appearance of the specular highl
 
 \subsection{Rough surface}\label{materials-roughness}
 
-\emph{Rough surface} property randomizes direction of reflected and refracted light. This effect gives very good results when is used with high reflectance. To get blurred reflections it is recommended to enable \emph{Monte Carlo algorithm} in \emph{Effect / Ray-tracing} tab. \emph{Roughness} parameter controls intensity of the effect.
+\emph{Rough surface} property randomizes the direction of reflected and refracted light. This effect gives very good results when it is used with high reflectance. To get blurred reflections it is recommended to enable \emph{Monte Carlo algorithm} in \emph{Effect / Ray-tracing} tab. \emph{Roughness} parameter controls the intensity of the effect.
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_rougness_0.png}
@@ -349,15 +349,15 @@ The following parameters are used to define the appearance of the specular highl
 
 \subsection{Luminosity}\label{materials-luminosity}
 
-\emph{Luminosity} property makes surface bright even when the object is not illuminated by any light source. When emph{Monte Carlo algorithm} and \emph{Calculate MC global illumination} are enabled, objects with high luminosity can illuminate other objects on the scene. 
+\emph{Luminosity} property makes the surface bright even when the object is not illuminated by any light source. When \emph{Monte Carlo algorithm} and \emph{Calculate MC global illumination} are enabled, objects with high luminosity can illuminate other objects in the scene. 
 
 \begin{description}
-	\item[Luminosity] defines intensity of the effect. To get effect of illumination of scene in\emph{ MC Global Illumination} mode, \emph{luminosity} value has to be very high (about 5 - 100). 
-	\item[Luminosity color] defines color of emitted light
+	\item[Luminosity] defines the intensity of the effect. To get the effect of illumination of the scene in\emph{ MC Global Illumination} mode, the \emph{luminosity} value has to be very high (about 5 - 100). 
+	\item[Luminosity color] defines the color of emitted light.
 \end{description}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_luminosity.png}
-{High luminosity values (about 5) and enabled MC global illumination}
+{High luminosity values (about 5) and MC global illumination enabled}
 {material-luminosity}{H}
 
 \subsection{Reflectance}\label{materials-reflectance}
@@ -411,18 +411,18 @@ d) case coloringFunctionDonut: colorIndex = aux.color * 2000 / aux.i; (aux.color
 
 e) the fifth is case coloringFunctionAbox. This is calculated as the addition of three parts:
 
-1. \textbf{aux.color part} is made up of components from the box fold and sphere fold.
+\textbf{part 1 aux.color part} is made up of components from the box fold and the sphere fold.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/aux_color_parameters.png}
 {General arrangement of aux.color parameters}
 {aux_color_parameters}{H}
 
-\underline{box fold -  x, y \& z plane components}.
+\underline{box fold} x, y \& z plane components.
 if  (z.x  >  offset  OR  z.x  <  -offset)   aux.color +=  X plane component.
 
 Note that the box fold component can create speckly areas with mandelbox type fractals.
 
-\underline{sphere fold - MinimumR2 and MaximumR2 components}. 
+\underline{sphere fold} MinimumR2 and MaximumR2 components. 
 if (rr < minR2)    aux.color +=  minR2 component.
 else if (rr < maxR2)    aux.color +=  maxR2 component.
 
@@ -438,11 +438,11 @@ With a standard abox/mandelbox, we need to cut open the fractal to see these com
 {sphere_fold_minR2_maxR2}{H}
 
 
-2. \textbf{radius} at termination * parameter named absolute value of z  / 1e13 
+\textbf{part 2 radius} at termination * parameter named absolute value of z  / 1e13 
 This parameter \underline{only} works with the Mandelbox formula and must be in the first slot.
 
 
-3. \textbf{colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000.
+\textbf{part 3 colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000.
 
 \begin{lstlisting}
 case coloringFunctionABox:
@@ -524,7 +524,7 @@ $XYZ\  bias\  component\ =\ abs(z.x) \ast biasScale.x;$
 
 \textbf{ColorValue iteration components}
 
-As this is iteration based it produces color banding.
+As this is iteration based, it produces color banding.
 
 Example maths:
 
@@ -537,7 +537,9 @@ $colorValue =  sum\ of\ all\ components *  ( 1.0 + iterScale / ( iter + 1.0));$
 \textbf{Final ColorValue Controls}
 Thes palette deforming options have been superseded to some extent by the implementation of the adjustable palette gradient. The last component Round is still useful.
 
-These functions are calculated before getting the RGB color from the palette. They only manipulate colorValues, so they need a range of colorValue inputs to work. These functions are global and work on the whole palette. The default palette is linear, with the colors spaced evenly apart, with a smooth symmetrical transition between each of them. The first three "curve" functions effectively deform the palette such that the colors are no longer evenly spaced.
+These functions add a varying value to the Final ColorValue. The starting point of the function along the palette can be set, so as to control the location of the beginning of the deformation.
+
+These functions are calculated before getting the RGB color from the palette. They only manipulate Final ColorValues, so they need a range of colorValue inputs to work. These functions are global and work on the whole palette. The default palette is linear, with the colors spaced evenly apart, with a smooth symmetrical transition between each of them. The first three "curve" functions effectively deform the palette such that the colors are no longer evenly spaced.
 
 The additionCurve function (for lack of a better name) is an inverse function, producing a steep curve that levels off towards a known value. Low colorValue colors will come closer together and high colorValues will all increase by approximately the same amount.
 
@@ -557,7 +559,6 @@ The trig curve is sinusoidal. The additions to deform the palette are derived fr
 {trig function}
 {col_trig}{H}
 
-These functions add a varying value to the colorValue. The starting point of the function along the palette can be set, so as to control the location of the deformation.
 The round option produces uniformly-colored bands with no transitions.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/col_round.png}
