@@ -1,7 +1,6 @@
 \section{Interpolation}\label{interpolation}\index{interpolation}
 
-Interpolation functions, which calculate intermediate values, are used to make smooth parameter transitions between keyframes. There is no need for manual editing of every animation camera position and fractal parameters. 
-frame. A limited number of keyframes is enough to define good looking animation.
+Interpolation functions, which calculate intermediate values, are used to make smooth parameter transitions between keyframes. A limited number of keyframes is enough to define a good looking animation.
 
 \subsection{Interpolation types}\label{interpolation-types}
 
@@ -29,7 +28,7 @@ Parameters in Mandelbulber can be transitioned using several interpolation modes
 
 The chart in figure \ref{interpolations} shows a comparison between different interpolation modes.
 
-The choice of mode, greatly effects the animation.
+The choice of mode greatly effects the animation.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/interpolations.png}
 {Interpolation types}
@@ -37,7 +36,7 @@ The choice of mode, greatly effects the animation.
 
 \subsubsection{Interpolation - None}\label{interpolation-none}\index{interpolation!none}
 
-The parameter remains constant between keyframes (figure \ref{interpolation_none}). The parameter will change abrubtly at the any keyframe that has a change in value. This mode can be used with boolean values or with variables
+The parameter remains constant between keyframes (figure \ref{interpolation_none}). The parameter will change abruptly at any keyframe that has a change in value. This mode can be used with boolean values or with variables
 which have to be kept at a constant value for a number of keyframes.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_none.png}
@@ -53,7 +52,7 @@ The value of the parameter is interpolated using linear functions (figure \ref{i
 
 Changes of parameters are easy to predict. There are no overshoots. This
 interpolation mode is good for fractal parameters and material properties. It is
-generally not recommended to be used for camera or object movement paths, because of the abrubt changes of speed.
+generally not recommended to be used for camera or object movement paths, because of the abrupt changes of speed.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_linear.png}
 {Interpolation - Linear}
@@ -61,13 +60,13 @@ generally not recommended to be used for camera or object movement paths, becaus
 
 \subsubsection{Interpolation - Linear angle}\label{interpolation-linear-angle}
 
-This interpolation mode works like \emph{Linear}, but is prepared of angular
-parameters. If value exceed 360 degrees, then will go back to zero.
+This interpolation mode works like \emph{Linear}, but it is a linear transition of angular
+parameters. If value exceed 360 degrees, then it will go back to zero.
 
 \subsubsection{Interpolation - Akima}\label{interpolation-akima}\index{interpolation!Akima}
 
-The Akima interpolation is a continuously differentiable sub-spline
-interpolation (figure \ref{interpolation_akima}). It is built from piecewise third order polynomials.
+The Akima interpolation is a continuously-differentiable sub-spline
+interpolation (figure \ref{interpolation_akima}). It is built from piecewise third-order polynomials.
 
 \[ y(x) = a_0 + a_1 (x - x_i) + a_2 (x - x_i)^2 + a_3 (x - x_i)^3\] \[x_i  \leq
 x \leq x_{i+1}\]
@@ -82,8 +81,8 @@ should be animated in a smooth way.
 
 \subsubsection{Interpolation - Akima angle}\label{interpolation-akima-angle}
 
-This interpolation mode works like \emph{Akima}, but is written for angular
-parameters. If a value exceeds 360 degrees, then it will reset back to zero.
+This interpolation mode works like \emph{Akima}, but it is a akima transition of angular
+parameters.. If a value exceeds 360 degrees, then it will reset back to zero.
 
 \subsubsection{Interpolation - Catmul-Rom}\label{interpolation-catmul-rom}\index{interpolation!Catmul-Rom}
 
@@ -96,11 +95,11 @@ point on the spline.
 -3 & 1 \\ \end{bmatrix} \begin{bmatrix} y_{i-1} \\ y_i \\ y_{i+1} \\ y_{i+2}
 \end{bmatrix} \]
 
-This interpolation gives very smooth results. Animated objects looks likethey are made
+This interpolation gives very smooth results. Animated objects look like they are made
 of springy materials. It can be used to animate fractal parameters and also the
 camera path. This interpolation mode can produce oscillations, so it has to be used
-carefully. Figure \ref{interpolation_catmulrom}, 
-shows where interpolated values went below zero,  where all of the keyframe values were higher than zero. The ocsillation problem is commonly seen near the begining and end of an animation
+carefully. Figure \ref{interpolation_catmulrom}
+shows where interpolated values went below zero,  where all of the keyframe values were higher than zero. The oscillation problem is commonly seen near the begining and end of an animation.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/interpolation_catmulrom.png}
 {Interpolation - Catmul-Rom}
@@ -109,11 +108,11 @@ shows where interpolated values went below zero,  where all of the keyframe valu
 \subsubsection{Interpolation - Catmul-Rom
 	angle}\label{interpolation-catmul-rom-angle}
 
-This interpolation mode works like \emph{Catmul-Rom}, but is prepared of angular
+This interpolation mode works like \emph{Catmul-Rom}, but it is a Catmul-Rom transition of angular
 parameters. If value exceed 360 degrees, then will go back to zero.
 
 \subsection{Catmul-Rom / Akima interpolation -
-	Advices}\label{catmul-rom-akima-interpolation---advices}
+	Advices}\label{catmul-rom-akima-interpolation}
 
 \subsubsection{Collision}\label{collision}
 
@@ -131,13 +130,13 @@ keyframe does not reduce the distance to the object more than five times (figure
 \subsubsection{Fly through the gap}\label{fly-through-the-gap}
 
 It is recommended to place a keyframe at the point where the camera flies
-through a hole / gap in the fractal (figure \ref{catmull-rom_hole})
+through a hole / gap in the fractal (figure \ref{catmull-rom_hole}).
 
 \simpleImageWithCaptionSmallWidth{img/manual/media/catmull-rom_hole.png}
 {Interpolation - Catmul-Rom path through a hole}
 {catmull-rom_hole}{H}
 
-\subsubsection{Proper conduct cameras between
+\subsubsection{Properly move cameras between
 	objects}\label{proper-conduct-cameras-between-objects}
 
 Figure \ref{catmull-rom_example} shows how keyframes should be located between objects to avoid collisions caused by interpolation functions.
@@ -149,8 +148,8 @@ Figure \ref{catmull-rom_example} shows how keyframes should be located between o
 \subsection{Changing interpolation types}\label{changing-interpolation-types}
 
 To change the interpolation algorithm, right click on the parameter list and the
-options appear. In this example the \emph{main\_DE\_factor} have been
-changed from Akima to Linear. Interpolation type is color coded e.g. Linear
+options appear. In this example, the \emph{main\_DE\_factor} have been
+changed from Akima to Linear. Interpolation type is color coded, e.g. Linear
 parameters are highlighted in grey.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/change_interpolation_type.png}
