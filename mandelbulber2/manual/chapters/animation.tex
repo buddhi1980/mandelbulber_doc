@@ -3,26 +3,26 @@
 \subsection{Flight animation - workflow}\label{flight-animation}
 
 This section explains the necessary steps required to create flight animation. \emph{Flight animation} in Mandelbulber is like a camera motion track recorded in some kind of flight simulator. The camera can go through interiors of fractal objects.
-Recording is normally initially done by navigating with the image set at a low resolution (e.g 320 x 240). After previewing and making any changes, the final rendering is undertaken with the image resolution set to a suitable higher size.
+Recording is normally initially done by navigating with the image set at a low resolution (e.g., 320 x 240). After previewing and making any changes, the final rendering is undertaken with the image resolution set to a suitable higher size.
 
-The parameters of every single animation frame recorded in Flight Animation mode, can be edited in the animation table.
+The parameters of every single animation frame recorded in Flight Animation mode can be edited in the animation table.
 
 \underline{Workflow:}
 
 \begin{enumerate}
 	\item Define fractal object (or many objects). 
 	
-	Create a fractal with interesting features for the flight animation, (e.g. interesting shapes, geometric structure, texture, coloring, possibly holes where the camera can navigate into).
+	Create a fractal with interesting features for the flight animation, (e.g., interesting shapes, geometric structure, texture, coloring, possibly holes where the camera can navigate into).
 	
-	It is advisable to select a fractal object that is relatively fast to render. Using a fast rendering fractal at a low resolution, results in the navigation and flight path recording being happening at almost real time (or slow motion). A fast rendering fractal will also increase the speed of the final frame rendering process.
+	It is advisable to select a fractal object that is relatively fast to render. Using a fast-rendering fractal at a low resolution results in the navigation and flight path recording happening at almost real time (or slow motion). A fast-rendering fractal will also increase the speed of the final frame rendering process.
 	
 	\item Place the camera at the point where the flight is to start from.
 			
-	\item Set a low image resolution. At a low image resolution, the frames-per-second value can be set higher for the flight path recording. It is reasonable to use a resolution like 320x240 or 160x120
+	\item Set a low image resolution. At a low image resolution, the frames-per-second value can be set higher for the flight path recording. It is reasonable to use a resolution like 320x240 or 160x120.
 	
 	\item Disable all effects which can slow down rendering, like ambient occlusion, reflections, transparency, volumetric lights, etc. All these effects can be re-enabled before commencing the final rendering of the animation.
 	
-	\item Open \emph{Flight animation} editor. It can be opened from top pull-down-menu by activating \emph{View} / \emph{Show animation dock}. The dock will appear at the bottom of the application window, with \emph{Flight animation (every frame)} tab (showed on picture \ref{flight-animation-dock})
+	\item Open \emph{Flight animation} editor. It can be opened from top pull-down-menu by activating \emph{View} / \emph{Show animation dock}. The dock will appear at the bottom of the application window, with \emph{Flight animation (every frame)} tab (showed on picture \ref{flight-animation-dock}).
 	
 	\simpleImageWithCaption75Width{img/manual/media/flight_animation_dock.png}
 	{Flight animation dock}
@@ -33,33 +33,33 @@ The parameters of every single animation frame recorded in Flight Animation mode
 	\begin{description}
 		\item[speed] defines how fast the camera will fly. This parameter can be changed during the recording of the flight path.
 		\item[inertia] defines how heavy is the camera. A heavy camera will make a smoother motion, but it will be more difficult to control.
-		\item[rotation speed] defines thereaction  speed of mouse pointer movements. A higher value will allow for the camera to be turned faster.
+		\item[rotation speed] defines the reaction  speed of mouse pointer movements. A higher value will allow for the camera to be turned faster.
 		\item[roll speed] defines the speed of the reaction for the Z and X keys, which rotate the camera.
 		\item[speed control] defines how the speed of the camera will be controlled.
 		\begin{itemize} 
-			\item In \emph{Relative to distance} mode, the camera speed will decrease relatively to the nearness of the fractal surface. This mode will help you to not collide with the fractal. In this mode you can control the relative speed by the speed parameter and by the mouse buttons.
-			\item In \emph{Constant mode}, the camera speed is only controlled by the speed parameter and the mouse buttons
+			\item In \emph{Relative to distance} mode, the camera speed will decrease relatively to the nearness of the fractal surface. This mode will help you to not collide with the fractal. In this mode, you can control the relative speed by the speed parameter and by the mouse buttons.
+			\item In \emph{Constant mode}, the camera speed is only controlled by the speed parameter and the mouse buttons.
 		\end{itemize}
 		\item[second per frame] defines the frame rate during flight path recording. Higher values give slower rendering but images are more detailed. The value of this parameter is used only during recording, and is ignored during the rendering of the final animation.
 		\item[path for images] defines where the rendered animation frames will be stored.
-		\item[image type] defines the image format for saving the rendered frames. Detailed settings for image format are in \emph{File} / \emph{Program preferences}
-		\item[show thumbnails] enables previews of frames in animation table
+		\item[image type] defines the image format for saving the rendered frames. Detailed settings for image format are in \emph{File} / \emph{Program preferences}.
+		\item[show thumbnails] enables previews of frames in animation table.
 		\item[add flight and rotation speed to parameters] enables possibility to continue recording of animation after recording is completely stopped. 
 	\end{description}
 
-	\item Press \emph{Record flight path} button. After 3 seconds recording will be started. During this 3 seconds waiting time the mouse cursor should be placed in the center of image.
+	\item Press \emph{Record flight path} button. After 3 seconds, recording will be started. During this 3-seconds-waiting time the mouse cursor should be placed in the center of image.
 	
-	\item Use mouse pointer movements to turn camera left / right and up / down. Camera behaves like airplane in flight simulator
+	\item Use mouse pointer movements to turn camera left / right and up / down. Camera behaves like airplane in flight simulator.
 	
-	Use Z and X key to rotate the camera
+	Use Z and X key to rotate the camera.
 	
-	Use arrow keys to move camera left / right / up / down. Without \emph{Shift} key the camera still goes forward (movement at 45 degree angle). With \emph{Shift} key the camera is not moving forward (movement at straight angle)
+	Use arrow keys to move camera left / right / up / down. Without \emph{Shift} key, the camera still goes forward (movement at 45-degree angle). With \emph{Shift} key, the camera is not moving forward (movement at straight angle).
 	
-	Use the left mouse button to increase flight speed or the right button to decrease speed.
+	Use the left mouse button to increase flight speed, or the right button to decrease speed.
 	
 	\item Press \emph{space} key to pause recording. When recording is paused, animation parameters can be changed. 
 	
-	\item Press \emph{STOP} button to stop recording. It is good to pause the recording using the (space key) before stopping. This is  because by moving the mouse pointer towards \emph{STOP} button, can turn the camera.
+	\item Press \emph{STOP} button to stop recording. It is good to pause the recording using the (space key) before stopping. This is because moving the mouse pointer towards the \emph{STOP} button can turn the camera.
 	
 	\item Recording of animation can be continued if \emph{add flight and rotation speed to parameters} is enabled. If \emph{Continue recording} is pressed, the recording of flight will resume from the point stored in the last frame. The camera linear and rotation speed will be maintained.
 	
@@ -75,15 +75,15 @@ The parameters of every single animation frame recorded in Flight Animation mode
 	
 	\subsubsection{Adding more parameters to animation}
 	
-	It is possible to animate almost any parameter in Mandelbulber. Each edit field has an assigned parameter. If you place the mouse pointer on an edit field a tooltip will be displayed (figure \ref{example-tooltip-with-parameter-name}). 
+	It is possible to animate almost any parameter in Mandelbulber. Each edit field has an assigned parameter. If you place the mouse pointer on an edit field, a tooltip will be displayed (figure \ref{example-tooltip-with-parameter-name}).
 	
 	\simpleImageWithCaption75Width{img/manual/media/tooltip_with_parameter_name.png}
 	{Example tooltip with parameter name}
 	{example-tooltip-with-parameter-name}{h}
 		
-	Below the parameter description there is the \emph{Parameter name} (in this example it is \emph{glow\_intensity})
+	Below the parameter description there is the \emph{Parameter name} (in this example it is \emph{glow\_intensity}).
 	
-	The parameter can be added to \emph{Flight animation}. Right click on an edit field, then use \emph{Add to flight animation} from context menu, and the parameter will appear in the animation table  (picture \ref{flight-animation-table})
+	The parameter can be added to \emph{Flight animation}. Right click on an edit field, then use \emph{Add to flight animation} from context menu, and the parameter will appear in the animation table  (picture \ref{flight-animation-table}).
 			
 	\subsubsection{Editing animation in the table}
 	
@@ -97,7 +97,7 @@ The parameters of every single animation frame recorded in Flight Animation mode
 	
 	To get a smooth change of value within the selected range of frames, there is an option to do linear interpolation of values. 
 	
-	\underline{Example:} We would like to have smooth transition of glow intensity starting from frame 30 (\emph{glow} = 0.2) and ending on frame 100 (\emph{glow} = 10)
+	\underline{Example:} We would like to have smooth transition of glow intensity starting from frame 30 (\emph{glow} = 0.2) and ending on frame 100 (\emph{glow} = 10).
 	\begin{itemize}
 		\item Right click in the table on cell for glow intensity at frame 100
 		\item Use option  \emph{Interpolate next frames}
