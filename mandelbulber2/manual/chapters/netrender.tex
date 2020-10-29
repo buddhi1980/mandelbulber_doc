@@ -10,9 +10,9 @@ rendering. Other computers (clients) render different portions of the image and
 send it to the server. There can be only one server (master) but clients
 (slaves) can be any number. The more clients, the faster the rendering will be.
 
-The Server is also the computer which renders the combined image .
+The Server is also the computer which renders the combined image.
 
-The total number of CPUs (cores) used is the sum of server's CPUs cores + all
+The total number of CPU's (cores) used is the sum of server's CPU's cores + all
 client's CPUs cores.
 
 \subsection{Starting NetRender}\label{starting-netrender}
@@ -32,7 +32,7 @@ default is 5555.
 If settings are correct, press \emph{Launch server and watch for clients} button
 to connect server to existing clients.
 
-At this point, the server is ready to work
+At this point, the server is ready to work.
 
 Alternative way to launch the server is to use command line. Example:
 
@@ -42,7 +42,7 @@ $ mandelbulber2 --server --port 5555 pathToFileToRender.fract
 
 \subsubsection{Configuring the clients}\label{configuring-the-clients}
 
-On the computers which will be used as Clents, \emph{Mode} is set to
+On the computers which will be used as Clients, \emph{Mode} is set to
 \emph{Client} (figure \ref{netrender_client}).
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_client.png}
@@ -50,16 +50,16 @@ On the computers which will be used as Clents, \emph{Mode} is set to
 {netrender_client}{h}
 
 The remote server address must be set to the same as the Server computer which
-is running Mandelbulber in Server mode. The address can be given as an IP
-address or a computer name.
+is running Mandelbulber in Server mode. \emph{The address can be given as an IP
+address or a computer name.}
 
 The remote server port number must be exactly the same as the setting on the
 Server.
 
-Press \emph{Connect to server} button to connect to the server
+Press \emph{Connect to server} button to connect to the server.
 
 Once the connection is established correctly, the client application should show
-the status \emph{READY} (figure \ref{netrender_client_connected})
+the status \emph{READY} (figure \ref{netrender_client_connected}).
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_client_connected.png}
 {NetRender in 'Client' mode connected to the server}
@@ -71,7 +71,7 @@ Alternative way to establish NetRender client is to use command line:
 $ mandelbulber2 --nogui --host 10.0.0.4 --port 5555
 \end{verbatim}
 
-when connection is successfully established the program should return following
+When connection is successfully established, the program should return following
 message:
 
 \begin{verbatim} 
@@ -83,7 +83,7 @@ On the Server computer, in the table "List of connected clients" should be shown
 the name and address of the connected clients and the number of available
 processors (cores).
 
-i.e in figure \ref{netrender_server_connected} ``magda'' computer has 4 cores and is \emph{READY}.
+i.e., in figure \ref{netrender_server_connected} ``magda'' computer has 4 cores and is \emph{READY}.
 
 \simpleImageWithCaption75Width{img/manual/media/netrender_server_connected.png}
 {NetRender in 'Server' mode with a connected client}
@@ -95,9 +95,9 @@ Only the Server can initiate rendering on the computers connected using
 NetRender. When the \emph{RENDER} button is pressed on the server, all the
 connected computers commence rendering.
 
-In the table \emph{List of connected clients} in the column \emph{Done lines} will be
-shown the number of lines the image rendered by each of the computers.
+In the table \emph{List of connected clients} in the column \emph{Done frames} will be
+shown the number of frames the image rendered by each of the computers.
 
-when rendering is finished, the Server computer, will display the complete
+When rendering is finished, the Server computer, will display the complete
 image. On the Client computers, only that portion of the image which was
 rendered by that client will be displayed.
