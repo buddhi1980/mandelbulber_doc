@@ -173,6 +173,72 @@ There are various ways of creating the color for each point in the set. Coloring
 
 A common way to obtain a color value is by the use of orbit traps. An example is the color value equals the closest distance from the point to a cube, or a sphere, surrounding the fractal.
 
+Normal Mode Color(single formula and boolean mode)
+he first three are simply the output from the orbit trap calculation multiplied by a constant.
+
+\begin{lstlisting}
+colorIndex = colorMin * constant;
+\end{lstlisting}
+
+%TODO it is too much detailed. Average user don't need to know what is in the code.	
+
+a) case coloringFunctionDefault: constant = 5000; (the most commonly assigned).
+
+b) case coloringFunctionIFS: constant = 1000; (menger, octo, sierpinski etc).
+
+c) case coloringFunctionAmazingSurf: constant = 200; (only the first amazing surf formula).
+
+msltoe Donut aux.color divided by number of iterations.
+
+d) case coloringFunctionDonut: colorIndex = aux.color * 2000 / aux.i; (aux.color /  iterations).
+
+e) the fifth is case coloringFunctionAbox. This is calculated as the addition of three parts:
+
+\textbf{part 1 aux.color part} is made up of components from the box fold and the sphere fold.
+
+\simpleImageWithCaptionFullWidth{img/manual/media/aux_color_parameters.png}
+{General arrangement of aux.color parameters}
+{aux_color_parameters}{H}
+
+\underline{box fold} x, y \& z plane components.
+if  (z.x  >  offset  OR  z.x  <  -offset)   aux.color +=  X plane component.
+
+Note that the box fold component can create speckly areas with mandelbox type fractals.
+
+\underline{sphere fold} MinimumR2 and MaximumR2 components. 
+if (rr < minR2)    aux.color +=  minR2 component.
+else if (rr < maxR2)    aux.color +=  maxR2 component.
+
+And therefore,  if(rr > maxR2), there is no addition of a component.
+
+With a standard abox/mandelbox, we need to cut open the fractal to see these components acting on their own. Red is the minR2 component and blue the maxR2 component.
+
+\twoImagesWithTwoCaptionsFullWidth{img/manual/media/box_fold.png}
+{Box fold component}
+{box_fold}
+{img/manual/media/sphere_fold_minR2_maxR2.png}
+{Sphere fold component}
+{sphere_fold_minR2_maxR2}{H}
+
+
+\textbf{part 2 radius} at termination * parameter named absolute value of z  / 1e13 
+This parameter \underline{only} works with the Mandelbox formula and must be in the first slot.
+
+
+\textbf{part 3 colorMin} * constant, if coloring algorithm is Standard the constant = 0.0, otherwise the constant = 1000.
+
+\begin{lstlisting}
+case coloringFunctionABox:
+colorIndex = aux.color * 100 
++ r * defaultFractal->mandelbox.color.factorR / 1e13 
++ ((fractalColoring.coloringAlgorithm != fractalColoring_Standard) ? colorMin * 1000.0 : 0.0); 
+\end{lstlisting}
+
+
+
+
+
+
 The examples below are some basic ways of creating color components. These examples are with a standard  mandelbox, (the results can be very different with other formulas.)
 
 

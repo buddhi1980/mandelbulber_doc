@@ -3,17 +3,15 @@
 \section{OpenCL}\label{opencl}\index{OpenCL}
 
 The use of OpenCL \index{termination condition!maxiter} enables offloading the rendering of the fractal to the
-GPU or to an accelerator card. This can highly reduce the render time.
+GPU (graphics processing unit) or to an accelerator card. This can highly reduce the render time.
 OpenCL itself is an industry standard developed by the Khronos group and
-is a well established framework. The two mayor GPU vendors (ATI / Nvidia)
+is a well-established framework. The two major GPU vendors (ATI and Nvidia)
 among others implement the OpenCL specification in their drivers.
-OpenCL uses single precision floating point accuracy, so the minimum camera to surface distance is about 1e-05, whereas  this distance can be reduced to about 1e-09 with openCL disabled. Therefore openCL is not suitable for zooming down into fine detailed areas.
+OpenCL uses single-precision floating-point accuracy, so the minimum camera-to-surface distance is about 1e-04, whereas this distance can be reduced to about 1e-09 with OpenCL disabled. Therefore OpenCL is not suitable for zooming down into fine-detailed areas.
 
 \subsection{Setup of OpenCL}\label{setup-opencl}
-To render in Mandelbulber with OpenCL you will need to install a recent driver.
-The newest GPU driver available can be obtained from the links in the next table.
-Choose your operation system and misc settings.
-Then download and install the driver image.
+To render in Mandelbulber with OpenCL, you will need to install a recent driver.
+The newest GPU driver available can be obtained from the links in the next table. Download and install the driver file.
 
 \begin{center}
 	\begin{tabular}{ | l | r | }
@@ -31,17 +29,19 @@ Then download and install the driver image.
 \end{center}
 
 You should also be able to use free drivers, if they support OpenCL.
-Sadly the performance of those drivers is typically below the performance of the proprietary ones.
+Unfortunately, the performance of those drivers is often below the performance of the proprietary ones.
 
 \subsubsection{Setup of OpenCL on Windows}\label{setup-opencl-windows}
-With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
-Proceed with \ref{configure-opencl}. Note: Windows users may need to edit the registry to avoid timeout errors, refer \ref{opencl-troubleshooting}
+\emph{Note: Windows users are likely to need to edit the registry to avoid timeout errors, refer \ref{opencl-troubleshooting}}.
+
+With a capable GPU, a recent driver, the registry edit completed and the system rebooted, then the Mandelbulber program can loaded.
+Proceed with \ref{configure-opencl}. 
 
 \subsubsection{Setup of OpenCL on Linux}\label{setup-opencl-linux}
-With a recent driver, a capable GPU and the Mandelbulber OpenCL version you are already set.
+With a capable GPU and a recent driver, the Mandelbulber program can loaded.
 Proceed with \ref{configure-opencl}. 
-If you are a developer and compile your own Mandelbulber version
-you need to have the package \textbf{opencl-headers} installed in the system.  
+If you are a developer and compile your own Mandelbulber version,
+you will need to have the package \textbf{opencl-headers} installed in the system.  
 See also the corresponding README.
 
 \subsubsection{Setup of OpenCL on MacOS}\label{setup-opencl-macos}
@@ -56,7 +56,7 @@ You will find the configuration page in figure \ref{opencl_tab}.
 {opencl_tab}{h}
 
 \begin{itemize}
-	\item First you need to enable OpenCL by enabling the checkbox
+	\item First, you need to enable OpenCL by enabling the checkbox.
 	
 	\item Then you need to select the platform and device to identify the OpenCL hardware 
 		element to render with.
@@ -78,16 +78,16 @@ You will find the configuration page in figure \ref{opencl_tab}.
 	\item  \textbf{no OpenCL} - temporarily disables OpenCL  Rendering is done by CPU.
 	\item  \textbf{fast} - renders preview of the fractal shape. The appearance of the fractal is not realistic, but the rendering is very fast.
 	\item  \textbf{medium} - image is rendered with correct surface colors, but volumetric effects, reflection and refraction of light is not calculated. There is used only first defined material. This mode offers more realistic rendering than in \emph{fast} mode and uses less graphics card resources than in \emph{full} mode. 
-	\item  \textbf{full} - renders all effects	
+	\item  \textbf{full} - renders all effects.	
 \end{itemize}
 
-	\item \textbf{Percentage of reserved GPU time for a system} - rendering using OpenCL can slow down the system when the same graphics card is used as the display adapter and alos for rendering. To be able to use the system you can reserve a small percentage of GPU time for other programs.
+	\item \textbf{Percentage of reserved GPU time for a system} - rendering using OpenCL can slow down the system when the same graphics card is used as the display adapter and also for rendering. To be able to use the system, you can reserve a small percentage of GPU time for other programs.
 	
 	\item \textbf{Memory Limit} - Memory limit in MB for the device. Most graphics cards cannot handle memory objects larger than 1/4 of the total memory installed in the graphics card. It is recommended to set the memory limit to not greater than the value suggested below the slider.  
 	
 	If you observe that SSAO or DOF effects fail during rendering you can try to decrease this limit. When the program needs more memory (image resolution too high), then the effects will be rendered using CPU.
 	
-	\item \textbf{Use fast relaxed math} - It speeds up rendering but can cause unexpected behavior on old gfx cards.
+	\item \textbf{Use fast relaxed math} - It speeds up rendering but can cause unexpected behavior on old graphics cards.
 	 
 	\item \textbf{Disable cache of OpenCL programs} - clears and disable cache for OpenCL programs used by NVidia drivers. When cache is disabled, then OpenCL programs are compiled before every render.
 \end{itemize}
@@ -101,7 +101,7 @@ When Mandelbulber is run under Windows, the OS will monitor the GPU with a watch
 
 \emph{The NVIDIA OpenGL driver lost connection with the display driver due to exceeding the Windows Time-Out limit and is unable to continue.}
 
-Mandelbulber will show messages like \emph{Cannot enqueue OpenCL output buffers}
+Mandelbulber will show messages like \emph{Cannot enqueue OpenCL output buffers}.
 
 It can happen when there are enabled effects which make rendering of each pixel very long. 
 
@@ -124,7 +124,7 @@ Change of registry takes effect after restart of Windows.
 
 Instead of manual registry edits you can use \emph{TDR\_disable.bat} script located in the program folder. You have to run it as administrator.
 
-Some gfx driver updates have appeared to remove these changes to the registry, this maybe Win10 OS and/or Nvidia driver updates. If OpenCL begins to crash after an update, then check the registry.
+Some graphics driver updates have appeared to remove these changes to the registry. This maybe Win10 OS and/or Nvidia driver updates. If OpenCL begins to crash after an update, then check the registry.
 
 You can find more information about this topic in the following resources:
 
