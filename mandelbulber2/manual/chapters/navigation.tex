@@ -3,7 +3,7 @@
 To set the current view there are two elements:
 
 \begin{description}
-	\item[Camera]\index{navigation!camera} represents a point where the camera is located
+	\item[Camera]\index{navigation!camera} represents a point where the camera is located.
 	\item[Target]\index{navigation!target} represents the point onto which the camera will focus (the
 	camera is \emph{always} looking at the target.)
 \end{description}
@@ -16,7 +16,7 @@ In most cases the easiest way of moving and rotating the camera is dragging the 
 	\item[Holding left mouse button] - rotates camera by moving target
 	\item[Holding right mouse button] - rotates camera around indicated point by moving camera and target
 	\item[Holding middle button] - rotates camera by changing only the roll angle
-	\item[Holding left and right buttons] - moves camera and target relatively to indicated point
+	\item[Holding left and right buttons] - moves camera and target relative to the indicated point
 	\item[Holding control key and rotating mouse wheel] - moving camera forward/backward towards indicated point
 \end{description}
 
@@ -98,7 +98,9 @@ Moves only the camera and rotates it in respect to the motionless target (figure
 {Movement mode - target}
 {move_target}{H}
 
-Moves only the target while maintaining a fixed camera position (figure \ref{move_target}). The camera rotates following the target. \textbf{Note:} In Relative Step Mode, the target is moved by distance related to distance of target to fractal surface. If target is inside the fractal (distance = 0), then this option will not work with Relative Step Mode.
+Moves only the target while maintaining a fixed camera position (figure \ref{move_target}). The camera rotates following the target. 
+
+\textbf{Note:} In Relative Step Mode, the target is moved by a distance related to the distance of target to fractal surface. If the target is inside the fractal (distance = 0), then this option will not work with Relative Step Mode.
 
 \subsection{Linear camera and target movement modes using clicks on image}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
@@ -151,13 +153,13 @@ the target.
 \subsection{Reset View}\label{reset-view}\index{navigation!reset view}
 
 Camera Position is reset, by being zoomed out from the fractal but still
-maintaing the camera angles.
+maintaining the camera angles.
 
 If the rotations are changed to zero before using Reset View, the camera will
 then be zoomed out from the target, and rotated to look down the y axis.
 
-\subsection{Calculation of rotation angles
-	modes}\label{calculation-of-rotation-angles-modes}
+\subsection{Calculation of rotation angle
+	modes}\label{calculation-of-rotation-angle-modes}
 
 \subsubsection{Fixed-roll angle}\label{fixed-roll-angle}
 
@@ -209,7 +211,7 @@ greater distance than the target. This can sometimes lead to unexpected camera
 rotations between keyframes.
 
 To compensate for this, on the Keyframe navigation tab use the button \emph{Set the
-same distance from the camera for all the frames} This adjusts all keyframes by
+same distance from the camera for all the frames}. This adjusts all keyframes by
 setting a constant distance between camera and target. It is important to note
 that the use of this function does not change the visual effect for the
 keyframes, and will help correct interpolation. See figure \ref{camera_target_tracking_2}.
