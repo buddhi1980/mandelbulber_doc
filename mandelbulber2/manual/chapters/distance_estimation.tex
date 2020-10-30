@@ -7,10 +7,10 @@ algorithms based on analytical (Analytical DE)\index{distance estimation!analyti
 calculations of gradients.
 
 DE is the most important algorithm required to render three-dimensional fractals
-within a reasonable time.  A ray is traced from the camera for each pixel (1000 x 1000 resolution = 1,000,000 rays). They match FOV from the camera eye (i.e. they are not
+within a reasonable time.  A ray is traced from the camera for each pixel (1000 x 1000 resolution = 1,000,000 rays). They match FOV from the camera eye (i.e., they are not
 parallel).
 
-The DE provides an approximation of where along a ray the fractal surface should be located, this provides a starting point for stepping along the ray while looking for the surface location.
+The DE provides an approximation of where along a ray the fractal surface should be located. This provides a starting point for stepping along the ray while looking for the surface location.
 The process of stepping along the ray and testing for the surface location, is called ray-marching.
 
 Without the DE calculation, the proximity of the fractal surface would need to be repeatedly calculated after each of many very small steps along the ray from the camera. For example, without an estimate of where the fractal surface is, you may need up to 10,000 steps to trace a ray of light, for every pixel of the image.
@@ -21,7 +21,7 @@ along the ray by this distance. The next step is re-calculated based on the
 estimated distance. This distance is smaller so this time the step is a
 smaller distance. The ray-marching becomes more accurate closer to the surface
 of the fractal. The ray marching ceases when a step moves the calculation point to be within a set
-``distance threshold''\index{ray marching!distance threshold} from the surface or after a maximum number of iteration
+``distance threshold''\index{ray marching!distance threshold} from the surface or after a maximum number of iterations
 if the option ``stop at maximum iteration'' is enabled.
 
 Since the estimation contains some error (sometimes quite large), there is a risk that a step will be too large, and incorrectly step past the fractal surface. This may result in visible noise in the rendered image.
@@ -64,22 +64,22 @@ what location and parameters can produce good DE quality.
 {dock_statistic}{h}
 
 In the Statistics (figure \ref{dock_statistic}) (enable in \emph{View} menu) you can see \emph{Percentage of
-	Wrong Distance Estimations} (``Bad DE''). This number is the percentage of image
+	Wrong Distance Estimations} (``Bad DE''). The statistic is only available in no-OpenCL mode. This number is the percentage of image
 pixels which potentially have big errors in distance estimation calculation
 (estimated distance was much too high). It is visible as a noise on the image.
-As a general rule less than 0.1 is good, but it is case specific and 3.0
+As a general rule less than 0.01 is good, but it is case specific and 3.0
 sometimes is OK and 0.0001 sometimes is not.
 
-Figure \ref{bad_de_menger_sponge}, is an example of Bad DE due to over-stepping. It starts to occur at the corner nearest to the camera, resulting in the black areas and distintegration of the fractal. If the ray-marching step multiplier is set even higher, the fractal will entirely disintegrate. This disintegration will generally be reflected in the Percentage of Wrong Distance Estimations statistic.
+Figure \ref{bad_de_menger_sponge} is an example of Bad DE due to over-stepping. It starts to occur at the corner nearest to the camera, resulting in the black areas and distintegration of the fractal. If the ray-marching step multiplier is set even higher, the fractal will entirely disintegrate. This disintegration will generally be reflected in the Percentage of Wrong Distance Estimations statistic.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/bad_de_menger_sponge.png}
 {Example of over-stepping}
 {bad_de_menger_sponge}{h}
 
-Figure \ref{linear_de_offset}, shows the Linear DE offset parameter located in the Hybrids tab.
-For standard mandelbox types and IFS there are two similar analytic distance estimation calculations used. When making a hybrid that mixes these types, then adjusting the Linear DE offset parameter can assist in fine tuning the DE calculation.
+Figure \ref{linear_de_offset} shows the Linear DE offset parameter located in the Hybrids tab.
+For standard mandelbox types and IFS, there are two similar analytic distance estimation calculations used. When making a hybrid that mixes these types, adjusting the Linear DE offset parameter can assist in fine tuning the DE calculation.
 
-Generic  linear out: $ distance = \frac{r - offset}{\lvert DE \rvert} $
+Generic  linear : $ out.distance = \frac{r - offset}{\lvert DE \rvert} $
 
 The Linear DE offset is normally used in the range from 0.0 (mandelbox) to 2.0 (IFS).
  

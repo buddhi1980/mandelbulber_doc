@@ -1,12 +1,12 @@
-\section{Ray-marching - Maximum number of iterations vs. distance threshold
-	condition}\label{ray-marching---maximum-number-of-iterations-vs.-distance-threshold-condition}
+\section{Ray-marching - Maximum number of iterations versus distance threshold
+	condition}\label{ray-marching---maximum-number-of-iterations-versus-distance-threshold-condition}
 
-The \emph{ray marching distance threshold}\index{ray marching!distance threshold} is the condition where the photon
+The \emph{ray marching distance threshold}\index{ray marching!distance threshold} is the condition where a photon
 marching along the ray comes within a specified distance from the fractal
 surface and the ray-marching stops. This controls the size of the detail in the
 image, and is normally set to vary such that greater detail is obtained for the
-surface closest to the camera, (in the further regions of the fractal the
-distance threshold will be larger such that only bigger details are visible).
+surface closest to the camera, and in the further regions of the fractal, the
+distance threshold will be larger such that only bigger details are visible.
 Enabling \emph{Constant Detail Size}\index{ray marching!constant detail size} on the \emph{Rendering Engine} tab will
 make the distance threshold uniform.
 
@@ -20,12 +20,12 @@ reached (\emph{Stop at maximum iteration} is enabled).
 
 First important note: \emph{Stop at maximum iteration} doesn't control the
 fractal iteration loop. It controls only ray-marching. The iteration loop always
-runs to achieve Bailout\index{termination condition!bailout}, (then if bailout is not reached the iteration stops at
-Maxiter). (see page \pageref{bailout-maxiter})
+runs to achieve Bailout\index{termination condition!bailout}, then if bailout is not reached the iteration stops at
+Maxiter (see page \pageref{bailout-maxiter}).
 
 On figure \ref{stop_raymarching_at_disttrhersh} ray-marching stops at distance threshold\index{ray marching!distance threshold}. In most cases the fractal iteration
-loop stops on bailout condition\index{termination condition!bailout}, (because away from surface it is not possible
-to reach Maxiter). It makes rendering of fractals much faster.
+loop stops on bailout condition\index{termination condition!bailout}, because away from surface it is not possible
+to reach Maxiter. It makes rendering of fractals much faster.
 
 On figure \ref{stop_raymarching_at_maxiter} ray-marching stops at the photon step when the maximum number of iterations is
 reached\index{termination condition!maxiter} (ray-marching distance threshold is ignored). In many cases iteration
@@ -33,7 +33,7 @@ loop stops on bailout condition (away from fractal surface), but on the fractal
 surface the maximum number of iterations is calculated (when bailout is not
 reached).
 
-Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached the
+Figure \ref{stop-raymarching-at-bailout-low-maxiter} shows what happens if maximum number of iterations is set to 4. Even if Maxiter\index{termination condition!maxiter} is reached, the
 ray-marching is continued until the ray marching distance threshold is reached.
 
 \twoImagesWithTwoCaptionsFullWidth{img/manual/media/stop_raymarching_at_disttrhersh.png}
