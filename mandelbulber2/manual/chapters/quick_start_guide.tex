@@ -1,0 +1,153 @@
+\section{Quick start guide}\label{quck-start-guide}
+
+\subsection{Windows Installation}\label{qsg-windows-instalation}\index{installation!windows}
+Download Windows install file (\emph{Mandelbulber2-[version number]-Setup.exe}) and run. Install in default location on C: drive in Program Folder, or remember where you installed it, for later use in video card time-out delay change (step 3.4.).
+Default location:
+\begin{verbatim} 
+ C:\Program Files\Mandelbulber2
+\end{verbatim}
+
+Download from:  \href{https://sourceforge.net/projects/mandelbulber/} {https://sourceforge.net/projects/mandelbulber/}
+
+GitHub: \href{https://github.com/buddhi1980/mandelbulber2} { https://github.com/buddhi1980/mandelbulber2}
+
+Note for Stand-alone Install:
+You can also install Mandelbulber in a stand-alone folder, with everything you need to run Mandelbulber contained within that one folder. See full User Manual for this install method. 
+
+\subsection{If you want to use your computer chip (CPU) to make fractals}\label{qsg-cpu}
+If you plan on using the CPU computer chip on your motherboard to render fractals, you’re all ready to go. Mandelbulber will use all the cores it can find on the chip and use them to their maximum output. By default, all cores will engage but if you want to run Mandelbulber and still have some resources left over, see “Max. number of cores to use” in the Program Preferences under File, and then on the General tab.   You can also change the rendering threads priority. You can just leave these settings at default in most cases. (Advanced; see full User Manual).
+
+
+\subsection{If you want to use your video card to make fractals (GPU and “OpenCL”)}\label{qsg-opencl}
+
+\begin{itemize}
+	\item   Go up to File and click on Program Preferences, and then on the OpenCL (GPU) pane. Check on the OpenCL enable button.
+
+	 \item Select Platform (NVidia or AMD) and Device. You can select multiple devices and cards by dragging across them or pressing Shift key and clicking each one. Each active card will be highlighted and will combine together to render as one unit. They can be different models and series but must be the same type (NVidia or AMD). Click OK.
+
+     \item Check that Navigation Pane/ OpenCL mode select is set to full (default).
+     
+      \item  Video Card Time-Out Delay Change. 
+
+	Change the time-out delay on your video cards by just navigating to wherever you installed Mandelbulber (most likely at \texttt{C:\textbackslash Program Files\textbackslash Mandelbulber2}) and right click on the file called \texttt{TDR\_disable} or \texttt{TDR\_disable.bat} and click \emph{Run as administrator}. It will change the registry entry, and prevent crashes when running difficult renders. 
+	
+	You could also click here on this link to a registry entry and add it to your registry when Windows asks you. 
+	%TODO put script on mandelbulber.com
+	
+	Change Windows time-out delay to 30s (Click and then Merge Reg Entry)
+
+\textbf{Why does this matter?} By default, Windows sets up a time-out delay for video cards that's really short; because in game playing, more than a half-second delay in thinking means you've crashed, unlike in rendering. Many 3D softwares require this registry fix besides just Mandelbulber and it won't hurt your game playing. (Although if you actually crash in game playing, Windows will take longer to rescue you from it.) 
+\end{itemize}
+
+
+\subsection{Let’s review the major sections of Mandelbulber (“MDBB”)}\label{qsg-major-sections}
+
+See full user manual for more info on each pane. (CTRL + H will bring up User manual.) Top right to left. 
+        4.1 Navigation Pane
+        4.2 Main View
+        4.3 Toolbar
+        4.4 Animation Pane (Flight or Keyframe)
+        4.5 Settings Panes
+            4.5.1 Materials
+            4.5.2 Material editor
+            4.5.3 Effects
+            4.5.4 Image adjustments
+            4.5.5 Rendering Engine
+            4.5.6 Objects
+
+
+
+\subsection{Locate the RENDER, STOP, UNDO and REDO buttons}\label{qsg-render-button}
+in the top of the Navigation Pane on the right side. Auto-refresh option is right below.
+
+\begin{description}
+	\item[RENDER button] will start rendering the current settings, either via CPU or GPU.
+	\item[STOP button] will stop rendering.
+	\item[UNDO button] undoes last action and renders settings.
+	\item[REDO button] redoes last action and renders settings.
+	\item[Auto-refresh] will automatically render image whenever a change is made. Otherwise, image will not render unless RENDER button is clicked. (Or Render Animation, on the animation pane.)
+
+\end{description}
+
+\subsection{Set image size}\label{qsg-image-size} 
+
+(Image Adjustment on the Settings Panes). Default size (800 x 600) is quick to render but low resolution. Select the \emph{Connect fractal detail level with image resolution} checkbox so that your image doesn’t change when you resize it, when you want to render at larger size, but the fractal will not gain more details. 
+
+\subsection{Toolbar}\label{qsg-toolbar}
+
+
+\begin{itemize}
+	\item Go up to View and select Show toolbar. You can also select Show animation dock if it’s not already showing. That’s all the windows we’ll need to get started.
+    \item Click on any of the toolbar’s shape thumbnails to load it; hit render in navigation pane.
+    \item Clicking the giant plus will save current scene to toolbar and add a thumbnail to the bar. 
+    \item You can also save scenes to keyframe animations by hitting Add keyframe in the animation dock (see Keyframe Animation section in full User Manual). 
+    %TODO I don't understand last point? How it saves settings?
+
+\end{itemize}
+
+\subsection{Move around the fractal}\label{qsg-move-around}
+\begin{description}
+	\item[Move by clicking] Click on fractal in the Main View to move closer to where you clicked. The higher the value of the step size (in the Navigation Pane), the more you’ll move towards where you clicked. If you get lost or stuck, reload the scene from the toolbar, keyframes, or save files (see step 9 this guide), or hit the UNDO button. (Hitting “Reset view” on the navigation pane has differing results.)
+	
+    \item[Use navigation buttons to move] (in the Navigation Pane)
+    
+    \begin{description}
+           \item[Move camera] (Up/Down, Left/Right, and Forward/Back)
+    		\item[Rotate camera] (Pitch Up/Down and Yaw Left/Right)
+    \end{description}
+\end{description}
+
+\subsection{Navigation by Mouse Dragging}\label{qsg-mouse-dragging}
+
+In most cases the easiest way of moving and rotating the camera is dragging the fractal by holding the mouse button and moving the mouse pointer.
+
+\begin{description}
+	\item[Holding left mouse button] - rotates camera by moving target.
+	\item[Holding right mouse button] - rotates camera around indicated point by moving camera and target.
+	\item[Holding middle button] - rotates camera by changing only the roll angle.
+	\item[Holding left and right buttons] - moves camera and target relatively to indicated point.
+	\item[Holding control key and rotating mouse wheel] - moving camera forward/backward towards indicated point.
+
+\end{description}
+
+\subsection{Load/Save/Copy/Paste}\label{qsg-load-save}
+
+\begin{description}
+	\item[Load example….] Go to \emph{File}, \emph{Load example}… Select one of the many examples, also in the subfolders by artist name, hit render and then look through the settings to see what is turned on and what things are set at. This is the best, easiest, and most fun way to learn Mandelbulber. 
+
+	\item[Save and Load Settings.] Go to \emph{File} and then \emph{Save settings}. Will save current scene and all keyframes and will remember most settings as you left them. \emph{Load settings} will let you browse to a file you’ve saved and load it into memory, replacing current settings. 
+
+	\item[Load settings from clipboard…] Mandelbulber settings can be printed out and copied as regular text. When you see Mandelbulber settings, they’ll look something like this format:
+	
+	\begin{verbatim}[fontsize=\scriptsize]
+# Mandelbulber settings file
+# version 2.23
+# only modified parameters
+[main_parameters]
+ambient_occlusion_enabled true;
+flight_last_to_render 100;
+keyframe_last_to_render 0;
+mat1_is_defined true;
+raytraced_reflections true; 
+	\end{verbatim}
+
+	You can select the text with your cursor, starting with the first pound sign of \texttt{\#Mandelbulber settings file} and all the way to the final semicolon, right click on it and select copy to put it in the Windows/system clipboard, and then go to Mandelbulber and File, and then Load settings from clipboard. Then hit render, or you can save the new file. When you load from clipboard, this will replace any current settings. 
+
+    \item[Save settings to clipboard.] This is the reverse of \emph{Load settings from clipboard}. Go to \emph{File} and click \emph{Save settings to clipboard} to load current MDBB settings into the Windows/system clipboard. Then, right clicking on a webpage or text document and then clicking paste will paste the settings as text, so that you can share with others. 
+        
+\end{description}
+
+\subsection{Full User Manual}\label{qsg-help}
+ link – CRTL + H or by going up to Help. Also list of Hotkeys from the Help menu.
+
+
+\subsection{Facebook Forum}\label{qsg-facebook}
+Ask questions, show your works and see and learn from other’s creations, share your settings and tweak some from others, get feedback and encouragement (lots of encouragement!), troubleshoot issues or problems, chat with other fractalnauts, and have your mind blown by the incredible works of the Mandelbulber fractal art community. 
+
+\href{https://www.facebook.com/groups/mandelbulber}{https://www.facebook.com/groups/mandelbulber}
+
+    12. Mandelbulber YouTube Tutorial Playlist. A collection of the best of the Mandelbulber YouTube video tutorials, from beginning to advanced. 
+
+“When all else fails, RTFM!” (Read The Full Manual) – Editor Steve
+
+GO FORTH AND FRACTAL!
