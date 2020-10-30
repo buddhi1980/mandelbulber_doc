@@ -3,7 +3,7 @@
 \section{OpenCL}\label{opencl}\index{OpenCL}
 
 The use of OpenCL \index{termination condition!maxiter} enables offloading the rendering of the fractal to the
-GPU (graphics processing unit) or to an accelerator card. This can highly reduce the render time.
+GPU (graphics processing unit) or to an accelerator card. This can greatly reduce the render time.
 OpenCL itself is an industry standard developed by the Khronos group and
 is a well-established framework. The two major GPU vendors (ATI and Nvidia)
 among others implement the OpenCL specification in their drivers.
@@ -34,7 +34,7 @@ Unfortunately, the performance of those drivers is often below the performance o
 \subsubsection{Setup of OpenCL on Windows}\label{setup-opencl-windows}
 \emph{Note: Windows users are likely to need to edit the registry to avoid timeout errors, refer \ref{opencl-troubleshooting}}.
 
-With a capable GPU, a recent driver, the registry edit completed and the system rebooted, then the Mandelbulber program can loaded.
+With a capable GPU, a recent driver, the registry edit completed and the system rebooted, then the Mandelbulber program can be loaded.
 Proceed with \ref{configure-opencl}. 
 
 \subsubsection{Setup of OpenCL on Linux}\label{setup-opencl-linux}
@@ -124,7 +124,7 @@ Change of registry takes effect after restart of Windows.
 
 Instead of manual registry edits you can use \emph{TDR\_disable.bat} script located in the program folder. You have to run it as administrator.
 
-Some graphics driver updates have appeared to remove these changes to the registry. This maybe Win10 OS and/or Nvidia driver updates. If OpenCL begins to crash after an update, then check the registry.
+Occasionally, sytem and driver updates have appeared to remove these changes to the registry. To date this has been noticed with Win10 OS and Nvidia driver updates. If OpenCL begins to crash after an update, then check the registry.
 
 You can find more information about this topic in the following resources:
 
