@@ -35,7 +35,7 @@ final song mix. You can use Anim by Sound to create silent videos.}
 
 \emph{Keyframe animation requires changes to be made at keyframes. It is
 possible with Sound animation to make changes at any frame, (i.e. a
-change at any 1 / 30 of a second time interval, when at 30fps.)}
+change at any 1 / 30 of a second time interval, when at 30 fps.)}
 
 \emph{Previously, choreographing parameters with spreadsheets was very
 time consuming and I was limited to what I could achieve, so I stopped
@@ -46,7 +46,7 @@ All files used in this example can be downloaded from mandelbulber.org
 
 http://cdn.mandelbulber.org/doc/audio/9\%20tut.zip
 
-unzip and place ``9 tut'' folder in home/mandelbulber/animations/
+Unzip and place ``9 tut'' folder in home/mandelbulber/animations/
 
 \subsection{Audio Files}\label{audio-files}
 
@@ -61,9 +61,8 @@ The following formats are supported:
 - *.mp3 (MPEG II Audio Layer 3)
 
 I used Hydrogen Drum Kit emulator to make all the individual drum track
-files. These are .wav files but as I am using Linux I converted them to
-.mp3 to use in Mandelbulber. These are mono working files, when I make
-the video in VirtualDub I then use the final song mix .wav file.
+files. These are .wav files which I have converted them to
+.mp3 to use in Mandelbulber. These are mono working files, but when I make the video in VirtualDub, I then use the final song mix .wav file.
 
 The guitar tracks have also been recorded as .wav, and a .mp3 copy made
 to use with Mandelbulber.
@@ -87,10 +86,10 @@ I would be using more percussion instruments.
 
 \subsection{Adding a parameter.}\label{adding-a-parameter.}
 
-Firstly, have the Animation Dock open. ( i.e. from menu select View -
+Firstly, have the Animation Dock open. ( i.e., from menu select View -
 show animation dock.)
 
-Then go to the dock or tab for the parameter you wish to animate (e.g.
+Then go to the dock or tab for the parameter you wish to animate (e.g.,
 fractal, material, effect etc). Right mouse click on the parameter
 field, and select Add to Keyframe Animation.
 
@@ -103,7 +102,7 @@ Here I have chosen to animate parameter Menger\_Mod1 offset y
 
 fractal0\_transf\_addition\_constant\_y
 
-i.e parameter name \emph{transf\_addition\_constant\_y;} from formula
+i.e., parameter name \emph{transf\_addition\_constant\_y;} from formula
 slot \emph{fractal0.}
 
 Parameters x \& z are also added because this parameter is part of a
@@ -127,7 +126,7 @@ animVal = paraVal + soundVal.
 soundVal = (paraVal * multiplication-factor * \emph{sound)} + (
 addition-factor * \emph{sound})
 
-It is less complicated when learning, to use only the addition factor,
+Maybe it is less complicated when learning, to use only the addition factor,
 so we change multiplication factor to 0.0.
 
 \subsection{Using Sound Pitch mode.}\label{using-sound-pitch-mode.}
@@ -145,7 +144,7 @@ The main point is not to limit the Pitch by having a small band width
 that does not cover the full spectrum of the fundamental notes used in
 the audio track.
 
-In Pitch mode the Sound Animation chart rises from silent to high pitch.
+In Pitch mode, the Sound Animation chart rises from silent to high pitch.
 
 In this image the \emph{sound} varies from about 0.2 up to almost 1.0
 (maximum \emph{sound}). Therefore the \emph{sound} will have a wide
@@ -179,8 +178,8 @@ animating the parameter.
 I have paraVal ``offset y'' set at a constant value of 0.0, and I test
 an addition factor of 3.0. The \emph{sound} will increase the soundVal
 in the range of 0.0 to 3.0 maximum. However for the effect I want, I am
-be using Negative influence mode, which will subtract the soundVal from
-paraVal instead of adding it, therefore the possible range to be tested
+using Negative influence mode, which will subtract the soundVal from
+paraVal instead of adding it. Therefore the possible range to be tested
 is 0.0 to -3.0.
 
 The audio file I used only creates \emph{sound} between 0.0 and about
@@ -190,7 +189,7 @@ The audio file I used only creates \emph{sound} between 0.0 and about
 \emph{Note: There are two types of parameters in this program. The first
 type can have negative values entered, the second type cannot. It is}
 \emph{important} \emph{when animating a parameter of the second type,
-that the functions and settings used, do not result in a negative
+that the functions and settings used do not result in a negative
 number.}
 
 View the Sound Animation chart to see the what values you are likely to
@@ -242,11 +241,11 @@ and ensure that the folder is empty, ``Delete all images'' button.
 \subsection{Now render the trial
 animation.}\label{now-render-the-trial-animation.}
 
-When rendering is finished (note the time it took) , press ``Show
+When rendering is finished (note the time it took), press ``Show
 animation'' button for a preview (you can also use ``Show animation''
 while rendering is in progress.)
 
 I also create a video with VirtualDub and the audio file, to ensure that
 the animation is working correctly with the sound. If the animation is
 satisfactory, then set the resolution and detail level to your final
-settings and wait.
+settings.
