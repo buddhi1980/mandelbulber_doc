@@ -96,21 +96,32 @@ Locate the \emph{RENDER}, \emph{STOP}, \emph{UNDO} and \emph{REDO} buttons in th
 
 (Image Adjustment on the Settings Panes). Default size (800 x 600) is quick to render but low resolution. Select the \emph{Connect fractal detail level with image resolution} checkbox so that your image doesn’t change when you resize it, when you want to render at larger size, but the fractal will not gain more details. 
 
+\simpleImageWithCaptionHalfWidth{img/manual/media/qsg_image_size.png}
+{Image size options}{qsg-image-size-options}{H}
+
 \subsection{Toolbar}\label{qsg-toolbar}
 
 
 \begin{itemize}
-	\item Go up to View and select Show toolbar. You can also select Show animation dock if it’s not already showing. That’s all the windows we’ll need to get started.
+	\item Go up to \emph{View} and select \emph{Show toolbar}. You can also select \emph{Show animation dock} if it’s not already showing. That’s all the windows we’ll need to get started.
+	
+	\simpleImageWithCaptionHalfWidth{img/manual/media/qsg_show_toolbar.png}
+	{Show toolbar option}{qsg-show-toolbar}{H}
+	
     \item Click on any of the toolbar’s shape thumbnails to load it; hit render in navigation pane.
+    
+    \simpleImageWithCaptionHalfWidth{img/manual/media/qsg_toolbar.png}
+    {Example toolbar with presets}{qsg-toolbar}{H}
+    
     \item Clicking the giant plus will save current scene to toolbar and add a thumbnail to the bar. 
-    \item You can also save scenes to keyframe animations by hitting Add keyframe in the animation dock (see Keyframe Animation section in full User Manual). 
-    %TODO I don't understand last point? How it saves settings?
-
 \end{itemize}
 
 \subsection{Move around the fractal}\label{qsg-move-around}
 \begin{description}
-	\item[Move by clicking] Click on fractal in the Main View to move closer to where you clicked. The higher the value of the step size (in the Navigation Pane), the more you’ll move towards where you clicked. If you get lost or stuck, reload the scene from the toolbar, keyframes, or save files (see step 9 this guide), or hit the UNDO button. (Hitting “Reset view” on the navigation pane has differing results.)
+	\item[Move by clicking] Click on fractal in the Main View to move closer to where you clicked. The higher the value of the step size (in the Navigation Pane), the more you’ll move towards where you clicked. If you get lost or stuck, reload the scene from the toolbar, keyframes, or save files (see step 9 this guide), or hit the \emph{UNDO} button. Hitting \emph{Reset view} on the navigation moves camera away from fractal.
+	
+	\simpleImageWithCaptionSmallWidth{img/manual/media/qsg_navigation_buttons.png}
+	{Navigation buttons with setting for movement step}{qsg-navigation-buttons}{H}
 	
     \item[Use navigation buttons to move] (in the Navigation Pane)
     
@@ -118,6 +129,10 @@ Locate the \emph{RENDER}, \emph{STOP}, \emph{UNDO} and \emph{REDO} buttons in th
            \item[Move camera] (Up/Down, Left/Right, and Forward/Back)
     		\item[Rotate camera] (Pitch Up/Down and Yaw Left/Right)
     \end{description}
+
+    \simpleImageWithCaptionHalfWidth{img/manual/media/qsg_keyboard_shortcuts.png}
+{Keyboard shortcuts for camera movement and rotation}{qsg-keyboard-shortcuts}{H}
+
 \end{description}
 
 \subsection{Navigation by Mouse Dragging}\label{qsg-mouse-dragging}
@@ -138,6 +153,10 @@ In most cases the easiest way of moving and rotating the camera is dragging the 
 \begin{description}
 	\item[Load example….] Go to \emph{File}, \emph{Load example}… Select one of the many examples, also in the subfolders by artist name, hit render and then look through the settings to see what is turned on and what things are set at. This is the best, easiest, and most fun way to learn Mandelbulber. 
 
+    \simpleImageWithCaptionHalfWidth{img/manual/media/qsg_load_example.png}
+	{Load example option}
+	{qsg-load-example}{H}
+
 	\item[Save and Load Settings.] Go to \emph{File} and then \emph{Save settings}. Will save current scene and all keyframes and will remember most settings as you left them. \emph{Load settings} will let you browse to a file you’ve saved and load it into memory, replacing current settings. 
 
 	\item[Load settings from clipboard…] Mandelbulber settings can be printed out and copied as regular text. When you see Mandelbulber settings, they’ll look something like this format:
@@ -154,7 +173,7 @@ mat1_is_defined true;
 raytraced_reflections true; 
 	\end{verbatim}
 
-	You can select the text with your cursor, starting with the first pound sign of \texttt{\#Mandelbulber settings file} and all the way to the final semicolon, right click on it and select copy to put it in the Windows/system clipboard, and then go to Mandelbulber and File, and then Load settings from clipboard. Then hit render, or you can save the new file. When you load from clipboard, this will replace any current settings. 
+	You can select the text with your cursor, starting with the first pound sign of \texttt{\#Mandelbulber settings file} and all the way to the final semicolon, right click on it and select copy to put it in the Windows/system clipboard, and then go to Mandelbulber and \emph{File}, and then \emph{Load settings from clipboard}. Then hit render, or you can save the new file. When you load from clipboard, this will replace any current settings. 
 
     \item[Save settings to clipboard.] This is the reverse of \emph{Load settings from clipboard}. Go to \emph{File} and click \emph{Save settings to clipboard} to load current MDBB settings into the Windows/system clipboard. Then, right clicking on a webpage or text document and then clicking paste will paste the settings as text, so that you can share with others. 
         
@@ -163,6 +182,9 @@ raytraced_reflections true;
 \subsection{Full User Manual}\label{qsg-help}
  link – CRTL + H or by going up to Help. Also list of Hotkeys from the Help menu.
 
+    \simpleImageWithCaptionHalfWidth{img/manual/media/qsg_help_menu.png}
+{Help menu}
+{qsg-help-menu}{H}
 
 \subsection{Facebook Forum}\label{qsg-facebook}
 Ask questions, show your works and see and learn from other’s creations, share your settings and tweak some from others, get feedback and encouragement (lots of encouragement!), troubleshoot issues or problems, chat with other fractalnauts, and have your mind blown by the incredible works of the Mandelbulber fractal art community. 
