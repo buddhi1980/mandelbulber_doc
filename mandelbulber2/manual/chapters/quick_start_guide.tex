@@ -1,8 +1,7 @@
 \section{Quick start guide}\label{quck-start-guide}
 
 \subsection{Windows Installation}\label{qsg-windows-instalation}\index{installation!windows}
-Download Windows install file (\emph{Mandelbulber2-[version number]-Setup.exe}) and run. Install in default location on C: drive in Program Folder, or remember where you installed it, for later use in video card time-out delay change (step 3.4.).
-Default location:
+Download Windows install file (\emph{Mandelbulber2-[version number]-Setup.exe}) and run. Install in default location on C: drive in Program Folder, or remember where you installed it, for later use in video card time-out delay change (step 3.4.). Default location:
 \begin{verbatim} 
  C:\Program Files\Mandelbulber2
 \end{verbatim}
@@ -17,22 +16,38 @@ You can also install Mandelbulber in a stand-alone folder, with everything you n
 \subsection{If you want to use your computer chip (CPU) to make fractals}\label{qsg-cpu}
 If you plan on using the CPU computer chip on your motherboard to render fractals, you’re all ready to go. Mandelbulber will use all the cores it can find on the chip and use them to their maximum output. By default, all cores will engage but if you want to run Mandelbulber and still have some resources left over, see “Max. number of cores to use” in the Program Preferences under File, and then on the General tab.   You can also change the rendering threads priority. You can just leave these settings at default in most cases. (Advanced; see full User Manual).
 
+\simpleImageWithCaptionHalfWidth{img/manual/media/qsg_cpu.png}
+{Settings for number of CPU cores and program priority}
+{qsg-cpu-preferences}{H}
 
 \subsection{If you want to use your video card to make fractals (GPU and “OpenCL”)}\label{qsg-opencl}
 
 \begin{itemize}
 	\item   Go up to File and click on Program Preferences, and then on the OpenCL (GPU) pane. Check on the OpenCL enable button.
 
-	 \item Select Platform (NVidia or AMD) and Device. You can select multiple devices and cards by dragging across them or pressing Shift key and clicking each one. Each active card will be highlighted and will combine together to render as one unit. They can be different models and series but must be the same type (NVidia or AMD). Click OK.
+\simpleImageWithCaptionHalfWidth{img/manual/media/qsg_enable_opencl.png}
+{Enable OpenCL}
+{qsg-enable-opencl}{H}
+
+	 \item Select Platform (NVidia or AMD) and Device. You can select multiple devices and cards by dragging across them or pressing Ctrl key and clicking each one. Each active card will be highlighted and will combine together to render as one unit. They can be different models and series but must be the same type (NVidia or AMD). Click OK.
+	 
+	 \simpleImageWithCaptionHalfWidth{img/manual/media/qsg_select_platform_device.png}
+	 {Select OpenCL platform and devices}
+	 {qsg-opencl-platform-device}{H}
 
      \item Check that Navigation Pane/ OpenCL mode select is set to full (default).
      
+     \simpleImageWithCaptionThirdWidth{img/manual/media/qsg_opencl_mode.png}
+     {Opencl mode}
+     {qsg-opencl-mode}{H}
+     
       \item  Video Card Time-Out Delay Change. 
 
-	Change the time-out delay on your video cards by just navigating to wherever you installed Mandelbulber (most likely at \texttt{C:\textbackslash Program Files\textbackslash Mandelbulber2}) and right click on the file called \texttt{TDR\_disable} or \texttt{TDR\_disable.bat} and click \emph{Run as administrator}. It will change the registry entry, and prevent crashes when running difficult renders. 
-	
-	You could also click here on this link to a registry entry and add it to your registry when Windows asks you. 
-	%TODO put script on mandelbulber.com
+	Change the time-out delay on your video cards by just navigating to wherever you installed Mandelbulber (most likely at \texttt{C:\textbackslash Program Files\textbackslash Mandelbulber2}) and right click on the file called \texttt{TDR\_disable} or \texttt{TDR\_disable.bat} and click \emph{Run as administrator}. It will change the registry entry, and prevent crashes when running difficult renders. 	
+		 
+	\simpleImageWithCaptionHalfWidth{img/manual/media/qsg_tdr_disable.png}
+	{Script to disable GPU time-out}
+	{qsg-opencl-tdr-disable}{H}
 	
 	Change Windows time-out delay to 30s (Click and then Merge Reg Entry)
 
@@ -54,11 +69,19 @@ See full user manual for more info on each pane. (CTRL + H will bring up User ma
             4.5.4 Image adjustments
             4.5.5 Rendering Engine
             4.5.6 Objects
+ %TODO correct references for chapters
 
+\simpleImageWithCaptionFullWidth{img/manual/media/qsg_main_panes.png}
+{Major sections of Mandelbulber}
+{qsg-main-panes}{H}
 
 
 \subsection{Locate the RENDER, STOP, UNDO and REDO buttons}\label{qsg-render-button}
-in the top of the Navigation Pane on the right side. Auto-refresh option is right below.
+Locate the \emph{RENDER}, \emph{STOP}, \emph{UNDO} and \emph{REDO} buttons in the top of the Navigation Pane on the right side. Auto-refresh option is right below.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/qsg_render_stop_undo_redo.png}
+{Render, stop, undo, redo and auto-refresh}
+{qsg-render-stop-undo}{H}
 
 \begin{description}
 	\item[RENDER button] will start rendering the current settings, either via CPU or GPU.
