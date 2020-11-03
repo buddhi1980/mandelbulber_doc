@@ -402,6 +402,47 @@ In most cases, the default parameters of iridescence effect give satisfactory re
 
 \subsection{Reflectance}\label{materials-reflectance}
 
+\emph{Reflectance} parameter controls amount of light with is reflected by object surface. When value is 1.0 then 100\% of light is reflected and surface color is not visible (perfect mirror)
+
+\textbf{Note: }This effect only work when in \emph{Effects} dock on tab \emph{Ray-tracing} there is enabled the option \emph{Ray-traced reflections and transparency}. If there is used OpenCL, has to be used \emph{OpenCL mode: Full}.
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_reflectance_02.png}
+{Reflectance = 0.2}
+{material-reflectance-02}
+{img/manual/media/material_reflectance_05.png}
+{Reflectance = 0.5}
+{material-reflectance-05}
+{img/manual/media/material_reflectance_1.png}
+{Reflectance = 1.0}
+{material-reflectance-1}
+
+Quality and speed of reflectance effect can be controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls maximum number of light bounces which can be calculated for given pixel. Higher value gives more realistic appearance but calculation is much slower. In most of cases \emph{reflections depth} = 2 is enough good and fast for rendering.
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_reflections_depth_1.png}
+{Reflections depth = 1}
+{material-reflections-depth-1}
+{img/manual/media/material_reflections_depth_2.png}
+{Reflections depth = 2}
+{material-reflections-depth-2}
+{img/manual/media/material_reflections_depth_9.png}
+{Reflections depth = 9}
+{material-reflections-depth-9}
+
+Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy materials and more realistic reflections. When it is enabled some amount of the light is reflected and some is diffused and ratio of them depends on angle of incidence of light. Parameter \emph{Index of refraction} also controls this ratio. Materials of higher index of refraction (materials of higher density) will reflect more light. 
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_reflectance_fresnel_index_15.png}
+{Enabled Fresnel's equations for reflectance. Index of refraction = 1.5}
+{material-fresnel-index-15}
+{img/manual/media/material_reflectance_fresnel_index_30.png}
+{Enabled Fresnel's equations for reflectance. Index of refraction = 3.0}
+{material-fresnel-index-30}
+{img/manual/media/material_reflectance_fresnel_index_60.png}
+{Enabled Fresnel's equations for reflectance. Index of refraction = 6.0}
+{material-fresnel-index-60}
+
 \subsection{Transparency}\label{materials-transparency}
 
 \subsection{Common options for textures}\label{materials-textures}
