@@ -11,7 +11,8 @@ Download from:  \href{https://sourceforge.net/projects/mandelbulber/} {https://s
 GitHub: \href{https://github.com/buddhi1980/mandelbulber2} { https://github.com/buddhi1980/mandelbulber2}
 
 Note for Stand-alone Install:
-You can also install Mandelbulber in a stand-alone folder, with everything you need to run Mandelbulber contained within that one folder. See full User Manual for this install method. 
+You can also install Mandelbulber in a stand-alone folder, with everything you need to run Mandelbulber contained within that one folder. However some folders will be installed at filepath C:/Users/yourname/mandelbulber, e.g., Undo.
+See full User Manual for this install method. 
 
 \subsection{If you want to use your computer chip (CPU) to make fractals}\label{qsg-cpu}
 If you plan on using the CPU computer chip on your motherboard to render fractals, you’re all ready to go. Mandelbulber will use all the cores it can find on the chip and use them to their maximum output. By default, all cores will engage but if you want to run Mandelbulber and still have some resources left over, see “Max. number of cores to use” in the Program Preferences under File, and then on the General tab.   You can also change the rendering threads priority. You can just leave these settings at default in most cases. (Advanced; see full User Manual).
@@ -173,7 +174,7 @@ mat1_is_defined true;
 raytraced_reflections true; 
 	\end{verbatim}
 
-	You can select the text with your cursor, starting with the first pound sign of \texttt{\#Mandelbulber settings file} and all the way to the final semicolon, right click on it and select copy to put it in the Windows/system clipboard, and then go to Mandelbulber and \emph{File}, and then \emph{Load settings from clipboard}. Then hit render, or you can save the new file. When you load from clipboard, this will replace any current settings. 
+	You can select the text with your cursor, starting with the first hash sign of \texttt{\#Mandelbulber settings file} and all the way to the final semicolon, right click on it and select copy to put it in the Windows/system clipboard, and then go to Mandelbulber and \emph{File}, and then \emph{Load settings from clipboard}. Then hit render, or you can save the new file. When you load from clipboard, this will replace any current settings. 
 
     \item[Save settings to clipboard.] This is the reverse of \emph{Load settings from clipboard}. Go to \emph{File} and click \emph{Save settings to clipboard} to load current MDBB settings into the Windows/system clipboard. Then, right clicking on a webpage or text document and then clicking paste will paste the settings as text, so that you can share with others. 
         
