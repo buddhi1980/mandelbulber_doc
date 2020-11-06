@@ -419,8 +419,6 @@ In most cases, the default parameters of iridescence effect give satisfactory re
 
 The quality and speed of the reflectance effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light bounces to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 2 is enough for good quality and fast rendering.
 
-If you place an object inside a hollow primitive box that is made of reflective material ( a mirror box), then this parameter controls the number of repeated reflections.
-
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_reflections_depth_1.png}
 {Reflections depth = 1}
@@ -431,6 +429,12 @@ If you place an object inside a hollow primitive box that is made of reflective 
 {img/manual/media/material_reflections_depth_9.png}
 {Reflections depth = 9}
 {material-reflections-depth-9}
+
+If you place an object inside a hollow primitive box that is made of reflective material ( a mirror box), then this parameter controls the number of repeated reflections.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_reflections_hollow_box_depth_9.png}
+{Hollow reflective box, reflections depth = 9}
+{material-hollow-box}{H}
 
 Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy materials and produce more realistic reflections. When it is enabled, some of the light is reflected and some is diffused. The ratio depends on the angle of incidence of light. Parameter \emph{Index of refraction} also controls this ratio. Materials with a higher index of refraction (materials of higher density) will reflect more light. 
 
@@ -445,7 +449,71 @@ Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy mater
 {Enabled Fresnel's equations for reflectance. Index of refraction = 6.0}
 {material-fresnel-index-60}
 
+\emph{Color of reflections} colorizes reflected light
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_reflections_color.png}
+{Different colors of reflections}
+{material-reflections-colors}{H}
+
 \subsection{Transparency}\label{materials-transparency}
+
+\emph{Transparency of surface} parameter controls the amount of light which can pass through the object surface. 
+When value of this property is 1.0, the object surface is fully transparent. 
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_transparency_05.png}
+{Transparency of surface = 0.5}
+{material-transparency-05}
+{img/manual/media/material_transparency_075.png}
+{Transparency of surface = 0.75}
+{material-transparency-075}
+{img/manual/media/material_transparency_1.png}
+{Transparency of surface = 1.0}
+{material-transparency-1}
+
+\textbf{Note: }This effect only work when in \emph{Effects} dock on tab \emph{Ray-tracing} when the option \emph{Ray-traced reflections and transparency} is enabled. With OpenCL, \emph{OpenCL mode: Full} must be used.
+
+The quality and speed of the transparency effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light refractions to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 5 is enough for good quality. You should to have in mind that when light is going through the object it passes two surfaces: when entering the object and when leaving. It means that at least there need to be calculated two refractions.
+
+Big impact on rendering speed also has parameter \emph{Maximum number of fractal iterations} (\emph{Rendering engine} dock). Inside the fractal object there are always calculated all fractal iterations (outside the objects only several iterations) which implies a lot of mathematical calculations for every point of object volume. This parameter should be reduced as much as it not causes differences in fractal object shape. For instant Mandelbulb needs only 5 iterations to get correct shape. 
+
+\emph{Color of transparency} colorizes light going through object surface. It behaves like color filter.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_transparency_colors.png}
+{Different colors of transparency}
+{material-transparency-colors}{H}
+
+Much more realistic appearance of glass-like objects can be achieved by using transparency together with reflectance. In nature every object which is transparent is also glossy. Good results will be achieved when \emph{transparency} = 1, \emph{reflectance} = 1 and \emph{Fresnel's equations for reflectance} are enabled (there is calculated correct ration between reflected and refracted light). In this setup rendering can be much slower because in every point where light is refracted it is also reflected. For reflections depth = 5 might be calculated up to 25 light bounces. 
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_transparency_1_reflectance_1.png}
+{Surface transparency = 1, reflectance = 1, enabled Fresnel's equations for reflectance}
+{material-reflectance-with-transparency}{H}
+
+The light going through the transparent objects is refracted. Strength of light refraction depends on \emph{index of refraction}. Air has index of refraction close to 1, water 1.35, glass 1.5 and diamond 2.4. Higher index of refraction additionally increases amount of reflected light when \emph{Fresnel's equations for reflectance} are enabled
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_transparency_index_1.png}
+{Index of refraction = 1.0}
+{material-transparency-index-1}
+{img/manual/media/material_transparency_index_12.png}
+{Index of refraction = 1.2}
+{material-transparency-index-12}
+{img/manual/media/material_transparency_index_20.png}
+{Index of refraction = 2.0}
+{material-transparency-index-20}
+
+\emph{Transparency of volume} parameter controls opacity of interior of the object (independently from surface transparency). When is 1.0 then volume is fully transparent. Lower value makes \emph{color of volume} more visible.
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_transparency_volume-09.png}
+{Transparency of volume = 0.9}
+{material-transparency-volume-09}
+{img/manual/media/material_transparency_volume-07.png}
+{Transparency of volume = 0.7}
+{material-transparency-volume-07}
+{img/manual/media/material_transparency_volume-05.png}
+{Transparency of volume = 0.5}
+{material-transparency-volume-05}
 
 \subsection{Common options for textures}\label{materials-textures}
 
