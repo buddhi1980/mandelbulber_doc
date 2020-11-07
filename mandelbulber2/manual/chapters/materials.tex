@@ -508,7 +508,7 @@ To colorize reflections can be used bitmap texture. Bright colors will reflect m
 \subsection{Transparency}\label{materials-transparency}
 
 \emph{Transparency of surface} parameter controls the amount of light which can pass through the object surface. 
-When value of this property is 1.0, the object surface is fully transparent. 
+When the value of this property is 1.0, then the object surface is fully transparent. 
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_transparency_05.png}
@@ -521,25 +521,25 @@ When value of this property is 1.0, the object surface is fully transparent.
 {Transparency of surface = 1.0}
 {material-transparency-1}
 
-\textbf{Note: }This effect only work when in \emph{Effects} dock on tab \emph{Ray-tracing} when the option \emph{Ray-traced reflections and transparency} is enabled. With OpenCL, \emph{OpenCL mode: Full} must be used.
+\textbf{Note: }This effect only works when the option \emph{Ray-traced reflections and transparency} is enabled in the \emph{Effects} dock on the \emph{Ray-tracing} tab. With OpenCL, \emph{OpenCL mode: Full} must be used.
 
-The quality and speed of the transparency effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light refractions to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 5 is enough for good quality. You should to have in mind that when light is going through the object it passes two surfaces: when entering the object and when leaving. It means that at least there need to be calculated two refractions.
+The quality and speed of the transparency effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light refractions to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 5 is enough for good quality. With transparency, when light is going through the object it passes two surfaces: when entering the object and when exiting. This means there needs to be at least two refractions calculated.
 
-Big impact on rendering speed also has parameter \emph{Maximum number of fractal iterations} (\emph{Rendering engine} dock). Inside the fractal object there are always calculated all fractal iterations (outside the objects only several iterations) which implies a lot of mathematical calculations for every point of object volume. This parameter should be reduced as much as it not causes differences in fractal object shape. For instant Mandelbulb needs only 5 iterations to get correct shape. 
+The parameter \emph{Maximum number of fractal iterations} (\emph{Rendering engine} dock), has a big impact on rendering speed. All fractal iterations are always calculated inside the fractal object, (outside the objects, only several iterations are calculated), which means a lot of mathematical calculations for every point of object volume. This parameter should be reduced to just before it causes differences in the fractal object shape. For instance a Mandelbulb only needs 5 iterations to get the correct shape. 
 
-\emph{Color of transparency} colorizes light going through object surface. It behaves like color filter.
+\emph{Color of transparency} colorizes light going through object surface. It behaves like a color filter.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_transparency_colors.png}
 {Different colors of transparency}
 {material-transparency-colors}{H}
 
-Much more realistic appearance of glass-like objects can be achieved by using transparency together with reflectance. In nature every object which is transparent is also glossy. Good results will be achieved when \emph{transparency} = 1, \emph{reflectance} = 1 and \emph{Fresnel's equations for reflectance} are enabled (there is calculated correct ration between reflected and refracted light). In this setup rendering can be much slower because in every point where light is refracted it is also reflected. For reflections depth = 5 might be calculated up to 25 light bounces. 
+A much more realistic appearance of glass-like objects can be achieved by using transparency together with reflectance. In nature, every object which is transparent is also glossy. Good results will be achieved when \emph{transparency} = 1, \emph{reflectance} = 1 and \emph{Fresnel's equations for reflectance} is enabled, (as then there is calculated the correct ratio between reflected and refracted light). In this setup, the rendering can be much slower because for every point where light is refracted it is also reflected. For reflections depth = 5, there might be calculated up to 25 light bounces. 
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_transparency_1_reflectance_1.png}
 {Surface transparency = 1, reflectance = 1, enabled Fresnel's equations for reflectance}
 {material-reflectance-with-transparency}{H}
 
-The light going through the transparent objects is refracted. Strength of light refraction depends on \emph{index of refraction}. Air has index of refraction close to 1, water 1.35, glass 1.5 and diamond 2.4. Higher index of refraction additionally increases amount of reflected light when \emph{Fresnel's equations for reflectance} are enabled
+The light going through the transparent objects is refracted. The strength of light refraction depends on \emph{index of refraction}. Air has an index of refraction close to 1, water 1.35, glass 1.5 and diamond 2.4. A higher index of refraction also increases the amount of reflected light when \emph{Fresnel's equations for reflectance} is enabled.
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_transparency_index_1.png}
@@ -552,7 +552,7 @@ The light going through the transparent objects is refracted. Strength of light 
 {Index of refraction = 2.0}
 {material-transparency-index-20}
 
-\emph{Transparency of volume} parameter controls opacity of interior of the object (independently from surface transparency). When is 1.0 then volume is fully transparent. Lower value makes \emph{color of volume} more visible.
+\emph{Transparency of volume} parameter controls the opacity of the interior of the object (independently from surface transparency). When it is 1.0 then the volume is fully transparent. Lower values make  the \emph{color of volume} more visible.
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_transparency_volume-09.png}
@@ -670,7 +670,7 @@ All of the above can be used together to form even more complicated algorithms.
 
 \textbf{Orbit trap} algorithms have already been covered above; however, more complex versions can be coded but they will increase calculation time. The orbit trap output is called \textbf{colorMin}.
 
-\textbf{Aux.color} value is generally generated by whether an if() condition is met on an iteration. For instance if z.x \textgreater\space folding\_limit, then increase the aux.color by adding a value, if it does not, then the aux.color remains unchanged for that iteration. The final aux.color value for a point is the summation at termination. This generally results in color banding. However, some of the newer formulas have aux.color algorithms that do not produce color banding.
+\textbf{Aux.color} value is generally generated by whether an if() condition is met on an iteration. For instance, if(z.x \textgreater\space folding\_limit), then increase the aux.color by adding a value, if it does not, then the aux.color remains unchanged for that iteration. The final aux.color value for a point is the summation at termination. This generally results in color banding. However, some of the newer formulas have aux.color algorithms that do not produce color banding.
 
 Aux.color components are often used with formulas that have box and sphere folds, as well as DIFS. Typically the UI looks like the following, but they are sometimes unique to the fractal.
 
@@ -681,7 +681,7 @@ Aux.color components are often used with formulas that have box and sphere folds
 {DIFS UI}
 {auxColor_DIFS.PNG}{H}
 
-There are also a few transform-based color algorithms, that use aux.color or aux.colorHybrid:
+There are also a few transform-based color algorithms that use aux.color or aux.colorHybrid:
 
 T>DIFS Hybrid Color - for coloring T>DIFS.
 
@@ -692,7 +692,7 @@ T>Hybrid Color2 - more options for coloring based on data from the iteration loo
 \subsubsection{Normal Mode Color (single formula mode and boolean mode)}\label{materials-normal-mode-color}
 
 For each formula there is one of five color functions assigned.
-These are different to hybrid mode color. Color by numbers allows for converion between normal and hybrid modes.
+These are different to hybrid mode color. Color by numbers allows for conversion between normal and hybrid modes.
 
 The Mandelbox formula has an additional component called \emph{Absolute value of z}, this only works if the formula is in slot\#1.
 
