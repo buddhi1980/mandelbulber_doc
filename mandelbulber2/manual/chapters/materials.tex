@@ -246,11 +246,27 @@ It is recommended to use bright colors in the gradient for transparency. More de
 \subsection{Surface color}\label{materials-surface_color}
 
 This property defines the color of diffused light which is applied on the whole object. This color is used when \emph{surface color gradient} is disabled or when the material is applied to a primitive object.
-This  color is mixed with colors from bitmap texture.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_surface_color.png}
 {Different surface colors}
 {material-surface-color-example}{H}
+
+The option \emph{Use color texture from an image} allows to cover objects with texture which will define colors of surface. More details about texture mapping are in chapter \ref{materials-textures}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/material_texture_color.png}
+{Objects with color texture}
+{material-color-texture}{H}
+
+Surface color (from color box) can be mixed with colors from bitmap texture. Strength of bitmap influence can be adjusted with \emph{texture intensity} parameter.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_color_mixed.png}
+{Different colors mixed with color texture}
+{material-color-texture-mixed}
+{img/manual/media/material_texture_color_intensity 05.png}
+{Reduced intensity of color texture to 0.5}
+{material-color-texture-mixed05}
+{H}
 
 \subsection{Shading}\label{materials-shading}
 
@@ -328,7 +344,7 @@ The following parameters are used to define the appearance of the specular highl
 	{material-specular-roughness-1}
 	{img/manual/media/material_specular_metalic_roughness_10.png}
 	{roughness = 10}
-	{material-specular-roughness-10}
+	{material-specular-roughness-10}	
 		
 \end{description}
 
@@ -346,6 +362,17 @@ The following parameters are used to define the appearance of the specular highl
 {img/manual/media/material_rougness_01.png}
 {roughness = 0.1}
 {material-surface-roughness-01}
+
+Local roughness of surface can be controlled using bitmap texture. For this have to be used option \emph{Use roughness map texture}. Brighter areas of texture will appear as higher roughness of surface. Black color means no roughness. More details about texture mapping are in chapter \ref{materials-textures}.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_roughness.png}
+{Example use of roughness texture}
+{material-roughness-texture-usage}
+{img/manual/media/material_roughness_texture.jpg}
+{Roughness texture used in this example}
+{material-roughness-texture-example}
+{H}
 
 \subsection{Iridescence}\label{materials-iridescence}
 
@@ -399,6 +426,18 @@ In most cases, the default parameters of iridescence effect give satisfactory re
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_luminosity.png}
 {High luminosity values (about 5) and MC global illumination enabled}
 {material-luminosity}{H}
+
+For luminosity effect can be used bitmap texture. Intensity of illumination by texture can be adjusted by \emph{texture intensity} parameter. More details about texture mapping are in chapter \ref{materials-textures}.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_luminosity.png}
+{Example use of luminosity texture - texture intensity = 20}
+{material-luminosity-texture-usage}
+{img/manual/media/material_luminosity_texture.jpg}
+{Luminosity texture used in this example\linebreak}
+{material-luminosity-texture-example}
+{H}
+
 
 \subsection{Reflectance}\label{materials-reflectance}
 
@@ -454,6 +493,17 @@ Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy mater
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_reflections_color.png}
 {Different colors of reflections}
 {material-reflections-colors}{H}
+
+To colorize reflections can be used bitmap texture. Bright colors will reflect more light. Black means no reflections. More details about texture mapping are in chapter \ref{materials-textures}.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_reflectance.png}
+{Example use of reflectance texture}
+{material-reflectance-texture-usage}
+{img/manual/media/material_reflectance_texture.jpg}
+{Reflectance texture used in this example}
+{material-reflectance-texture-example}
+{H}
 
 \subsection{Transparency}\label{materials-transparency}
 
@@ -514,6 +564,96 @@ The light going through the transparent objects is refracted. Strength of light 
 {img/manual/media/material_transparency_volume-05.png}
 {Transparency of volume = 0.5}
 {material-transparency-volume-05}
+
+To colorize transparency of surface can be used bitmap texture. Bright colors will pass more light. Black means no transparency. More details about texture mapping are in chapter \ref{materials-textures}.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_transparency.png}
+{Example use of transparency texture}
+{material-transparency-texture-usage}
+{img/manual/media/material_transparency_texture.jpg}
+{Transparency texture used in this example}
+{material-transparency-texture-example}
+{H}
+
+\subsection{Diffusion texture}\label{materials-diffusion-texture}
+
+Diffusion texture controls the amount and color of the reflected light. It also controls the intensity and width of the specular reflections.
+Areas with brighter colors will reflect more light, the specular reflection will be brighter and the size of the specular reflections will be smaller (i.e. simulates polished surface.)
+Dark areas will not reflect light, and the specular reflections will be dark and wide (i.e. simulates a rough surface). 
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_diffuse.png}
+{Example use of diffusion texture}
+{material-diffusion-texture-example}
+{img/manual/media/material_diffusion_texture.jpg}
+{Used texture in the example}
+{material-used-diffusion-texture}
+{H}
+
+\subsection{Normal map texture}\label{materials-normal-map-texture}
+
+Normal mapping is a technique used for faking the lighting of bumps and dents – an implementation of bump mapping. Normal map texture changes locally the direction of the surface normal vector, (i.e. simulates local changes of the surface angle). It causes changes to the way that the light is reflected or diffused. Normal maps do not deform the object surface, but just give the appearance of deformation.
+
+Normal map textures uses color components to define the direction of the deflection of a normal vector. Red represents X axis, green represents Y axis and blue represents Z axis. 
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_normal.png}
+{Example use of normal map texture}
+{material-normal-texture-example}
+{img/manual/media/normal_map_texture.jpg}
+{Normal map texture used in this example}
+{material-used-normal-texture}
+{H}
+
+There are two standards of normal maps. The difference between them is in the direction of the Y component of the normal vector. Visually when the Y component is swapped then the green component of the texture is inverted. To configure which type of texture is used use option \emph{Invert green (Y+ / Y-)}
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/normal_map_texture.jpg}
+{Standard normal map}
+{material-texture-normal-standard}
+{img/manual/media/normal_map_texture_g_inv.jpg}
+{Inverted normal map}
+{material-texture-normal-inverted}
+{H}
+
+To identify which standard it is, look how the colors are located on the convex part of the texture.
+\begin{description}
+\item[Standard]: top left corner - green, bottom right- red
+\item[Inverted]: bottom left corner - green, right top - red
+\end{description}
+If you use inverted texture, then check box  \emph{Invert green (Y+ / Y-)}  should be ticked.
+
+Normal maps can be derived from height maps (bumpmaps). If there is used grayscale texture, have to be ticked option \emph{Normal map texture derived from grayscale bump map}.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_normal_from_greyscale.png}
+{Example use of greyscale bump map as a normal map}
+{material-texture-normal-grayscale}
+{img/manual/media/displacement_texture.jpg}
+{Bump map used in this example\linebreak}
+{material-texture-bumpmap}
+{H}
+
+\subsection{Displacement map texture}\label{materials-texture-displacement}
+
+Displacement map technique uses texture to cause an effect where the actual geometric position of points over the textured surface are displaced. It gives the surfaces a greater sense of depth and detail, permitting self-shadowing. In contrast to normal mapping, it deforms object surface.
+Displacement map textures looks the same as bump maps. Brighter pixels will give stronger embossing of surface.
+
+It is recommended to use 16-bit greyscale textures to get smooth displacements.
+
+Parameter \emph{Height of displacement} controls how much shapes will be deformed.
+
+\textbf{Note:} displacement maps don't work with cubic mapping of textures.
+
+\twoImagesWithTwoCaptionsFullWidth
+{img/manual/media/material_texture_displacement.png}
+{Example use of displacement map}
+{material-texture-displacement-use}
+{img/manual/media/displacement_texture.jpg}
+{Displacement map used in this example}
+{material-texture-displacement}
+{H}
 
 \subsection{Common options for textures}\label{materials-textures}
 
