@@ -640,7 +640,7 @@ Normal maps can be derived from height maps (bumpmaps). Enable \emph{Normal map 
 Displacement map technique uses texture to cause an effect where the actual geometric position of points over the textured surface are displaced. It gives the surfaces a greater sense of depth and detail, and allows self-shadowing. In contrast to normal mapping, it deforms the object surface.
 Displacement map textures looks the same as bump maps. Brighter pixels will give stronger embossing of the surface.
 
-It is recommended to use 16-bit greyscale textures to get smooth displacements.
+It is recommended to use 16-bit greyscale textures in PNG format to get smooth displacements.
 
 Parameter \emph{Height of displacement} controls how much the surface will be deformed.
 
@@ -656,6 +656,78 @@ Parameter \emph{Height of displacement} controls how much the surface will be de
 {H}
 
 \subsection{Common options for textures}\label{materials-textures}
+
+Mandelbulber can load textures in following formats: JPEG, PNG, BMP and Radiance HDR. 
+
+Default path to texture files can be changes in \emph{File / Preferences} window.
+
+ \simpleImageWithCaptionHalfWidth{img/manual/media/preferences_path_for_textures.png}
+ {Default path to texture files}
+ {preferences-textures-path}{H}
+ 
+ In the bottom of \emph{Material editor} there are options for texture mapping
+ 
+ \begin{description}
+ 	\item[Mapping type] defines way how the texture is wrapped on object surface
+ 	\begin{itemize}
+ 		\item Planar - the texture is stretched on the xy plane
+ 		\item Spherical - the texture is projected onto a theoretical sphere
+ 		\item Cylindrical - the texture is projected onto a theoretical cylinder
+ 		\item Cubic - the texture is projected onto a theoretical cube. Cube surface is selected according to surface normal vector.
+ 	\end{itemize} 
+ 
+	 \twoImagesWithTwoCaptionsFullWidth
+	 {img/manual/media/texture_mapping_planar.png}
+	 {Planar texture mapping}
+	 {material-texture-planar}
+	 {img/manual/media/texture_mapping_spherical.png}
+	 {Spherical texture mapping}
+	 {material-texture-spherical}
+	 {H}
+	 
+	 \twoImagesWithTwoCaptionsFullWidth
+	 {img/manual/media/texture_mapping_cylindrical.png}
+	 {Cylindrical texture mapping}
+	 {material-texture-cylindrical}
+	 {img/manual/media/texture_mapping_cubic.png}
+	 {Cubic texture mapping}
+	 {material-texture-cubic}
+	 {H}
+	 
+	 \item[Texture center] shifts texture in x, y and z directions. Shift by 1 moves texture by size of the texture.
+	 
+	 \item[Texture scale] scales the texture relatively to object size
+	 
+	 \threeImagesWithTwoCaptionsFullWidth
+	 {img/manual/media/texture_mapping_scale_05_05_05.png}
+	 {Texture scale 0.5, 0.5, 0.5}
+	 {texture-scale-05}
+	 {img/manual/media/texture_mapping_cubic.png}
+	 {Texture scale 1, 1, 1}
+	 {texture-scale-1}
+	 {img/manual/media/texture_mapping_scale_2_2_2.png}
+	 {Texture scale 2, 2, 2}
+	 {texture-scale-2}
+	 
+	 \item[Texture rotation] rotates texture around x, y and z axis
+	 
+	 \threeImagesWithTwoCaptionsFullWidth
+	 {img/manual/media/texture_mapping_rot_alpha_45.png}
+	 {Alpha angle 45\textdegree}
+	 {texture-rot-alpha-45}
+	 {img/manual/media/texture_mapping_rot_beta_45.png}
+	 {Beta angle 45\textdegree}
+	 {texture-rot-alpha-45}
+	 {img/manual/media/texture_mapping_rot_gamma_45.png}
+	 {Gamma angle 45\textdegree}
+	 {texture-rot-alpha-45}
+	 
+	 \item[Fractalize texture]
+	
+ \end{description}
+
+
+
 
 \subsection{Advanced color parameters}\label{materials-advanced-color-parameters}
 
