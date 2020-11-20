@@ -722,7 +722,40 @@ The default path to the texture files can be changed in \emph{File / Preferences
 	 {Gamma angle 45\textdegree}
 	 {texture-rot-alpha-45}
 	 
-	 \item[Fractalize texture]
+	 \item[Fractalize texture] distributes texture according to fractal properties. There is used orbit trap algorithm in fractal iteration loop, where orbit trap has shape of cube. Coordinates of trapped iterated \emph{z} value are used as coordinates for the texture mapping. In some cases there is good to rotate texture plane by 90 degrees (alpha or beta angle) to get more interesting texture distribution.
+	 
+	 Parameters of orbit traps can be controlled by following parameters:
+	 
+	 \begin{description}
+	 	\item[Orbit trap cube size] controls probability of catching iterated value into the trap. Visually it changes the variation in the size of the texture. Correct value of this parameter has to be found by trials and checking appearance of the texture.
+	 	
+	 	\threeImagesWithTwoCaptionsFullWidth
+	 	{img/manual/media/texture_fractalize_cube_1.png}
+	 	{Cube size = 1}
+	 	{texture-fractalize-cube-size-1}
+	 	{img/manual/media/texture_fractalize_cube_2.png}
+	 	{Cube size = 2}
+		{texture-fractalize-cube-size-2}
+	 	{img/manual/media/texture_fractalize_cube_4.png}
+	 	{Cube size = 4}
+	 	{texture-fractalize-cube-size-4}
+	 	
+	 	\item[Orbit trap start at iteration] n-th. Higher value makes textures wrapped on smaller fractal details.
+	 	
+	 	\threeImagesWithTwoCaptionsFullWidth
+	 	{img/manual/media/texture_fractalize_start_0.png}
+	 	{Start at iteration 0}
+	 	{texture-fractalize-start-0}
+	 	{img/manual/media/texture_fractalize_start_1.png}
+	 	{Start at iteration 1}
+	 	{texture-fractalize-start-1}
+	 	{img/manual/media/texture_fractalize_start_2.png}
+	 	{Start at iteration 2}
+	 	{texture-fractalize-start-2}
+	 	
+	 \end{description}
+	 
+	 
 	
  \end{description}
 
