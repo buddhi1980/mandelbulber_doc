@@ -722,12 +722,12 @@ The default path to the texture files can be changed in \emph{File / Preferences
 	 {Gamma angle 45\textdegree}
 	 {texture-rot-alpha-45}
 	 
-	 \item[Fractalize texture] distributes texture according to fractal properties. There is used orbit trap algorithm in fractal iteration loop, where orbit trap has shape of cube. Coordinates of trapped iterated \emph{z} value are used as coordinates for the texture mapping. In some cases there is good to rotate texture plane by 90 degrees (alpha or beta angle) to get more interesting texture distribution.
+	 \item[Fractalize texture] distributes the texture according to fractal properties. A cube shape orbit trap algorithm is used in the fractal iteration loop to produce this effect. The coordinates of the trapped iterated \emph{z} value are used as coordinates for the texture mapping. In some cases it is good to rotate the texture plane by 90 degrees (alpha or beta angle) to get a more interesting texture distribution.
 	 
-	 Parameters of orbit traps can be controlled by following parameters:
+	 The following parameters control the orbit trap algorithm:
 	 
 	 \begin{description}
-	 	\item[Orbit trap cube size] controls probability of catching iterated value into the trap. Visually it changes the variation in the size of the texture. Correct value of this parameter has to be found by trials and checking appearance of the texture.
+	 	\item[Orbit trap cube size] controls the probability of the iterated value being caught in the trap. Visually it changes the variation in the size of the texture. Adjust this parameter while checking the appearance of the texture.
 	 	
 	 	\threeImagesWithTwoCaptionsFullWidth
 	 	{img/manual/media/texture_fractalize_cube_1.png}
@@ -740,7 +740,7 @@ The default path to the texture files can be changed in \emph{File / Preferences
 	 	{Cube size = 4}
 	 	{texture-fractalize-cube-size-4}
 	 	
-	 	\item[Orbit trap start at iteration] n-th. Higher value makes textures wrapped on smaller fractal details.
+	 	\item[Orbit trap start at iteration]. A higher start value wraps the texture onto smaller areas of fractal detail.
 	 	
 	 	\threeImagesWithTwoCaptionsFullWidth
 	 	{img/manual/media/texture_fractalize_start_0.png}
