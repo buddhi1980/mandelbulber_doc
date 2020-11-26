@@ -27,7 +27,7 @@ The following options are available in this dock:
 
 A material can be assigned to different types of objects: main fractal, boolean fractals or primitives. One material can be assigned to many objects. For every object, there needs to be one assigned material.
 \pagebreak
-\subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}
+\subsubsection{Assigning material to main fractal}\label{assigning-material-to-main-fractal}\index{materials!assigning}
 
 To assign a material to the main fractal object, go to \emph{Objects} dock and \emph{Global parameters} tab (figure \ref{materials_assign_to_main_fractal}). Clicking on the material icon will bring up the \emph{Material manager} window where the material can be selected. This selected material will be associated with the main fractal object. Further changes of the material properties in \emph{Material editor} will directly affect all objects with this assigned material.
 \nopagebreak
@@ -35,7 +35,7 @@ To assign a material to the main fractal object, go to \emph{Objects} dock and \
 {Material icon in Global parameters}
 {materials_assign_to_main_fractal}{h}
 
-\subsubsection{Assigning material to primitive object}\label{assigning-material-to-primitive}
+\subsubsection{Assigning material to primitive object}\label{assigning-material-to-primitive}\index{primitives}
 
 To assign a material to a particular primitive object go to \emph{Objects} dock and \emph{Primitives} tab. Below the parameters of this primitive there is an icon for the material selection (figure \ref{materials_assign_to_primitive}).
  
@@ -44,7 +44,7 @@ To assign a material to a particular primitive object go to \emph{Objects} dock 
 {Material icon in definition of primitive object}
 {materials_assign_to_primitive}{H}
 
-\subsubsection{Assigning material to one of the fractals in boolean mode}\label{assigning-material-to-boolean}
+\subsubsection{Assigning material to one of the fractals in boolean mode}\label{assigning-material-to-boolean}\index{fractal!boolean}
 
 To assign a material to a particular fractal when the boolean mode is enabled, go to \emph{Objects} dock and \emph{Fractals} tab. Then go to the formula tab of the fractal, which should be assigned with the material. The selection of the material is located below the fractal formula parameters (figure \ref{materials_assign_to_boolean}).
 
@@ -57,7 +57,7 @@ To assign a material to a particular fractal when the boolean mode is enabled, g
 
 The parameters of a material can be edited in the \emph{Material editor} dock. On the top of the material editor is a real-time preview of the material and the name of the material. The name can be edited freely for easier identification of the material.
 
-\subsection{Gradients}\label{materials-gradients}
+\subsection{Gradients}\label{materials-gradients}\index{materials!gradients}
 
 Gradients can be applied to fractal objects. If a material with gradients is assigned to a primitive object, then the gradient will be ignored and the plain color is used instead (parameter \emph{Surface color}) -- see figure \ref{materials_gradient_on_primitive}.
 
@@ -133,10 +133,10 @@ All of the channels have the following common settings:
 	{material-color_speed_4}
 \end{description}
 	
-\subsubsection{Coloring orbit trap algorithms}\label{materials-coloring-0rbi-trap-algorithms}
+\subsubsection{Coloring orbit trap algorithms}\label{materials-coloring-0rbi-trap-algorithms}\index{materials!coloring}
 	
 Option \emph{Coloring algorithm} allows the selection of the orbit trap algorithm which will be used to distribute colors. These algorithms use particular properties of the fractal calculation (results of orbit trap algorithms.)\index{orbit trap}
-
+\pagebreak
 \begin{description}
 	\item[Standard] -- color index is calculated as the length of z vector
 	\begin{center}
@@ -183,7 +183,7 @@ Option \emph{Coloring algorithm} allows the selection of the orbit trap algorith
 
 \textbf{Pre-V2.15 orbit trap color}. Enables backwards compatibility. In version 2.15, changes were made to make orbit trap calculations the same for both OpenCL and  Non-OpenCL.
 
-\subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}
+\subsubsection{Gradient for surface color}\label{materials-surface_color-gradient}\index{materials!color}
 
 Gradient for \emph{surface color} defines the color channel for the fractal surface. It is the default method of coloring fractals.
 
@@ -191,7 +191,7 @@ Gradient for \emph{surface color} defines the color channel for the fractal surf
 {Color gradient for fractal surface}
 {material-color-gradient-example}{H}
 
-\subsubsection{Gradient for specular highlights}\label{materials-specular-gradient}
+\subsubsection{Gradient for specular highlights}\label{materials-specular-gradient}\index{materials!specular}
 
 Gradient for \emph{specular highlights} defines the colors of the specular effect. More details about this effect are in chapter \ref{materials-specular}.
 
@@ -199,22 +199,22 @@ Gradient for \emph{specular highlights} defines the colors of the specular effec
 {Gradient for specular effect colors}
 {material-color-gradient-specular}{H}
 
-\subsubsection{Gradient for diffuse}\label{materials-diffuse-gradient}.
+\subsubsection{Gradient for diffuse}\label{materials-diffuse-gradient}\index{materials!diffuse}
 
-Gradient for \emph{diffuse} defines the intensity of the diffuse channel. A brighter gradient causes stronger light diffusion, which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}
+Gradient for \emph{diffuse} defines the intensity of the diffuse channel. A brighter gradient causes stronger light diffusion, which means wider specular highlights and less visible reflections. More details about specular highlights are in chapter \ref{materials-specular}\index{materials!specular highlights}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_diffuse.png}
 {Gradient for diffusion channel}
 {material-color-gradient-diffuse}{H}
 
-\subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}
+\subsubsection{Gradient for luminosity}\label{materials-luminosity-gradient}\index{materials!luminosity}
 Gradient for \emph{luminosity} defines the intensity of the luminosity channel. This property is enabled when the \emph{luminosity} parameter has a value greater than zero. More details about luminosity are in chapter \ref{materials-luminosity}.
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_gradient_luminosity.png}
 {Gradient for luminosity channel with enabled Monte Carlo Global Illumination and luminosity = 10}
 {material-color-gradient-luminosity}{H}
 
-\subsubsection{Gradient for roughness}\label{materials-roughness-gradient}
+\subsubsection{Gradient for roughness}\label{materials-roughness-gradient}\index{materials!roughness}
 
 Gradient for \emph{roughness} defines the intensity of the roughness effect. This property has an effect when \emph{Rough surface} is enabled. More details about roughness are in chapter \ref{materials-roughness}.
 
@@ -222,7 +222,7 @@ Gradient for \emph{roughness} defines the intensity of the roughness effect. Thi
 {Gradient for roughness intensity}
 {material-color-gradient-roughness}{H}
 
-\subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}
+\subsubsection{Gradient for reflectance}\label{materials-reflectance-gradient}\index{materials!reflectance}
 
 Gradient for \emph{reflectance} defines the amount and color of the reflected light. This property is enabled when the \emph{Reflectance} parameter is greater than zero. More details about reflectance are in chapter \ref{materials-reflectance}.
 
@@ -230,7 +230,7 @@ Gradient for \emph{reflectance} defines the amount and color of the reflected li
 {Gradient for reflectance color and intensity}
 {material-color-gradient-reflectance}{H}
 
-\subsubsection{Gradient for transparency}\label{materials-transparency-gradient}
+\subsubsection{Gradient for transparency}\label{materials-transparency-gradient}\index{materials!transparency}
 
 Gradient for \emph{transparency} defines the color of transparency and opacity. This property is enabled when the \emph{Transparency} parameter is greater than zero. 
 It is recommended to use bright colors in the gradient for transparency. More details about transparency are in chapter \ref{materials-transparency}.
@@ -243,7 +243,8 @@ It is recommended to use bright colors in the gradient for transparency. More de
 {Gradient for transparency color}
 {material-color-gradient-transparency}{H}
 
-\subsection{Surface color}\label{materials-surface_color}
+\pagebreak
+\subsection{Surface color}\label{materials-surface_color}\index{materials!color}
 
 This property defines the color of diffused light which is applied on the whole object. This color is used when \emph{surface color gradient} is disabled or when the material is applied to a primitive object.
 
@@ -251,7 +252,7 @@ This property defines the color of diffused light which is applied on the whole 
 {Different surface colors}
 {material-surface-color-example}{H}
 
-The option \emph{Use color texture from an image} allows the surface of objects to be covered with a colored texture from an image. More details about texture mapping are in chapter \ref{materials-textures}
+The option \emph{Use color texture from an image} allows the surface of objects to be covered with a colored texture from an image. More details about texture mapping are in chapter \ref{materials-textures}\index{materials!texture}
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_texture_color.png}
 {Objects with color texture}
@@ -268,7 +269,7 @@ Surface color (from color box) can be mixed with the color texture from an image
 {material-color-texture-mixed05}
 {H}
 
-\subsection{Shading}\label{materials-shading}
+\subsection{Shading}\label{materials-shading}\index{materials!shading}
 
 When \emph{shading} parameter is 1.0, then the surface brightness depends on the angle of incidence of light. Decreasing this parameter reduces the strength of this rule. When it is 0, then the surface color has the same brightness at every angle. 
 
@@ -283,7 +284,7 @@ When \emph{shading} parameter is 1.0, then the surface brightness depends on the
 {shading = 1.0}
 {material-shading-1}
 
-\subsection{Specular highlights}\label{materials-specular}
+\subsection{Specular highlights}\label{materials-specular}\index{materials!specular highlights}
 
 Specular highlights are bright spots of light that appears on shiny objects when illuminated. This effect is very fast to calculate compared to light reflections. Specular highlights provide a strong visual cue for the shape of an object and its location with respect to light sources in the scene.
 There are two types of highlights in Mandelbulber, which can be used simultaneously:
@@ -303,6 +304,7 @@ There are two types of highlights in Mandelbulber, which can be used simultaneou
 {metallic}
 {metallic-specular-metallic}
 
+\pagebreak
 The following parameters are used to define the appearance of the specular highlights
 \begin{description}
 	\item[Specular highlight color] adds color to highlights
@@ -334,6 +336,7 @@ The following parameters are used to define the appearance of the specular highl
 	{width = 0.2}
 	{material-specular-width-02}
 	
+	\pagebreak
 	\item[Roughness] controls the roughness of the metallic specular highlights
 	\threeImagesWithTwoCaptionsFullWidth
 	{img/manual/media/material_specular_metalic_roughness_01.png}
@@ -348,9 +351,9 @@ The following parameters are used to define the appearance of the specular highl
 		
 \end{description}
 
-\subsection{Rough surface}\label{materials-roughness}
+\subsection{Rough surface}\label{materials-roughness}\index{materials!roughness}
 
-\emph{Rough surface} property randomizes the direction of reflected and refracted light. This effect gives very good results when it is used with high reflectance. To get blurred reflections it is recommended to enable \emph{Monte Carlo algorithm} in \emph{Effect / Ray-tracing} tab. \emph{Roughness} parameter controls the intensity of the effect.
+\emph{Rough surface} property randomizes the direction of reflected and refracted light. This effect gives very good results when it is used with high reflectance.\index{materials!reflectance} To get blurred reflections it is recommended to enable \emph{Monte Carlo algorithm} in \emph{Effect / Ray-tracing} tab. \emph{Roughness} parameter controls the intensity of the effect.
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_rougness_0.png}
@@ -363,7 +366,7 @@ The following parameters are used to define the appearance of the specular highl
 {roughness = 0.1}
 {material-surface-roughness-01}
 
-Local roughness on the surface can be controlled by using a texture from an image file, when option \emph{Use roughness map texture} is enabled. Brighter areas of the texture will appear as higher roughness on the surface, whereas a black color appears as no roughness. More details about texture mapping are in chapter \ref{materials-textures}.
+Local roughness on the surface can be controlled by using a texture from an image file, when option \emph{Use roughness map texture} is enabled. Brighter areas of the texture will appear as higher roughness on the surface, whereas a black color appears as no roughness. More details about texture mapping are in chapter \ref{materials-textures}.\index{materials!texture}
 
 \twoImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_texture_roughness.png}
@@ -414,7 +417,7 @@ In most cases, the default parameters of iridescence effect give satisfactory re
 	
 \end{description}
 
-\subsection{Luminosity}\label{materials-luminosity}
+\subsection{Luminosity}\label{materials-luminosity}\index{materials!luminosity}
 
 \emph{Luminosity} property makes the surface bright even when the object is not illuminated by any light source. When \emph{Monte Carlo algorithm} and \emph{Calculate MC global illumination} are enabled, objects with high luminosity can illuminate other objects in the scene. 
 
@@ -427,7 +430,7 @@ In most cases, the default parameters of iridescence effect give satisfactory re
 {High luminosity values (about 5) and MC global illumination enabled}
 {material-luminosity}{H}
 
-The luminosity effect can use a texture from an image file. The \emph{texture intensity} parameter adjusts the illumination intensity. More details about texture mapping are in chapter \ref{materials-textures}.
+The luminosity effect can use a texture from an image file. The \emph{texture intensity} parameter adjusts the illumination intensity. More details about texture mapping are in chapter \ref{materials-textures}.\index{materials!texture}
 
 \twoImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_texture_luminosity.png}
@@ -438,12 +441,11 @@ The luminosity effect can use a texture from an image file. The \emph{texture in
 {material-luminosity-texture-example}
 {H}
 
-
-\subsection{Reflectance}\label{materials-reflectance}
+\subsection{Reflectance}\label{materials-reflectance}\index{materials!reflectance}
 
 \emph{Reflectance} parameter controls the amount of light that is reflected by the object surface. When the value is 1.0, then 100\% of the light is reflected and the surface color is not visible (perfect mirror)
 
-\textbf{Note: }This effect only work when in \emph{Effects} dock on tab \emph{Ray-tracing} when the option \emph{Ray-traced reflections and transparency} is enabled. With OpenCL, \emph{OpenCL mode: Full} must be used.
+\textbf{Note: }This effect only work when in \emph{Effects} dock on tab \emph{Ray-tracing} when the option \emph{Ray-traced reflections and transparency} is enabled. With OpenCL, \emph{OpenCL mode: Full} must be used.\index{OpenCL!full mode}
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_reflectance_02.png}
@@ -456,7 +458,7 @@ The luminosity effect can use a texture from an image file. The \emph{texture in
 {Reflectance = 1.0}
 {material-reflectance-1}
 
-The quality and speed of the reflectance effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light bounces to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 2 is enough for good quality and fast rendering.
+The quality and speed of the reflectance effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light bounces to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 2 is enough for good quality and fast rendering.\index{reflections depth}
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_reflections_depth_1.png}
@@ -475,7 +477,7 @@ If you place an object inside a hollow primitive box that is made of reflective 
 {Hollow reflective box, reflections depth = 9}
 {material-hollow-box}{H}
 
-Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy materials and produce more realistic reflections. When it is enabled, some of the light is reflected and some is diffused. The ratio depends on the angle of incidence of light. Parameter \emph{Index of refraction} also controls this ratio. Materials with a higher index of refraction (materials of higher density) will reflect more light. 
+Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy materials and produce more realistic reflections. When it is enabled, some of the light is reflected and some is diffused. The ratio depends on the angle of incidence of light. Parameter \emph{Index of refraction} also controls this ratio. Materials with a higher index of refraction (materials of higher density) will reflect more light. \index{materials!Fresnel's equations}
 
 \threeImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_reflectance_fresnel_index_15.png}
@@ -494,7 +496,7 @@ Option \emph{Fresnel's equations for reflectance} can simulate semi-glossy mater
 {Different colors of reflections}
 {material-reflections-colors}{H}
 
-Colorize reflections can use a texture map from an image file. Brighter areas of the texture will reflect more light, whereas a black color has no reflection. More details about texture mapping are in chapter \ref{materials-textures}.
+Colorize reflections can use a texture map from an image file. Brighter areas of the texture will reflect more light, whereas a black color has no reflection. More details about texture mapping are in chapter \ref{materials-textures}.\index{materials!texture}
 
 \twoImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_texture_reflectance.png}
@@ -505,7 +507,8 @@ Colorize reflections can use a texture map from an image file. Brighter areas of
 {material-reflectance-texture-example}
 {H}
 
-\subsection{Transparency}\label{materials-transparency}
+\pagebreak
+\subsection{Transparency}\label{materials-transparency}\index{materials!transparency}
 
 \emph{Transparency of surface} parameter controls the amount of light which can pass through the object surface. 
 When the value of this property is 1.0, then the object surface is fully transparent. 
@@ -521,11 +524,11 @@ When the value of this property is 1.0, then the object surface is fully transpa
 {Transparency of surface = 1.0}
 {material-transparency-1}
 
-\textbf{Note: }This effect only works when the option \emph{Ray-traced reflections and transparency} is enabled in the \emph{Effects} dock on the \emph{Ray-tracing} tab. With OpenCL, \emph{OpenCL mode: Full} must be used.
+\textbf{Note: }This effect only works when the option \emph{Ray-traced reflections and transparency} is enabled in the \emph{Effects} dock on the \emph{Ray-tracing} tab. With OpenCL, \emph{OpenCL mode: Full} must be used.\index{OpenCL!full mode}
 
-The quality and speed of the transparency effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light refractions to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 5 is enough for good quality. With transparency, when light is going through the object it passes two surfaces: when entering the object and when exiting. This means there needs to be at least two refractions calculated.
+The quality and speed of the transparency effect is controlled by \emph{Effects / Ray-tracing / Reflections depth}. This parameter controls the maximum number of light refractions to be calculated for a given pixel. A higher value gives a more realistic appearance but the calculation is much slower. In most cases a \emph{reflections depth} = 5 is enough for good quality. With transparency, when light is going through the object it passes two surfaces: when entering the object and when exiting. This means there needs to be at least two refractions calculated.\index{reflections depth}
 
-The parameter \emph{Maximum number of fractal iterations} (\emph{Rendering engine} dock), has a big impact on rendering speed. All fractal iterations are always calculated inside the fractal object, (outside the objects, only several iterations are calculated), which means a lot of mathematical calculations for every point of object volume. This parameter should be reduced to just before it causes differences in the fractal object shape. For instance a Mandelbulb only needs 5 iterations to get the correct shape. 
+The parameter \emph{Maximum number of fractal iterations} \index{factal!max iterations}(\emph{Rendering engine} dock), has a big impact on rendering speed. All fractal iterations are always calculated inside the fractal object, (outside the objects, only several iterations are calculated), which means a lot of mathematical calculations for every point of object volume. This parameter should be reduced to just before it causes differences in the fractal object shape. For instance a Mandelbulb only needs 5 iterations to get the correct shape. 
 
 \emph{Color of transparency} colorizes light going through object surface. It behaves like a color filter.
 
@@ -533,7 +536,7 @@ The parameter \emph{Maximum number of fractal iterations} (\emph{Rendering engin
 {Different colors of transparency}
 {material-transparency-colors}{H}
 
-A much more realistic appearance of glass-like objects can be achieved by using transparency together with reflectance. In nature, every object which is transparent is also glossy. Good results will be achieved when \emph{transparency} = 1, \emph{reflectance} = 1 and \emph{Fresnel's equations for reflectance} is enabled, (as then there is calculated the correct ratio between reflected and refracted light). In this setup, the rendering can be much slower because for every point where light is refracted it is also reflected. For reflections depth = 5, there might be calculated up to 25 light bounces. 
+A much more realistic appearance of glass-like objects can be achieved by using transparency together with reflectance. In nature, every object which is transparent is also glossy. Good results will be achieved when \emph{transparency} = 1, \emph{reflectance} = 1 and \emph{Fresnel's equations for reflectance} \index{materials!Fresnel's equations} is enabled, (as then there is calculated the correct ratio between reflected and refracted light). In this setup, the rendering can be much slower because for every point where light is refracted it is also reflected. For reflections depth = 5, there might be calculated up to 25 light bounces. 
 
 \simpleImageWithCaptionThirdWidth{img/manual/media/material_transparency_1_reflectance_1.png}
 {Surface transparency = 1, reflectance = 1, enabled Fresnel's equations for reflectance}
@@ -565,7 +568,7 @@ The light going through the transparent objects is refracted. The strength of li
 {Transparency of volume = 0.5}
 {material-transparency-volume-05}
 
-Colorize transparency can use a texture map from an image file. Brighter areas of the texture will pass more light, whereas a black color has no transparency. More details about texture mapping are in chapter \ref{materials-textures}.
+Colorize transparency can use a texture map from an image file. Brighter areas of the texture will pass more light, whereas a black color has no transparency. More details about texture mapping are in chapter \ref{materials-textures}.\index{materials!texture}
 
 \twoImagesWithTwoCaptionsFullWidth
 {img/manual/media/material_texture_transparency.png}
@@ -576,7 +579,7 @@ Colorize transparency can use a texture map from an image file. Brighter areas o
 {material-transparency-texture-example}
 {H}
 
-\subsection{Diffusion texture}\label{materials-diffusion-texture}
+\subsection{Diffusion texture}\label{materials-diffusion-texture}\index{materials!texture}\index{materials!specular highlights}
 
 Diffusion texture controls the amount and color of the reflected light. It also controls the intensity and width of the specular reflections.
 Areas with brighter colors will reflect more light, the specular reflection will be brighter and the size of the specular reflections will be smaller (i.e. simulates polished surface.)
@@ -591,7 +594,7 @@ Dark areas will not reflect light, and the specular reflections will be dark and
 {material-used-diffusion-texture}
 {H}
 
-\subsection{Normal map texture}\label{materials-normal-map-texture}
+\subsection{Normal map texture}\label{materials-normal-map-texture}\index{materials!texture}\index{materials!normal map}
 
 Normal mapping is a technique used for faking the lighting of bumps and dents – an implementation of bump mapping. Normal map texture changes locally the direction of the surface normal vector, (i.e. simulates local changes of the surface angle). It causes changes to the way that the light is reflected or diffused. Normal maps do not deform the object surface, but just give the appearance of deformation.
 
@@ -631,11 +634,11 @@ Normal maps can be derived from height maps (bumpmaps). Enable \emph{Normal map 
 {Example use of greyscale bump map as a normal map}
 {material-texture-normal-grayscale}
 {img/manual/media/displacement_texture.jpg}
-{Bump map used in this example}
+{Bump map used in this example/pagebreak}
 {material-texture-bumpmap}
 {H}
 
-\subsection{Displacement map texture}\label{materials-texture-displacement}
+\subsection{Displacement map texture}\label{materials-texture-displacement}\index{materials!texture}\index{materials!displacement map}
 
 Displacement map technique uses texture to cause an effect where the actual geometric position of points over the textured surface are displaced. It gives the surfaces a greater sense of depth and detail, and allows self-shadowing. In contrast to normal mapping, it deforms the object surface.
 Displacement map textures looks the same as bump maps. Brighter pixels will give stronger embossing of the surface.
@@ -655,7 +658,8 @@ Parameter \emph{Height of displacement} controls how much the surface will be de
 {material-texture-displacement}
 {H}
 
-\subsection{Common options for textures}\label{materials-textures}
+\pagebreak
+\subsection{Common options for textures}\label{materials-textures}\index{materials!texture}
 
 Mandelbulber can load textures in the following formats: JPEG, PNG, BMP and Radiance HDR. 
 
@@ -722,7 +726,7 @@ The default path to the texture files can be changed in \emph{File / Preferences
 	 {Gamma angle 45\textdegree}
 	 {texture-rot-alpha-45}
 	 
-	 \item[Fractalize texture] distributes the texture according to fractal properties. A cube shape orbit trap algorithm is used in the fractal iteration loop to produce this effect. The coordinates of the trapped iterated \emph{z} value are used as coordinates for the texture mapping. In some cases it is good to rotate the texture plane by 90 degrees (alpha or beta angle) to get a more interesting texture distribution.
+	 \item[Fractalize texture] distributes the texture according to fractal properties. A cube shape orbit trap \index{orbit trap}algorithm is used in the fractal iteration loop to produce this effect. The coordinates of the trapped iterated \emph{z} value are used as coordinates for the texture mapping. In some cases it is good to rotate the texture plane by 90 degrees (alpha or beta angle) to get a more interesting texture distribution.
 	 
 	 The following parameters control the orbit trap algorithm:
 	 
@@ -802,7 +806,7 @@ These are different to hybrid mode color. Color by numbers allows for conversion
 The Mandelbox formula has an additional component called \emph{Absolute value of z}, this only works if the formula is in slot\#1.
 
 
-\subsubsection{Extra Hybrid Mode Color Options}\label{materials-extra-hybrid-mode-color-options}
+\subsubsection{Extra Hybrid Mode Color Options}\label{materials-extra-hybrid-mode-color-options}\index{fractal!hybrid}
 
 When in hybrid mode (and more than one slot is enabled), the color is calculated as the addition of three parts:
 
