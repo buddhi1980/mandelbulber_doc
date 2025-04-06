@@ -1,0 +1,65 @@
+\section{Effects}\label{effects}\index{effects}
+
+Effects can be used to enhance the visual quality of the rendered image. The most common effects are ray-tracing and post-processing effects. 
+Ray-tracing (or ray-marching) is a technique used to simulate the way light interacts with objects in a scene. It can create realistic reflections, refractions, and shadows, but it can also increase rendering time significantly.
+Post-effects are applied after the image has been rendered, and they can include things like depth of field, chromatic aberration or glow. These effects can be used to enhance the visual quality of the image without significantly increasing rendering time.
+
+\subsection{Ray-tracing}\label{effects-ray-tracing}\index{effects!raytracing}
+
+Ray-tracing (more precisely: ray-marching) algorithms are responsible for the calculation of the light rays in the scene. The marched rays are used to calculate the color of each pixel in the image based on the defined materials, lighting conditions and the environment (the volume). Because it a simulation, there are needed many simplifications and approximations to make it work in a reasonable time. The parameters on the Ray-tracing tab can be used what parts of the algorithm will be used and will define quality of the rendering.
+
+\subsubsection{Ray-traced reflections and transparency}\label{effects-ray-tracing-reflections}\index{effects!raytracing!reflections}
+
+This groupbox enables ray-traced reflections and transparency. The ray-tracing algorithm will be used to calculate the reflections and transparency of the materials in the scene. 
+
+\textbf{Reflections depth} defines how many times the ray can reflect from the surface. The higher the value, the more realistic the reflections will be, but it will also increase the rendering time. The default value is 5. The maximum value is 10. Note that the maximum value is not recommended, as it can significantly increase rendering time and may not produce noticeable improvements in visual quality. In most cases, a value between 2 and 5 is sufficient for realistic reflections. Number of light bounces, when reflections and transparency is used, is a reflections depth in power of 2. For example, if the reflections depth is set to 5, the maximum number of light bounces is 25 (5x5). It is because the light is simultaneously reflected and refracted.
+
+\subsubsection{Depth of field}\label{effects-ray-tracing-dof}\index{effects!raytracing!depth of field}
+
+Depth of field is a post-processing or ray-tracing effect that simulates the way a camera lens focuses on objects at different distances. It can create a sense of depth and realism in the image by blurring objects that are out of focus. This effects is rendered as post-processing effect when Monte-Carlo ray-tracing is not used. 
+
+The effect can be adjusted using the following parameters:
+
+\textbf{Focus distance} defines the distance from the camera where the objects will be in focus. Objects closer or further away from this distance will be blurred.
+
+\textbf{Radius} defines the size of the blur. A larger radius will create a more pronounced blur effect, while a smaller radius will create a more subtle effect.
+
+\textbf{Maximum blur radius} defines the maximum amount of blur that can be applied to the image. This parameter is used to limit the amount of blur applied to the image, which can help to prevent excessive blurring and keeping rendering time reasonable.
+
+\textbf{Number of passes} defines how many times the depth of field effect will be applied to the image. More passes will create a more pronounced effect, but it will also increase rendering time. This parameter is ignored when the Monte-Carlo ray-tracing is used.
+
+\textbf{Blur opacity} defines the opacity of the blur effect. A value of 0 will create no blur, while a value of 4 will create a full blur effect. This parameter should be decreased according to the number of passes. For example, if the number of passes is set to 4, the blur opacity should be set to 1.0. This will create a more subtle effect and prevent excessive blurring. The default value is 1.0.
+
+
+\textbf{Update image} button is used to update the image with the new depth of field settings. This is useful for changing blur effect appearance after the image is rendered without re-rendering the entire image. 
+
+\textbf{Set focus distance} button is used to set the focus distance by mouse pointer position. This is useful for quickly adjusting the focus distance without having to manually enter the value. To use this feature, click on the button and then click on the image where you want to set the focus distance. The focus distance will be set to the distance from the camera to the clicked point.
+
+\subsubsection{Monte-Carlo algorithm}\label{effects-ray-tracing-monte-carlo}\index{effects!raytracing!monte-carlo}
+Monte-Carlo ray-tracing is a more advanced ray-tracing algorithm that uses random sampling to calculate the light rays in the scene. This algorithm can create more realistic reflections, refractions, and shadows, but it can also increase rendering time significantly. The Monte-Carlo algorithm can be used to calculate the depth of field effect as well. The image is rendered in multiple passes, and each pass uses a different random seed to calculate the light rays. Because of randomness, there is visible a noise in the image. The noise is reduced by averaging the results of multiple passes. The more passes are used, the less noise will be visible in the image. 
+
+The parameters for the Monte-Carlo algorithm are:
+
+\textbf{Max. number of passes per pixel} defines the maximum number of passes that can be used to calculate the light rays for each pixel in the image. The higher the value, the less noise will be visible in the image, but it will also increase rendering time.
+
+\textbf{Min. number of passes per pixel} defines the minimum number of passes that have be used to calculate the light rays for each pixel in the image. Higher value can prevent of appearing artifacts in the image. When it is too low, in some cases some of image tiles can be rendered with too low number of passes. Estimation of noise value needs some number of passes and during first passes can be wrong.
+
+\textbf{Max. noise level (percentage)} defines the maximum noise level that can be tolerated in the image. The higher the value, the more noise will be visible in the image, but it will also decrease rendering time. The default value is 1\%. This means that the algorithm will stop rendering image tiles when the noise level is below 1\%. This parameter can be used to control the quality of the image and the rendering time. The lower value will create a more realistic image, but it will also increase rendering time.
+
+\textbf{Enable pixel level optimization} defines whether the pixel level optimization is enabled or not. This optimization can significantly reduce rendering time by skipping pixels which already achieved the desired noise level. In some cases it can cause artifacts in the image. When it is disabled then the algorithm will use the same number of passes for each pixel in the given image tile.
+
+\textbf{Denoiser} defines the type of denoiser that will be used to reduce noise in the image. The denoiser uses Gausian blur and median blur (Strong and Extreme) which strength depends on the noise level. and fractal geometry. In most of cases Medium mode is enough. This mode will not reduce detail level in the image. The Strong mode will reduce detail level in the image, but it will also reduce noise. The Extreme mode will create a very smooth image, but it will also remove most of the details. This mode is not recommended for most cases.
+By using denoiser can be reduced rendering time significantly. Together with denoiser can be defined higher \emph{Max. noise level} value. The denoise will reduce noise in the image, so the higher value will not cause visible noise in the image.
+\textbf{Preserve geometry} option can be used to preserve the geometry of the image. This option will not reduce noise in the image, but it will preserve the details in the image. In cases of using DOF effect it can cause artifacts in the image.
+
+\textbf{Calculate MC global illumination} defines whether the global illumination will be calculated using the Monte-Carlo algorithm or not. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. The objects are illuminated by the light rays that are reflected from other objects in the scene or by the materials with high luminosity.
+
+\textbf{Radiance limit for GI} defines the maximum radiance that can be used to calculate the global illumination. Too high value can increase noise in the image. A too low value can cause improper reduction of lighting intensity by scattered light.
+
+\textbf{Global illumination by volumetric effects} defines whether the global illumination will be calculated using the volumetric effects or not. Volumetric effects can be used to create realistic lighting in the image. Even basic fog has some brightness and color that can be used to illuminate the objects in the scene. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. 
+
+\textbf{Illumination of fog} defines whether the fog will be illuminated by the light rays or not. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. The fog is illuminated by the light rays that are reflected from other objects in the scene or by the materials with high luminosity. 
+
+\textbf{Calculate MC soft shadows} defines whether the soft shadows will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can slightly increase moise in the image. The soft shadows can be used to create realistic lighting in the image.
+
+\textbf{Calculate chromatic aberration} defines whether the chromatic aberration will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can increase moise in the image. The chromatic aberration can be used to create realistic lighting in the image. The chromatic aberration is a phenomenon that occurs when light rays of different colors are refracted by different amounts, causing them to focus at different points. This effect can create a rainbow-like halo around objects in the image. \textbf{Dispersion gain of light refration} defines the amount of dispersion that will be applied to the light rays going through transparent objects. The higher the value, the more pronounced the chromatic aberration effect will be. \textbf{Camera lenses dispersion} defines the amount of dispersion that will be applied to the light rays going through the camera lens. The higher the value, the more pronounced the chromatic aberration effect will be. 
