@@ -60,6 +60,7 @@ The parameters for the Monte-Carlo algorithm are:
 \textbf{Min. number of passes per pixel} defines the minimum number of passes that have be used to calculate the light rays for each pixel in the image. Higher value can prevent of appearing artifacts in the image. When it is too low, in some cases some of image tiles can be rendered with too low number of passes. Estimation of noise value needs some number of passes and during first passes can be wrong.
 
 \textbf{Max. noise level (percentage)} defines the maximum noise level that can be tolerated in the image. The higher the value, the more noise will be visible in the image, but it will also decrease rendering time. The default value is 1\%. This means that the algorithm will stop rendering image tiles when the noise level is below 1\%. This parameter can be used to control the quality of the image and the rendering time. The lower value will create a more realistic image, but it will also increase rendering time.
+While the image is rendered the actual noise percentage is displayed in the last rendered tiles. The average noise of the whole image is displayed by the options for Monte-Carlo rendering.
 
 \textbf{Enable pixel level optimization} defines whether the pixel level optimization is enabled or not. This optimization can significantly reduce rendering time by skipping pixels which already achieved the desired noise level. In some cases it can cause artifacts in the image. When it is disabled then the algorithm will use the same number of passes for each pixel in the given image tile.
 
