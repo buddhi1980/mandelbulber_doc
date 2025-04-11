@@ -14,9 +14,24 @@ This groupbox enables ray-traced reflections and transparency. The ray-tracing a
 
 \textbf{Reflections depth} defines how many times the ray can reflect from the surface. The higher the value, the more realistic the reflections will be, but it will also increase the rendering time. The default value is 5. The maximum value is 10. Note that the maximum value is not recommended, as it can significantly increase rendering time and may not produce noticeable improvements in visual quality. In most cases, a value between 2 and 5 is sufficient for realistic reflections. Number of light bounces, when reflections and transparency is used, is a reflections depth in power of 2. For example, if the reflections depth is set to 5, the maximum number of light bounces is 25 (5x5). It is because the light is simultaneously reflected and refracted.
 
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/reflections_depth_1.png}
+{reflection depth = 1}
+{reflections-depth-1}
+{img/manual/media/reflections_depth_3.png}
+{reflection depth = 3}
+{reflections-depth-3}
+{img/manual/media/reflections_depth_5.png}
+{reflection depth = 5}
+{reflections-depth-5}
+
 \subsubsection{Depth of field}\label{effects-ray-tracing-dof}\index{effects!raytracing!depth of field}
 
 Depth of field is a post-processing or ray-tracing effect that simulates the way a camera lens focuses on objects at different distances. It can create a sense of depth and realism in the image by blurring objects that are out of focus. This effects is rendered as post-processing effect when Monte-Carlo ray-tracing is not used. 
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/depth_of_field.png}
+{Depth of field effect. The camera is focused on the fractal and everythig further or closer is blurred.}
+{example-depth-of-field}{H}
 
 The effect can be adjusted using the following parameters:
 
@@ -49,17 +64,89 @@ The parameters for the Monte-Carlo algorithm are:
 \textbf{Enable pixel level optimization} defines whether the pixel level optimization is enabled or not. This optimization can significantly reduce rendering time by skipping pixels which already achieved the desired noise level. In some cases it can cause artifacts in the image. When it is disabled then the algorithm will use the same number of passes for each pixel in the given image tile.
 
 \textbf{Denoiser} defines the type of denoiser that will be used to reduce noise in the image. The denoiser uses Gausian blur and median blur (Strong and Extreme) which strength depends on the noise level. and fractal geometry. In most of cases Medium mode is enough. This mode will not reduce detail level in the image. The Strong mode will reduce detail level in the image, but it will also reduce noise. The Extreme mode will create a very smooth image, but it will also remove most of the details. This mode is not recommended for most cases.
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/denoiser_none.png}
+{Denoiser: disabled}
+{denoiser-none}
+{img/manual/media/denoiser_medium.png}
+{Denoiser: medium}
+{denoiser-medium}
+{img/manual/media/denoiser_strong.png}
+{Denoiser: strong}
+{denoiser-strong}
+
+
 By using denoiser can be reduced rendering time significantly. Together with denoiser can be defined higher \emph{Max. noise level} value. The denoise will reduce noise in the image, so the higher value will not cause visible noise in the image.
 \textbf{Preserve geometry} option can be used to preserve the geometry of the image. This option will not reduce noise in the image, but it will preserve the details in the image. In cases of using DOF effect it can cause artifacts in the image.
 
 \textbf{Calculate MC global illumination} defines whether the global illumination will be calculated using the Monte-Carlo algorithm or not. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. The objects are illuminated by the light rays that are reflected from other objects in the scene or by the materials with high luminosity.
 
+\simpleImageWithCaptionHalfWidth{img/manual/media/global_illumination.png}
+{Global illumination effect. The scene is illuminated by the background picture and by the torus with high luminosity.}
+{example-global-illumination}{H}
+
 \textbf{Radiance limit for GI} defines the maximum radiance that can be used to calculate the global illumination. Too high value can increase noise in the image. A too low value can cause improper reduction of lighting intensity by scattered light.
 
-\textbf{Global illumination by volumetric effects} defines whether the global illumination will be calculated using the volumetric effects or not. Volumetric effects can be used to create realistic lighting in the image. Even basic fog has some brightness and color that can be used to illuminate the objects in the scene. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. 
+\textbf{Global illumination by volumetric effects} defines whether the global illumination will be calculated using the volumetric effects or not. Volumetric effects can be used to create realistic lighting in the image. Even basic fog has some brightness and color that can be used to illuminate the objects in the scene. This option can significantly increase rendering time, but it can also create more realistic lighting in the image.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/mc_global_illumination_by_volumetric.png}
+{Global illumination by volumetric effects. The scene is illuminated by the fog effect.}
+{example-global-illumination-volumetric}{H}
 
 \textbf{Illumination of fog} defines whether the fog will be illuminated by the light rays or not. This option can significantly increase rendering time, but it can also create more realistic lighting in the image. The fog is illuminated by the light rays that are reflected from other objects in the scene or by the materials with high luminosity. 
 
-\textbf{Calculate MC soft shadows} defines whether the soft shadows will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can slightly increase moise in the image. The soft shadows can be used to create realistic lighting in the image.
+\simpleImageWithCaptionHalfWidth{img/manual/media/mc_global_illumination_of_fog.png}
+{Global illumination of fog. The fog is illuminated by the objects if high limunosity.}
+{example-global-illumination-fog}{H}
 
-\textbf{Calculate chromatic aberration} defines whether the chromatic aberration will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can increase moise in the image. The chromatic aberration can be used to create realistic lighting in the image. The chromatic aberration is a phenomenon that occurs when light rays of different colors are refracted by different amounts, causing them to focus at different points. This effect can create a rainbow-like halo around objects in the image. \textbf{Dispersion gain of light refration} defines the amount of dispersion that will be applied to the light rays going through transparent objects. The higher the value, the more pronounced the chromatic aberration effect will be. \textbf{Camera lenses dispersion} defines the amount of dispersion that will be applied to the light rays going through the camera lens. The higher the value, the more pronounced the chromatic aberration effect will be. 
+\textbf{Calculate MC soft shadows} defines whether the soft shadows will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can slightly increase noise in the image. The soft shadows can be used to create realistic lighting in the image.
+
+\textbf{Calculate chromatic aberration} defines whether the chromatic aberration will be calculated using the Monte-Carlo algorithm or not. This option will not increase rendering time but can increase noise in the image. The chromatic aberration can be used to create realistic lighting in the image. The chromatic aberration is a phenomenon that occurs when light rays of different colors are refracted by different amounts, causing them to focus at different points. This effect can create a rainbow-like halo around objects in the image. \textbf{Dispersion gain of light refraction} defines the amount of dispersion that will be applied to the light rays going through transparent objects. The higher the value, the more pronounced the chromatic aberration effect will be. \textbf{Camera lenses dispersion} defines the amount of dispersion that will be applied to the light rays going through the camera lens. The higher the value, the more pronounced the chromatic aberration effect will be. 
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/chromatic_aberration.png}
+{Chromatic aberration effect. The light rays of different colors are refracted by different amounts, causing them to focus at different points.}
+{example-chromatic-aberration}{H}
+
+\subsubsection{Ambient occlusion}\label{effects-ray-tracing-ambient-occlusion}\index{effects!raytracing!ambient occlusion}
+
+Ambient occlusion is a shading technique used to calculate the amount of light that reaches a point in the scene. It can create realistic shadows and highlights by simulating the way light interacts with objects in the scene. The ambient occlusion effect can be used to create realistic lighting in the image. This technique is simplier than Monte-Carlo Global illumination and is rendered faster. 
+There ate three modes of rendering this effect:
+\begin{itemize}
+    \item \textbf{Screen space (SSAO)} - this mode uses screen space algorithm to calculate the ambient occlusion effect. The calculation is done in post-processing and is based on z-buffer data so it is fast and does not require any additional passes. This mode is not recommended for high quality rendering, but it can be used for quick previews of the image.
+    
+    \item \textbf{Fast} - it is a fast algorithm which estimates amount of received light based on distance gradient. This mode is not recommended for high quality rendering, but it can be used for quick previews of the image.
+
+    \item \textbf{Multiple rays with light map} - this mode simulates multiple rays to calculate the ambient occlusion effect. The effect uses color texture as a light map. It is the slowest mode but it can create realistic shading. 
+   
+\end{itemize}
+
+\threeImagesWithTwoCaptionsFullWidth
+{img/manual/media/ambient_occlusion_ssao.png}
+{Screen space (SSAO)}
+{ambient-occlusion-ssao}
+{img/manual/media/ambient_occlusion_fast.png}
+{Fast}
+{ambient-occlusion-fast}
+{img/manual/media/ambient_occlusion_multiray.png}
+{Multiple rays with light map}
+{ambient-occlusion-light-map}
+
+The effect can be adjusted using the following parameters:
+
+\textbf{Intensity} defines the intensity of the ambient occlusion effect. The higher the value, the more pronounced the effect will be.
+
+\textbf{Color} defines the color of the ambient occlusion effect. The default color is white, but it can be changed to any color. The color can be used to create a specific mood or atmosphere in the image.
+
+\textbf{Quality} defines the quality of the ambient occlusion effect. The higher the value, the quality is higher (less artifacts) but it will also increase rendering time.
+
+\textbf{Fast AO tune} defines the brighness scaling of Fast mode of the effect. Higher value gives brighter shadows.
+
+\textbf{Type} defines the type of ambient occlusion effect that will be used.
+
+\textbf{SSAO random mode} defines whether the random randomization will be applied in SSAO calculation. It reduces visible artefacts in the image but can cause visible noise.
+
+\textbf{Light map texture} defines the texture that will be used as a light map. Colors of the image defines the light intensity and color. The light map texture can be used to create realistic lighting in the image. 
+
+\textbf{Rotation} defines the rotation of the light map texture.
+
