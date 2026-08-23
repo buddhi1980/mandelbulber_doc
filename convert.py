@@ -1635,6 +1635,11 @@ def process_content(content, base_dir, repo_root=None):
                 return f'<figure class="figure">{clean_body}</figure>'
             else:
                 return f'<figure class="figure">{body}</figure>'
+        elif env_name == "description":
+            class _DescMock:
+                def group(self, n=0):
+                    return body
+            return process_description_items(_DescMock())
             # Convert tabular content: & -> cell delimiter, \\ -> row delimiter
             # Only process if content actually has & cell delimiters
             if '&' not in body:
@@ -2166,7 +2171,7 @@ def process_content(content, base_dir, repo_root=None):
 
     # Convert literal [a], [b], [c] etc. to HTML entities to prevent MathJax from treating them as math
     # These are common in mandelbulber source as references to variables
-    content = re.sub(r'\[([a-zA-Z0-9_]+)\]', r'&#91;\1&#93;', content)
+    # DISABLED: Too aggressive - escapes [word] in normal text
 
     
     # Balance unclosed list tags from nested enumerate/itemize
