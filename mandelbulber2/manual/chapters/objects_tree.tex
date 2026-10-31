@@ -1,0 +1,424 @@
+\section{Objects tree}\label{objects-tree}\index{objects tree}
+
+The \emph{Objects tree} is the modern way of building a scene in Mandelbulber. Instead of editing
+a single flat list of fractal parameters, every element of the image (a fractal formula, a geometric
+primitive, or a group that combines several objects) is a \emph{node} in a tree, and the scene is
+assembled from those nodes like in a typical 3D application. This chapter describes the
+\emph{Objects tree} interface: what each control does and how to use it in practice.
+
+The Objects tree lives in the \emph{Objects} dock -- the settings pane on the right side of the
+main window -- on the tab titled \emph{Objects tree}. If the dock is not visible, the standard
+layout can be restored with \emph{View / Reset window layout to default}. Older scene files
+(\emph{.fract}) are converted automatically into an object tree when they are loaded, so previously
+created scenes keep working without any action from the user.
+
+\subsection{Window layout}\label{objects-tree-layout}\index{objects tree!layout}
+
+The tab consists of three parts (figure \ref{objects_tree_overview}):
+
+\begin{itemize}
+	\item a row of \textbf{buttons} at the top: \emph{Add group}, \emph{Add Fractal},
+	\emph{Add Primitive}, \emph{Duplicate}, \emph{Delete object}, \emph{Refresh}, and the
+	\emph{Display wire-frame previews} checkbox;
+	\item the \textbf{tree view} listing all objects of the scene;
+	\item the \textbf{editor panel} below the tree, showing the parameters of the currently
+	selected object. The splitter between the tree and the editor can be dragged to give more
+	space to either part.
+\end{itemize}
+
+Above the tab there is the standard row of local buttons (\emph{Load}, \emph{Save}, \emph{Reset},
+\emph{Randomize}, \emph{Navi}) which works the same way as on the other settings panes.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_dock_overview.png}
+{The Objects tree dock: buttons, tree and editor panel}
+{objects_tree_overview}{H}
+
+\subsection{The tree and its columns}\label{objects-tree-columns}\index{objects tree!columns}
+
+Every node is displayed as one line in the tree. The tree always has a single root called
+\emph{World}, which cannot be renamed or deleted; all scene objects hang from it, directly or
+inside groups. The columns have the following meaning (figure
+\ref{objects_tree_columns}):
+
+\begin{description}
+	\item[Icon] a small picture identifying the node: the thumbnail of the formula for fractals,
+	the shape icon for primitives (box, sphere, \ldots) and a colored symbol for groups.
+	\item[Name] the display name of the node. Fractal nodes are automatically renamed to the name
+	of the formula currently selected for them. To give a node your own name, right-click it and
+ choose \emph{Rename} from the context menu (figure \ref{objects_tree_context_menu}).
+	\item[Type] the kind of the node: \emph{fractal}, \emph{primitive}, \emph{hybrid},
+	\emph{boolean Add}, \emph{boolean Mul} or \emph{boolean Sub}.
+	\item[Material] a miniature preview of the material assigned to the object. Left-clicking the
+	miniature opens the material manager, in which another material can be picked (chapter
+	\ref{materials}). See section \ref{objects-tree-materials} below.
+	\item[Enable] a checkbox which includes or excludes the object from rendering. Unchecking it
+	``hides'' the object (and its whole subtree) without deleting it.
+	\item[ID] the number of the node. All parameters of the node in the settings file are stored
+	under names starting with \texttt{node\_XXXX\_} (for example \texttt{node\_0001\_position}),
+	where \texttt{XXXX} is this number.
+	\item[Object ID] the number of the underlying object (fractal slot, primitive or group). It is
+	an internal identifier used mainly for debugging and when editing settings files by hand.
+\end{description}
+
+\simpleImageWithCaption75Width{img/manual/media/objects_tree_columns.png}
+{The tree columns: Icon, Name, Type, Material, Enable, ID, Object ID}
+{objects_tree_columns}{H}
+
+\subsection{Adding objects}\label{objects-tree-adding}\index{objects tree!adding objects}
+
+\subsubsection{Adding a fractal}
+
+Pressing \emph{Add Fractal} creates a new fractal node (initially the Mandelbulb formula). The
+formula itself and all its dedicated parameters (power, folds, etc.) are chosen in the editor panel
+below the tree; the icon and the name of the node update automatically when the formula is changed.
+Every fractal node has its own, completely independent set of formula parameters, so the same
+formula can appear many times in one scene with different settings.
+
+\subsubsection{Adding a primitive}
+
+\emph{Add Primitive} opens a dialog in which the type of the shape can be chosen (figure
+\ref{objects_tree_primitive_dialog}). Hovering over an icon shows a short description of the shape.
+The available primitives are: rectangle, circle, box, cylinder, cone, sphere, torus, plane, water
+(a wave-displaced surface for rendering seas and oceans), prism and ellipsoid. Primitives have
+simple parameters (sizes, radii, angles) and are very fast to render, which makes them ideal for
+``real world'' elements around a fractal: ground planes, walls, mirror boxes, etc.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_primitive_dialog.png}
+{The primitive type selector with a description tooltip}
+{objects_tree_primitive_dialog}{H}
+
+\subsubsection{Adding a group}
+
+\emph{Add group} opens the ``Select group type'' dialog (figure \ref{objects_tree_group_dialog}) with
+four kinds of container:
+
+\begin{description}
+	\item[Hybrid fractal] the formulas of all child fractals are combined into \emph{one} iteration
+	sequence: the orbit is calculated by applying the formulas one after another according to their
+	iteration counts. This is the classic Mandelbulber ``hybrid'' mode (see chapter
+	\ref{iteration-loop} for the mathematics). A hybrid group accepts only fractal children.
+	\item[Boolean ADD] (union) merges all children into a single object; the result shows every
+	point contained in any of the children.
+	\item[Boolean MUL] (intersection) keeps only the volume that lies \emph{inside all} children at
+	the same time.
+	\item[Boolean SUB] (difference) cuts the volume of the following children out of the first
+	child (A $-$ B $-$ C \ldots). The order of the children matters: use drag and drop to change
+	it (section \ref{objects-tree-drag-drop}).
+\end{description}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_group_dialog.png}
+{Choosing the type of a new group}
+{objects_tree_group_dialog}{H}
+
+Groups are containers: while a group (or any of its children) is selected, the \emph{Add} buttons
+put the new node \emph{inside} that group. Otherwise the new node is added at the scene root, under
+\emph{World}.
+
+A boolean group can be converted to another operator later without losing its children: right-click
+the group and choose \emph{Change boolean operator}.
+
+\subsection{Editing an object}\label{objects-tree-editor}\index{objects tree!editor panel}
+
+Selecting a node in the tree builds the editor panel below it. The panel always starts with an
+info line ``Editing: \ldots\ Type: \ldots'' showing the name and the type of the object that is
+currently edited. The rest depends on the node type.
+
+\subsubsection{Fractal nodes}
+
+For a fractal the editor shows three blocks (figures
+\ref{objects_tree_fractal_editor_formula}, \ref{objects_tree_general_params} and
+\ref{objects_tree_calc_params}):
+
+\begin{itemize}
+	\item the \textbf{formula selector} and the parameters of the chosen formula (group boxes such
+	as power, trigonometric functions, folding, etc.) -- the same parameters as in the older
+	``fractal control'' interface, now per node; right next to the formula selector there is also
+	the \emph{Don't add global C constant} checkbox, described below;
+	\item the \textbf{General object parameters} (section \ref{objects-tree-general-params});
+	\item the \textbf{Calculation parameters} (section \ref{objects-tree-calc-params}).
+\end{itemize}
+
+Because the formula part of the editor is usually taller than the visible pane, the panel is
+presented in fragments: the figure below shows its top part, the two remaining blocks are shown
+in figures \ref{objects_tree_general_params} and \ref{objects_tree_calc_params}.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_fractal_editor_formula.png}
+{The editor of a fractal node: formula selector and formula parameters}
+{objects_tree_fractal_editor_formula}{H}
+
+A fractal which is a child of a \emph{hybrid} group shows, in addition to the formula parameters,
+a set of per-formula sequence controls (figure \ref{objects_tree_hybrid_children}) which define
+the role that this formula plays in the shared iteration loop: \emph{Iterations}, \emph{Weight},
+\emph{Start at iteration} / \emph{Stop at iteration}, \emph{Check for bailout condition} and
+\emph{Don't add global C constant}. These options are not very intuitive, so each of them is
+described in detail below.
+
+\begin{description}
+	\item[Iterations] In a hybrid group the orbit is not calculated by one formula, but is passed
+	from formula to formula in blocks: the first formula runs this many consecutive iterations,
+	then the next one runs its own block, and so on, cycling through the children's list until
+	the global iteration budget (from the Calculation parameters of the group) is used up. This
+	value is the length of the block dedicated to the formula. The default 1 makes the formulas
+	alternate on every iteration; giving one formula clearly more iterations strengthens its
+	shape in the final result at the cost of the others.
+	\item[Weight] Tells how much of what the formula produced during one iteration is kept. At
+	the end of every iteration the new orbit state is mixed with the state from before the
+	iteration, using this value as the proportion. 1.0 (the default) means the result is fully
+	taken over; 0.0 means the formula's changes are thrown away and the orbit passes through it
+	unchanged; values in between blend the shapes, which is the main tool for morphing one
+	fractal into another (see also the \emph{Formula weight (blending)} section in chapter
+	\ref{iteration-loop}).
+	\item[Start at iteration / Stop at iteration] The window of global iteration numbers in which
+	this formula is active. Outside the window the formula is skipped completely, no matter what
+	its block size is. A typical use is to let one formula work only at the beginning of the
+	loop (to build the large-scale structure) and another one only towards the end (to add fine
+	surface detail).
+	\item[Check for bailout condition] The \emph{bailout} test is the condition which decides
+	that a point does not belong to the fractal: after every iteration the length of the orbit
+	vector is compared with a threshold (either the optimal value defined for the formula, or
+	the common \emph{bailout} parameter from the Rendering engine pane). Once the orbit grows
+	beyond the threshold the point has ``escaped'', the loop stops there and the point is
+	colored as the outside area. This is what produces the classic fractal surface --- and it
+	also saves time, because escaped pixels are not iterated further.
+	With this option turned \emph{off}, no escape check is performed while this formula runs:
+	the orbit is always iterated to the end of its window and such points are counted as
+	\emph{inside} the set. In practice the formula is then rendered as a solid, filled shape,
+	without interiors hollowed out by escaping orbits --- useful when the shape should act as a
+	``filler'' or carrier detail inside the hybrid. The price is speed: pixels cannot bail out
+	early during this part of the sequence, so every point consumes the full iteration budget.
+	For a single, non-hybrid fractal the check is always performed, which is why the control is
+	hidden outside hybrid groups.
+	\item[Don't add global C constant] Classical Mandelbrot-type formulas add a constant to the
+	iterated point after each transformation, for example $z_{n+1} = z_{n}^{2} + c$, where $c$ is
+	a copy of the original point coordinates (or of the Julia constant in Julia mode). This
+	addition is what makes the fractal grow from the point's position and keeps the shape
+	attached to its source coordinates. Checking the box disables the addition for this formula
+	only: the formula then iterates the orbit alone, in a Julia-like way. This checkbox is
+	visible for every fractal node, and in a hybrid sequence it is usually desirable to disable
+	it for the second and following formulas --- re-adding the original pixel point would keep
+	dragging the orbit back towards its start and would distort the shape built by the first
+	formula. The exact behavior depends on the formula: some add $c$ inside their own code, so
+	the option is shown greyed out (not editable), and for some transform formulas the logic is
+	inverted and the option appears as \emph{Add global C constant} (disabled addition by
+	default). When the result suddenly shrinks to a small blob or disappears, toggling this
+	option is the first thing to try.
+\end{description}
+
+Such a child does not carry its own material or transform -- the whole hybrid sequence shares
+the parameters of the parent group node.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_hybrid_children.png}
+{A child fractal of a hybrid group with its per-formula mixing settings}
+{objects_tree_hybrid_children}{H}
+
+\subsubsection{Primitive nodes}
+
+For a primitive the editor shows the parameters specific to its shape (for example the three side
+lengths and corner rounding of a box) followed by the General object parameters block (figure
+\ref{objects_tree_primitive_editor}).
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_primitive_editor.png}
+{The editor panel of a box primitive}
+{objects_tree_primitive_editor}{H}
+
+\subsubsection{Group nodes}
+
+For a hybrid or boolean group the editor shows the General object parameters and the Calculation
+parameters which are then shared by all children of the group. Boolean groups have no
+\emph{repeat} (it makes sense only for individual objects).
+
+\subsubsection{General object parameters}\label{objects-tree-general-params}
+\index{objects tree!position}\index{objects tree!repeat}\index{objects tree!scale}
+
+This block (figure \ref{objects_tree_general_params}) is common to every object:
+
+\begin{description}
+	\item[Material] the material assigned to the object. Materials are created and edited in the
+	Materials dock (chapter \ref{materials}).
+	\item[Place object by mouse pointer] switches the mouse-click function (in the Navigation dock)
+	to ``Place object'' mode. The next click on the rendered image moves this object to the clicked
+	point; the object can also be dragged across the image while the mode is active
+	(see section \ref{objects-tree-visual-tools}).
+	\item[position (x, y, z)] the location of the object center, expressed in the coordinate system
+	of the \emph{parent} node (see section \ref{objects-tree-hierarchy}).
+	\item[X/Y/Z-axis rotation] rotation of the object around the three axes, in degrees.
+	\item[scale] the size of the object. 1.0 keeps the original size.
+	\item[Repeat (x, y, z)] repeats the object in an unlimited spatial grid. The values are the
+	distances between neighboring copies along each axis; 0 on all axes disables the repetition.
+	Repetition happens in the local space of the object, so a repeated object can be rotated
+	freely without breaking the tiling.
+	\item[detail level multiplier] per-object scaling of the global \emph{detail level} from the
+	Rendering engine pane. Values above 1.0 render this object with more precision (slower),
+	values below 1.0 with less.
+	\item[Smooth DE combine] when enabled, the surface of this object blends smoothly with the
+	surfaces of the other objects combined with it by a Boolean ADD (union). The
+	\emph{Combine distance} parameter controls the width of the melted zone.
+\end{description}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_general_params.png}
+{General object parameters shared by every node}
+{objects_tree_general_params}{H}
+
+\subsubsection{Calculation parameters}\label{objects-tree-calc-params}
+\index{objects tree!julia mode}
+
+Fractal and group nodes also have a \emph{Calculation parameters} box (figure
+\ref{objects_tree_calc_params}) controlling how the formula is iterated:
+
+\begin{description}
+	\item[Maximum number of fractal iterations] the iteration budget used for this object (or for
+	the whole hybrid group).
+	\item[Julia mode] replaces the per-pixel iteration constant $c$ with a fixed Julia constant,
+	turning the formula into its Julia version (section \ref{julia-mode}).
+	\item[Julia constant (c)] the constant used when Julia mode is enabled.
+	\item[Constant multiplier] multiplies the constant $c$ added on every iteration; 1.0 means no
+	scaling. A cheap way to distort or ``melt'' a fractal.
+	\item[Initial w-axis value] the starting value of the fourth (w) coordinate, used by 4D and
+	hypercomplex formulas.
+\end{description}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_calc_params.png}
+{Calculation parameters of a node}
+{objects_tree_calc_params}{H}
+
+\subsection{Organizing the tree}\label{objects-tree-organizing}\index{objects tree!drag and drop}
+
+\subsubsection{Moving objects by drag and drop}\label{objects-tree-drag-drop}
+
+Any node can be dragged with the left mouse button and dropped:
+
+\begin{itemize}
+	\item \emph{onto a group} (the group becomes its new parent -- the drop target is highlighted);
+	\item \emph{above or below another node} (a horizontal line indicates the position -- the node
+	becomes a sibling, which is how the order of children inside a boolean group is changed).
+\end{itemize}
+
+Some moves are rejected automatically: an object cannot be dropped into itself or into one of its
+own descendants, primitives cannot become children of a hybrid group, and \emph{World} itself is
+not a drop target. Figure \ref{objects_tree_drag_drop} shows the drop indicator.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_drag_drop.png}
+{Re-parenting and reordering nodes with drag and drop}
+{objects_tree_drag_drop}{H}
+
+\subsubsection{Duplicate}
+
+\emph{Duplicate} makes a complete copy of the selected node \emph{together with its whole subtree}
+(all children, grandchildren, \ldots). The copy receives new node and object ids, all its parameters
+are copied and it is inserted next to the original in the same group. This is the quickest way to
+create variations: duplicate a group, then change one parameter of the copy.
+
+\subsubsection{Delete object}
+
+\emph{Delete object} removes the selected node from the tree (for primitives all parameters of the
+shape are deleted too). Children of the deleted node are \emph{not} lost: they are moved one level
+up and become children of the deleted node's parent. This makes it possible to ``dissolve'' a group
+without deleting the objects it contains. The \emph{World} root cannot be deleted.
+
+\subsubsection{Context menu}
+
+Right-clicking a node opens a small menu with \emph{Rename} and -- for boolean groups only --
+\emph{Change boolean operator} (figure \ref{objects_tree_context_menu}).
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_context_menu.png}
+{The context menu of a boolean group}
+{objects_tree_context_menu}{H}
+
+\subsection{Assigning materials directly in the tree}\label{objects-tree-materials}
+\index{objects tree!material}
+
+The \emph{Material} column contains a miniature of the assigned material. A left-click on the
+miniature opens the material manager (figure \ref{objects_tree_material_manager}), where any
+material can be selected for this node without leaving the Objects tab; choosing ``no material''
+clears the miniature.
+
+Objects inside a \emph{hybrid} group have no own material -- the whole hybrid sequence is colored
+by the material of the parent group node. \emph{Boolean} group nodes also usually have no material:
+the visible surface belongs to the child objects, so each child carries its own material, and the
+color of the union/intersection follows the child that owns the surface point.
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_material_manager.png}
+{Picking a material from the tree with one click}
+{objects_tree_material_manager}{H}
+
+\subsection{Visual placement tools}\label{objects-tree-visual-tools}
+\index{objects tree!wire-frame preview}\index{objects tree!place object}
+
+Two helpers make it easier to arrange objects in the scene:
+
+\begin{description}
+	\item[Display wire-frame previews] this checkbox turns on an overlay drawn on top of the render
+	window: all primitives are shown as wireframes, every object gets a small origin cross (a 3D
+	axes gizmo) and the currently selected node is highlighted. The overlay updates automatically
+	while parameters are edited, so objects can be positioned ``by eye'' even before rendering
+	(figure \ref{objects_tree_wireframe}).
+	\item[Place object by mouse pointer] (the button inside the General object parameters block)
+	switches the mouse-click function of the Navigation dock to ``Place object'' mode (the combo box
+	entry lists the name of the selected node). The
+	next click on the rendered image sets the position of this object to the clicked point (at the
+	depth of the visible surface), and pressing and dragging the mouse button moves the object
+	along the surface. Works for fractals, primitives and groups alike.
+\end{description}
+
+\simpleImageWithCaption75Width{img/manual/media/objects_tree_wireframe.png}
+{Wire-frame previews and origin crosses help to position objects}
+{objects_tree_wireframe}{H}
+
+\subsection{The hierarchy and transforms}\label{objects-tree-hierarchy}
+\index{objects tree!hierarchy}
+
+Node transforms are \emph{inherited}: the position, rotation and scale of a child are applied
+inside the coordinate system of its parent group. In practice this means:
+
+\begin{itemize}
+	\item moving or rotating a group moves \emph{all} of its children together, keeping their
+	relative arrangement -- a convenient way to work on a sub-scene;
+	\item scaling a group scales everything inside it;
+	\item the \emph{repeat} of a leaf object is applied in the object's own local space, after the
+	inherited transformation.
+\end{itemize}
+
+The world-space position shown in the status overlays and used by ``Place object'' is converted
+automatically to the parent coordinate system, so nested groups can be positioned intuitively.
+
+\subsection{Worked example: carving a sphere out of a Menger sponge}\label{objects-tree-example}
+\index{objects tree!example}
+
+This short recipe demonstrates the typical workflow:
+
+\begin{enumerate}
+	\item In the Objects tree press \emph{Add Fractal}. With the new node selected, choose the
+	\emph{Menger Sponge} formula in the editor and press Render -- a sponge appears.
+	\item Press \emph{Add group} and choose \emph{Boolean SUB}. A new group node appears at the
+	scene root.
+	\item Drag the Menger Sponge node onto the group -- it becomes the \emph{first} child of the
+	group.
+	\item Select the group and press \emph{Add Primitive}, choose \emph{Sphere}. The sphere becomes
+	the second child; remember that Boolean SUB cuts the following children out of the first one.
+	\item Enable \emph{Display wire-frame previews}, press \emph{Place object by mouse pointer} and
+	drag the sphere across the image until it cuts a hole in the corner of the sponge.
+	\item Duplicate the whole group, scale the copy down and repeat it, or add more shapes to the
+	group. Experiment with the \emph{Smooth DE combine} option on the children of a Boolean ADD
+	group to melt shapes together.
+\end{enumerate}
+
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_example_result.png}
+{Boolean SUB in action: a sphere cut out of a Menger sponge}
+{objects_tree_example_result}{H}
+
+\subsection{Notes and tips}\label{objects-tree-tips}
+
+\begin{itemize}
+	\item The \emph{Refresh} button rebuilds the tree from the current parameters. Use it when the
+	scene was modified somewhere else (for example after loading settings or by a script) and the
+	list looks outdated.
+	\item Disabling nodes with the \emph{Enable} column instead of deleting them allows quick
+	comparisons of scene variants.
+	\item Nodes, not objects, carry the transforms: if a fractal is used by several groups it must
+	be duplicated -- each copy has its own position, rotation, scale and material.
+	\item Old scenes which were created before the Objects tree (single fractal, legacy hybrid or
+	boolean arrangements) are migrated to the tree automatically on load; the corresponding legacy
+	parameters remain stored for backward compatibility with other versions.
+	\item The formula selector is grouped by fractal family, which makes it easy to discover
+	formulas (section \ref{fractal-families}).
+\end{itemize}

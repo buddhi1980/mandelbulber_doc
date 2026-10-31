@@ -2724,7 +2724,48 @@ CONTENT_PLACEHOLDER
     )
 
 
+def publish(index_html_path, repo_root, target_dir):
+    """Copy generated index.html, css and only the referenced images to target_dir."""
+    target = Path(target_dir)
+    target.mkdir(parents=True, exist_ok=True)
+
+    html_path = Path(index_html_path)
+    content = html_path.read_text(encoding="utf-8")
+
+    shutil.copy2(html_path, target / "index.html")
+
+    css_src = Path(repo_root) / "css" / "style.css"
+    if css_src.exists():
+        css_dst = target / "css"
+        css_dst.mkdir(exist_ok=True)
+        shutil.copy2(css_src, css_dst / "style.css")
+
+    # collect local image references from the generated html
+    refs = set(re.findall(r'src="(img/[^"]+)"', content))
+    copied = 0
+    missing = []
+    for ref in sorted(refs):
+        src = Path(repo_root) / ref
+        if src.exists():
+            dst = target / ref
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            copied += 1
+        else:
+            missing.append(ref)
+    print(f"Published to {target}: index.html, css/style.css, {copied} images")
+    if missing:
+        print(f"WARNING: {len(missing)} referenced images not found:")
+        for ref in missing:
+            print(f"  {ref}")
+
+
 def main():
+    cli = argparse.ArgumentParser(description="Convert Mandelbulber LaTeX manual to HTML")
+    cli.add_argument("--publish", metavar="TARGET_DIR",
+                     help="also copy index.html, css and referenced images to TARGET_DIR")
+    cli_args = cli.parse_args()
+
     # Run from script directory - no arguments needed
     script_dir = Path(__file__).resolve().parent
     repo_root = str(script_dir)
@@ -2771,6 +2812,9 @@ def main():
         f.write(html)
 
     print(f"Generated {output_file}")
+
+    if cli_args.publish:
+        publish(output_file, repo_root, cli_args.publish)
 
 
 if __name__ == "__main__":
