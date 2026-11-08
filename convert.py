@@ -308,8 +308,6 @@ def process_command(cmd_match):
     elif cmd == "sqrt":
         return f"<sup>&radic;({parts[0]})</sup>" if parts else ""
     elif cmd == "begin":
-        if parts and parts[0] == "description":
-            return ""  # descriptions handled by scan_and_replace_descriptions
         return f"<span class='begin-{parts[0]}'>" if parts else ""
     elif cmd == "end":
         return "</span>" if parts else ""
@@ -715,10 +713,6 @@ def process_content(content, base_dir, repo_root=None):
             stripped = line.strip()
             if stripped.startswith("\begin{description}"):
                 if depth == 0:
-                    # Flush the current parent item before entering nested description
-                    if current_item is not None:
-                        items.append(f"<li>{current_item}</li>")
-                        current_item = None
                     nested_buf = []
                 depth += 1
                 continue
@@ -1112,8 +1106,6 @@ def process_command(cmd_match):
     elif cmd == "sqrt":
         return f"<sup>&radic;({parts[0]})</sup>" if parts else ""
     elif cmd == "begin":
-        if parts and parts[0] == "description":
-            return ""  # descriptions handled by scan_and_replace_descriptions
         return f"<span class='begin-{parts[0]}'>" if parts else ""
     elif cmd == "end":
         return "</span>" if parts else ""
@@ -1517,10 +1509,6 @@ def process_content(content, base_dir, repo_root=None):
             stripped = line.strip()
             if stripped.startswith("\begin{description}"):
                 if depth == 0:
-                    # Flush the current parent item before entering nested description
-                    if current_item is not None:
-                        items.append(f"<li>{current_item}</li>")
-                        current_item = None
                     nested_buf = []
                 depth += 1
                 continue
@@ -1627,44 +1615,7 @@ def process_content(content, base_dir, repo_root=None):
 
 
 
-    # Process description environments with nesting support (before env_pattern)
-    def scan_and_replace_descriptions(content):
-        import re
-        i = 0
-        while i < len(content):
-            start = content.find(r'\begin{description}', i)
-            if start == -1:
-                break
-            # Find matching \end{description} with nesting
-            depth = 1
-            j = start + len(r'\begin{description}')
-            while j < len(content) and depth > 0:
-                if content[j:j+len(r'\begin{description}')] == r'\begin{description}':
-                    depth += 1
-                    j += len(r'\begin{description}')
-                elif content[j:j+len(r'\end{description}')] == r'\end{description}':
-                    depth -= 1
-                    if depth == 0:
-                        break
-                    j += len(r'\end{description}')
-                else:
-                    j += 1
-            if depth == 0:
-                body = content[start + len(r'\begin{description}'):j]
-                end_tag_end = j + len(r'\end{description}')
-                # Process with the handler
-                class _MockM:
-                    def group(self, n=0):
-                        return body if n == 1 else None
-                result = process_description_items(_MockM())
-                content = content[:start] + result + content[end_tag_end:]
-                i = start + len(result)
-            else:
-                i = start + 1
-        return content
-    content = scan_and_replace_descriptions(content)
-
-    env_pattern = r'\\begin\{((?!description)[^}]+)\}(?:\[[^\]]*\])?(?:\{(?:(?:[^{}]*\{[^{}]*\})*[^{}]*)\})?(.*?)\\end\{\1\}'
+    env_pattern = r'\\begin\{([^}]+)\}(?:\[[^\]]*\])?(?:\{(?:(?:[^{}]*\{[^{}]*\})*[^{}]*)\})?(.*?)\\end\{\1\}'
     def replace_env(m):
         env_name = m.group(1)
         body = m.group(2)
@@ -1685,11 +1636,6 @@ def process_content(content, base_dir, repo_root=None):
                 return f'<figure class="figure">{clean_body}</figure>'
             else:
                 return f'<figure class="figure">{body}</figure>'
-        elif env_name == "description":
-            class _DescMock:
-                def group(self, n=0):
-                    return body
-            return process_description_items(_DescMock())
             # Convert tabular content: & -> cell delimiter, \\ -> row delimiter
             # Only process if content actually has & cell delimiters
             if '&' not in body:
