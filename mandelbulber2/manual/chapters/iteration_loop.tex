@@ -95,67 +95,79 @@ Single formula fractals are simply iterated several times until termination cond
 When the calculation of the iteration loop finishes, the resulting final value of \emph{z} is
 used to estimate the distance to the fractal body and to calculate the color of the surface.
 
-\subsection{Hybrid fractals}\index{fractal!hybrid}
+\subsection{Hybrid fractals}\index{fractal!hybrid}\label{hybrid-fractals}
 
 \emph{Hybrid fractals} are constructed by using more than one formula in the iteration loop.
 This way new variations of fractal shapes can be achieved. There are many different fractal formulas and transforms available in the Mandelbulber program, which allows the user to create a vast variety of hybrid shapes.
 
 The key concept is that the vector \emph{z} is passed sequentially from one formula to the next. Each formula's \emph{FormulaCode()} mutates \emph{z} in-place, so the output \emph{z} of formula N becomes the input \emph{z} of formula N+1. This means each formula transforms the result of the previous one, creating complex combined shapes.
 
-\subsubsection{Iteration loop of hybrid fractals}
+\subsubsection{Creating a hybrid fractal}\label{hybrid-fractals-creating}
+
+Hybrids are created with the \emph{Objects tree} (chapter \ref{objects-tree}). The legacy
+``Fractals'' tab with nine formula slots and the \emph{Enable hybrid fractals} checkbox no
+longer exist; scenes saved in the old format are converted automatically when loaded.
+
+To build a hybrid:
+\begin{itemize}
+	\item Press \emph{Add group} in the Objects tree panel and choose \emph{Hybrid fractal}
+	in the group type dialog (figure \ref{iteration_loop_hybrid_group_dialog}).
+	\item While the hybrid group is selected, press \emph{Add fractal} once for every formula
+	of the sequence (or drag existing fractals into the group). A hybrid group accepts only
+	fractal children; the order of the children in the tree is the order of the formulas in
+	the iteration sequence.
+\end{itemize}
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_group_dialog.png}
+{The group type dialog, used to create a hybrid group}
+{iteration_loop_hybrid_group_dialog}{H}
+
+A fractal child of a hybrid group shows, in the editor below the tree, an additional frame
+with the per-formula sequence controls (figure \ref{iteration_loop_hybrid_children}). The
+formula's own parameters are edited on the same page, exactly as for a standalone fractal.
+Settings shared by the whole sequence (\emph{Max Iterations}, Julia mode, constant factor)
+are edited on the hybrid group node itself, in its calculation parameters (section
+\ref{objects-tree-calc-params}). There is no upper limit on the number of formulas in the
+group.
+
+\simpleImageWithCaptionThirdWidth{img/manual/media/objects_tree_hybrid_children.png}
+{Per-formula sequence controls of a fractal child of a hybrid group}
+{iteration_loop_hybrid_children}{H}
 
 In general hybrid fractals are calculated in a similar way to single formula fractals.
 The calculation consists of the iteration loop, \emph{maxiter} and \emph{bailout} condition. The
-difference is that when \emph{hybrid mode} is enabled, a user can create a \emph{sequence} of up to nine different fractal formulas (or transforms) inside the iteration loop. 
-
-By default the program works in single fractal formula mode, where you can only configure the parameters of the formula tab in the first slot (label \#1) (figure \ref{fractal_tabs}).
-
-\simpleImageWithCaption75Width{img/manual/media/fractal_tabs.png}
-{Fractal Tab - Formula only in first slot}
-{fractal_tabs}{H}
-
-There are two ways to enable Hybrid Fractals Mode:
-\begin{itemize}
-	\item Click in any slot with a number higher than one. The program will ask if you want to
-	enable hybrid fractals or boolean mode. Select \emph{Enable hybrid fractals}.
-	\item Go to \emph{Objects} / \emph{Hybrid} tab. Tick \emph{Enable hybrid fractals} checkbox.
-\end{itemize}
-
-\simpleImageWithCaption75Width{img/manual/media/fractal_tabs_with_defined_fractals_tabs_highlighted.png}
-{Fractal Tab - Multiple formula slots filled}
-{fractal_tabs_with_defined_fractals_tabs_highlighted}{H}
-
-Once hybrid fractals mode has been enabled, a user can select additional formulas from the dropdown menus in any of the nine formula slots,
-as shown in figure \ref{fractal_tabs_with_defined_fractals_tabs_highlighted}.
-In this figure, \emph{Mandelbulb -- Power~2} is selected in slot \#1, \emph{Menger Sponge}
-in slot \#2 and \emph{Box Fold Bulb Pow 2} in slot \#3.
-
-These formulas will be
-used in the next examples. They will be processed in the loop as it is showed on figure \ref{iteration_loop_hybrid}.
+difference is that inside the iteration loop a \emph{sequence} of several different fractal formulas (or transforms) is applied one after another, as shown on figure \ref{iteration_loop_hybrid}.
 
 \simpleImageWithCaption75Width{img/manual/media/iteration_loop_hybrid.png}
 {Complex Iteration loop with hybrid fractal}
 {iteration_loop_hybrid}{H}
 
-Each formula's parameters can be configured in the formula tab opened in an enabled slot.
-
-The sequence of formula execution is determined by the following parameters available on each formula slot:
+The sequence of formula execution is determined by the following parameters available on each fractal child of the hybrid group:
 \begin{itemize}
-	\item \emph{Formula} -- which fractal formula to use in this slot
-	\item \emph{Iterations} -- how many consecutive iterations this formula runs before advancing to the next slot (default: 1)
+	\item \emph{Formula} -- which fractal formula (or transform) this child contributes to the sequence
+	\item \emph{Iterations} -- how many consecutive iterations this formula runs before advancing to the next child (default: 1)
 	\item \emph{Start at iteration} -- the earliest global iteration number when this formula becomes active (default: 0)
 	\item \emph{Stop at iteration} -- the latest global iteration number when this formula is active (default: 250)
-	\item \emph{Order} -- which slot the sequence wraps back to when it reaches the end (default: 1)
+	\item \emph{Weight} -- how strongly the result of this formula influences the orbit (default: 1.0, see section \ref{hybrid-formula-weight})
+	\item \emph{Check for bailout condition} -- whether the iterations performed by this formula test the escape (bailout) condition (default: enabled; all these controls are described in detail in section \ref{objects-tree-editor})
 \end{itemize}
 
-The sequence is generated at scene setup time and maps each global iteration number to a formula slot. The maximum sequence length is 1250 iterations. During rendering, the iteration loop simply looks up which formula to apply for each iteration index.
+Before rendering starts, the program builds a table which maps every global iteration number
+to one formula of the group. The table covers the whole possible range of the iteration loop:
+five times the \emph{Max Iterations} of the hybrid group (with the default value of 250 this is
+1250 entries). During rendering, the iteration loop simply looks up which formula to apply for
+each iteration index.
+\footnote{For compatibility with scenes made before the Objects tree existed: if a hybrid has
+	fewer than nine formulas, an orbit which passes the end of all formula ranges is terminated
+	(the point is treated as belonging to the fractal body), emulating the empty slots of the
+	old nine-slot hybrid mode.}
 
-\subsubsection{One iteration for each slot}
+\subsubsection{One iteration for each formula}
 
 The simplest way to create a hybrid fractal is a sequence where formulas are calculated one after another, then the sequence is repeated until termination conditions are met.
 
 In figure \ref{iteration_loop_hybrid_sequence_1}, the sequence consists of one \emph{Mandelbulb -- Power~2}, one \emph{Menger Sponge} and
-one \emph{Box Fold Bulb Pow 2}. The length of the sequence is three iterations; so after every third iteration, the sequence repeats from the first slot. The numbers shown are the Iteration Count, starting at i = 0. The count increases by 1 after \underline{every} iteration performed in the iteration loop.
+one \emph{Box Fold Bulb Pow 2}. The length of the sequence is three iterations; so after every third iteration, the sequence repeats from the first formula. The numbers shown are the Iteration Count, starting at i = 0. The count increases by 1 after \underline{every} iteration performed in the iteration loop.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_1.png}
 {Hybrid sequence - Simple sequence using three different formulas}
@@ -163,9 +175,9 @@ one \emph{Box Fold Bulb Pow 2}. The length of the sequence is three iterations; 
 
 The color coding in the above figure indicates which formula is active:
 \begin{itemize}
-	\item \textcolor{yellow}{\textcolor{black}{Yellow}} -- slot \#1 (Mandelbulb -- Power~2)
-	\item \textcolor{cyan}{\textcolor{black}{Cyan}} -- slot \#2 (Menger Sponge)
-	\item \textcolor{green}{\textcolor{black}{Green}} -- slot \#3 (Box Fold Bulb Pow 2)
+	\item \textcolor{yellow}{\textcolor{black}{Yellow}} -- first formula (Mandelbulb -- Power~2)
+	\item \textcolor{cyan}{\textcolor{black}{Cyan}} -- second formula (Menger Sponge)
+	\item \textcolor{green}{\textcolor{black}{Green}} -- third formula (Box Fold Bulb Pow 2)
 \end{itemize}
 
 This sequence gives a shape combining properties of all three
@@ -175,7 +187,7 @@ formulas, see figure \ref{hybrid_sequence_example_1}.
 {Hybrid sequence result - Simple sequence using three different formulas}
 {hybrid_sequence_example_1}{H}
 
-Because the first iteration is (slot \#1) \emph{Mandelbulb -- Power~2}, the general shape
+Because the first formula in the sequence is \emph{Mandelbulb -- Power~2}, the general shape
 of the fractal will be similar in shape to the \emph{Mandelbulb -- Power~2}.
 
 Note: Generally, the first few iterations of a fractal strongly influence the final hybrid fractal shape.
@@ -202,102 +214,110 @@ The third formula \emph{Box Fold Bulb Pow 2} adds leaf-like features to the shap
 {Hybrid close up of leaf-like shapes produced by 'Box Fold Bulb Pow 2' formula}
 {hybrid_sequence_example_1_leaf_shapes}{H}
 
-\subsubsection{More iterations for each slot}
+\subsubsection{More iterations for each formula}
+\label{two-iterations-per-slot}
 
-With each slot a user can define how many times each fractal formula will be used in the sequence.
-On each of the formula tabs there is a parameter named \emph{Iterations} which is set to 1 by default.
-This is the number of iterations (repeats) of the formula performed before the loop moves on to the next formula slot in the sequence. If this value is increased to 2 on the first and second formula slots in our example,
-then the sequence of the formulas will be as shown in figure \ref{iteration_loop_hybrid_sequence_2}. \label{two-iterations-per-slot}
+With each formula a user can define how many times it will be used in the sequence.
+In the sequence controls of every fractal child there is a parameter named \emph{Iterations} which is set to 1 by default.
+This is the number of iterations (repeats) of the formula performed before the loop moves on to the next formula in the sequence. If this value is increased to 2 on the first and second formulas in our example,
+then the sequence of the formulas will be as shown in figure \ref{iteration_loop_hybrid_sequence_2}.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_2.png}
-{Hybrid sequence - The first and second slots set to 2 repeat iterations}
+{Hybrid sequence - The first and second formulas set to 2 repeat iterations}
 {iteration_loop_hybrid_sequence_2}{H}
 
 The first and second formulas are repeated twice and the third formula only once.
 The resulting fractal shape is shown in figure \ref{hybrid_sequence_example_2}:
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_2.png}
-{Hybrid sequence result - The first and second slots set to 2 repeat iterations}
+{Hybrid sequence result - The first and second formulas set to 2 repeat iterations}
 {hybrid_sequence_example_2}{H}
 
 Because the \emph{Mandelbulb -- Power~2} calculation is repeated for two iterations at the beginning, the shape of this initial formula strongly influences the final shape of the hybrid fractal.
 
-If the parameter \emph{Iterations} on the second slot is set to 10,
+If the parameter \emph{Iterations} of the second formula is set to 10,
 then the \emph{Menger Sponge} formula is used from iteration 2 to iteration 11 (figure \ref{iteration_loop_hybrid_sequence_3}).
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_3.png}
-{Hybrid sequence - The second slot set to 10 repeat iterations}
+{Hybrid sequence - The second formula set to 10 repeat iterations}
 {iteration_loop_hybrid_sequence_3}{H}
 
 As above, the initial shape is mainly defined by the first two iterations of \emph{Mandelbulb -- Power~2},
 but the high number of \emph{Menger Sponge} iterations makes the \emph{Menger Sponge} features become more apparent (figure \ref{hybrid_sequence_example_3}).
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_3.png}
-{Hybrid sequence result - The second slot set to 10 repeat iterations}
+{Hybrid sequence result - The second formula set to 10 repeat iterations}
 {hybrid_sequence_example_3}{H}
 
-\subsubsection{Range of iterations for slot}
+\subsubsection{Range of iterations for a formula}
 
 The sequences can become more complicated by specifying the range of iterations when a formula will be calculated in the loop.
 
-On each formula tab the parameters \emph{Start at iteration} and \emph{Stop at iteration} are used to define this range.
+In the sequence controls of every fractal child the parameters \emph{Start at iteration} and \emph{Stop at iteration} are used to define this range.
 
-When computing the iteration loop, the program walks through the enabled formula slots, checking formula iteration range conditions. If the current global iteration number is within the range, then a calculation of that formula is performed and the global iteration count is increased by 1. If the global iteration number is outside the iteration range condition, then the formula is skipped (i.e., no calculation is performed for this slot), but the global iteration count \emph{still increments}. The program then moves to the next enabled slot in the sequence.
+When building the iteration table, the program walks through the children of the hybrid group in their tree order, checking the iteration range of each formula. If the current global iteration number is within the range of the next formula, this formula is assigned to the iteration and the global iteration count increases by 1. If the formula is outside its iteration range, it is skipped \emph{without consuming an iteration}: the next formula in the walk (wrapping back to the beginning of the group when the end is reached) performs the calculation for the current iteration number instead. If at some iteration none of the formulas is inside its range, the orbit is terminated there.
 
-The second formula slot (\emph{Menger Sponge}) in the sequence shown in figure \ref{iteration_loop_hybrid_sequence_4}, has the iteration range set to \emph{from 4 to 250}.
+The example in figure \ref{iteration_loop_hybrid_sequence_4} continues the case from section \ref{two-iterations-per-slot}: the first two formulas have \emph{Iterations} set to 2, the third one stays at 1. In addition, the second formula (\emph{Menger Sponge}) has its iteration range set to \emph{from 4 to 250}.
 
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_4.png}
-{Hybrid sequence - Range of iteration set to 4-250 on second slot}
+{Hybrid sequence - Range of iteration set to 4-250 on the second formula (Iterations 2 on the first two formulas)}
 {iteration_loop_hybrid_sequence_4}{H}
 
-During the first pass of the sequence, the \emph{Menger Sponge} formula could not be used at iterations 2 and 3,
-because \emph{Start at iteration} was set to 4 for this formula, and therefore the slot was skipped. During the second pass of the sequence, the \emph{Menger Sponge} formula was used at iterations 5 and 6,
-because those iterations were inside the defined range of iterations.
+The walk reaches the \emph{Menger Sponge} for the first time at iteration 2, but this is still outside its range (\emph{Start at iteration} was set to 4), so the formula is skipped and the \emph{Box Fold Bulb Pow 2} performs this iteration instead. The \emph{Menger Sponge} is used for the first time at iteration 5; from then on the sequence repeats normally: Menger Sponge (2 iterations), Box Fold Bulb Pow 2, Mandelbulb -- Power~2 (2 iterations).
 
 The shape of the resulting fractal is shown in figure \ref{hybrid_sequence_example_4}.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_4.png}
-{Hybrid sequence result - Range of iteration set to 4-250 on second formula slot}
+{Hybrid sequence result - Range of iteration set to 4-250 on the second formula}
 {hybrid_sequence_example_4}{H}
 
-Because at iteration number 2 \emph{Menger Sponge} formula was skipped, \emph{Box Fold Bulb Pow 2} formula has much more influence on the final shape.
+Because at the beginning the \emph{Menger Sponge} formula was skipped, \emph{Box Fold Bulb Pow 2} formula has much more influence on the final shape.
 
 \subsubsection{Changed order in sequence}
 
-The order of fractal formulas can be easily changed between slots with the use of the arrow buttons (figure \ref{fractal_tabs_with_defined_fractals_arrows}).
+The order of the formulas inside the sequence is the order of the fractal children in the Objects tree. It can be easily changed with drag and drop: move a child to a different position among the siblings (figure \ref{iteration_loop_hybrid_reorder}, section \ref{objects-tree-drag-drop}).
 
-\simpleImageWithCaption75Width{img/manual/media/fractal_tabs_with_defined_fractals_arrows.png}
-{Fractal tabs with highlighted tab-arrows}
-{fractal_tabs_with_defined_fractals_arrows}{H}
+\simpleImageWithCaptionHalfWidth{img/manual/media/objects_tree_drag_drop.png}
+{Reordering the children of a hybrid group with drag and drop}
+{iteration_loop_hybrid_reorder}{H}
 
-These buttons swap the fractal tabs between the slots, and therefore the formula's position inside the sequence will change. All formula parameters setting are moved in the swap.
+Reordering moves the node together with all its formula parameters, so the whole configuration of the formula changes its position inside the sequence.
 
 Example based on first case shown in section \ref{two-iterations-per-slot}:
-Swapped \emph{Mandelbulb -- Power~2} and \emph{Menger Sponge} creates the sequence shown in figure \ref{iteration_loop_hybrid_sequence_5}.
+Moving \emph{Menger Sponge} in front of \emph{Mandelbulb -- Power~2} creates the sequence shown in figure \ref{iteration_loop_hybrid_sequence_5}.
 
 \simpleImageWithCaptionFullWidth{img/manual/media/iteration_loop_hybrid_sequence_5.png}
-{Hybrid sequence - Swapped tab one and two}
+{Hybrid sequence - First and second formula swapped}
 {iteration_loop_hybrid_sequence_5}{H}
 
 As evident in figure \ref{hybrid_sequence_example_5}, the shape of the fractal is completely different.
 
 \simpleImageWithCaptionHalfWidth{img/manual/media/hybrid_sequence_example_5.png}
-{Hybrid sequence render - Swapped tab one and two}
+{Hybrid sequence render - First and second formula swapped}
 {hybrid_sequence_example_5}{H}
 
 Now the first \emph{Menger Sponge} formula creates the initial shape of the fractal, and \emph{Mandelbulb -- Power~2} only modifies the details.
 
-Even if the same fractal formulas are used in each slot, and for the same number of iterations, the final shape will strongly depend on the parameter settings of the first few formulas that are iterated in the sequence.
+Even if the same fractal formulas are used in the sequence, and for the same number of iterations, the final shape will strongly depend on the parameter settings of the first few formulas that are iterated in the sequence.
 
 There are also a few formulas and transforms which have a very strong influence on the final shape, and these are often run for just 1 or 2 iterations during the iterating of the fractal.
 
-\subsubsection{Formula weight (blending)}
+\subsubsection{Formula weight (blending)}\label{hybrid-formula-weight}
 
-Each formula slot has a \emph{Formula Weight} parameter (range 0.0 to 1.0) that controls how much the formula's output contributes to the result. When the weight is less than 1.0, the output is smoothly blended between the formula's result and the previous state of \emph{z}. This allows for gradual transitions between formulas and can produce unique visual effects.
+Each fractal child has a \emph{Weight} parameter (range 0.0 to 1.0, default 1.0) that controls how much the formula's output contributes to the result.
+When the weight is less than 1.0, the position of \emph{z} after the formula is smoothly interpolated between the state \emph{before} the formula and the state \emph{after} it; the accumulated DE and color values are blended in the same way.
+This allows for gradual transitions between formulas and can produce unique visual effects.
+A weight of 0.0 disables the calculation of the formula entirely: the orbit passes through the corresponding iterations almost unchanged, but the iterations are still consumed.
+Blending is only applied inside hybrid groups; outside of a group the weight has no effect.
 
-\subsubsection{Order (repeat from)}
+\subsubsection{Legacy ``repeat from'' setting}
 
-The \emph{Order} parameter (labeled \emph{repeat\_from} internally) determines where the sequence wraps back to when it reaches the last formula slot. The value ranges from 1 to 9, where 1 means the sequence restarts from the first formula (default behavior). Setting it to 2, for example, makes the sequence wrap back to the second formula instead, creating a pattern like: A, B, C, B, C, B, C, ...
+The \texttt{repeat\_from} parameter (range 1 to 9, default 1) is an abandoned relic of the old
+nine-slot hybrid mode, where it selected the slot to which the sequence wrapped back at the
+end (setting it to 2 produced a pattern like: A, B, C, B, C, B, C, ...). It has been replaced
+by the per-formula \emph{Start at iteration} and \emph{Stop at iteration} ranges, which allow
+expressing the same and much more complex patterns. The current interface offers no control
+for this parameter; it is still read from old scene files only to reproduce the sequences of
+legacy hybrids as accurately as possible.
 
-This parameter affects the long-term structure of the hybrid fractal and can be used to create asymmetric or repeating patterns.

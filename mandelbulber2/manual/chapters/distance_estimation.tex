@@ -75,20 +75,18 @@ When using DE (either Analytical or Delta), the final distance is calculated by 
 	\item[Custom DE] Some formulas provide a custom distance calculation via the \emph{aux.dist} auxiliary variable.
 \end{description}
 
-The automatic DE function is assigned based on the formula type. These settings can be overridden manually on the \emph{Render Engine} tab if needed.
+The automatic DE function is assigned based on the formula type. These settings can be overridden manually on the \emph{Rendering engine} dock (the \emph{Distance estimation method} and \emph{Distance estimation function} combo boxes) if needed.
 
 \subsection{Linear DE offset}\label{linear-de-offset}
 
-For hybrid fractals that mix mandelbox-type and IFS-type formulas, the \emph{Linear DE offset} parameter adjusts the DE calculation. It is located in the Hybrids tab.
+For hybrid fractals that mix mandelbox-type and IFS-type formulas, the \emph{Linear DE offset} parameter adjusts the DE calculation. It is applied only to hybrid sequences whose DE function resolves to \emph{Linear} (chapter \ref{hybrid-fractals}); single-formula fractals ignore it.
 
 The offset modifies the linear DE formula as follows:
 \[ out.distance = \frac{r - offset}{\lvert DE \rvert} \]
 
 The Linear DE offset is normally used in the range from 0.0 (mandelbox) to 2.0 (IFS). Adjusting this parameter can assist in fine-tuning the DE calculation when mixing these formula types in a hybrid fractal.
 
-\simpleImageWithCaptionHalfWidth{img/manual/media/linear_de_offset.png}
-{Linear DE offset parameter}
-{linear_de_offset}{h}
+Note: the old ``Hybrids'' tab no longer exists and the current interface has no dedicated control for this parameter. It is stored in the scene as the general parameter \texttt{linear\_DE\_offset} (default 0.0) and can be changed by editing the \texttt{.fract} settings file directly.
 
 \subsection{Bad DE statistic}\label{bad-de-statistic}
 
@@ -97,7 +95,7 @@ The Linear DE offset is normally used in the range from 0.0 (mandelbox) to 2.0 (
 {dock_statistic}{h}
 
 In the Statistics (figure \ref{dock_statistic}) (enable in \emph{View} menu) you can see \emph{Percentage of
-	Wrong Distance Estimations} (``Bad DE''). The statistic is only available in no-OpenCL mode. This number is the percentage of image
+	Wrong Distance Estimations} (``Bad DE''). The statistic is collected during CPU rendering and by the OpenCL \emph{full} engine mode (the fast and limited OpenCL engines do not report it). This number is the percentage of image
 pixels which potentially have big errors in distance estimation calculation
 (estimated distance was much too high). It is visible as a noise on the image.
 As a general rule less than 0.01 is good, but it is case specific and 3.0
@@ -116,7 +114,7 @@ If you observe artifacts or noise in your rendering, try the following:
 \begin{enumerate}
 	\item \textbf{Increase the ray-marching step multiplier} (decrease the value) to reduce the risk of overstepping the surface.
 	\item \textbf{Switch DE mode} from Analytical to Delta (or vice versa) if the current mode produces incorrect results for the given formula.
-	\item \textbf{Adjust the Linear DE offset} when using hybrid fractals that mix mandelbox and IFS formulas.
+	\item \textbf{Adjust the Linear DE offset} (the \texttt{linear\_DE\_offset} scene parameter) when using hybrid fractals that mix mandelbox and IFS formulas.
 	\item \textbf{Monitor the Bad DE statistic} in the Statistics dock to check if DE quality improves after changes.
 \end{enumerate}
 
