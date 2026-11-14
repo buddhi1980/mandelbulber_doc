@@ -19,8 +19,12 @@ In most cases the easiest way of moving and rotating the camera is dragging the 
 	\item[Right mouse button] rotates camera around indicated point by moving camera and target
 	\item[Middle button] rotates camera by changing only the roll angle
 	\item[Left + right buttons] moves camera and target relative to the indicated point
-	\item[Control key + mouse wheel] moves camera forward/backward towards indicated point
+	\item[Mouse wheel] moves the camera forward/backward towards the point under the cursor (when the \emph{Mouse function} combo box is set to \emph{Move the camera}, see section \ref{linear-camera-and-target-movement-modes-using-the-mouse-pointer})
 \end{description}
+
+The toolbar above the image contains a group of buttons which redefine these bindings: \emph{Multi} (the default behaviour described above), \emph{Rot}, \emph{Roll}, \emph{RotA} and \emph{Move}. When one of the latter is active, dragging with \emph{any} single mouse button performs the selected action, which is convenient when the button combination required by the default scheme is awkward to use. The \emph{P} button (\emph{precise rotations}) divides the size of every drag and wheel movement by ten, which allows fine positioning of the view.
+
+Dragging renders only a fast preview of the image. For comfortable interactive work enable \emph{Auto-refresh}, select the \emph{fast} \emph{OpenCL mode} (chapter \ref{opencl}) and choose a \emph{Temporary scale} (1/2 \ldots\ 1/64) in the Navigation dock: the preview is then rendered with width and height divided by the selected factor, roughly $N^2$ times faster, while the resolution of the saved image remains unchanged.
 
 \subsection{Camera and Target movement step}\label{camera-and-target-movement-step}
 
@@ -69,12 +73,12 @@ user defined steps.
 The \emph{Camera movement mode} parameter controls the relationship between camera and target during arrow key navigation. It has three modes:
 
 \begin{description}
-	\item[Fixed distance] move camera and target together (default)
+	\item[Move camera and target] move camera and target together, keeping a constant distance between them (default)
 	\item[Move camera] move only camera
 	\item[Move target] move only target
 \end{description}
 
-These modes are available in the Navigation dock.
+These modes are available in the Navigation dock. The \emph{Camera distance to target} edit field (next to the movement arrows) shows the current distance and allows to set it directly; in the \emph{Move camera and target} and \emph{Move camera} modes changing it moves the camera closer to or further from the target.
 
 \subsubsection{Move camera and target mode}\label{move-camera-and-target-mode}\index{navigation!camera}
 
@@ -104,9 +108,9 @@ Moves only the target while maintaining a fixed camera position (figure \ref{mov
 
 \subsection{Linear camera and target movement modes using clicks on image}\label{linear-camera-and-target-movement-modes-using-the-mouse-pointer}
 
-A user can move the camera by selecting a point on the image with the mouse pointer, and then using either left mouse button (move forward) or right button (move backward).
+A user can move the camera by selecting a point on the image with the mouse pointer, and then using either left mouse button (move forward) or right button (move backward). The mouse wheel works in the same way: rotating it moves the camera towards or away from the point under the cursor.
 
-This feature is controlled by the click mode setting. When click modes are enabled, clicking on the rendered image initiates camera movement toward the clicked point.
+This behaviour is selected by the \emph{Mouse function} combo box in the toolbar above the image. When it is set to \emph{Move the camera}, clicking on the rendered image initiates camera movement toward the clicked point. The combo box also offers non-navigation actions (setting fog visibility and depth-of-field focus, sampling the Julia constant and coordinates, placing lights, primitives and objects, wrapping render limits around an object) and the \emph{Flight speed control} mode used to record flight animations (section \ref{flight-animation}).
 
 \subsubsection{Move camera and target mode}\label{move-camera-and-target-mode-1}
 
@@ -159,7 +163,7 @@ then be zoomed out from the target, and rotated to look down the y axis.
 
 \subsection{Calculation of rotation angle modes}\label{calculation-of-rotation-angle-modes}
 
-The \emph{Rotation mode} parameter (labeled in the Navigation dock) controls how rotation angles are calculated. It has two options:
+The combo box below the rotation arrows in the \emph{Camera rotation} group of the Navigation dock controls how rotation angles are calculated. It has two options:
 
 \subsubsection{Fixed roll angle}\label{fixed-roll-angle}
 
@@ -186,6 +190,12 @@ This mode is a more intuitive way to rotate the camera, e.g., turn the camera
 left always gives the visual effect of the camera rotating in that direction. The
 rotation angles are automatically converted so they are appropriate for the
 selected direction. This mode changes the gamma angle (roll).
+
+\subsection{Sweet spot angle}\label{navigation-sweet-spot}\index{navigation!sweet spot}
+
+By default the camera looks at the point in the centre of the rendered image. The \emph{Sweet spot angle} group in the Navigation dock (\emph{horizontal} and \emph{vertical} fields, in degrees) offsets this main sight direction away from the image centre: the point under the selected angle becomes the forward direction used for rendering and for mouse navigation. The horizontal angle ranges from $-180^\circ$ to $180^\circ$, the vertical one from $-90^\circ$ to $90^\circ$.
+
+This is mostly useful for fulldome and panorama projections, where the important part of the scene should not fall in the centre of the output image. The sweet spot also moves the crosshair used by the click navigation.
 
 \subsection{Keyboard shortcuts}\label{keyboard-shortcuts}
 
