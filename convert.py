@@ -1106,6 +1106,8 @@ def process_command(cmd_match):
     elif cmd == "sqrt":
         return f"<sup>&radic;({parts[0]})</sup>" if parts else ""
     elif cmd == "begin":
+        if parts and parts[0] == "description":
+            return ""  # descriptions handled by scan_and_replace_descriptions
         return f"<span class='begin-{parts[0]}'>" if parts else ""
     elif cmd == "end":
         return "</span>" if parts else ""
@@ -1159,46 +1161,64 @@ def process_image_macro(content, repo_root=None):
         'SmallWidth': '200px',
     }
 
+    def clean_attr(text):
+        return (text or "").replace('"', '').strip()
+
+    def make_figure_open(label, extra_attrs=""):
+        clean_label = clean_attr(label)
+        label_attr = f' data-fig-id="{clean_label}"' if clean_label else ""
+        return f'<figure class="manual-figure"{label_attr}{extra_attrs}>'
+
+    def make_figcaption(caption, label=""):
+        if not caption:
+            return ""
+        clean_label = clean_attr(label)
+        label_attr = f' data-figref="{clean_label}"' if clean_label else ""
+        return f'<figcaption class="figcaption"{label_attr}>__FIGNUM__ {caption}</figcaption>'
+
     # Process custom \simpleImageWithCaption{Type}{path} macros
-    custom_pattern = r'\\simpleImageWithCaption(75Width|FullWidth|HalfWidth|SmallWidth|ThirdWidth)\{([^}]+)\}\s*\{([^}]+)\}'
+    custom_pattern = r'\\simpleImageWithCaption(75Width|FullWidth|HalfWidth|SmallWidth|ThirdWidth)\s*\{([^}]+)\}\s*\{([^}]+)\}(?:\s*\{([^}]+)\}(?:\s*\{[^}]+\})?)?'
     def replace_custom_image(m):
         suffix = m.group(1)
         path = m.group(2)
         caption = m.group(3) if m.group(3) else ""
+        label = m.group(4) if m.group(4) else ""
         width = width_map.get(suffix, '')
         # Images are at img/manual/media/ relative to repo root (same as LaTeX source)
         html_path = path.replace("\\", "/")
         img_style = f"max-width:{width}; height:auto; display:block; margin:1em auto;" if width else "max-width:100%; height:auto; display:block; margin:1em auto;"
         img_html = f'<img src="{html_path}" alt="{path}" style="{img_style}" />'
         if caption:
-            return f'<figure class="manual-figure">{img_html}<figcaption class="figcaption">__FIGNUM__ {caption}</figcaption></figure>'
+            return f'{make_figure_open(label)}{img_html}{make_figcaption(caption, label)}</figure>'
         return img_html
 
-    content = re.sub(custom_pattern, replace_custom_image, content)
+    content = re.sub(custom_pattern, replace_custom_image, content, flags=re.DOTALL)
 
     # Process \\twoImagesWithTwoCaptionsFullWidth{path1}{cap1}{lbl1}{path2}{cap2}{lbl2}{opts}
-    twoimg_pattern = r'\\twoImagesWithTwoCaptionsFullWidth\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}\s*\{[^}]*\}'
+    twoimg_pattern = r'\\twoImagesWithTwoCaptionsFullWidth\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}'
     def replace_two_images(m):
-        path1, cap1, path2, cap2 = m.group(1), m.group(2), m.group(3), m.group(4)
+        path1, cap1, lbl1, path2, cap2, lbl2 = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5), m.group(6)
         h1 = path1.replace("\\", "/")
         h2 = path2.replace("\\", "/")
-        fig1 = f'<figure class="manual-figure" style="display:flex; flex-direction:column; flex:1; align-items:center;"><img src="{h1}" alt="{path1}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " /><figcaption class="figcaption">__FIGNUM__ {cap1}</figcaption></figure>'
-        fig2 = f'<figure class="manual-figure" style="display:flex; flex-direction:column; flex:1; align-items:center;"><img src="{h2}" alt="{path2}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " /><figcaption class="figcaption">__FIGNUM__ {cap2}</figcaption></figure>'
+        fig_style = ' style="display:flex; flex-direction:column; flex:1; align-items:center;"'
+        fig1 = f'{make_figure_open(lbl1, fig_style)}<img src="{h1}" alt="{path1}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " />{make_figcaption(cap1, lbl1)}</figure>'
+        fig2 = f'{make_figure_open(lbl2, fig_style)}<img src="{h2}" alt="{path2}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " />{make_figcaption(cap2, lbl2)}</figure>'
         return f'<div style="display:flex; flex-direction:row; gap:0.5em; justify-content:center;">{fig1}{fig2}</div>'
     content = re.sub(twoimg_pattern, replace_two_images, content, flags=re.DOTALL)
 
     # Process \\threeImagesWithTwoCaptionsFullWidth{path1}{cap1}{lbl1}{path2}{cap2}{lbl2}{path3}{cap3}{lbl3}
-    threeimg_pattern = r'\\threeImagesWithTwoCaptionsFullWidth\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{[^}]*\}'
+    threeimg_pattern = r'\\threeImagesWithTwoCaptionsFullWidth\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}\s*\{([^}]+)\}'
     def replace_three_images(m):
-        path1, cap1 = m.group(1), m.group(2)
-        path2, cap2 = m.group(3), m.group(4)
-        path3, cap3 = m.group(5), m.group(6)
+        path1, cap1, lbl1 = m.group(1), m.group(2), m.group(3)
+        path2, cap2, lbl2 = m.group(4), m.group(5), m.group(6)
+        path3, cap3, lbl3 = m.group(7), m.group(8), m.group(9)
         h1 = path1.replace("\\", "/")
         h2 = path2.replace("\\", "/")
         h3 = path3.replace("\\", "/")
-        fig1 = f'<figure class="manual-figure" style="display:flex; flex-direction:column; flex:1; align-items:center;"><img src="{h1}" alt="{path1}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " /><figcaption class="figcaption">__FIGNUM__ {cap1}</figcaption></figure>'
-        fig2 = f'<figure class="manual-figure" style="display:flex; flex-direction:column; flex:1; align-items:center;"><img src="{h2}" alt="{path2}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " /><figcaption class="figcaption">__FIGNUM__ {cap2}</figcaption></figure>'
-        fig3 = f'<figure class="manual-figure" style="display:flex; flex-direction:column; flex:1; align-items:center;"><img src="{h3}" alt="{path3}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " /><figcaption class="figcaption">__FIGNUM__ {cap3}</figcaption></figure>'
+        fig_style = ' style="display:flex; flex-direction:column; flex:1; align-items:center;"'
+        fig1 = f'{make_figure_open(lbl1, fig_style)}<img src="{h1}" alt="{path1}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " />{make_figcaption(cap1, lbl1)}</figure>'
+        fig2 = f'{make_figure_open(lbl2, fig_style)}<img src="{h2}" alt="{path2}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " />{make_figcaption(cap2, lbl2)}</figure>'
+        fig3 = f'{make_figure_open(lbl3, fig_style)}<img src="{h3}" alt="{path3}" style="max-width:100%; height:auto; display:block; margin:0.5em 0; " />{make_figcaption(cap3, lbl3)}</figure>'
         return f'<div style="display:flex; flex-direction:row; gap:0.5em; justify-content:center;">{fig1}{fig2}{fig3}</div>'
     content = re.sub(threeimg_pattern, replace_three_images, content, flags=re.DOTALL)
 
@@ -1499,123 +1519,136 @@ def process_content(content, base_dir, repo_root=None):
     # This runs BEFORE env_pattern to handle nested descriptions and itemize
     def process_description_items(m):
         body = m.group(1)
-        items = []
-        current_item = None
-        depth = 0
-        nested_buf = []
-        itemize_depth = 0
-        itemize_buf = []
-        for line in body.split("\n"):
-            stripped = line.strip()
-            if stripped.startswith("\begin{description}"):
-                if depth == 0:
-                    nested_buf = []
-                depth += 1
-                continue
-            if stripped.startswith("\end{description}"):
-                depth -= 1
-                if depth == 0:
-                    if current_item is not None:
-                        items.append(f"<li>{current_item}</li>")
-                        current_item = None
-                    nested_body = "\n".join(nested_buf)
-                    nested_items = []
-                    nested_current = None
-                    for nline in nested_body.split("\n"):
-                        nstripped = nline.strip()
-                        if nstripped.startswith("\item"):
-                            if nested_current is not None:
-                                nested_items.append(f"<li>{nested_current}</li>")
-                            nrest = nstripped[5:]
-                            if nrest.startswith(' '):
-                                nrest = nrest[1:]
-                            if nrest.startswith('['):
-                                nbe = nrest.find(']')
-                                if nbe != -1:
-                                    nlabel = nrest[1:nbe]
-                                    ndesc = nrest[nbe+1:].strip()
-                                    nested_current = f"<strong>{nlabel}</strong> {ndesc}"
-                                    continue
-                            nested_current = nrest.strip()
-                        elif nested_current is not None and nstripped:
-                            nested_current += f" {nstripped}"
-                    if nested_current is not None:
-                        nested_items.append(f"<li>{nested_current}</li>")
-                    items.append(f"<ul>{chr(10).join(nested_items)}</ul>")
-                    nested_buf = []
-                continue
-            if depth > 0:
-                nested_buf.append(stripped)
-                continue
-            # Handle nested itemize inside description items
-            if stripped.startswith("\begin{itemize}"):
-                itemize_depth += 1
-                itemize_buf = []
-                continue
-            if stripped.startswith("\end{itemize}"):
-                itemize_depth -= 1
-                if itemize_depth == 0:
-                    # Convert buffered itemize items to <ul><li>
-                    ul_items = []
-                    for iline in itemize_buf:
-                        istripped = iline.strip()
-                        if istripped.startswith("\item"):
-                            item_text = istripped[5:].strip()
-                            ul_items.append(f"<li>{item_text}</li>")
-                    if ul_items:
-                        ul_html = "\n".join(ul_items)
-                        if current_item is not None:
-                            current_item += f" <ul>{ul_html}</ul>"
+
+        def find_matching_env(body_lines, index, env):
+            begin = r"\begin{" + env + "}"
+            end = r"\end{" + env + "}"
+            depth = 0
+            while index < len(body_lines):
+                stripped = body_lines[index].strip()
+                if stripped.startswith(begin):
+                    depth += 1
+                elif stripped.startswith(end):
+                    depth -= 1
+                    if depth == 0:
+                        return index
+                index += 1
+            return -1
+
+        def build_items(body_lines):
+            items = []
+            current = None
+            i = 0
+
+            def flush():
+                nonlocal current
+                if current is not None:
+                    items.append(f"<li>{current}</li>")
+                    current = None
+
+            def add_text(text):
+                nonlocal current
+                text = text.strip()
+                if not text:
+                    return
+                if current is None:
+                    current = text
+                else:
+                    current += " " + text
+
+            while i < len(body_lines):
+                stripped = body_lines[i].strip()
+                if not stripped:
+                    i += 1
+                    continue
+                if stripped.startswith(r"\item"):
+                    flush()
+                    rest = stripped[5:]
+                    if rest.startswith(" "):
+                        rest = rest[1:]
+                    if rest.startswith("["):
+                        bracket_end = rest.find("]")
+                        if bracket_end != -1:
+                            label = rest[1:bracket_end]
+                            desc_text = rest[bracket_end+1:].strip()
+                            current = f"<strong>{label}</strong> {desc_text}"
+                            i += 1
+                            continue
+                    current = rest.strip()
+                    i += 1
+                    continue
+                if stripped.startswith(r"\begin{description}"):
+                    end = find_matching_env(body_lines, i, "description")
+                    if end == -1:
+                        end = len(body_lines) - 1
+                    nested_html = "\n".join(build_items(body_lines[i + 1:end]))
+                    if nested_html:
+                        nested_html = f"<ul>{nested_html}</ul>"
+                        if current is None:
+                            items.append(nested_html)
                         else:
-                            items.append(f"<ul>{ul_html}</ul>")
-                    itemize_buf = []
-                continue
-            if itemize_depth > 0:
-                itemize_buf.append(stripped)
-                continue
-            if stripped.startswith("\item"):
-                if current_item is not None:
-                    items.append(f"<li>{current_item}</li>")
-                rest = stripped[5:]
-                if rest.startswith(' '):
-                    rest = rest[1:]
-                if rest.startswith('['):
-                    bracket_end = rest.find(']')
-                    if bracket_end != -1:
-                        label = rest[1:bracket_end]
-                        desc_text = rest[bracket_end+1:].strip()
-                        current_item = f"<strong>{label}</strong> {desc_text}"
-                        continue
-                current_item = rest.strip()
-            elif current_item is not None and stripped:
-                current_item += f" {stripped}"
-        if current_item is not None:
-            items.append(f"<li>{current_item}</li>")
-        return "\n".join(items)
-        # Process description environments with nested support
-        # Scan for matching begin/end pairs to handle nesting
-        desc_blocks = []
-        desc_depth = 0
-        desc_start = None
-        for dm in re.finditer(r"\\\\begin\{description\}|\\\\end\{description\}", content):
-            if dm.group().startswith("\\\\begin"):
-                if desc_depth == 0:
-                    desc_start = dm.end()
-                desc_depth += 1
+                            current += " " + nested_html
+                    i = end + 1
+                    continue
+                if stripped.startswith(r"\begin{itemize}") or stripped.startswith(r"\begin{enumerate}"):
+                    env = "itemize" if stripped.startswith(r"\begin{itemize}") else "enumerate"
+                    end = find_matching_env(body_lines, i, env)
+                    if end == -1:
+                        end = len(body_lines) - 1
+                    nested_html = "\n".join(build_items(body_lines[i + 1:end]))
+                    if nested_html:
+                        tag = "ul" if env == "itemize" else "ol"
+                        nested_html = f"<{tag}>{nested_html}</{tag}>"
+                        if current is None:
+                            items.append(nested_html)
+                        else:
+                            current += " " + nested_html
+                    i = end + 1
+                    continue
+                add_text(stripped)
+                i += 1
+
+            flush()
+            return items
+
+        return "\n".join(build_items(body.split("\n")))
+    # Process description environments with nesting support (before env_pattern)
+    def scan_and_replace_descriptions(content):
+        i = 0
+        begin_tag = r'\begin{description}'
+        end_tag = r'\end{description}'
+        while i < len(content):
+            start = content.find(begin_tag, i)
+            if start == -1:
+                break
+            depth = 1
+            j = start + len(begin_tag)
+            while j < len(content) and depth > 0:
+                if content.startswith(begin_tag, j):
+                    depth += 1
+                    j += len(begin_tag)
+                elif content.startswith(end_tag, j):
+                    depth -= 1
+                    if depth == 0:
+                        break
+                    j += len(end_tag)
+                else:
+                    j += 1
+            if depth == 0:
+                body = content[start + len(begin_tag):j]
+                end_tag_end = j + len(end_tag)
+                class _MockM:
+                    def group(self, n=0):
+                        return body if n == 1 else None
+                result = process_description_items(_MockM())
+                content = content[:start] + result + content[end_tag_end:]
+                i = start + len(result)
             else:
-                desc_depth -= 1
-                if desc_depth == 0 and desc_start is not None:
-                    desc_blocks.append((desc_start, dm.start()))
-                    desc_start = None
-        # Process from end to preserve positions
-        for s, e in reversed(desc_blocks):
-            body = content[s:e]
-            result = process_description_items(type("m", (), {"group": lambda i: body})())
-            content = content[:s - len("\\\\begin{description}")] + result + content[e + len("\\\\end{description}"):]  
+                i = start + 1
+        return content
+    content = scan_and_replace_descriptions(content)
 
-
-
-    env_pattern = r'\\begin\{([^}]+)\}(?:\[[^\]]*\])?(?:\{(?:(?:[^{}]*\{[^{}]*\})*[^{}]*)\})?(.*?)\\end\{\1\}'
+    env_pattern = r'\\begin\{((?!description)[^}]+)\}(?:\[[^\]]*\])?(?:\{(?:(?:[^{}]*\{[^{}]*\})*[^{}]*)\})?(.*?)\\end\{\1\}'
     def replace_env(m):
         env_name = m.group(1)
         body = m.group(2)
@@ -2024,6 +2057,8 @@ def process_content(content, base_dir, repo_root=None):
 
     # Number all captions in document order (both \caption{} and manual figcaps)
     # Split by <h1> tags so each section gets its own figure counter
+    existing_anchor_ids = set(re.findall(r'''(?<![-\w])id=["']([^"']+)["']''', content))
+    figure_numbers = {}
     def number_captions_in_section(section_content, sec_num):
         global _figure_counter
         fig_count = [0]
@@ -2033,9 +2068,24 @@ def process_content(content, base_dir, repo_root=None):
             fig_num = f"{sec_num}.{fig_count[0]}"
             if m.group(1) is not None:
                 return f'<figcaption class="caption">Figure {fig_num}: {m.group(1)}</figcaption>'
-            else:
-                return f'<figcaption class="figcaption">Figure {fig_num}: {m.group(2)}</figcaption>'
-        return re.sub(r'\\caption\{([^}]*)\}|<figcaption class="figcaption">__FIGNUM__ ([^<]*)</figcaption>', repl, section_content)
+            if m.group(3) is not None:
+                label = m.group(2)
+                caption = m.group(3)
+                if label:
+                    if label not in existing_anchor_ids and label not in figure_numbers:
+                        figure_numbers[label] = fig_num
+                    return (
+                        f'<figcaption class="figcaption" data-figref="{label}">'
+                        f'Figure {fig_num}: {caption}</figcaption>'
+                    )
+                return f'<figcaption class="figcaption">Figure {fig_num}: {caption}</figcaption>'
+            return f'<figcaption class="figcaption">Figure {fig_num}: {m.group(4)}</figcaption>'
+        caption_pattern = (
+            r'\\caption\{([^}]*)\}'
+            r'|<figcaption class="figcaption" data-figref="([^"]*)">__FIGNUM__ ([^<]*)</figcaption>'
+            r'|<figcaption class="figcaption">__FIGNUM__ ([^<]*)</figcaption>'
+        )
+        return re.sub(caption_pattern, repl, section_content)
     # Split content into sections by <h1> tags
     parts = re.split(r'(<h1[^>]*>.*?</h1>)', content)
     # First part is before any <h1>
@@ -2051,6 +2101,23 @@ def process_content(content, base_dir, repo_root=None):
         else:
             new_parts.append(number_captions_in_section(part, sec_num))
     content = ''.join(new_parts)
+
+    assigned_fig_ids = set()
+    def assign_figure_ids(m):
+        label = m.group(1)
+        if not label or label in existing_anchor_ids or label in assigned_fig_ids:
+            return m.group(0)
+        assigned_fig_ids.add(label)
+        return m.group(0)[:-1] + f' id="{label}">'
+    content = re.sub(r'<figure[^>]*\sdata-fig-id="([^"]*)"[^>]*>', assign_figure_ids, content)
+
+    for label, fig_num in figure_numbers.items():
+        safe_label = re.escape(label)
+        content = re.sub(
+            r'<a class="ref-link" href="#' + safe_label + r'">' + safe_label + r'</a>',
+            f'<a class="ref-link" href="#{label}">{fig_num}</a>',
+            content
+        )
 
 
     # Convert \\\\ (LaTeX line breaks) to <br> BEFORE stripping - this preserves row breaks
@@ -2540,6 +2607,10 @@ body {
 
 #content p {
     margin-bottom: 1em;
+}
+
+#content p, #content li, #content td {
+    text-align: justify;
 }
 
 #content ul, #content ol {
